@@ -24,6 +24,7 @@
 
 \documentclass[final]{beamer}
 
+\usepackage{amsmath}
 \usepackage{graphicx}
 \usepackage{blindtext}
 \usepackage[scale=1.24]{beamerposter} % Use the beamerposter package for laying out the poster
@@ -95,7 +96,7 @@
 
 \begin{alertblock}{Abstract}
  
-We propose a novel Bayesian model for infant development trajectories that addresses primary research questions in this area while flexibly allowing for skewness and correlation of development outcomes. Our model is based on finite mixtures of multivariate skew normal (MSN) distributions, where covariates are allowed on both the multivariate outcomes and probability of latent class membership. We also allow for missing outcome data by drawing missing outcomes from their conditional MSN distributions. We demonstrate our method using data from the Nurture study.
+We propose a novel Bayesian model for infant development patterns that addresses primary research questions in this area while allowing for skewness and correlation of outcomes. Our model is based on finite mixtures of multivariate skew normal (MSN) distributions, where covariates are allowed on both the multivariate outcomes and probability of latent class membership. We also allow for missing outcome data by imputing missing outcomes from their conditional multivariate normal distributions. We demonstrate our method using data from the Nurture study.
 
 \end{alertblock}
 
@@ -105,7 +106,7 @@ We propose a novel Bayesian model for infant development trajectories that addre
 
 \begin{block}{Introduction}
 
-A primary goal in infant development research is to identify \textbf{latent development classes} and explain class membership in relation to covariates of interest. Additionally, it is often of interest to relate covariates to mean longitudinal growth patterns. Infant development data are inherently correlated longitudinally, often skewed, and frequently missing due to longitudinal attrition. Standard practices are ill-suited to addressing these research questions due to their ignorance of one or more of these features of development data. 
+A primary goal in infant development research is to identify \textbf{latent development classes} and explain class membership in relation to covariates of interest. It is often also of interest to relate covariates to mean longitudinal growth patterns. Infant development data are inherently correlated longitudinally, often skewed, and frequently missing due to longitudinal attrition and standard practices are ill-suited to addressing these research questions due to their ignorance of one or more of these features of development data. 
 
 \end{block}
 
@@ -136,7 +137,7 @@ A primary goal in infant development research is to identify \textbf{latent deve
 
 \begin{block}{Clustering}
 
-A primary concern of our model is with identification of latent infant development clusters. 
+A primary concern of our model is with identification of latent infant development clusters. We accomplish this via multinomial logit regression model on cluster membership, which utilizes P\'{o}lya-Gamma data-aumentation to allow for updating of all parameters using Gibbs sampling.
 
 \end{block}
 
@@ -152,7 +153,15 @@ A primary concern of our model is with identification of latent infant developme
 
 \begin{block}{Conditional Imputation}
 
+We allow for missingness of outcomes in the MSN mixture model by imputing missing values from their conditional multivariate normal distributions. We note that
 
+$$Y_i|X_i,t_i,\boldsymbol\beta,\psi \sim N_k(X_i \boldsymbol\beta + t_i \psi, \boldsymbol\Sigma)$$
+
+This allows us to appeal to standard conditional forms of the multivariate normal distribution. Let $Y_i = [Y^{miss}_{i_{q \times 1}} | Y^{obs}_{i_{k - q \times 1}}]^T$. We have
+
+$$Y_i^{miss}|Y_i^{obs},X_i,t_i,\boldsymbol\beta,\psi \sim N(\mu^{miss},\boldsymbol\Sigma^{miss})$$
+
+where $\mu^{miss}$ and $\Sigma^{miss}$ take standard forms. Each missing outcome is imputed "online", i.e. once per MCMC iteration. This provides more opportunities to explore the parameter space than multiple imputation and avoids multiplicative run-time scaling in $m$, the number of imputations.
 
 \end{block}
 
@@ -184,7 +193,11 @@ We developed a novel Bayesian MSN mixture model, and showed superior performance
 
 \begin{block}{MSN Regression}
 
-We model the effect of covariates on longitudinal development outcomes through the use of a multivari 
+We model the effect of covariates on longitudinal development outcomes through the use of a MSN regression model. The MSN distribution can be represented as the superposition of a MN random variable with a latent truncated normal random effect. Let $\mathbf{Y}_{n \times k}$ be the observation matrix such that $Y_{ij}$ is the observation for subject $i$ at timepoint $j$.
+
+$$\mathbf{Y}_{n \times k} = \mathbf{X}_{n \times p}\boldsymbol\beta_{p \times k} + t_{n \times 1}\psi_{1 \times k} + \boldsymbol\epsilon_{n \times k}$$
+
+where $X_i$ is the $1 \times p$ vector of covariate values for subject $i$, $\beta_j$ is the $i \times k$ vector of fixed effects coefficients for timepoint $j$, $t_i \stackrel{iid}{\sim} N_{[0,\infty)}(0,1)$ is a truncated normal random effect, $\psi$ is the vector containing skewness parameters for each timepoint, and $\boldsymbol\epsilon_i \sim N_k(0,\boldsymbol\Sigma_{k \times k})$ is the correlated error term.
 
 \end{block}
 
@@ -198,26 +211,50 @@ We model the effect of covariates on longitudinal development outcomes through t
 %	RESULTS
 %----------------------------------------------------------------------------------------
 
-\begin{block}{Gibbs Sampler Simulation}
+\begin{block}{Simulation Study}
 
-\begin{figure}
-\includegraphics[height=0.7\linewidth,width = 1\linewidth]{sim-post.pdf}
-\caption{Posterior distributions of $\alpha$, $\beta_0$, $\beta_1$, $\sigma^2$ in simulation.}
-\end{figure}
+\begin{table}[t]
 
-\begin{table}
-\vspace{0ex}
-\begin{tabular}{l l l l l}
+\caption{\label{tab:unnamed-chunk-4}Parameter estimates for n = 1000, k = 4, p = 2, h = 3, v = 3 simulation.}
+\centering
+\fontsize{20}{20}\selectfont
+\begin{tabular}{llllllll}
 \toprule
-\textbf{Param.} & \textbf{True} & \textbf{MLE} & \textbf{Gibbs} & \textbf{SLR}\\
+\multicolumn{2}{c}{ } & \multicolumn{2}{c}{Class 1} & \multicolumn{2}{c}{Class 2} & \multicolumn{2}{c}{Class 3} \\
+\cmidrule(l{3pt}r{3pt}){3-4} \cmidrule(l{3pt}r{3pt}){5-6} \cmidrule(l{3pt}r{3pt}){7-8}
+Component & Parm. & True & Est. (95\% CrI) & True & Est. (95\% CrI) & True & Est. (95\% CrI)\\
 \midrule
-$\alpha$  \ & 4.00 & 0.3928  & 4.016 & -- \\
-$\beta_0$ \  & 1.00 & 1.013 & 1.009 & 2.566\\
-$\beta_1$ \  & 2.00 & 2.006 & 2.01 & 2.081\\
-$\sigma^2$ \  & 0.235 & 0.257 & 0.257 & 1.753\\
+\addlinespace[0.3em]
+\multicolumn{8}{l}{\textbf{ }}\\
+\hspace{1em}MSN & $\beta_{11}$ & -0.54 & -0.51 (-0.61, -0.41) & -0.19 & -0.22 (-0.35, -0.09) & 1.84 & 1.81 (1.65, 1.99)\\
+\hspace{1em}Reg. & $\beta_{12}$ & -1.06 & -1.07 (-1.15, -0.98) & -0.16 & -0.13 (-0.25, -0.02) & 2.03 & 2.09 (1.93, 2.23)\\
+\hspace{1em} & $\beta_{13}$ & -1.28 & -1.22 (-1.32, -1.11) & 0.59 & 0.58 (0.46, 0.69) & 1.8 & 1.74 (1.58, 1.9)\\
+\hspace{1em} & $\beta_{14}$ & -1.91 & -1.83 (-1.92, -1.74) & -0.2 & -0.12 (-0.25, -0.01) & 1.43 & 1.37 (1.22, 1.52)\\
+
+\addlinespace[0.3em]
+\multicolumn{8}{l}{\textbf{ }}\\
+\hspace{1em} & $\sigma^2_{11}$ & 1 & 0.9 (0.78, 1.03) & 1 & 1.04 (0.88, 1.26) & 1 & 1.39 (1.08, 1.76)\\
+\hspace{1em} & $\sigma^2_{12}$ & -0.1 & -0.12 (-0.22, -0.02) & -0.32 & -0.31 (-0.44, -0.18) & 0.08 & 0.27 (0.04, 0.52)\\
+\hspace{1em} & $\sigma^2_{13}$ & -0.18 & -0.17 (-0.28, -0.08) & -0.52 & -0.5 (-0.66, -0.38) & 0.78 & 1.19 (0.87, 1.54)\\
+\hspace{1em} & $\sigma^2_{14}$ & 0.39 & 0.31 (0.22, 0.43) & 0.04 & 0.05 (-0.07, 0.22) & 0.41 & 0.72 (0.47, 0.99)\\
+\hspace{1em} & $\sigma^2_{22}$ & 1 & 0.97 (0.84, 1.12) & 1 & 0.94 (0.77, 1.14) & 1 & 1.18 (0.91, 1.5)\\
+
+\addlinespace[0.3em]
+\multicolumn{8}{l}{\textbf{ }}\\
+\hspace{1em} & $\psi_{1}$ & -0.33 & -0.28 (-0.4, -0.18) & 0.67 & 0.64 (0.5, 0.78) & -1 & -0.91 (-1.12, -0.68)\\
+\hspace{1em} & $\psi_{2}$ & -0.33 & -0.21 (-0.34, -0.09) & 0.67 & 0.7 (0.55, 0.84) & -1 & -0.96 (-1.16, -0.76)\\
+\hspace{1em} & $\psi_{3}$ & -0.33 & -0.27 (-0.39, -0.14) & 0.67 & 0.72 (0.58, 0.86) & -1 & -0.91 (-1.14, -0.69)\\
+\hspace{1em} & $\psi_{4}$ & -0.33 & -0.18 (-0.3, -0.07) & 0.67 & 0.73 (0.6, 0.87) & -1 & -0.93 (-1.13, -0.73)\\
+\addlinespace[0.3em]
+\multicolumn{8}{l}{\textbf{ }}\\
+\hspace{1em}Multi. & $\delta_{11}$ & -0.53 & -0.5 (-0.74, -0.24) & -0.53 & -0.5 (-0.74, -0.24) & -0.53 & -0.5 (-0.74, -0.24)\\
+\hspace{1em}Logit & $\delta_{12}$ & 0.44 & 0.28 (0.02, 0.56) & 0.44 & 0.28 (0.02, 0.56) & 0.44 & 0.28 (0.02, 0.56)\\
+\hspace{1em} & $\delta_{21}$ & 0.34 & 0.38 (0.09, 0.63) & 0.34 & 0.38 (0.09, 0.63) & 0.34 & 0.38 (0.09, 0.63)\\
+\addlinespace[0.3em]
+\multicolumn{8}{l}{\textbf{ }}\\
+\hspace{1em}Clust. & $\pi_l$ & 0.41 & 0.41 (0.4, 0.42) & 0.36 & 0.36 (0.35, 0.37) & 0.23 & 0.23 (0.22, 0.24)\\
 \bottomrule
 \end{tabular}
-
 \end{table}
 
 \end{block}
@@ -239,43 +276,18 @@ $\sigma^2$ \  & 0.235 & 0.257 & 0.257 & 1.753\\
 %----------------------------------------------------------------------------------------
 
 \begin{figure}
-\includegraphics[height=0.5\linewidth,width=1\linewidth]{sim-trace.pdf}
-\caption{Trace plots of parameter estimates in simulation}
+\includegraphics[height=1\linewidth,width=1\linewidth]{beta_trace.pdf}
+\caption{Trace plots of regression parameter estimates in simulation}
 \end{figure}
 
-\begin{block}{Modeling Results}
+\begin{block}{Application Results}
 
 \begin{figure}
-\includegraphics[height=0.6\linewidth,width=1\linewidth]{nurt_posteriors.pdf}
-\caption{Posterior distributions of model parameters}
+\includegraphics[height=0.8\linewidth,width=1\linewidth]{clust_trends.pdf}
+\caption{Mean development patterns in each estimated class}
 \end{figure}
 
-\begin{table}
-\vspace{0ex}
-\begin{tabular}{l l l}
-\toprule
-\textbf{Param.} & \textbf{Est.} & \textbf{95\% CI}\\
-\midrule
-$\alpha$  \ & 0.239 & (-0.169,0.624) \\
-$\beta_{low}$ \  & 0.009 & (-0.225,0.245)\\
-$\beta_{v.low}$ \  & 0.230 & (0.020,0.579)\\
-\bottomrule
-\end{tabular}
-
-\end{table}
-
 \end{block}
-
-\begin{block}{References}
-
-\tiny  \textbf{(1) Azzalini, S. (1985)}. A class of distributions which includes the normal ones. SJS; \textbf{(2) Fruhwirth-Schnatter, S and Pyne, S. (2010)}. Bayesian inference for finite mixtures of univariate ... Biostatistics; \textbf{(3) Benjamin-Neelon SE, Ostbye T, Bennett GG, et al.} Cohort profile for the Nurture Observational Study ... BMJ Open 2017; \textbf{(4) Neelon, B. (2015)} Bayesian two-part spatial models
-
-\
-
-\tiny \textbf{Funding:} \textit{This work is supported by a grant from the NIH (\textbf{R01DK094841})}.
-
-\end{block}
-
 
 %----------------------------------------------------------------------------------------
 %	REFERENCES
@@ -298,10 +310,6 @@ $\beta_{v.low}$ \  & 0.230 & (0.020,0.579)\\
 
 \centering
 https://carter-allen.github.io/MVSN-FMM
-
-\begin{figure}
-\includegraphics[width = .2\linewidth]{frame.png}
-\end{figure}
 
 \end{alertblock}
 

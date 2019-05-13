@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  13 MAY 2019 12:57
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  13 MAY 2019 16:31
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1097,64 +1097,64 @@ Package: booktabs 2016/04/27 v1.618033 publication quality tables
 )
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 70.
+(hyperref)                removing `math shift' on input line 71.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `superscript' on input line 70.
+(hyperref)                removing `superscript' on input line 71.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 70.
+(hyperref)                removing `math shift' on input line 71.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 70.
+(hyperref)                removing `math shift' on input line 71.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `superscript' on input line 70.
+(hyperref)                removing `superscript' on input line 71.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 70.
+(hyperref)                removing `math shift' on input line 71.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 70.
+(hyperref)                removing `math shift' on input line 71.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `superscript' on input line 70.
+(hyperref)                removing `superscript' on input line 71.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 70.
+(hyperref)                removing `math shift' on input line 71.
 
 (./poster.aux)
 \openout1 = `poster.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 76.
-LaTeX Font Info:    ... okay on input line 76.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 76.
-LaTeX Font Info:    ... okay on input line 76.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 76.
-LaTeX Font Info:    ... okay on input line 76.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 76.
-LaTeX Font Info:    ... okay on input line 76.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 76.
-LaTeX Font Info:    ... okay on input line 76.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 76.
-LaTeX Font Info:    ... okay on input line 76.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 76.
-LaTeX Font Info:    ... okay on input line 76.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 76.
-LaTeX Font Info:    Try loading font information for TS1+cmr on input line 76.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 77.
+LaTeX Font Info:    ... okay on input line 77.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 77.
+LaTeX Font Info:    ... okay on input line 77.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 77.
+LaTeX Font Info:    ... okay on input line 77.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 77.
+LaTeX Font Info:    ... okay on input line 77.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 77.
+LaTeX Font Info:    ... okay on input line 77.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 77.
+LaTeX Font Info:    ... okay on input line 77.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 77.
+LaTeX Font Info:    ... okay on input line 77.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 77.
+LaTeX Font Info:    Try loading font information for TS1+cmr on input line 77.
  (/usr/local/texlive/2016/texmf-dist/tex/latex/base/ts1cmr.fd
 File: ts1cmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 76.
-LaTeX Font Info:    Try loading font information for T1+lmss on input line 76.
+LaTeX Font Info:    ... okay on input line 77.
+LaTeX Font Info:    Try loading font information for T1+lmss on input line 77.
 
 (/usr/local/texlive/2016/texmf-dist/tex/latex/lm/t1lmss.fd
 File: t1lmss.fd 2009/10/30 v1.6 Font defs for Latin Modern
@@ -1223,7 +1223,7 @@ e
 ))
 ABD: EveryShipout initializing macros
 \AtBeginShipoutBox=\box61
-Package hyperref Info: Link coloring OFF on input line 76.
+Package hyperref Info: Link coloring OFF on input line 77.
 
 (/usr/local/texlive/2016/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
@@ -1233,9 +1233,9 @@ Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
 \c@section@level=\count268
 )
-LaTeX Info: Redefining \ref on input line 76.
-LaTeX Info: Redefining \pageref on input line 76.
-LaTeX Info: Redefining \nameref on input line 76.
+LaTeX Info: Redefining \ref on input line 77.
+LaTeX Info: Redefining \pageref on input line 77.
+LaTeX Info: Redefining \nameref on input line 77.
 
 (./poster.out) (./poster.out)
 \@outlinefile=\write5
@@ -1266,23 +1266,23 @@ Dictionary: translator-numbers-dictionary, Language: English
 r-theorem-dictionary/translator-theorem-dictionary-English.dict
 Dictionary: translator-theorem-dictionary, Language: English 
 )
-LaTeX Info: Redefining \includegraphics on input line 76.
+LaTeX Info: Redefining \includegraphics on input line 77.
 
 ABD: EverySelectfont initializing macros
-LaTeX Info: Redefining \selectfont on input line 76.
+LaTeX Info: Redefining \selectfont on input line 77.
  (./poster.nav)
-LaTeX Font Info:    Calculating math sizes for size <53.32> on input line 76.
-LaTeX Font Info:    Try loading font information for OT1+lmr on input line 76.
+LaTeX Font Info:    Calculating math sizes for size <53.32> on input line 77.
+LaTeX Font Info:    Try loading font information for OT1+lmr on input line 77.
 
 (/usr/local/texlive/2016/texmf-dist/tex/latex/lm/ot1lmr.fd
 File: ot1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for OML+lmm on input line 76.
+LaTeX Font Info:    Try loading font information for OML+lmm on input line 77.
 
 (/usr/local/texlive/2016/texmf-dist/tex/latex/lm/omllmm.fd
 File: omllmm.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for OMS+lmsy on input line 76.
+LaTeX Font Info:    Try loading font information for OMS+lmsy on input line 77.
 
 
 (/usr/local/texlive/2016/texmf-dist/tex/latex/lm/omslmsy.fd
@@ -1290,169 +1290,95 @@ File: omslmsy.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 
 LaTeX Font Warning: Font shape `OMX/cmex/m/n' in size <53.32> not available
-(Font)              size <24.88> substituted on input line 76.
+(Font)              size <24.88> substituted on input line 77.
 
 
 LaTeX Font Warning: Font shape `OMX/cmex/m/n' in size <37.32384> not available
-(Font)              size <24.88> substituted on input line 76.
+(Font)              size <24.88> substituted on input line 77.
 
 
 LaTeX Font Warning: Font shape `OMX/cmex/m/n' in size <26.66> not available
-(Font)              size <24.88> substituted on input line 76.
+(Font)              size <24.88> substituted on input line 77.
 
-LaTeX Font Info:    Calculating math sizes for size <44.43> on input line 76.
+LaTeX Font Info:    Calculating math sizes for size <44.43> on input line 77.
 
 LaTeX Font Warning: Font shape `OMX/cmex/m/n' in size <44.43> not available
-(Font)              size <24.88> substituted on input line 76.
+(Font)              size <24.88> substituted on input line 77.
 
 
 LaTeX Font Warning: Font shape `OMX/cmex/m/n' in size <31.10085> not available
-(Font)              size <24.88> substituted on input line 76.
+(Font)              size <24.88> substituted on input line 77.
 
 
 LaTeX Font Warning: Font shape `OMX/cmex/m/n' in size <22.215> not available
-(Font)              size <20.74> substituted on input line 76.
+(Font)              size <20.74> substituted on input line 77.
 
-LaTeX Font Info:    Calculating math sizes for size <17.86> on input line 76.
+LaTeX Font Info:    Calculating math sizes for size <17.86> on input line 77.
 
 LaTeX Font Warning: Font shape `OMX/cmex/m/n' in size <17.86> not available
-(Font)              size <17.28> substituted on input line 76.
+(Font)              size <17.28> substituted on input line 77.
 
 
 LaTeX Font Warning: Font shape `OMX/cmex/m/n' in size <12.50194> not available
-(Font)              size <12> substituted on input line 76.
+(Font)              size <12> substituted on input line 77.
 
-LaTeX Font Info:    Try loading font information for T1+lmr on input line 336.
+LaTeX Font Info:    Try loading font information for T1+lmr on input line 322.
 (/usr/local/texlive/2016/texmf-dist/tex/latex/lm/t1lmr.fd
 File: t1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Calculating math sizes for size <37.03> on input line 336.
+LaTeX Font Info:    Calculating math sizes for size <37.03> on input line 322.
 
 
 LaTeX Font Warning: Font shape `OMX/cmex/m/n' in size <37.03> not available
-(Font)              size <24.88> substituted on input line 336.
+(Font)              size <24.88> substituted on input line 322.
 
 
 LaTeX Font Warning: Font shape `OMX/cmex/m/n' in size <25.92088> not available
-(Font)              size <24.88> substituted on input line 336.
+(Font)              size <24.88> substituted on input line 322.
 
 
 LaTeX Font Warning: Font shape `OMX/cmex/m/n' in size <18.515> not available
-(Font)              size <17.28> substituted on input line 336.
+(Font)              size <17.28> substituted on input line 322.
 
 <bayley_dens.jpg, id=15, 12043.99625pt x 9855.82124pt>
 File: bayley_dens.jpg Graphic file (type jpg)
  <use bayley_dens.jpg>
-Package pdftex.def Info: bayley_dens.jpg used on input line 336.
+Package pdftex.def Info: bayley_dens.jpg used on input line 322.
 (pdftex.def)             Requested size: 686.85323pt x 561.9982pt.
+LaTeX Font Info:    Calculating math sizes for size <20> on input line 322.
 
-Overfull \hbox (46.98254pt too wide) detected at line 336
-\OML/lmm/m/it/37.03 ^^L[]\OMS/lmsy/m/n/37.03 j\OML/lmm/m/it/37.03 Y; \OT1/lmr/b
-x/n/37.03 X[]\OML/lmm/m/it/37.03 ; ^^\ \OMS/lmsy/m/n/37.03 ^^X \OML/lmm/m/it/37
-.03 N[] []
+
+LaTeX Font Warning: Font shape `OMX/cmex/m/n' in size <20> not available
+(Font)              size <20.74> substituted on input line 322.
+
+
+LaTeX Font Warning: Font shape `OMX/cmex/m/n' in size <13.99994> not available
+(Font)              size <14.4> substituted on input line 322.
+
+
+Overfull \hbox (30.83905pt too wide) in paragraph at lines 322--322
+ [] 
  []
 
+<beta_trace.pdf, id=16, 505.89pt x 505.89pt>
+File: beta_trace.pdf Graphic file (type pdf)
+ <use beta_trace.pdf>
+Package pdftex.def Info: beta_trace.pdf used on input line 322.
+(pdftex.def)             Requested size: 763.19449pt x 763.19449pt.
 
-Overfull \hbox (39.75804pt too wide) detected at line 336
-\OML/lmm/m/it/37.03 ^^\\OMS/lmsy/m/n/37.03 j\OML/lmm/m/it/37.03 ^^L[]; \OT1/lmr
-/bx/n/37.03 X[]\OML/lmm/m/it/37.03 ; Y \OMS/lmsy/m/n/37.03 ^^X \OT1/lmr/m/n/37.
-03 ^^@(\OML/lmm/m/it/37.03 n=\OT1/lmr/m/n/37.03 2 + \OML/lmm/m/it/37.03 ; []\O
-T1/lmr/m/n/37.03 (\OML/lmm/m/it/37.03 Y \OMS/lmsy/m/n/37.03 ^^@ \OT1/lmr/bx/n/3
-7.03 X[]\OML/lmm/m/it/37.03 ^^L[]\OT1/lmr/m/n/37.03 )[](\OML/lmm/m/it/37.03 Y \
-OMS/lmsy/m/n/37.03 ^^@ \OT1/lmr/bx/n/37.03 X[]\OML/lmm/m/it/37.03 ^^L[]\OT1/lmr
-/m/n/37.03 ) + \OML/lmm/m/it/37.03 b\OT1/lmr/m/n/37.03 )
- []
+<clust_trends.pdf, id=17, 866.23625pt x 709.65125pt>
+File: clust_trends.pdf Graphic file (type pdf)
+ <use clust_trends.pdf>
+Package pdftex.def Info: clust_trends.pdf used on input line 322.
+(pdftex.def)             Requested size: 763.21552pt x 610.55888pt.
 
-LaTeX Font Info:    Try loading font information for T1+lmtt on input line 336.
-
-(/usr/local/texlive/2016/texmf-dist/tex/latex/lm/t1lmtt.fd
-File: t1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
-)
-
-LaTeX Warning: File `sim-post.pdf' not found on input line 336.
-
-
-! Package pdftex.def Error: File `sim-post.pdf' not found.
-
-See the pdftex.def package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.336 \end{frame}
-                  % End of the enclosing frame
-Using draft setting for this image.
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-LaTeX Font Info:    Calculating math sizes for size <30.85> on input line 336.
-
-LaTeX Font Warning: Font shape `OMX/cmex/m/n' in size <30.85> not available
-(Font)              size <24.88> substituted on input line 336.
-
-
-LaTeX Font Warning: Font shape `OMX/cmex/m/n' in size <21.59491> not available
-(Font)              size <20.74> substituted on input line 336.
-
-
-LaTeX Font Warning: Font shape `OMX/cmex/m/n' in size <15.425> not available
-(Font)              size <14.4> substituted on input line 336.
-
-
-LaTeX Warning: File `sim-trace.pdf' not found on input line 336.
-
-
-! Package pdftex.def Error: File `sim-trace.pdf' not found.
-
-See the pdftex.def package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.336 \end{frame}
-                  % End of the enclosing frame
-Using draft setting for this image.
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-LaTeX Warning: File `nurt_posteriors.pdf' not found on input line 336.
-
-
-! Package pdftex.def Error: File `nurt_posteriors.pdf' not found.
-
-See the pdftex.def package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.336 \end{frame}
-                  % End of the enclosing frame
-Using draft setting for this image.
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-LaTeX Warning: File `frame.png' not found on input line 336.
-
-
-! Package pdftex.def Error: File `frame.png' not found.
-
-See the pdftex.def package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.336 \end{frame}
-                  % End of the enclosing frame
-Using draft setting for this image.
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-Overfull \hbox (4.99402pt too wide) detected at line 336
+Overfull \hbox (4.99402pt too wide) detected at line 322
 [][][] [][][][][][][][][] [][][][][][][][][] [][][][][][][][][] [][][][][][][][
 ][] [][][][][][][][][] [][][][][][][] 
  []
 
 
-Overfull \vbox (183.62614pt too high) detected at line 336
+Overfull \vbox (19.46455pt too high) detected at line 322
  []
 
 
@@ -1462,7 +1388,7 @@ Overfull \hbox (88.20334pt too wide) has occurred while \output is active
 
 [1{/usr/local/texlive/2016/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
 
- <./bayley_dens.jpg>]
+ <./bayley_dens.jpg> <./beta_trace.pdf> <./clust_trends.pdf>]
 \tf@nav=\write6
 \openout6 = `poster.nav'.
 
@@ -1472,11 +1398,11 @@ Overfull \hbox (88.20334pt too wide) has occurred while \output is active
 \tf@snm=\write8
 \openout8 = `poster.snm'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 338.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 338.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 324.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 324.
  (./poster.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 338.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 338.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 324.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 324.
 Package rerunfilecheck Info: File `poster.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
 
@@ -1484,33 +1410,31 @@ Package rerunfilecheck Info: File `poster.out' has not changed.
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 28.44pt have occurred.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 338.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 324.
  ) 
 Here is how much of TeX's memory you used:
- 22387 strings out of 493014
- 439052 string characters out of 6133351
- 604231 words of memory out of 5000000
- 25363 multiletter control sequences out of 15000+600000
- 167223 words of font info for 132 fonts, out of 8000000 for 9000
+ 22315 strings out of 493014
+ 437316 string characters out of 6133351
+ 614924 words of memory out of 5000000
+ 25293 multiletter control sequences out of 15000+600000
+ 153264 words of font info for 133 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 60i,18n,71p,583b,1444s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/local/texlive/2016/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}{/usr/local/
-texlive/2016/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc}{/usr/local/texlive/2016/t
-exmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/local/texlive/2016/texmf-dist/
-fonts/enc/dvips/lm/lm-mathit.enc}</usr/local/texlive/2016/texmf-dist/fonts/type
-1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1
-/public/lm/lmbx12.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/lm
-/lmbxi10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/lm/lmmi12.p
-fb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/lm/lmr17.pfb></usr/lo
-cal/texlive/2016/texmf-dist/fonts/type1/public/lm/lmri12.pfb></usr/local/texliv
+ 60i,18n,71p,571b,1435s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/local/texlive/2016/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc}{/usr/local/
+texlive/2016/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/local/texlive/20
+16/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/local/texlive/2016/texmf-d
+ist/fonts/enc/dvips/lm/lm-ec.enc}</usr/local/texlive/2016/texmf-dist/fonts/type
+1/public/lm/lmbx12.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/l
+m/lmmi12.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/lm/lmmib10.
+pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/lm/lmr12.pfb></usr/l
+ocal/texlive/2016/texmf-dist/fonts/type1/public/lm/lmr17.pfb></usr/local/texliv
 e/2016/texmf-dist/fonts/type1/public/lm/lmss17.pfb></usr/local/texlive/2016/tex
 mf-dist/fonts/type1/public/lm/lmssbx10.pfb></usr/local/texlive/2016/texmf-dist/
-fonts/type1/public/lm/lmsy10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type
-1/public/lm/lmtt12.pfb>
-Output written on poster.pdf (1 page, 2609521 bytes).
+fonts/type1/public/lm/lmsy10.pfb>
+Output written on poster.pdf (1 page, 2657359 bytes).
 PDF statistics:
- 74 PDF objects out of 1000 (max. 8388607)
- 52 compressed objects within 1 object stream
- 3 named destinations out of 1000 (max. 500000)
- 54 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 79 PDF objects out of 1000 (max. 8388607)
+ 55 compressed objects within 1 object stream
+ 4 named destinations out of 1000 (max. 500000)
+ 64 words of extra memory for PDF output out of 10000 (max. 10000000)
 
