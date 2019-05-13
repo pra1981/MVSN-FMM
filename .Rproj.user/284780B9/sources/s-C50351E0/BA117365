@@ -1,0 +1,25 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1557760799950.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2010425961",
+    "id" : "BA117365",
+    "lastKnownWriteTime" : 1557761889,
+    "last_content_update" : 1557761889130,
+    "path" : "~/Documents/School/Fall_2018/Research/Birth Outcomes & Clustering/BayleyScores.Rmd",
+    "project_path" : null,
+    "properties" : {
+        "cursorPosition" : "212,0",
+        "scrollLine" : "192"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 3,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}

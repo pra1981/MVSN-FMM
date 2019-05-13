@@ -1,0 +1,316 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Jacobs Landscape Poster
+% LaTeX Template
+% Version 1.1 (14/06/14)
+%
+% Created by:
+% Computational Physics and Biophysics Group, Jacobs University
+% https://teamwork.jacobs-university.de:8443/confluence/display/CoPandBiG/LaTeX+Poster
+% 
+% Further modified by:
+% Nathaniel Johnston (nathaniel@njohnston.ca)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[final]{beamer}
+
+\usepackage{graphicx}
+\usepackage{blindtext}
+\usepackage[scale=1.24]{beamerposter} % Use the beamerposter package for laying out the poster
+
+\usetheme{confposter} % Use the confposter theme supplied with this template
+
+\setbeamercolor{block title}{fg=ngreen,bg=white} % Colors of the block titles
+\setbeamercolor{block body}{fg=black,bg=white} % Colors of the body of blocks
+\setbeamercolor{block alerted title}{fg=white,bg=dblue!70} % Colors of the highlighted block titles
+\setbeamercolor{block alerted body}{fg=black,bg=dblue!10} % Colors of the body of highlighted blocks
+% Many more colors are available for use in beamerthemeconfposter.sty
+
+%-----------------------------------------------------------
+% Define the column widths and overall poster size
+% To set effective sepwid, onecolwid and twocolwid values, first choose how many columns you want and how much separation you want between columns
+% In this template, the separation width chosen is 0.024 of the paper width and a 4-column layout
+% onecolwid should therefore be (1-(# of columns+1)*sepwid)/# of columns e.g. (1-(4+1)*0.024)/4 = 0.22
+% Set twocolwid to be (2*onecolwid)+sepwid = 0.464
+% Set threecolwid to be (3*onecolwid)+2*sepwid = 0.708
+
+\newlength{\sepwid}
+\newlength{\onecolwid}
+\newlength{\twocolwid}
+\newlength{\threecolwid}
+\setlength{\paperwidth}{48in} % A0 width: 46.8in
+\setlength{\paperheight}{36in} % A0 height: 33.1in
+\setlength{\sepwid}{0.024\paperwidth} % Separation width (white space) between columns
+\setlength{\onecolwid}{0.22\paperwidth} % Width of one column
+\setlength{\twocolwid}{0.464\paperwidth} % Width of two columns
+\setlength{\threecolwid}{0.708\paperwidth} % Width of three columns
+\setlength{\topmargin}{-0.5in} % Reduce the top margin size
+%-----------------------------------------------------------
+
+\usepackage{graphicx}  % Required for including images
+
+\usepackage{booktabs} % Top and bottom rules for tables
+
+%----------------------------------------------------------------------------------------
+%	TITLE SECTION 
+%----------------------------------------------------------------------------------------
+
+\title{Multivariate Skew-Normal Mixture Model for Infant Development Clustering} % Poster title
+
+\author{Carter Allen$^1$; Brian Neelon, PhD$^1$; Sara E. Benjamin-Neelon, PhD, JD, MPH$^2$} % Author(s)
+
+\institute{$^1$Department of Public Health Sciences, Medical University of South Carolina; $^2$Bloomberg School of Public Health, Johns Hopkins University}
+
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+
+\addtobeamertemplate{block end}{}{\vspace*{2ex}} % White space under blocks
+\addtobeamertemplate{block alerted end}{}{\vspace*{2ex}} % White space under highlighted (alert) blocks
+
+\setlength{\belowcaptionskip}{2ex} % White space under figures
+\setlength\belowdisplayshortskip{2ex} % White space under equations
+
+\begin{frame}[t] % The whole poster is enclosed in one beamer frame
+
+\begin{columns}[t] % The whole poster consists of three major columns, the second of which is split into two columns twice - the [t] option aligns each column's content to the top
+
+\begin{column}{\sepwid}\end{column} % Empty spacer column
+
+\begin{column}{\onecolwid} % The first column
+
+%----------------------------------------------------------------------------------------
+%	OBJECTIVES
+%----------------------------------------------------------------------------------------
+
+\begin{alertblock}{Abstract}
+ 
+We propose a novel Bayesian model for infant development trajectories that addresses primary research questions in this area while flexibly allowing for skewness and correlation of development outcomes. Our model is based on finite mixtures of multivariate skew normal (MSN) distributions, where covariates are allowed on both the multivariate outcomes and probability of latent class membership. We also allow for missing outcome data by drawing missing outcomes from their conditional MSN distributions. We demonstrate our method using data from the Nurture study.
+
+\end{alertblock}
+
+%----------------------------------------------------------------------------------------
+%	INTRODUCTION
+%----------------------------------------------------------------------------------------
+
+\begin{block}{Introduction}
+
+A primary goal in infant development research is to identify \textbf{latent development classes} and explain class membership in relation to covariates of interest. Additionally, it is often of interest to relate covariates to mean longitudinal growth patterns. Infant development data are inherently correlated longitudinally, often skewed, and frequently missing due to longitudinal attrition. Standard practices are ill-suited to addressing these research questions due to their ignorance of one or more of these features of development data. 
+
+\end{block}
+
+%------------------------------------------------
+
+\begin{block}{Motivation}
+\begin{figure}
+\includegraphics[width=0.9\linewidth]{bayley_dens.jpg}
+\caption{Density of Bayley composite scores for Nurture infants at 3, 6, 9 and 12 months of age.}
+\end{figure}
+\end{block}
+
+%----------------------------------------------------------------------------------------
+
+\end{column} % End of the first column
+
+\begin{column}{\sepwid}\end{column} % Empty spacer column
+
+\begin{column}{\twocolwid} % Begin a column which is two columns wide (column 2)
+
+\begin{columns}[t,totalwidth=\twocolwid] % Split up the two columns wide column
+
+\begin{column}{\onecolwid}\vspace{-.6in} % The first column within column 2 (column 2.1)
+
+%----------------------------------------------------------------------------------------
+%	
+%----------------------------------------------------------------------------------------
+
+\begin{block}{Clustering}
+
+A primary concern of our model is with identification of latent infant development clusters. 
+
+\end{block}
+
+%----------------------------------------------------------------------------------------
+
+\end{column} % End of column 2.1
+
+\begin{column}{\onecolwid}\vspace{-.6in} % The second column within column 2 (column 2.2)
+
+%----------------------------------------------------------------------------------------
+%	METHODS
+%----------------------------------------------------------------------------------------
+
+\begin{block}{Conditional Imputation}
+
+
+
+\end{block}
+
+%----------------------------------------------------------------------------------------
+
+\end{column} % End of column 2.2
+
+\end{columns} % End of the split of column 2 - any content after this will now take up 2 columns width
+
+%----------------------------------------------------------------------------------------
+%	IMPORTANT RESULT
+%----------------------------------------------------------------------------------------
+
+\begin{alertblock}{Important Results}
+
+We developed a novel Bayesian MSN mixture model, and showed superior performance compared to standard approaches. We applied the MSN mixture model to data from the Nurture study and discovered two distinct development classes characterized by differences in development trajectories and demographics.
+
+\end{alertblock} 
+
+%----------------------------------------------------------------------------------------
+
+\begin{columns}[t,totalwidth=\twocolwid] % Split up the two columns wide column again
+
+\begin{column}{\onecolwid} % The first column within column 2 (column 2.1)
+
+%----------------------------------------------------------------------------------------
+%	MATHEMATICAL SECTION
+%----------------------------------------------------------------------------------------
+
+\begin{block}{MSN Regression}
+
+We model the effect of covariates on longitudinal development outcomes through the use of a multivari 
+
+\end{block}
+
+%----------------------------------------------------------------------------------------
+
+\end{column} % End of column 2.1
+
+\begin{column}{\onecolwid} % The second column within column 2 (column 2.2)
+
+%----------------------------------------------------------------------------------------
+%	RESULTS
+%----------------------------------------------------------------------------------------
+
+\begin{block}{Gibbs Sampler Simulation}
+
+\begin{figure}
+\includegraphics[height=0.7\linewidth,width = 1\linewidth]{sim-post.pdf}
+\caption{Posterior distributions of $\alpha$, $\beta_0$, $\beta_1$, $\sigma^2$ in simulation.}
+\end{figure}
+
+\begin{table}
+\vspace{0ex}
+\begin{tabular}{l l l l l}
+\toprule
+\textbf{Param.} & \textbf{True} & \textbf{MLE} & \textbf{Gibbs} & \textbf{SLR}\\
+\midrule
+$\alpha$  \ & 4.00 & 0.3928  & 4.016 & -- \\
+$\beta_0$ \  & 1.00 & 1.013 & 1.009 & 2.566\\
+$\beta_1$ \  & 2.00 & 2.006 & 2.01 & 2.081\\
+$\sigma^2$ \  & 0.235 & 0.257 & 0.257 & 1.753\\
+\bottomrule
+\end{tabular}
+
+\end{table}
+
+\end{block}
+
+%----------------------------------------------------------------------------------------
+
+\end{column} % End of column 2.2
+
+\end{columns} % End of the split of column 2
+
+\end{column} % End of the second column
+
+\begin{column}{\sepwid}\end{column} % Empty spacer column
+
+\begin{column}{\onecolwid} % The third column
+
+%----------------------------------------------------------------------------------------
+%	CONCLUSION
+%----------------------------------------------------------------------------------------
+
+\begin{figure}
+\includegraphics[height=0.5\linewidth,width=1\linewidth]{sim-trace.pdf}
+\caption{Trace plots of parameter estimates in simulation}
+\end{figure}
+
+\begin{block}{Modeling Results}
+
+\begin{figure}
+\includegraphics[height=0.6\linewidth,width=1\linewidth]{nurt_posteriors.pdf}
+\caption{Posterior distributions of model parameters}
+\end{figure}
+
+\begin{table}
+\vspace{0ex}
+\begin{tabular}{l l l}
+\toprule
+\textbf{Param.} & \textbf{Est.} & \textbf{95\% CI}\\
+\midrule
+$\alpha$  \ & 0.239 & (-0.169,0.624) \\
+$\beta_{low}$ \  & 0.009 & (-0.225,0.245)\\
+$\beta_{v.low}$ \  & 0.230 & (0.020,0.579)\\
+\bottomrule
+\end{tabular}
+
+\end{table}
+
+\end{block}
+
+\begin{block}{References}
+
+\tiny  \textbf{(1) Azzalini, S. (1985)}. A class of distributions which includes the normal ones. SJS; \textbf{(2) Fruhwirth-Schnatter, S and Pyne, S. (2010)}. Bayesian inference for finite mixtures of univariate ... Biostatistics; \textbf{(3) Benjamin-Neelon SE, Ostbye T, Bennett GG, et al.} Cohort profile for the Nurture Observational Study ... BMJ Open 2017; \textbf{(4) Neelon, B. (2015)} Bayesian two-part spatial models
+
+\
+
+\tiny \textbf{Funding:} \textit{This work is supported by a grant from the NIH (\textbf{R01DK094841})}.
+
+\end{block}
+
+
+%----------------------------------------------------------------------------------------
+%	REFERENCES
+%----------------------------------------------------------------------------------------
+
+
+%----------------------------------------------------------------------------------------
+%	ACKNOWLEDGEMENTS
+%----------------------------------------------------------------------------------------
+
+
+%----------------------------------------------------------------------------------------
+%	CONTACT INFORMATION
+%----------------------------------------------------------------------------------------
+
+\setbeamercolor{block alerted title}{fg=black,bg=norange} % Change the alert block title colors
+\setbeamercolor{block alerted body}{fg=black,bg=white} % Change the alert block body colors
+
+\begin{alertblock}{Further Resources}
+
+\centering
+https://carter-allen.github.io/MVSN-FMM
+
+\begin{figure}
+\includegraphics[width = .2\linewidth]{frame.png}
+\end{figure}
+
+\end{alertblock}
+
+%----------------------------------------------------------------------------------------
+
+\end{column} % End of the third column
+
+\end{columns} % End of all the columns in the poster
+
+\end{frame} % End of the enclosing frame
+
+\end{document}

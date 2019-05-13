@@ -1,0 +1,25 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1557762669141.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "D0C9E62B",
+    "lastKnownWriteTime" : 1557766888,
+    "last_content_update" : 1557766888055,
+    "path" : "~/Documents/School/Summer_2019/Research/MVSN-FMM/poster/poster.tex",
+    "project_path" : "poster/poster.tex",
+    "properties" : {
+        "cursorPosition" : "149,9",
+        "scrollLine" : "125"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 4,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "tex"
+}

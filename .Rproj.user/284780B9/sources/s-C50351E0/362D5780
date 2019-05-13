@@ -1,0 +1,25 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1557760543891.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "362D5780",
+    "lastKnownWriteTime" : 1554747397,
+    "last_content_update" : 1554747397,
+    "path" : "~/Documents/School/Summer_2019/Research/MVSN-FMM/simulation/simulation.R",
+    "project_path" : "simulation/simulation.R",
+    "properties" : {
+        "cursorPosition" : "369,13",
+        "scrollLine" : "304"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
