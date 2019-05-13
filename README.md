@@ -4,7 +4,7 @@ This repository contains materials for the development of a novel method for mod
 
 ## Manuscript
 
--[Manuscript](Manuscript/manuscript.pdf)
+-[Manuscript](manuscript/manuscript.pdf)
 
 ## Code
 
