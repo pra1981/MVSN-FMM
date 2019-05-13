@@ -137,7 +137,13 @@ A primary goal in infant development research is to identify \textbf{latent deve
 
 \begin{block}{Clustering}
 
-A primary concern of our model is with identification of latent infant development clusters. We accomplish this via multinomial logit regression model on cluster membership, which utilizes P\'{o}lya-Gamma data-aumentation to allow for updating of all parameters using Gibbs sampling.
+A primary concern of our model is with identification of latent infant development clusters. We accomplish this via multinomial logit regression model on cluster membership, which utilizes P\'{o}lya-Gamma data-aumentation to allow for updating of all parameters using Gibbs sampling. The multinomial logit model is as follows for $l = 1,...,h$.
+
+$$P(Z_i = l|\w_i) = \pi_{il} = \frac{e^{w_i^T \delta_l}}{\sum_{r = 1}^h e^{w_i^T \delta_r}}$$
+
+where $w_i$ is the vector of class probability covariates for subject $i$, $\delta_l$ contains the multinomial regression parameters for class $l$, and $h$ is the number of putative clusters specified \textit{a priori}.
+
+During our MCMC estimation procedure, the class labels $z_i$ are updated from their multinomial full conditional distribution and used in the remaining MCMC steps as class assignments.
 
 \end{block}
 
@@ -177,7 +183,7 @@ where $\mu^{miss}$ and $\Sigma^{miss}$ take standard forms. Each missing outcome
 
 \begin{alertblock}{Important Results}
 
-We developed a novel Bayesian MSN mixture model, and showed superior performance compared to standard approaches. We applied the MSN mixture model to data from the Nurture study and discovered two distinct development classes characterized by differences in development trajectories and demographics.
+We developed a novel Bayesian MSN mixture model, and showed superior performance compared to standard approaches. We applied the MSN mixture model to data from the Nurture study and discovered three distinct development classes characterized by differences in development trajectories and demographics.
 
 \end{alertblock} 
 
@@ -276,7 +282,7 @@ Component & Parm. & True & Est. (95\% CrI) & True & Est. (95\% CrI) & True & Est
 %----------------------------------------------------------------------------------------
 
 \begin{figure}
-\includegraphics[height=1\linewidth,width=1\linewidth]{beta_trace.pdf}
+\includegraphics[height=0.9\linewidth,width=1\linewidth]{beta_trace.pdf}
 \caption{Trace plots of regression parameter estimates in simulation}
 \end{figure}
 
@@ -306,12 +312,22 @@ Component & Parm. & True & Est. (95\% CrI) & True & Est. (95\% CrI) & True & Est
 \setbeamercolor{block alerted title}{fg=black,bg=norange} % Change the alert block title colors
 \setbeamercolor{block alerted body}{fg=black,bg=white} % Change the alert block body colors
 
+
+
+
 \begin{alertblock}{Further Resources}
 
 \centering
 https://carter-allen.github.io/MVSN-FMM
 
 \end{alertblock}
+
+\tiny  \textbf{(1) Fruhwirth-Schnatter, S and Pyne, S. (2010)}. Bayesian inference for finite mixtures of univariate ... Biostatistics; \textbf{(2) Benjamin-Neelon SE, Ostbye T, Bennett GG, et al.} Cohort profile for the Nurture Observational Study ... BMJ Open 2017.
+
+\
+
+\tiny \textbf{Funding:} \textit{This work is supported by a grant from the NIH (\textbf{R01DK094841})}.
+
 
 %----------------------------------------------------------------------------------------
 

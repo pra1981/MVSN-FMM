@@ -397,9 +397,9 @@ clust_plot <- nurt_quart %>%
     scale_x_discrete(breaks = c(3,6,9,12)) + 
     theme(panel.grid.major = element_blank(),
           panel.grid.minor = element_blank(),
-          axis.text = element_text(face = "bold",size = 20,color = "black"),
+          axis.text = element_text(face = "bold",size = 30,color = "black"),
           axis.title = element_text(face = "bold",size = 22,color = "black"),
-          legend.text = element_text(face = "bold",size = 20,color = "black"),
+          legend.text = element_text(face = "bold",size = 30,color = "black"),
           plot.title = element_text(face = "bold",size = 22,color = "black"),
           legend.title = element_blank(),
           legend.position = "bottom",
