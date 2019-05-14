@@ -11,7 +11,8 @@
 %  
 \documentclass[useAMS,referee]{biom}
 \usepackage{amsmath}
-
+\usepackage{graphicx}
+\usepackage{blindtext}
 
 \def\bSig\mathbf{\Sigma}
 \newcommand{\VS}{V\&S}
@@ -59,10 +60,10 @@
 {Carter Allen\emailx{allecart@musc.edu} \\
 Department of Public Health Sciences, Medical University of South Carolina, Charleston, SC, U.S.A
 \and
-Brian Neelon, PhD\emailx{neelon@musc.edu} \\
+Brian Neelon, PhD \\
 Department of Public Health Sciences, Medical University of South Carolina, Charleston, SC, U.S.A
 \and
-Sara Benjamin-Neelon, PhD, MPH, RD\emailx{sara.neelon@jhu.edu} \\
+Sara Benjamin-Neelon, PhD, MPH, RD \\
 Department of Health, Behavior and Society, Johns Hopkins University, Baltimore, MD, U.S.S}
 
 %  Three or more authors from same institution with all emails displayed
@@ -196,6 +197,14 @@ where $X_i$ is the $1 \times p$ vector of covariate values for subject $i$, $\be
 \subsection{Latent Class Finite Mixture}
 
 \subsection{Multinomial Regression on Class Probabilities}
+
+A primary concern of our model is with identification of latent infant development clusters. We accomplish this via multinomial logit regression model on cluster membership, which utilizes P\'{o}lya-Gamma data-aumentation to allow for updating of all parameters using Gibbs sampling. The multinomial logit model is as follows for $l = 1,...,h$.
+
+$$P(Z_i = l|w_i) = \pi_{il} = \frac{e^{w_i^T \delta_l}}{\sum_{r = 1}^h e^{w_i^T \delta_r}}$$
+
+where $w_i$ is the vector of class probability covariates for subject $i$, $\delta_l$ contains the multinomial regression parameters for class $l$, and $h$ is the number of putative clusters specified \textit{a priori}.
+
+During our MCMC estimation procedure, the class labels $z_i$ are updated from their multinomial full conditional distribution and used in the remaining MCMC steps as class assignments.
 
 \subsection{Conditional MVSN Imputation}
 
