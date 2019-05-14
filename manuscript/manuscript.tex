@@ -10,6 +10,8 @@
 %  journal as a guide. 
 %  
 \documentclass[useAMS,referee]{biom}
+\usepackage{amsmath}
+
 
 \def\bSig\mathbf{\Sigma}
 \newcommand{\VS}{V\&S}
@@ -185,12 +187,27 @@ A key word; But another key word; Still another key word; Yet another key word.
 
 \subsection{Multivariate Skew Normal Regression}
 
+We model the effect of covariates on longitudinal development outcomes through the use of a MSN regression model. The MSN distribution can be represented as the superposition of a MN random variable with a latent truncated normal random effect. Let $\mathbf{Y}_{n \times k}$ be the observation matrix such that $Y_{ij}$ is the observation for subject $i$ at timepoint $j$.
+
+$$\mathbf{Y}_{n \times k} = \mathbf{X}_{n \times p}\boldsymbol\beta_{p \times k} + t_{n \times 1}\psi_{1 \times k} + \boldsymbol\epsilon_{n \times k}$$
+
+where $X_i$ is the $1 \times p$ vector of covariate values for subject $i$, $\beta_j$ is the $i \times k$ vector of fixed effects coefficients for timepoint $j$, $t_i \stackrel{iid}{\sim} N_{[0,\infty)}(0,1)$ is a truncated normal random effect, $\psi$ is the vector containing skewness parameters for each timepoint, and $\boldsymbol\epsilon_i \sim N_k(0,\boldsymbol\Sigma_{k \times k})$ is the correlated error term.
+
 \subsection{Latent Class Finite Mixture}
 
 \subsection{Multinomial Regression on Class Probabilities}
 
 \subsection{Conditional MVSN Imputation}
 
+We allow for missingness of outcomes in the MSN mixture model by imputing missing values from their conditional multivariate normal distributions. We note that
+
+$$Y_i|X_i,t_i,\boldsymbol\beta,\psi \sim N_k(X_i \boldsymbol\beta + t_i \psi, \boldsymbol\Sigma)$$
+
+This allows us to appeal to standard conditional forms of the multivariate normal distribution. Let $Y_i = [Y^{miss}_{i_{q \times 1}} | Y^{obs}_{i_{k - q \times 1}}]^T$. We have
+
+$$Y_i^{miss}|Y_i^{obs},X_i,t_i,\boldsymbol\beta,\psi \sim N(\mu^{miss},\boldsymbol\Sigma^{miss})$$
+
+where $\mu^{miss}$ and $\Sigma^{miss}$ take standard forms. Each missing outcome is imputed "online", i.e. once per MCMC iteration. This provides more opportunities to explore the parameter space than multiple imputation and avoids multiplicative run-time scaling in $m$, the number of imputations.
 
 \section{Bayesian Inference}
 \label{s:inf}
