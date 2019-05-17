@@ -157,9 +157,14 @@ A key word; But another key word; Still another key word; Yet another key word.
 \end{keywords}
 
 %  As usual, the \maketitle command creates the title and author/affiliations
-%  display 
+%  display
 
 \maketitle
+
+\setcounter{tocdepth}{3}
+\tableofcontents
+
+\newpage
 
 %  If you are using the referee option, a new page, numbered page 1, will
 %  start after the summary and keywords.  The page numbers thus count the
@@ -182,6 +187,14 @@ A key word; But another key word; Still another key word; Yet another key word.
 \section{Introduction}
 \label{s:intro}
 
+\section{Nurture Study}
+\label{s:nurt}
+\subsection{Baseline Demographics and Description of Variables}
+
+\subsection{Statistical Challenges}
+\subsubsection{Skewness of Bayley score residuals}
+\subsubsection{Attrition and Intermittent Missingness}
+
 
 \section{Model}
 \label{s:model}
@@ -193,8 +206,6 @@ We model the effect of covariates on longitudinal development outcomes through t
 $$\mathbf{Y}_{n \times k} = \mathbf{X}_{n \times p}\boldsymbol\beta_{p \times k} + t_{n \times 1}\psi_{1 \times k} + \boldsymbol\epsilon_{n \times k}$$
 
 where $X_i$ is the $1 \times p$ vector of covariate values for subject $i$, $\beta_j$ is the $i \times k$ vector of fixed effects coefficients for timepoint $j$, $t_i \stackrel{iid}{\sim} N_{[0,\infty)}(0,1)$ is a truncated normal random effect, $\psi$ is the vector containing skewness parameters for each timepoint, and $\boldsymbol\epsilon_i \sim N_k(0,\boldsymbol\Sigma_{k \times k})$ is the correlated error term.
-
-\subsection{Latent Class Finite Mixture}
 
 \subsection{Multinomial Regression on Class Probabilities}
 
@@ -218,11 +229,24 @@ $$Y_i^{miss}|Y_i^{obs},X_i,t_i,\boldsymbol\beta,\psi \sim N(\mu^{miss},\boldsymb
 
 where $\mu^{miss}$ and $\Sigma^{miss}$ take standard forms. Each missing outcome is imputed "online", i.e. once per MCMC iteration. This provides more opportunities to explore the parameter space than multiple imputation and avoids multiplicative run-time scaling in $m$, the number of imputations.
 
-\section{Bayesian Inference}
-\label{s:inf}
+\subsection{Bayesian Inference}
+
+\subsubsection{MCMC Algorithm}
+
+\subsubsection{Assessment of MCMC Convergence}
+
+\subsubsection{Label Switching}
+
+\subsubsection{Prior Choice}
 
 \section{Simulation Studies}
 \label{s:sim}
+
+\subsection{Simulation to Compare to Multivariate Normal}
+
+\subsection{Simulation to Compare Imputation Methods}
+
+\subsection{Simulation to Assess Sensitivity to Mispecified H}
 
 \section{Application}
 \label{s:app}
@@ -230,7 +254,8 @@ where $\mu^{miss}$ and $\Sigma^{miss}$ take standard forms. Each missing outcome
 \section{Discussion}
 \label{s:discuss}
 
-
+\section{Appendix}
+\subsection{Full Conditional Distributions}
 
 Put your final comments here. 
 
@@ -283,13 +308,9 @@ New York: Springer.
 
 \end{thebibliography}
 
-\appendix
+% \appendix
 
 %  To get the journal style of heading for an appendix, mimic the following.
-
-\section{}
-\subsection{Full Conditional Distributions}
-
 
 
 \label{lastpage}

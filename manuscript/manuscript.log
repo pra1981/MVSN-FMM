@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  14 MAY 2019 09:43
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  17 MAY 2019 15:04
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -325,7 +325,11 @@ Overfull \hbox (4.62497pt too wide) has occurred while \output is active
 Overfull \vbox (11.50003pt too high) has occurred while \output is active []
 
 
-[2]
+[2] (./manuscript.toc)
+\tf@toc=\write5
+\openout5 = `manuscript.toc'.
+
+
 Overfull \hbox (4.62497pt too wide) has occurred while \output is active
 \OT1/cmr/m/n/9 1
  []
@@ -333,31 +337,33 @@ Overfull \hbox (4.62497pt too wide) has occurred while \output is active
 [1
 
 ]
-Underfull \vbox (badness 2189) has occurred while \output is active []
-
-
 Overfull \hbox (4.62497pt too wide) has occurred while \output is active
 \OT1/cmr/m/n/9 2
  []
 
-[2] AED endfloat: Processing end Figures and Tables
+[2]
 Overfull \hbox (4.62497pt too wide) has occurred while \output is active
 \OT1/cmr/m/n/9 3
  []
 
-[3] (./manuscript.aux)
+[3] AED endfloat: Processing end Figures and Tables
+Overfull \hbox (4.62497pt too wide) has occurred while \output is active
+\OT1/cmr/m/n/9 4
+ []
+
+[4] (./manuscript.aux)
 
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 2983 strings out of 493014
- 39463 string characters out of 6133351
- 107045 words of memory out of 5000000
+ 2986 strings out of 493014
+ 39498 string characters out of 6133351
+ 107047 words of memory out of 5000000
  6466 multiletter control sequences out of 15000+600000
  19569 words of font info for 70 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 37i,8n,23p,2122b,268s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 37i,8n,23p,2122b,255s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
 ></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
 </usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb>
@@ -377,10 +383,10 @@ ive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive
 /texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2016/
 texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/local/texlive/2016/t
 exmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb>
-Output written on manuscript.pdf (5 pages, 225353 bytes).
+Output written on manuscript.pdf (6 pages, 228505 bytes).
 PDF statistics:
- 96 PDF objects out of 1000 (max. 8388607)
- 69 compressed objects within 1 object stream
+ 99 PDF objects out of 1000 (max. 8388607)
+ 71 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 

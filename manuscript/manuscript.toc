@@ -1,0 +1,24 @@
+\contentsline {section}{\numberline {1}Introduction}{2}
+\contentsline {section}{\numberline {2}Nurture Study}{2}
+\contentsline {subsection}{\numberline {2.1}Baseline Demographics and Description of Variables}{2}
+\contentsline {subsection}{\numberline {2.2}Statistical Challenges}{2}
+\contentsline {subsubsection}{\numberline {2.2.1}Skewness of Bayley score residuals}{2}
+\contentsline {subsubsection}{\numberline {2.2.2}Attrition and Intermittent Missingness}{2}
+\contentsline {section}{\numberline {3}Model}{2}
+\contentsline {subsection}{\numberline {3.1}Multivariate Skew Normal Regression}{2}
+\contentsline {subsection}{\numberline {3.2}Multinomial Regression on Class Probabilities}{2}
+\contentsline {subsection}{\numberline {3.3}Conditional MVSN Imputation}{3}
+\contentsline {subsection}{\numberline {3.4}Bayesian Inference}{3}
+\contentsline {subsubsection}{\numberline {3.4.1}MCMC Algorithm}{3}
+\contentsline {subsubsection}{\numberline {3.4.2}Assessment of MCMC Convergence}{4}
+\contentsline {subsubsection}{\numberline {3.4.3}Label Switching}{4}
+\contentsline {subsubsection}{\numberline {3.4.4}Prior Choice}{4}
+\contentsline {section}{\numberline {4}Simulation Studies}{4}
+\contentsline {subsection}{\numberline {4.1}Simulation to Compare to Multivariate Normal}{4}
+\contentsline {subsection}{\numberline {4.2}Simulation to Compare Imputation Methods}{4}
+\contentsline {subsection}{\numberline {4.3}Simulation to Assess Sensitivity to Mispecified H}{4}
+\contentsline {section}{\numberline {5}Application}{4}
+\contentsline {section}{\numberline {6}Discussion}{4}
+\contentsline {section}{\numberline {7}Appendix}{4}
+\contentsline {subsection}{\numberline {7.1}Full Conditional Distributions}{4}
+\contentsline {section}{References}{4}
