@@ -1,17 +1,11 @@
-\begin{table}
-\caption{This is a simple table.}
-\label{t:one}
-\begin{center}
-\begin{tabular}{lrrr}
-\Hline
-Estimator & \multicolumn{1}{c}{$\beta_1$} &  \multicolumn{1}{c}{$\beta_2$} &
-\multicolumn{1}{c}{$\beta_3$} \\ \hline
-MLE & 10.18 & $-$3.26 & 0.13 \\
-OLS & 9.92 & $-$3.19 & 0.11 \\
-WLS & 9.88 & $-$3.33 & 0.12 \\
-\hline
+\begin{table}[]
+\begin{tabular}{@{}llll@{}}
+\toprule
+Symbol & Description & Dimension & Model Component \\ \midrule
+1 &  &  &  \\
+2 &  &  &  \\
+2 &  &  &  \\ \bottomrule
 \end{tabular}
-\end{center}
 \end{table}
 \efloatseparator
  

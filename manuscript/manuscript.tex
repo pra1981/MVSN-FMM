@@ -13,6 +13,7 @@
 \usepackage{amsmath}
 \usepackage{graphicx}
 \usepackage{blindtext}
+\usepackage{booktabs}
 
 \def\bSig\mathbf{\Sigma}
 \newcommand{\VS}{V\&S}
@@ -279,7 +280,31 @@ Put your final comments here.
 
 \subsection{Glossary of Notation}
 
+\begin{itemize}
 
+    \item $\mathbf{Y}$: A $n \times p$ matrix containing all multivariate skew-normal regression outcomes such that $y_{ij}$ is the $j^{th}$ outcome observed for subject $i$, where $i = 1,...,n$ and $j = 1,...p$.
+    
+    \item $\mathbf{X}$: A $n \times m$ matrix containing all multivariate skew-normal regression covariates such that $x_{ij}$ is the $j^{th}$ covariate value for subject $i$.
+    
+    \item $\mathbf{B}$: A $m \times p$ matrix containing all multivariate skew-normal regression coefficients such that $\mathbf{B} = \left [ \boldsymbol\beta_1,...,\boldsymbol\beta_p \right ]$, where $\beta_{ij}$ is interpreted as the effect of covariate $i$ on outcome $j$ for $i = 1,...,m$ and $j = 1,...,p$.
+    
+    \item $\mathbf{E}$: A $n \times p$ matrix of error terms in the multivariate skew-normal regression model component. $\mathbf{E}$ is made up of row vectors $\boldsymbol\epsilon_i = (\epsilon_{i1},...,\epsilon_{ip})$, where $ \boldsymbol\epsilon_i \stackrel{iid}{\sim} N_p(0, \boldsymbol\Sigma)$ for $i = 1,...,n$.
+    
+    \item $\boldsymbol\Sigma$: A $p \times p$ covariance matrix that defines the correlation between the $p$ multivariate normal outcomes. 
+    
+    \item $\boldsymbol\Omega$: A $p \times p$ covariance scale matrix that defines the correlation between the $p$ multivariate skew-normal outcomes. 
+    
+    \item $\boldsymbol\psi$: A $p \times 1$ vector containing the skewness parameter for each outcome.
+    
+    \item $\boldsymbol\alpha$: A $p \times 1$ vector containing the skewness parameter for each outcome.
+    
+    \item $\mathbf{t}$: A $n \times 1$ vector of truncated normal random effects used in the stochastic representation of the multivariate skew-normal distribution. For $i = 1,...,n$, $t_i \stackrel{iid}{\sim}T_[0,\infty)(0,1)$
+    
+    \item $\mathbf{X}^*$: A $n \times (m + 1)$ matrix constructed by column binding $\mathbf{t}$ to $\mathbf{X}$
+    
+    \item $\mathbf{B}^*$: A $(m+1) \times p$ matrix constructed by row binding $\boldsymbol\psi^T$. to $\mathbf{B}$.
+
+\end{itemize}
 
 \subsection{Derivation of Full Conditional Distributions}
 
