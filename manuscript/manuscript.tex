@@ -302,7 +302,7 @@ Put your final comments here.
     
     \item $\mathbf{X}^*$: A $n \times (m + 1)$ matrix constructed by column binding $\mathbf{t}$ to $\mathbf{X}$
     
-    \item $\mathbf{B}^*$: A $(m+1) \times p$ matrix constructed by row binding $\boldsymbol\psi^T$. to $\mathbf{B}$.
+    \item $\mathbf{B}^*$: A $(m+1) \times p$ matrix constructed by row binding $\boldsymbol\psi^T$ to $\mathbf{B}$.
 
 \end{itemize}
 
@@ -312,7 +312,11 @@ Put your final comments here.
 
 Without loss of generality, we derive the full conditional distributions for the multivariate skew-normal regression model component under the assumption that all observations belong to a single cluster. To make the extension to the case where more than one cluster is specified, simply apply these distributional forms to cluster specific parameters and data. 
 
+The multivariate skew-normal regression model can be written as follows. 
 
+$$\mathbf{Y} = \mathbf{X}\mathbf{B} + \mathbf{t} \boldsymbol\psi^T + \mathbf{E} = \mathbf{X}^* \mathbf{B}^* + \mathbf{E}$$
+
+Under the assumption that $t_i \stackrel{iid}{\sim}T_[0,\infty)(0,1)$ and that $\mathbf{E}$ is made of row vectors $\boldsymbol\epsilon_i = (\epsilon_{i1},...,\epsilon_{ip})$ for $i = 1,...,n$, 
 
 \subsubsection{Multinomial Logit Regression}
 
