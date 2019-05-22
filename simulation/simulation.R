@@ -264,7 +264,7 @@ for(i in 1:nsim)
         delta.l <- delta[,l]
         delta.notl <- delta[,-l]
         u.l <- 1*(c == l+1)
-        c.l <- log(1 + exp(W %*% delta.notl))
+        c.l <- log(1 + exp(rowSums(W %*% delta.notl)))
         eta <- W %*% delta.l - c.l
         w <- rpg(n, 1, eta)
         z.l <- (u.l - 1/2)/w + c.l 
