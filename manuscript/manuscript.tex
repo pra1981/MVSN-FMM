@@ -278,6 +278,8 @@ Put your final comments here.
 
 \section*{Supplementary Materials}
 
+\newpage
+
 \subsection{Glossary of Notation}
 
 \begin{itemize}
@@ -298,7 +300,7 @@ Put your final comments here.
     
     \item $\boldsymbol\alpha$: A $p \times 1$ vector containing the skewness parameter for each outcome.
     
-    \item $\mathbf{t}$: A $n \times 1$ vector of truncated normal random effects used in the stochastic representation of the multivariate skew-normal distribution. For $i = 1,...,n$, $t_i \stackrel{iid}{\sim}T_[0,\infty)(0,1)$
+    \item $\mathbf{t}$: A $n \times 1$ vector of truncated normal random effects used in the stochastic representation of the multivariate skew-normal distribution. For $i = 1,...,n$, $t_i \stackrel{iid}{\sim}T_{[0,\infty)(0,1)}$
     
     \item $\mathbf{X}^*$: A $n \times (m + 1)$ matrix constructed by column binding $\mathbf{t}$ to $\mathbf{X}$
     
@@ -306,6 +308,7 @@ Put your final comments here.
 
 \end{itemize}
 
+\newpage
 \subsection{Derivation of Full Conditional Distributions}
 
 \subsubsection{Multivariate Skew-Normal Regression}
@@ -316,11 +319,42 @@ The multivariate skew-normal regression model can be written as follows.
 
 $$\mathbf{Y} = \mathbf{X}\mathbf{B} + \mathbf{t} \boldsymbol\psi^T + \mathbf{E} = \mathbf{X}^* \mathbf{B}^* + \mathbf{E}$$
 
-Under the assumption that $t_i \stackrel{iid}{\sim}T_[0,\infty)(0,1)$ and that $\mathbf{E}$ is made of row vectors $\boldsymbol\epsilon_i = (\epsilon_{i1},...,\epsilon_{ip})$ for $i = 1,...,n$, 
+For convenience, we define $\mathbf{X}^*$ as a $n \times (m + 1)$ matrix constructed by column binding $\mathbf{t}$ to $\mathbf{X}$, and $\mathbf{B}^*$ as a $(m+1) \times p$ matrix constructed by row binding $\boldsymbol\psi^T$ to $\mathbf{B}$. We assume that $t_i \stackrel{iid}{\sim}T_{[0,\infty})(0,1)$ and that $\mathbf{E}$ is made of row vectors $\boldsymbol\epsilon_i = (\epsilon_{i1},...,\epsilon_{ip})$ for $i = 1,...,n$, where $ \boldsymbol\epsilon_i \stackrel{iid}{\sim} N_p(0, \boldsymbol\Sigma)$.
+
+The conditional likelihood for this model is given below. 
+
+$$p(\mathbf{Y}|\mathbf{X}^*,\mathbf{B}^*,\boldsymbol\Sigma) \propto |\boldsymbol\Sigma|^{-n/2}\exp \left \{ -\frac{1}{2} \tr(\mathbf{Y} - \mathbf{X}^* \mathbf{B}^*)^T(\mathbf{Y} - \mathbf{X}^* \mathbf{B}^*)\boldsymbol\Sigma^{-1} \right \}$$
+
+
 
 \subsubsection{Multinomial Logit Regression}
 
 \subsubsection{Multivariate Normal Conditional Imputation}
+
+The multivariate normal conditional imputation derivations are given for a single cluster without loss of generality. In practive, the data and parameters in this section would be replaced by cluster specific estimates in the case of clustering. 
+
+For a given observation vector $\mathbf{y} \sim N_p(\boldsymbol\mu, \boldsymbol\Sigma)$, we allow for missingness in at most $p - 1$ of the multivariate outcomes through the use of a conditional imputation step embedded within our Gibbs sampler. Suppose $\mathbf{y}$ contains $q$ missing observations and can be partitioned into two vectors $\mathbf{y_{1}}$ and $\mathbf{y_{2}}$ such that $\mathbf{y_{1}}$ is a $q \times 1$ vector of missing observations and $\mathbf{y_{2}}$ is a $(p-q) \times 1$ vector of complete observations. Similarly, partition $\boldsymbol\mu$ and $\boldsymbol\Sigma$ as follows.
+
+$$\boldsymbol\mu = \begin{bmatrix} \boldsymbol\mu_1 \\ \boldsymbol\mu_2 \end{bmatrix}$$
+
+$$\boldsymbol\Sigma = \begin{bmatrix} \boldsymbol\Sigma_{11} & \boldsymbol\Sigma_{12} \\ \boldsymbol\Sigma_{21} & \boldsymbol\Sigma_{22} \end{bmatrix}$$
+
+We will use these quantities to derive the conditional distribution $f(\mathbf{y_1}|\mathbf{y_2},\boldsymbol\mu,\boldsymbol\Sigma)$. 
+
+\begin{align*} 
+f(\mathbf{y_1}|\mathbf{y_2},\boldsymbol\mu,\boldsymbol\Sigma) & \propto  f(\mathbf{y_1},\mathbf{y_2}|\boldsymbol\mu,\boldsymbol\Sigma) \\
+& \propto \exp \left \{ -\frac{1}{2}(\mathbf{y} - \boldsymbol\mu)^T \boldsymbol\Sigma^{-1} (\mathbf{y} - \boldsymbol\mu) \right \} \\
+& = \exp \left \{ -\frac{1}{2}\begin{bmatrix} \mathbf{y}_1 - \boldsymbol\mu_1 \\  \mathbf{y}_2 - \boldsymbol\mu_2 \end{bmatrix}^T \boldsymbol\Sigma^{-1} \begin{bmatrix} \mathbf{y}_1 - \boldsymbol\mu_1 \\  \mathbf{y}_2 - \boldsymbol\mu_2 \end{bmatrix} \right \} \\
+& =  \exp \left \{ -\frac{1}{2}\begin{bmatrix} \mathbf{y}_1 - \boldsymbol\mu_1 \\  \mathbf{y}_2 - \boldsymbol\mu_2 \end{bmatrix}^T \begin{bmatrix} \boldsymbol\Sigma_{11} & \boldsymbol\Sigma_{12} \\ \boldsymbol\Sigma_{21} & \boldsymbol\Sigma_{22} \end{bmatrix}^{-1} \begin{bmatrix} \mathbf{y}_1 - \boldsymbol\mu_1 \\  \mathbf{y}_2 - \boldsymbol\mu_2 \end{bmatrix} \right \} \\
+& = \exp \left \{ -\frac{1}{2}\begin{bmatrix} \mathbf{y}_1 - \boldsymbol\mu_1 \\  \mathbf{y}_2 - \boldsymbol\mu_2 \end{bmatrix}^T \begin{bmatrix} \boldsymbol\Sigma_{11}^* & \boldsymbol\Sigma_{12}^* \\ \boldsymbol\Sigma_{21}^* & \boldsymbol\Sigma_{22}^* \end{bmatrix} \begin{bmatrix} \mathbf{y}_1 - \boldsymbol\mu_1 \\  \mathbf{y}_2 - \boldsymbol\mu_2 \end{bmatrix} \right \}
+\end{align*}
+
+where the blockwise inversion formula is used to invert $\boldsymbol\Sigma$ as follows.
+
+\begin{align*}
+\boldsymbol\Sigma_{11}^* & = \boldsymbol\Sigma_{11}^{-1} + \boldsymbol\Sigma_{11}^{-1}\boldsymbol\Sigma_{12}(\boldsymbol\Sigma_{22} - \boldsymbol\Sigma_{21}\boldsymbol\Sigma_{11}^{-1}\boldsymbol\Sigma_{12})^{-1}\boldsymbol\Sigma_{21}\boldsymbol\Sigma_{11}^{-1}
+\end{align*}
+
 
 %  Here, we create the bibliographic entries manually, following the
 %  journal style.  If you use this method or use natbib, PLEASE PAY
