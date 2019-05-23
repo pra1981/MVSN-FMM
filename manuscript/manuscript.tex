@@ -189,6 +189,8 @@ A key word; But another key word; Still another key word; Yet another key word.
 \section{Introduction}
 \label{s:intro}
 
+\newpage
+
 \section{Nurture Study}
 \label{s:nurt}
 \subsection{Baseline Demographics and Description of Variables}
@@ -197,6 +199,7 @@ A key word; But another key word; Still another key word; Yet another key word.
 \subsubsection{Skewness of Bayley score residuals}
 \subsubsection{Attrition and Intermittent Missingness}
 
+\newpage
 
 \section{Model}
 \label{s:model}
@@ -233,13 +236,22 @@ where $\mu^{miss}$ and $\Sigma^{miss}$ take standard forms. Each missing outcome
 
 \subsection{Bayesian Inference}
 
+\begin{itemize}
+
+\item Emphasize that PG data augmentation for the multinomial model results in a PG mixure of experts model, which is a computationally efficient way to model edge weights. 
+
+\end{itemize}
+
+\subsubsection{Prior Choice}
+
 \subsubsection{MCMC Algorithm}
 
 \subsubsection{Assessment of MCMC Convergence}
 
 \subsubsection{Label Switching}
 
-\subsubsection{Prior Choice}
+
+\newpage
 
 \section{Simulation Studies}
 \label{s:sim}
@@ -248,13 +260,30 @@ where $\mu^{miss}$ and $\Sigma^{miss}$ take standard forms. Each missing outcome
 
 \subsection{Simulation to Compare Imputation Methods}
 
-\subsection{Simulation to Assess Sensitivity to Mispecified H}
+\subsection{Simulation to Assess Sensitivity to Mispecified K}
+
+\newpage
 
 \section{Application}
 \label{s:app}
 
+\begin{itemize}
+
+\item Include both time varying and non-time varying covariates for the within cluster covariate set. 
+
+\end{itemize}
+
+\newpage
+
 \section{Discussion}
 \label{s:discuss}
+
+\begin{itemize}
+
+\item Discuss how we handle non-ignorable missingness 
+
+\end{itemize}
+
 
 \section{Appendix}
 
@@ -285,9 +314,9 @@ Put your final comments here.
 
 \begin{itemize}
 
-    \item $\mathbf{Y}$: A $n \times p$ matrix containing all multivariate skew-normal regression outcomes such that $y_{ij}$ is the $j^{th}$ outcome observed for subject $i$, where $i = 1,...,n$ and $j = 1,...p$.
+    \item $\mathbf{Y}$: A $N \times J$ matrix containing all multivariate skew-normal  outcomes such that $y_{ij}$ is the $j^{th}$ outcome observed for subject $i$, where $i = 1,...,n$ and $j = 1,...J$.
     
-    \item $\mathbf{X}$: A $n \times m$ matrix containing all multivariate skew-normal regression covariates such that $x_{ij}$ is the $j^{th}$ covariate value for subject $i$.
+    \item $\mathbf{X}$: A $n \times p$ matrix containing all multivariate skew-normal regression covariates such that $x_{ij}$ is the $j^{th}$ covariate value for subject $i$.
     
     \item $\mathbf{B}$: A $m \times p$ matrix containing all multivariate skew-normal regression coefficients such that $\mathbf{B} = \left [ \boldsymbol\beta_1,...,\boldsymbol\beta_p \right ]$, where $\beta_{ij}$ is interpreted as the effect of covariate $i$ on outcome $j$ for $i = 1,...,m$ and $j = 1,...,p$.
     
@@ -301,7 +330,7 @@ Put your final comments here.
     
     \item $\boldsymbol\alpha$: A $p \times 1$ vector containing the skewness parameter for each outcome.
     
-    \item $\mathbf{t}$: A $n \times 1$ vector of truncated normal random effects used in the stochastic representation of the multivariate skew-normal distribution. For $i = 1,...,n$, $t_i \stackrel{iid}{\sim}T_{[0,\infty)(0,1)}$
+    \item $\mathbf{t}$: An $n \times 1$ vector of truncated normal random effects used in the stochastic representation of the multivariate skew-normal distribution. For $i = 1,...,n$, $t_i \stackrel{iid}{\sim}T_{[0,\infty)}(0,1)$
     
     \item $\mathbf{X}^*$: A $n \times (m + 1)$ matrix constructed by column binding $\mathbf{t}$ to $\mathbf{X}$
     
@@ -314,25 +343,25 @@ Put your final comments here.
 
 \subsubsection{Multivariate Skew-Normal Regression}
 
-Without loss of generality, we derive the full conditional distributions for the multivariate skew-normal regression model component under the assumption that all observations belong to a single cluster. To make the extension to the case where more than one cluster is specified, simply apply these distributional forms to cluster specific parameters and data. 
+Without loss of generality, we derive the full conditional distributions for the multivariate skew-normal regression model component under the assumption that all observations belong to a single cluster. To make the extension to the case where more than one cluster is specified, simply apply these distributional forms to cluster specific parameters and data. Finally, we assume for the moment that we have complete data for all outcomes for each subject. We extend consider the case of missing data in section (INSERT SECTION).
 
-The multivariate skew-normal regression model can be written as follows. 
+The multivariate skew-normal regression model can be written as follows in matrix form. 
 $$\mathbf{Y} = \mathbf{X}\mathbf{B} + \mathbf{t} \boldsymbol\psi^T + \mathbf{E} = \mathbf{X}^* \mathbf{B}^* + \mathbf{E}$$
-
-For convenience, we define $\mathbf{X}^*$ as a $n \times (m + 1)$ matrix constructed by column binding $\mathbf{t}$ to $\mathbf{X}$, and $\mathbf{B}^*$ as a $(m+1) \times p$ matrix constructed by row binding $\boldsymbol\psi^T$ to $\mathbf{B}$. We assume that $t_i \stackrel{iid}{\sim}T_{[0,\infty})(0,1)$ and that $\mathbf{E}$ is made of row vectors $\boldsymbol\epsilon_i = (\epsilon_{i1},...,\epsilon_{ip})$ for $i = 1,...,n$, where $ \boldsymbol\epsilon_i \stackrel{iid}{\sim} N_p(0, \boldsymbol\Sigma)$.
+The matrix $\mathbf{Y}$ is of dimension $n \times p$. For convenience, we define $\mathbf{X}^*$ as a $n \times (m + 1)$ matrix constructed by column binding $\mathbf{t}$ to $\mathbf{X}$, and $\mathbf{B}^*$ as a $(m+1) \times p$ matrix constructed by row binding $\boldsymbol\psi^T$ to $\mathbf{B}$. We assume that $t_i \stackrel{iid}{\sim}T_{[0,\infty})(0,1)$ and that $\mathbf{E}$ is made of row vectors $\boldsymbol\epsilon_i = (\epsilon_{i1},...,\epsilon_{ip})$ for $i = 1,...,n$, where $ \boldsymbol\epsilon_i \stackrel{iid}{\sim} N_p(0, \boldsymbol\Sigma)$.
 
 The conditional likelihood for this model is given below. 
 $$p(\mathbf{Y}|\mathbf{X}^*,\mathbf{B}^*,\boldsymbol\Sigma) \propto |\boldsymbol\Sigma|^{-n/2}\exp \left \{ -\frac{1}{2} \tr(\mathbf{Y} - \mathbf{X}^* \mathbf{B}^*)^T(\mathbf{Y} - \mathbf{X}^* \mathbf{B}^*)\boldsymbol\Sigma^{-1} \right \}$$
 
 We choose conjugate priors for $\mathbf{B}^*$ and $\boldsymbol\Sigma$ as follows. 
-$$\boldsymbol\Sigma \sim \text{inverse-Wishart}(\mathbf{V}_0,\nu_0) $$
-$$\mathbf{B}^*|\boldsymbol\Sigma \sim MN_{(m+1)\times p}(\mathbf{B}_0^*,\mathbf{L}_0^{-1},\boldsymbol\Sigma)$$
+$$\boldsymbol\Sigma \sim \text{inverse-Wishart}(\mathbf{V}_0,\nu_0)$$
+
+$$\mathbf{B}^*|\boldsymbol\Sigma \sim MatNorm_{(m+1), p}(\mathbf{B}_0^*,\mathbf{L}_0^{-1},\boldsymbol\Sigma)$$
 
 We now dervive the joint posterior distribution of the parameters $\mathbf{B}^*$ and $\boldsymbol\Sigma$.
 \begin{align*} 
 p(\mathbf{B}^*,\boldsymbol\Sigma|\mathbf{X}^*,\mathbf{Y}) & \propto  p(\mathbf{Y}|\mathbf{X}^*,\mathbf{B}^*,\boldsymbol\Sigma)p(\mathbf{B}^*|\boldsymbol\Sigma)p(\boldsymbol\Sigma)\\
-&  \propto |\boldsymbol\Sigma|^{-n/2}\exp \left \{ -\frac{1}{2} \tr((\mathbf{Y} - \mathbf{X^*}\mathbf{B}^*)^T(\mathbf{Y} - \mathbf{X^*}\mathbf{B}^*)\boldsymbol\Sigma^{-1})\right \} \\
-& \times |\boldsymbol\Sigma|^{-m/2} \exp \left \{ -\frac{1}{2} \tr((\mathbf{B}^* - \mathbf{B}^*_0)^T \mathbf{L}_0(\mathbf{B}^* - \mathbf{B}^*_0)\boldsymbol\Sigma^{-1})\right \} \\
+&  \propto |\boldsymbol\Sigma|^{-n/2}\exp \left \{ -\frac{1}{2} \tr \left [(\mathbf{Y} - \mathbf{X^*}\mathbf{B}^*)^T(\mathbf{Y} - \mathbf{X^*}\mathbf{B}^*)\boldsymbol\Sigma^{-1} \right ]\right \} \\
+& \times |\boldsymbol\Sigma|^{-(m+1)/2} \exp \left \{ -\frac{1}{2} \tr \left [(\mathbf{B}^* - \mathbf{B}^*_0)^T \mathbf{L}_0(\mathbf{B}^* - \mathbf{B}^*_0)\boldsymbol\Sigma^{-1} \right ]\right \} \\
 & \times |\boldsymbol\Sigma|^{(\nu_0 + p + 1)/2} \exp \left \{ -\frac{1}{2} \tr (\mathbf{V}_0 \boldsymbol\Sigma^{-1}) \right \}
 \end{align*}
 
