@@ -24,5 +24,4 @@
 \contentsline {subsection}{\numberline {7.2}Derivation of Full Conditional Distributions}{7}
 \contentsline {subsubsection}{\numberline {7.2.1}Multivariate Skew-Normal Regression}{7}
 \contentsline {subsubsection}{\numberline {7.2.2}Multinomial Logit Regression}{7}
-\contentsline {subsubsection}{\numberline {7.2.3}Multivariate Normal Conditional Imputation}{7}
-\contentsline {section}{References}{8}
+\contentsline {subsubsection}{\numberline {7.2.3}Multivariate Normal Conditional Imputation}{8}
