@@ -25,3 +25,4 @@
 \contentsline {subsubsection}{\numberline {7.2.1}Multivariate Skew-Normal Regression}{11}
 \contentsline {subsubsection}{\numberline {7.2.2}Multinomial Logit Regression}{12}
 \contentsline {subsubsection}{\numberline {7.2.3}Multivariate Normal Conditional Imputation}{12}
+\contentsline {section}{References}{14}
