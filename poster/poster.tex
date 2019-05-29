@@ -106,7 +106,7 @@ We propose a novel Bayesian model for infant development patterns that addresses
 
 \begin{block}{Introduction}
 
-A primary goal in infant development research is to identify \textbf{latent development classes} and explain class membership in relation to covariates of interest. It is often also of interest to relate covariates to mean longitudinal growth patterns. Infant development data are inherently correlated longitudinally, often skewed, and frequently missing due to longitudinal attrition and standard practices are ill-suited to addressing these research questions due to their ignorance of one or more of these features of development data. 
+A primary goal in infant development research is to identify \textbf{latent development classes} and explain class membership in relation to covariates of interest. It is often also of interest to relate covariates to mean longitudinal growth patterns. Infant development data are inherently correlated longitudinally, often skewed, and frequently missing due to longitudinal attrition and standard practices are ill-suited for such analyses because they fail to account for one or more of these features of the data. 
 
 \end{block}
 
@@ -115,7 +115,7 @@ A primary goal in infant development research is to identify \textbf{latent deve
 \begin{block}{Motivation}
 \begin{figure}
 \includegraphics[width=0.9\linewidth]{bayley_dens.jpg}
-\caption{Residuals of repeated measures model of Bayley scores for infants at 3, 6, 9 and 12 months of age.}
+\caption{Residuals of repeated measures model of Bayley motor development scores for infants at 3, 6, 9 and 12 months of age.}
 \end{figure}
 \end{block}
 
@@ -141,9 +141,7 @@ A primary concern of our model is with identification of latent infant developme
 
 $$P(Z_i = l|w_i) = \pi_{il} = \frac{e^{w_i^T \delta_l}}{\sum_{r = 1}^h e^{w_i^T \delta_r}}$$
 
-where $w_i$ is the vector of class probability covariates for subject $i$, $\delta_l$ contains the multinomial regression parameters for class $l$, and $h$ is the number of putative clusters specified \textit{a priori}.
-
-During our MCMC estimation procedure, the class labels $z_i$ are updated from their multinomial full conditional distribution and used in the remaining MCMC steps as class assignments.
+where $Z_i$ is a latent clustering indicator, $w_i$ is the vector of class probability covariates for subject $i$ ($i = 1,...,n$), $\delta_l$ contains the multinomial regression parameters for class $l$, and $h$ is the number of putative clusters specified \textit{a priori}. During MCMC estimation, class labels $Z_i$ are updated from used as class assignments in the remaining MCMC steps.
 
 \end{block}
 
@@ -199,11 +197,11 @@ We developed a novel Bayesian MSN mixture model, and showed superior performance
 
 \begin{block}{MSN Regression}
 
-We model the effect of covariates on longitudinal development outcomes through the use of a MSN regression model. The MSN distribution can be represented as the superposition of a MN random variable with a latent truncated normal random effect. Let $\mathbf{Y}_{n \times k}$ be the observation matrix such that $Y_{ij}$ is the observation for subject $i$ at timepoint $j$.
+We model the effect of covariates on longitudinal development outcomes through the use of a MSN regression model. The MSN distribution can be represented as a multivariate normal random variable with a latent truncated normal random effect, $t$. Let $\mathbf{y}_{i}$ be the $k \times 1$ outcome vector for subject $i$.
 
-$$\mathbf{Y}_{n \times k} = \mathbf{X}_{n \times p}\boldsymbol\beta_{p \times k} + t_{n \times 1}\psi_{1 \times k} + \boldsymbol\epsilon_{n \times k}$$
+$$\mathbf{y}_{i} = \boldsymbol\beta^T \mathbf{x}_{i} + t_{i}\boldsymbol\psi + \boldsymbol\epsilon_{i}$$
 
-where $X_i$ is the $1 \times p$ vector of covariate values for subject $i$, $\beta_j$ is the $i \times k$ vector of fixed effects coefficients for timepoint $j$, $t_i \stackrel{iid}{\sim} N_{[0,\infty)}(0,1)$ is a truncated normal random effect, $\psi$ is the vector containing skewness parameters for each timepoint, and $\boldsymbol\epsilon_i \sim N_k(0,\boldsymbol\Sigma_{k \times k})$ is the correlated error term.
+where $\mathbf{x}_i$ is the $p \times 1$ vector of covariate values for subject $i$, $\boldsymbol\beta$ is the $p \times k$ vector of fixed effects coefficients , $t_i \stackrel{iid}{\sim} N_{[0,\infty)}(0,1)$ is a conditional truncated normal random effect, $\psi_l$ is the vector containing cluster-specific skewness parameters for each timepoint, and $\boldsymbol\epsilon_i \sim N_k(0,\boldsymbol\Sigma_{k \times k})$ is the correlated error term.
 
 \end{block}
 
@@ -286,25 +284,26 @@ Component & Parm. & True & Est. (95\% CrI) & True & Est. (95\% CrI) & True & Est
 \begin{table}[]
 \caption{\label{tab:unnamed-chunk-4}Estimated effects of sex and race on odds of cluster membership relative to the reference cluster.}
 \centering
-\begin{tabular}{lll}
+\fontsize{30}{30}\selectfont
+\def\arraystretch{1.5}
+\begin{tabular}{llll}
 \hline
-Variable & \multicolumn{1}{c}{\begin{tabular}[c]{@{}c@{}}Class 2\\ $\hat{\text{OR}}$ (95\% CrI)\end{tabular}} & \multicolumn{1}{c}{\begin{tabular}[c]{@{}c@{}}Class 3\\ $\hat{\text{OR}}$ (95\% CrI)\end{tabular}} \\ \hline
-Intercept & 1.28 (1.01, 1.73) & 1.16 (0.87, 1.71) \\
-Sex (Female) & 0.69 (0.40, 0.96) & 0.77 (0.48, 1.05) \\
-Race (White) & 0.90 (0.57, 1.32) & 0.83 (0.59, 1.29) \\ \hline
+Variable & \multicolumn{1}{c}{\begin{tabular}[c]{@{}c@{}}Class 1\\ $\hat{\text{OR}}$ (95\% CrI)\end{tabular}} & \multicolumn{1}{c}{\begin{tabular}[c]{@{}c@{}}Class 2\\ $\hat{\text{OR}}$ (95\% CrI)\end{tabular}} & \multicolumn{1}{c}{\begin{tabular}[c]{@{}c@{}}Class 3\\ $\hat{\text{OR}}$ (95\% CrI)\end{tabular}} \\ \hline
+Sex (F) & 1.80 (1.20, 3.16) & 1.25 (0.96, 1.81) & 1.42 (1.10, 2.03) \\
+Race (W) & 1.57 (1.07, 2.80) & 1.44 (1.07, 2.13) & 1.41 (1.04, 2.04) \\ \hline
 \end{tabular}
 \end{table}
 
 \
 
-In Table 2, we demonstrate the capability of estimating the effect of covariates (race and sex here) on posterior probability of cluster membership. We use class 1 as the reference class. 
+In Table 2, we demonstrate the capability of estimating the effect of covariates (race and sex here) on posterior odds of cluster membership. 
 
 \begin{figure}
 \includegraphics[height=0.8\linewidth,width=1\linewidth]{clust_trends.pdf}
 \caption{Mean development patterns in each estimated class}
 \end{figure}
 
-Above is a plot of the mean Bayley score for each of the fitted clusters. We observe similar development patterns but different baseline development between clusters 1 and 2, and a qualitatively different development pattern in class 3 than in the classes 1 and 2. 
+Above is a plot of the mean Bayley score for each of the fitted clusters. We observe similar development patterns but different baseline development between clusters 1 and 2, and a qualitatively different development pattern in cluster 3 than in the clusters 1 and 2. 
 
 
 \end{block}
@@ -338,7 +337,9 @@ https://carter-allen.github.io/MVSN-FMM
 
 \end{alertblock}
 
-\tiny  \textbf{(1) Fruhwirth-Schnatter, S and Pyne, S. (2010)}. Bayesian inference for finite mixtures of univariate ... Biostatistics; \textbf{(2) Benjamin-Neelon SE, Ostbye T, Bennett GG, et al.} Cohort profile for the Nurture Observational Study ... BMJ Open 2017.
+\tiny  \textbf{(1) Fruhwirth-Schnatter, S and Pyne, S. (2010)}. Bayesian inference for finite mixtures of univariate and multivariate skew-normal and skew-t distributions. Biostatistics. 2010 Jan 27;11(2):317- 36.
+
+\textbf{(2) Benjamin-Neelon SE, Ostbye T, Bennett GG, et al.} Cohort profile for the Nurture Observational Study examining associations of multiple caregivers on infant growth in the Southeastern USA. BMJ open. 2017 Feb 1;7(2):e013939.
 
 \
 
