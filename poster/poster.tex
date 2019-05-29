@@ -115,7 +115,7 @@ A primary goal in infant development research is to identify \textbf{latent deve
 \begin{block}{Motivation}
 \begin{figure}
 \includegraphics[width=0.9\linewidth]{bayley_dens.jpg}
-\caption{Density of Bayley composite scores for Nurture infants at 3, 6, 9 and 12 months of age.}
+\caption{Residuals of repeated measures model of Bayley scores for infants at 3, 6, 9 and 12 months of age.}
 \end{figure}
 \end{block}
 
@@ -281,19 +281,35 @@ Component & Parm. & True & Est. (95\% CrI) & True & Est. (95\% CrI) & True & Est
 %	CONCLUSION
 %----------------------------------------------------------------------------------------
 
-\begin{figure}
-\includegraphics[height=0.9\linewidth,width=1\linewidth]{beta_trace.pdf}
-\caption{Trace plots of regression parameter estimates in simulation}
-\end{figure}
-
 \begin{block}{Application Results}
+
+\begin{table}[]
+\caption{\label{tab:unnamed-chunk-4}Estimated effects of sex and race on odds of cluster membership relative to the reference cluster.}
+\centering
+\begin{tabular}{lll}
+\hline
+Variable & \multicolumn{1}{c}{\begin{tabular}[c]{@{}c@{}}Class 2\\ $\hat{\text{OR}}$ (95\% CrI)\end{tabular}} & \multicolumn{1}{c}{\begin{tabular}[c]{@{}c@{}}Class 3\\ $\hat{\text{OR}}$ (95\% CrI)\end{tabular}} \\ \hline
+Intercept & 1.28 (1.01, 1.73) & 1.16 (0.87, 1.71) \\
+Sex (Female) & 0.69 (0.40, 0.96) & 0.77 (0.48, 1.05) \\
+Race (White) & 0.90 (0.57, 1.32) & 0.83 (0.59, 0.29) \\ \hline
+\end{tabular}
+\end{table}
+
+\
+
+In Table 2, we demonstrate the capability of estimating the effect of covariates (race and sex here) on posterior probability of cluster membership. We use class 1 as the reference class. 
 
 \begin{figure}
 \includegraphics[height=0.8\linewidth,width=1\linewidth]{clust_trends.pdf}
 \caption{Mean development patterns in each estimated class}
 \end{figure}
 
+Above is a plot of the mean Bayley score for each of the fitted clusters. We observe similar development patterns but different baseline development between clusters 1 and 2, and a qualitatively different development pattern in class 3 than in the classes 1 and 2. 
+
+
 \end{block}
+
+
 
 %----------------------------------------------------------------------------------------
 %	REFERENCES
