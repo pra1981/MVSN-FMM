@@ -191,7 +191,9 @@ A key word; But another key word; Still another key word; Yet another key word.
 
 \subsection{Existing Approaches}
 
-Mixtures of multivariate non-symmetric distributions such as the multivariate skew-normal (MSN) distribution allow for the nuances of the marginal density to be captured with a more parsimonious set of mixture components. Mixtures of MSN distributions has been dealt with previously in a Bayesian context (Fr\"{u}hwirth-Schnatter \& Pyne, 2010), however in these models, focus lies primary on marginal density estimation and inference on the mixture components (i.e. clusters) is not discussed. More recently, the mixtures of skew-$t$ factor analysis (MSTFA) model has been proposed be applied in settings where cluster-specific inference is of primary interest. However, thid
+Mixtures of multivariate non-symmetric distributions such as the multivariate skew-normal (MSN) distribution allow for the nuances of the marginal density to be captured with a more parsimonious set of mixture components. Mixtures of MSN distributions have been dealt with previously in a Bayesian context (Fr\"{u}hwirth-Schnatter \& Pyne, 2010), however in these models, focus lies primary on marginal density estimation and inference on the mixture components (i.e. clusters) is not discussed. More recently, the mixtures of skew-$t$ factor analysis (MSTFA) model has been proposed for settings in which cluster-specific inference is of primary interest (Lin \textit{et al.} 2018). However, an important feature not included in the MSTFA is the ability to explain individual-level cluster membership as a function of covariates of interest. Additionally, parameter estimation proposed by Lin et al. for the MSTFA relies on a prohibitively complex EM algorithm and does not enjoy the inferential benefits of a Bayesian approach. Our proposed model improves on these previous works by estimating parameters in a Bayesian framework as well as including the ability to fit a multinomial logit regression to cluster membership probabilities using a novel application of data augmentation with the P\'olya Gamma distribution. 
+
+A ubiquitous feature of repeated measures studies is loss of data due to intermittent missingness and attrition. In the Bayesian setting, the standard approach to dealing with missing data is to perform multiple imputation, whereby $m$ imputed data sets are generated from a specified imputation model. After $m$ complete data sets are obtained, parameter estimates are combined across each data set to produce a final set of parameter estimates (Gelman \textit{et al.} 2013). This approach is not only computationally burdensome, requiring storage and analysis of an $m \times n_{rows} \times n_{cols}$ data array in addition to multiplication of total model run time by a factor of $m$, but it has been shown to produce unreliable inferences (Zhou and Reiter, 2010). We instead 
 
 \newpage
 
@@ -423,7 +425,7 @@ The blockwise inversion formula was used to invert $\boldsymbol\Sigma$ according
 
 \begin{thebibliography}{}
 
-\bibitem{ } Arellano‐Valle RB, Azzalini A. On the unification of families of skew‐normal distributions. \textit{Scandinavian Journal of Statistics}. 2006 Sep;33(3):561-74.
+\bibitem{ } Arellano‐-Valle RB, Azzalini A. On the unification of families of skew‐normal distributions. \textit{Scandinavian Journal of Statistics}. 2006 Sep;33(3):561-74.
 
 \bibitem{ } Azzalini A. A class of distributions which includes the normal ones. \textit{Scandinavian journal of statistics}. 1985 Jan 1:171-8.
 
@@ -437,6 +439,10 @@ The blockwise inversion formula was used to invert $\boldsymbol\Sigma$ according
 
 \bibitem{ } Ganjali M, Baghfalaki T. A Bayesian shared parameter model for analysing longitudinal skewed responses with nonignorable dropout. \textit{International Journal of Statistics in Medical Research}. 2014 Apr 1;3(2):103.
 
+\bibitem{ } Gelman A, Stern HS, Carlin JB, Dunson DB, Vehtari A, Rubin DB. Bayesian data analysis. \textit{Chapman and Hall/CRC}; 2013 Nov 27.
+
+\bibitem{ } Holmes CC, Held L. Bayesian auxiliary variable models for binary and multinomial regression. \textit{Bayesian Analysis}. 2006;1(1):145-68.
+
 \bibitem{ } Lagona F, Picone M. Model-based clustering of multivariate skew data with circular components and missing values. \textit{Journal of Applied Statistics}. 2012 May 1;39(5):927-45.
 
 \bibitem{ } Lee SX, McLachlan GJ. Model-based clustering and classification with non-normal mixture distributions. Statistical Methods \& Applications. 2013 Nov 1;22(4):427-54.
@@ -445,7 +451,11 @@ The blockwise inversion formula was used to invert $\boldsymbol\Sigma$ according
 
 \bibitem{ } Lin TI, Wang WL, McLachlan GJ, Lee SX. Robust mixtures of factor analysis models using the restricted multivariate skew-t distribution. \textit{Statistical Modelling}. 2018 Feb;18(1):50-72.
 
+\bibitem{ } Luo S, Lawson AB, He B, Elm JJ, Tilley BC. Bayesian multiple imputation for missing multivariate longitudinal data from a Parkinson's disease clinical trial. \textit{Statistical Methods in Medical Research}. 2016 Apr;25(2):821-37.
+
 \bibitem{ } Melnykov V, Maitra R. Finite mixture models and model-based clustering. \textit{Statistics Surveys}. 2010;4:80-116.
+
+\bibitem{ } Polson NG, Scott JG, Windle J. Bayesian inference for logistic models using P\'olya--Gamma latent variables. \textit{Journal of the American Statistical Association}. 2013 Dec 1;108(504):1339-49.
 
 \bibitem{ } Tiao GC, Zellner A. On the Bayesian estimation of multivariate regression. \textit{Journal of the Royal Statistical Society}: Series B (Methodological). 1964 Jul;26(2):277-85.
 
