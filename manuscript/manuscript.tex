@@ -235,29 +235,43 @@ where $\boldsymbol\zeta_k$ is a $J \times 1$ vector of class specific location p
 We model the effect of covariates on longitudinal development outcomes through the use of a MSN regression model. We adopt a standard stochastic representation of a MSN random variable as the sum of a latent truncated normal random effect and a correlated multivariate normal random error term. The MSN stochastic representation is as follows.
 $$\mathbf{y}_{i} = \boldsymbol\beta^T \mathbf{x}_{i} + t_{i}\boldsymbol\psi + \boldsymbol\epsilon_{i}$$
 
-where $\mathbf{x}_i$ is the $p \times 1$ vector of covariate values for subject $i$, $\boldsymbol\beta$ is the $p \times k$ vector of fixed effects coefficients , $t_i \stackrel{iid}{\sim} N_{[0,\infty)}(0,1)$ is a conditional truncated normal random effect, $\boldsymbol\psi$ is the vector containing cluster-specific skewness parameters, and $\boldsymbol\epsilon_i \sim N_k(0,\boldsymbol\Sigma_{k \times k})$ is the correlated error term. In can be shown that under these conditions $\mathbf{y}_i$ is marginally multivariate skew normal.  
+where $\mathbf{x}_i$ is the $P \times 1$ vector of covariate values for subject $i$, $\boldsymbol\beta$ is the $P \times J$ vector of fixed effects coefficients , $t_i \stackrel{iid}{\sim} N_{[0,\infty)}(0,1)$ is a conditional truncated normal random effect, $\boldsymbol\psi$ is the $J \times 1$ vector containing cluster-specific skewness parameters, and $\boldsymbol\epsilon_i \sim N_J(0,\boldsymbol\Sigma_{J \times J})$ is the correlated error term. In can be shown that under these conditions $\mathbf{y}_i$ is multivariate skew normal with location. For conciseness, we present the MSN distribution here outside of the finite mixture context. When using this stochastic representation in our finite mixture model, the parameters $\boldsymbol\beta$, $\boldsymbol\psi$, and $\boldsymbol\Sigma$ are replaced with class-specific counterparts $\boldsymbol\beta_k$, $\boldsymbol\psi_k$, and $\boldsymbol\Sigma_k$.
 
 \subsection{Multinomial Regression on Class Probabilities}
 
-A primary concern of our model is with identification of latent infant development clusters. We accomplish this via multinomial logit regression model on cluster membership, which utilizes P\'{o}lya-Gamma data-aumentation to allow for updating of all parameters using Gibbs sampling. The multinomial logit model is as follows for $l = 1,...,h$.
+A primary concern of our model is with identification of latent infant development clusters. We accomplish this via multinomial logit regression model on cluster membership, which utilizes P\'{o}lya-Gamma data-aumentation to allow for updating of all parameters using Gibbs sampling. The multinomial logit model is as follows for $k = 1,...,K$.
 
-$$P(Z_i = l|w_i) = \pi_{il} = \frac{e^{w_i^T \delta_l}}{\sum_{r = 1}^h e^{w_i^T \delta_r}}$$
+$$P(Z_i = k|\mathbf{w}_i) = \pi_{ik} = \frac{e^{\mathbf{w}_i^T \boldsymbol\delta_k}}{\sum_{k' = 1}^K e^{\mathbf{w}_i^T \boldsymbol\delta_{k'}}}$$
 
-where $w_i$ is the vector of class probability covariates for subject $i$, $\delta_l$ contains the multinomial regression parameters for class $l$, and $h$ is the number of putative clusters specified \textit{a priori}.
+where $\mathbf{w}_i$ is the vector of class probability covariates for subject $i$, $\boldsymbol\delta_k$ contains the multinomial regression parameters for class $k$, and $K$ is the number of putative clusters specified \textit{a priori}. For identifiability purposes, we fix the reference category $k = K$ and set $\boldsymbol\delta_K = \mathbf{0}$.
 
-During our MCMC estimation procedure, the class labels $z_i$ are updated from their multinomial full conditional distribution and used in the remaining MCMC steps as class assignments.
+\[   P(Z_i = k) = \left \{
+\begin{array}{ll}
+      \pi_{ik} = \frac{e^{\mathbf{w}_i^T \boldsymbol\delta_k}}{1 + \sum_{k' = 1}^{K-1} e^{\mathbf{w}_i^T \boldsymbol\delta_{k'}}} & k < K \\
+      \\
+      \pi_{ik} = \frac{e^{\mathbf{w}_i^T \boldsymbol\delta_k}}{1 + \sum_{k' = 1}^{K-1} e^{\mathbf{w}_i^T \boldsymbol\delta_{k'}}} & k = K \\
+\end{array} 
+\right. \]
+
+\
+
+Under this model, $Z_i|\mathbf{w}_i \sim Multinom.(1,\boldsymbol\pi_i)$, where $\boldsymbol\pi_i = (\pi_{i1},...,\pi_{1K})$
+
+During MCMC estimation, the class labels $z_i$ are updated from their multinomial full conditional distribution and used in the remaining MCMC steps as class assignments.
 
 \subsection{Conditional MVSN Imputation}
 
 We allow for missingness of outcomes in the MSN mixture model by imputing missing values from their conditional multivariate normal distributions. We note that
 
-$$Y_i|X_i,t_i,\boldsymbol\beta,\psi \sim N_k(X_i \boldsymbol\beta + t_i \psi, \boldsymbol\Sigma)$$
+$$\mathbf{y}_i|Z_i,\mathbf{x}_i,t_i,\boldsymbol\beta_{Z_i},\boldsymbol\psi_{Z_i},\boldsymbol\Sigma_{Z_i} \sim N_J(\boldsymbol\beta_{Z_i}^T\mathbf{x}_i  + t_i \boldsymbol\psi_{Z_i}, \boldsymbol\Sigma_{Z_i})$$
 
-This allows us to appeal to standard conditional forms of the multivariate normal distribution. Let $Y_i = [Y^{miss}_{i_{q \times 1}} | Y^{obs}_{i_{k - q \times 1}}]^T$. We have
+This allows us to appeal to standard conditional forms of the multivariate normal distribution to specify the distribution of missing observations. For subject $i$, we use $q_i$ to denote the number of the total $J$ possible repeated measurements are missing. We partition the full $J \times 1$ outcome vector $\mathbf{y}_i$ into the $(J - q_i) \times 1$ observed data vector $\mathbf{y}_i^{obs}$ and the $q_i \times 1$ missing data vector $\mathbf{y}_i^{miss}$. $Y_i = [Y^{miss}_{i_{q \times 1}} | Y^{obs}_{i_{k - q \times 1}}]^T$. We have
 
-$$Y_i^{miss}|Y_i^{obs},X_i,t_i,\boldsymbol\beta,\psi \sim N(\mu^{miss},\boldsymbol\Sigma^{miss})$$
+$$\mathbf{y}_i^{miss}|\mathbf{y}_i^{obs},\mathbf{x}_i,t_i,Z_i,\boldsymbol\beta_{Z_i},\boldsymbol\psi_{Z_i},\boldsymbol\Sigma_{Z_i} \sim N(\boldsymbol\mu^{miss},\boldsymbol\Sigma^{miss})$$
 
-where $\mu^{miss}$ and $\Sigma^{miss}$ take standard forms. Each missing outcome is imputed "online", i.e. once per MCMC iteration. This provides more opportunities to explore the parameter space than multiple imputation and avoids multiplicative run-time scaling in $m$, the number of imputations.
+where $\boldsymbol\mu^{miss}$ and $\boldsymbol\Sigma^{miss}$ take standard forms detailed in the Appendix. 
+
+An attractive feature of this imputation approach is that each missing outcome is imputed ``online", i.e. once per MCMC iteration. This provides more opportunities to explore the parameter space than multiple imputation and avoids multiplicative run-time scaling in $m$, the number of imputations.
 
 \subsection{Bayesian Inference}
 
