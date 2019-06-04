@@ -218,15 +218,17 @@ A ubiquitous feature of repeated measures studies is loss of data due to intermi
 
 \subsection{Generic Mixture}
 
-Let $\mathbf{y}_{i}$ be the $J \times 1$ observation vector for subject $i$ such that $y_{ij}$ is the observation for subject $i$ at timepoint $j$. The general formulation of the multivariate skew normal mixure model is as follows.
+Let $\mathbf{y}_{i}$ be the $J \times 1$ observation vector for subject $i$ such that $y_{ij}$ is the observation for subject $i$ at timepoint $j$. We assume for now that $\mathbf{y}_{i}$ is fully observed. Later, we relax this assumptin by allowing for missingness in the components of $\mathbf{y}_{i}$. The general formulation of the multivariate skew normal mixure model is as follows.
 
 $$f(\mathbf{y}_i) = \sum_{k = 1}^{K} \pi_{ik} f(\mathbf{y}_i|\boldsymbol\theta_k)$$
 
-Here $\boldsymbol\theta_k$ is the set of parameters shared by subjects belonging to class $k$ ($k = 1,...,K$). The probability of subject $i$ ($i = 1,...,n$) belonging to class $k$ ($k = 1,...,K$) is denoted $\pi_{ik}$. Note that $\pi_{ik}$ is not indexed by time and we do not allow for subjects switching classes over the study period. This feature of the model is a result of our interest in clustering based on development patterns rather than time-specific development scores. 
+Here $\boldsymbol\theta_k$ is the set of parameters shared by subjects belonging to class $k$ ($k = 1,...,K$). The probability of subject $i$ ($i = 1,...,n$) belonging to class $k$ ($k = 1,...,K$) is denoted $\pi_{ik}$. Note that $\pi_{ik}$ is not indexed by time and we do not allow for subjects switching classes over the study period. This feature of the model is a result of our interest in clustering based on development patterns rather than time-specific development scores. Later, we detail a multinomial logit regression model placed on $\pi_{ik}$ to allow for flexible modeling of class membership probabilities as a function of covariates of interest.
 
 In each development class, we assume that a subject's $J\times 1$ outcome vector follows a multivariate skew normal (MSN) distribution. We define a latent variable $Z_i \in \{1,...,K\}$ to denote the cluster membership of subject $i$ for $i = 1,...,n$. We model $\mathbf{y}_{i}|Z_i$ as 
 
-$$f(\mathbf{y}_{i_k}|Z_i )$$
+$$\mathbf{y}_{i}|Z_i = k \sim MSN_J(\boldsymbol\zeta_k,\boldsymbol\alpha_k,\boldsymbol\Omega_k)$$
+
+where $\boldsymbol\zeta_k$ is a $J \times 1$ vector of class specific location parameters, $\boldsymbol\alpha_k$ is a $J \times 1$ vector of class specific skewness parameters, and $\boldsymbol\Omega_k$ is a $J \times J$ class specific scale matrix.
 
 \subsection{Multivariate Skew Normal Regression}
 

@@ -8,9 +8,9 @@
 \contentsline {subsubsection}{\numberline {2.2.2}Attrition and Intermittent Missingness}{5}
 \contentsline {section}{\numberline {3}Model}{6}
 \contentsline {subsection}{\numberline {3.1}Generic Mixture}{6}
-\contentsline {subsection}{\numberline {3.2}Multivariate Skew Normal Regression}{6}
+\contentsline {subsection}{\numberline {3.2}Multivariate Skew Normal Regression}{7}
 \contentsline {subsection}{\numberline {3.3}Multinomial Regression on Class Probabilities}{7}
-\contentsline {subsection}{\numberline {3.4}Conditional MVSN Imputation}{7}
+\contentsline {subsection}{\numberline {3.4}Conditional MVSN Imputation}{8}
 \contentsline {subsection}{\numberline {3.5}Bayesian Inference}{8}
 \contentsline {subsubsection}{\numberline {3.5.1}Prior Choice}{8}
 \contentsline {subsubsection}{\numberline {3.5.2}MCMC Algorithm}{8}
