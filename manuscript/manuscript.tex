@@ -15,6 +15,19 @@
 \usepackage{blindtext}
 \usepackage{booktabs}
 \usepackage{breqn}
+\usepackage{algorithm}
+\usepackage{algcompatible}
+\usepackage{algpseudocode}
+\usepackage{float}
+\usepackage{dsfont}
+\let\origfigure\figure
+\let\endorigfigure\endfigure
+\renewenvironment{figure}[1][2] {
+    \expandafter\origfigure\expandafter[H]
+} {
+    \endorigfigure
+}
+
 
 \def\bSig\mathbf{\Sigma}
 \newcommand{\VS}{V\&S}
@@ -197,7 +210,7 @@ Heterogeneity of treatment effects (HTE) (Lanza and Rhoades, 2013).
 
 Mixtures of multivariate non-symmetric distributions such as the multivariate skew-normal (MSN) distribution allow for the nuances of the marginal density to be captured with a more parsimonious set of mixture components. Mixtures of MSN distributions have been dealt with previously in a Bayesian context (Fr\"{u}hwirth-Schnatter \& Pyne, 2010), however in these models, focus lies primary on marginal density estimation and inference on the mixture components (i.e. clusters) is not discussed. More recently, the mixtures of skew-$t$ factor analysis (MSTFA) model has been proposed for settings in which cluster-specific inference is of primary interest (Lin \textit{et al.} 2018). However, an important feature not included in the MSTFA is the ability to explain individual-level cluster membership as a function of covariates of interest. Additionally, parameter estimation proposed by Lin et al. for the MSTFA relies on a prohibitively complex EM algorithm and does not enjoy the inferential benefits of a Bayesian approach, namely the ability to incorporate prior information into a model and make posterier probability statements. Our proposed model improves on these previous works by estimating parameters in a Bayesian framework as well as including the ability to fit a multinomial logit regression to cluster membership probabilities using a novel application of data augmentation with the P\'olya Gamma distribution.
 
-\textbf{\textit{Put lit review of Bayesian multinomial logistic regression here}}
+\textbf{\textit{Put lit review of Bayesian PG multinomial logistic regression here}}
 
 A ubiquitous feature of repeated measures studies is loss of data due to intermittent missingness and attrition. In the Bayesian setting, the standard approach to dealing with missing data is to perform multiple imputation, whereby $m$ imputed data sets are generated from a specified imputation model. After $m$ complete data sets are obtained, parameter estimates are combined across each data set to produce a final set of parameter estimates (Gelman \textit{et al.} 2013). This approach is not only computationally burdensome, requiring storage and analysis of an $m \times n_{rows} \times n_{cols}$ data array in addition to multiplication of total model run time by a factor of $m$, but it has been shown to produce unreliable inferences (Zhou and Reiter, 2010). We instead include an ``online" imputation imputation step in our Gibbs sampling procedure, whereby missing outcomes are updated at each iteration. This approach greatly increases the number of opportunities for exploration of the missing data parameter space.
 
@@ -245,11 +258,11 @@ $$P(Z_i = k|\mathbf{w}_i) = \pi_{ik} = \frac{e^{\mathbf{w}_i^T \boldsymbol\delta
 
 where $\mathbf{w}_i$ is the vector of class probability covariates for subject $i$, $\boldsymbol\delta_k$ contains the multinomial regression parameters for class $k$, and $K$ is the number of putative clusters specified \textit{a priori}. For identifiability purposes, we fix the reference category $k = K$ and set $\boldsymbol\delta_K = \mathbf{0}$.
 
-\[   P(Z_i = k) = \left \{
+\[   P(Z_i = k|\mathbf{w}_i,\boldsymbol\delta_k) = \left \{
 \begin{array}{ll}
       \pi_{ik} = \frac{e^{\mathbf{w}_i^T \boldsymbol\delta_k}}{1 + \sum_{k' = 1}^{K-1} e^{\mathbf{w}_i^T \boldsymbol\delta_{k'}}} & k < K \\
       \\
-      \pi_{ik} = \frac{e^{\mathbf{w}_i^T \boldsymbol\delta_k}}{1 + \sum_{k' = 1}^{K-1} e^{\mathbf{w}_i^T \boldsymbol\delta_{k'}}} & k = K \\
+      \pi_{ik} = \frac{1}{1 + \sum_{k' = 1}^{K-1} e^{\mathbf{w}_i^T \boldsymbol\delta_{k'}}} & k = K \\
 \end{array} 
 \right. \]
 
@@ -259,7 +272,7 @@ Under this model, $Z_i|\mathbf{w}_i \sim Multinom.(1,\boldsymbol\pi_i)$, where $
 
 During MCMC estimation, the class labels $z_i$ are updated from their multinomial full conditional distribution and used in the remaining MCMC steps as class assignments.
 
-\subsection{Conditional MVSN Imputation}
+\subsection{Conditional MVN Imputation}
 
 We allow for missingness of outcomes in the MSN mixture model by imputing missing values from their conditional multivariate normal distributions. We note that
 
@@ -273,6 +286,8 @@ where $\boldsymbol\mu^{miss}$ and $\boldsymbol\Sigma^{miss}$ take standard forms
 
 An attractive feature of this imputation approach is that each missing outcome is imputed ``online", i.e. once per MCMC iteration. This provides more opportunities to explore the parameter space than multiple imputation and avoids multiplicative run-time scaling in $m$, the number of imputations.
 
+\textit{\textbf{Discuss non-ignorable missingness here}}
+
 \subsection{Bayesian Inference}
 
 \begin{itemize}
@@ -284,6 +299,49 @@ An attractive feature of this imputation approach is that each missing outcome i
 \subsubsection{Prior Choice}
 
 \subsubsection{MCMC Algorithm}
+
+\begin{algorithm}
+\caption{Gibbs Sampler}
+\begin{algorithmic}
+\small
+\linespread{0.5}
+    \State $\mathbf{Define} \ n_{iter};\  n_{burn}; \ K; \ \boldsymbol\theta_{init}; \ \boldsymbol\theta_0$
+    \State $n_{sim} := n_{iter} - n_{burn}$
+    \State $\boldsymbol\theta := \boldsymbol\theta_{init}$
+    \For {$\iota = 1,...,n_{sim}$}
+        \State \textsc{I. Conditional Imputation}
+          \For {$ i = 1,...,n$}
+            \State $\mathbf{Draw} \ \mathbf{y}_i^{miss} \ \text{from} \ N_q(\boldsymbol\mu_i^{miss}, \boldsymbol\Sigma_i^{miss})$
+            \State $\mathbf{y}_i := \mathbf{y}_i^{miss} \cup \mathbf{y}_i^{obs}$
+         \EndFor
+        \State \textsc{II. MSN Regression}
+          \For {$ k = 1,...,K$}
+            \State $n_k := \sum_{i = 1}^n \mathds{1}_{Z_i = k}$
+            \For {$i_k = 1,...,n_k$}
+              \State $\mathbf{Draw}\  t_i \ \text{from} \ N_{[0,\infty)}(a_i,A)$
+            \EndFor
+            \State $\mathbf{X^*}_k := $ \texttt{cbind}$(\mathbf{X}_k,\mathbf{t}_k)$
+            \State $\mathbf{Draw} \ \mathbf{B^*}_k \ \text{from} \ \text{MatNorm}(\mathbf{B}_k,\mathbf{L}_k^{-1},\boldsymbol\Sigma_k)$
+            \State $\mathbf{Draw} \ \boldsymbol\Sigma_k \ \text{from} \ \text{InvWish}(\nu_k, \mathbf{V}_k)$
+          \EndFor
+        \State \textsc{III. Multinomial Logit}
+          \For {$i = 1,...,n$}
+            \For {$k = 1,...,K$}
+              \State $\pi_{ik} := P(Z_i = k|\mathbf{w}_i,\boldsymbol\delta_k)$
+              \State $p_{ik} := P(\mathbf{y}_i|\boldsymbol\beta_k^{*T} \mathbf{x}^*_i,\boldsymbol\Sigma_k)$
+            \EndFor
+            \State $\mathbf{p}_{Z_i} := \frac{\mathbf{p}_i \circ \boldsymbol\pi_i}{\mathbf{p}_i \cdot \boldsymbol\pi_i}$
+            \State $\mathbf{Draw} \ Z_i \ \text{from} \ \text{Categorical}(\mathbf{p}_{Z_i})$
+            \For {$k = 1,...,K-1$}
+              \State $\mathbf{Draw} \ \boldsymbol\delta_k \ \text{from} \ N(\mathbf{M},\mathbf{S})$
+            \EndFor
+          \EndFor
+        \State $\boldsymbol\theta := \{\mathbf{B^*}, \boldsymbol\Sigma, \mathbf{Z}, \boldsymbol\delta \}$
+        \State $\mathbf{Store} \ \boldsymbol\theta$
+	  \EndFor
+\end{algorithmic}
+\end{algorithm}
+
 
 \subsubsection{Assessment of MCMC Convergence}
 
@@ -473,6 +531,8 @@ The blockwise inversion formula was used to invert $\boldsymbol\Sigma$ according
 \bibitem{ } Ganjali M, Baghfalaki T. A Bayesian shared parameter model for analysing longitudinal skewed responses with nonignorable dropout. \textit{International Journal of Statistics in Medical Research}. 2014 Apr 1;3(2):103.
 
 \bibitem{ } Gelman A, Stern HS, Carlin JB, Dunson DB, Vehtari A, Rubin DB. Bayesian data analysis. \textit{Chapman and Hall/CRC}; 2013 Nov 27.
+
+\bibitem{ } Gelman A, Hwang J, Vehtari A. Understanding predictive information criteria for Bayesian models. \textit{Statistics and Computing}. 2014 Nov 1;24(6):997-1016.
 
 \bibitem{ } Holmes CC, Held L. Bayesian auxiliary variable models for binary and multinomial regression. \textit{Bayesian Analysis}. 2006;1(1):145-68.
 
