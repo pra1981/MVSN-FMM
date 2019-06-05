@@ -1043,3 +1043,68 @@ To https://github.com/carter-allen/MVSN-FMM.git
 [?2004h]0;fish  /Users/carter/Documents/School/Summer_2019/Research/MVSN-FMM[30m(B[m[38;5;237m⏎(B[m                                                                                      ⏎ [2Kcarter@Carters-MacBook-Pro [32m~/D/S/S/R/MVSN-FMM[30m(B[m> [K[7m^C[30m(B[m[K
 [Acarter@Carters-MacBook-Pro [32m~/D/S/S/R/MVSN-FMM[30m(B[m> [K
 [K[A[47C]0;fish  /Users/carter/Documents/School/Summer_2019/Research/MVSN-FMM[30m(B[mcarter@Carters-MacBook-Pro [32m~/D/S/S/R/MVSN-FMM[30m(B[m> [Kgit push[1mgit(B[m [36mpush[30m(B[m[36mcommit -m "mods"[30m(B[m[10D [36m-m[30m(B[m [33m"mods"[30m(B[m[16D[36madd -A[30m(B[m[K [36m-A[30m(B[m
+[30m(B[m[?2004l]0;git  /Users/carter/Documents/School/Summer_2019/Research/MVSN-FMM[30m(B[m^[[A[?2004h]0;fish  /Users/carter/Documents/School/Summer_2019/Research/MVSN-FMM[30m(B[m[38;5;237m⏎(B[m                                                                                      ⏎ [2Kcarter@Carters-MacBook-Pro [32m~/D/S/S/R/MVSN-FMM[30m(B[m> [Kgit add -A[10D[1mgit(B[m [36madd[30m(B[m [36m-A[30m(B[m[10D[Kgit add -A[10D[1mgit(B[m [36madd[30m(B[m [36m-A[30m(B[m[36mpus[30m(B[mh[K[36mh[30m(B[m[36mcommit -m "mods"[30m(B[m[10D [36m-m[30m(B[m [33m"mods"[30m(B[m[33m"[30m(B[m[K[33m"[30m(B[m[K[33m"[30m(B[m[K[33m[4m"m"[30m(B[m[33m[4m"[30m(B[m[K[33m""[30m(B[m[33ma"[30m(B[m[33m[4m"a"[30m(B[m[33m[4ml"[30m(B[m[33m"al"[30m(B[m[33mg"[30m(B[m[33mo"[30m(B[m[C
+[30m(B[m[?2004l]0;git  /Users/carter/Documents/School/Summer_2019/Research/MVSN-FMM[30m(B[m[master 87ad2b7] algo
+ 58 files changed, 8040 insertions(+), 102 deletions(-)
+ create mode 100644 literature/Matrix Normal Linear Regression Full Conditionals.pdf
+ create mode 100644 literature/gelman_2013.pdf
+ create mode 100644 literature/neelon_2010.pdf
+ create mode 100644 literature/neelon_2011.pdf
+ create mode 100644 literature/neelon_2014.pdf
+ create mode 100644 literature/neelon_2015.pdf
+ create mode 100644 literature/neelon_2018.pdf
+ create mode 100644 manuscript/manuscript 10.log
+ create mode 100644 manuscript/manuscript 12.log
+ create mode 100644 manuscript/manuscript 13.log
+ create mode 100644 manuscript/manuscript 15.log
+ create mode 100644 manuscript/manuscript 16.log
+ create mode 100644 manuscript/manuscript 17.log
+ create mode 100644 manuscript/manuscript 18.log
+ create mode 100644 manuscript/manuscript 19.log
+ create mode 100644 manuscript/manuscript 20.log
+ delete mode 100644 manuscript/manuscript 4.synctex.gz
+ create mode 100644 manuscript/manuscript.synctex 12.gz
+ create mode 100644 manuscript/manuscript.synctex 13.gz
+ create mode 100644 manuscript/manuscript.synctex 13.synctex.gz
+ create mode 100644 manuscript/manuscript.synctex 14.gz
+ create mode 100644 manuscript/manuscript.synctex 15.gz
+ create mode 100644 manuscript/manuscript.synctex 15.synctex.gz
+ create mode 100644 manuscript/manuscript.synctex 16.gz
+ create mode 100644 manuscript/manuscript.synctex 16.synctex.gz
+ create mode 100644 manuscript/manuscript.synctex 17.gz
+ create mode 100644 manuscript/manuscript.synctex 18.gz
+ create mode 100644 manuscript/manuscript.synctex 19.gz
+ create mode 100644 manuscript/manuscript.synctex 19.synctex.gz
+ create mode 100644 manuscript/manuscript.synctex 20.gz
+ create mode 100644 manuscript/manuscript.synctex 21.gz
+ create mode 100644 manuscript/manuscript.synctex 21.synctex.gz
+ create mode 100644 manuscript/manuscript.synctex 22.gz
+ create mode 100644 manuscript/manuscript.synctex 23.gz
+ create mode 100644 manuscript/manuscript.synctex 24.gz
+ create mode 100644 manuscript/manuscript.synctex 25.gz
+ create mode 100644 manuscript/manuscript.synctex 26.gz
+ create mode 100644 manuscript/manuscript.synctex 27.gz
+ create mode 100644 manuscript/manuscript.synctex 27.synctex.gz
+ create mode 100644 manuscript/manuscript.synctex 28.gz
+ create mode 100644 manuscript/manuscript.synctex 28.synctex.gz
+ create mode 100644 manuscript/manuscript.synctex 29.gz
+ create mode 100644 manuscript/manuscript.synctex 29.synctex.gz
+ create mode 100644 manuscript/manuscript.synctex 30.synctex.gz
+ create mode 100644 manuscript/manuscript.synctex 31.synctex.gz
+ create mode 100644 manuscript/manuscript.synctex 32.synctex.gz
+ create mode 100644 manuscript/manuscript.synctex 33.synctex.gz
+ create mode 100644 manuscript/manuscript.synctex 34.synctex.gz
+ create mode 100644 manuscript/manuscript.synctex.gz
+[?2004h]0;fish  /Users/carter/Documents/School/Summer_2019/Research/MVSN-FMM[30m(B[m[38;5;237m⏎(B[m                                                                                      ⏎ [2Kcarter@Carters-MacBook-Pro [32m~/D/S/S/R/MVSN-FMM[30m(B[m> [Kgit commit -m "algo"[20D[1mgit(B[m [36mcommit[30m(B[m [36m-m[30m(B[m [33m"algo"[30m(B[m[16D[36madd -A[30m(B[m[K [36m-A[30m(B[m[36mpus[30m(B[mh[K[36mh[30m(B[m[36mcommit -m "mods"[30m(B[m[10D [36m-m[30m(B[m [33m"mods"[30m(B[m[16D[36mpush[30m(B[m[K
+[30m(B[m[?2004l]0;git  /Users/carter/Documents/School/Summer_2019/Research/MVSN-FMM[30m(B[mCounting objects: 62, done.
+Delta compression using up to 8 threads.
+Compressing objects:   1% (1/61)   Compressing objects:   3% (2/61)   Compressing objects:   4% (3/61)   Compressing objects:   6% (4/61)   Compressing objects:   8% (5/61)   Compressing objects:   9% (6/61)   Compressing objects:  11% (7/61)   Compressing objects:  13% (8/61)   Compressing objects:  14% (9/61)   Compressing objects:  16% (10/61)   Compressing objects:  18% (11/61)   Compressing objects:  19% (12/61)   Compressing objects:  21% (13/61)   Compressing objects:  22% (14/61)   Compressing objects:  24% (15/61)   Compressing objects:  26% (16/61)   Compressing objects:  27% (17/61)   Compressing objects:  29% (18/61)   Compressing objects:  31% (19/61)   Compressing objects:  32% (20/61)   Compressing objects:  34% (21/61)   Compressing objects:  36% (22/61)   Compressing objects:  37% (23/61)   Compressing objects:  39% (24/61)   Compressing objects:  40% (25/61)   Compressing objects:  42% (26/61)   Compressing objects:  44% (27/61)   Compressing objects:  45% (28/61)   Compressing objects:  47% (29/61)   Compressing objects:  49% (30/61)   Compressing objects:  50% (31/61)   Compressing objects:  52% (32/61)   Compressing objects:  54% (33/61)   Compressing objects:  55% (34/61)   Compressing objects:  57% (35/61)   Compressing objects:  59% (36/61)   Compressing objects:  60% (37/61)   Compressing objects:  62% (38/61)   Compressing objects:  63% (39/61)   Compressing objects:  65% (40/61)   Compressing objects:  67% (41/61)   Compressing objects:  68% (42/61)   Compressing objects:  70% (43/61)   Compressing objects:  72% (44/61)   Compressing objects:  73% (45/61)   Compressing objects:  75% (46/61)   Compressing objects:  77% (47/61)   Compressing objects:  78% (48/61)   Compressing objects:  80% (49/61)   Compressing objects:  81% (50/61)   Compressing objects:  83% (51/61)   Compressing objects:  85% (52/61)   Compressing objects:  86% (53/61)   Compressing objects:  88% (54/61)   Compressing objects:  90% (55/61)   Compressing objects:  91% (56/61)   Compressing objects:  93% (57/61)   Compressing objects:  95% (58/61)   Compressing objects:  96% (59/61)   Compressing objects:  98% (60/61)   Compressing objects: 100% (61/61)   Compressing objects: 100% (61/61), done.
+Writing objects:   1% (1/62)   Writing objects:   3% (2/62)   Writing objects:   4% (3/62)   Writing objects:   6% (4/62)   Writing objects:   8% (5/62)   Writing objects:   9% (6/62)   Writing objects:  11% (7/62)   Writing objects:  12% (8/62)   Writing objects:  14% (9/62)   Writing objects:  16% (10/62)   Writing objects:  17% (11/62)   Writing objects:  19% (12/62)   Writing objects:  20% (13/62)   Writing objects:  22% (14/62)   Writing objects:  24% (15/62)   Writing objects:  25% (16/62)   Writing objects:  25% (16/62), 1.07 MiB | 67.00 KiB/s   Writing objects:  25% (16/62), 2.85 MiB | 169.00 KiB/s   Writing objects:  25% (16/62), 3.48 MiB | 181.00 KiB/s   Writing objects:  27% (17/62), 3.48 MiB | 181.00 KiB/s   Writing objects:  27% (17/62), 4.78 MiB | 242.00 KiB/s   Writing objects:  29% (18/62), 4.91 MiB | 240.00 KiB/s   Writing objects:  29% (18/62), 5.80 MiB | 277.00 KiB/s   Writing objects:  30% (19/62), 6.36 MiB | 296.00 KiB/s   Writing objects:  32% (20/62), 6.36 MiB | 296.00 KiB/s   Writing objects:  43% (27/62), 6.36 MiB | 296.00 KiB/s   Writing objects:  45% (28/62), 6.36 MiB | 296.00 KiB/s   Writing objects:  46% (29/62), 6.36 MiB | 296.00 KiB/s   Writing objects:  48% (30/62), 6.36 MiB | 296.00 KiB/s   Writing objects:  50% (31/62), 6.36 MiB | 296.00 KiB/s   Writing objects:  51% (32/62), 6.73 MiB | 907.00 KiB/s   Writing objects:  51% (32/62), 6.92 MiB | 718.00 KiB/s   Writing objects:  53% (33/62), 6.92 MiB | 718.00 KiB/s   Writing objects:  54% (34/62), 6.92 MiB | 718.00 KiB/s   Writing objects:  56% (35/62), 6.92 MiB | 718.00 KiB/s   Writing objects:  58% (36/62), 6.92 MiB | 718.00 KiB/s   Writing objects:  61% (38/62), 6.92 MiB | 718.00 KiB/s   Writing objects:  62% (39/62), 6.92 MiB | 718.00 KiB/s   Writing objects:  64% (40/62), 6.92 MiB | 718.00 KiB/s   Writing objects:  66% (41/62), 6.92 MiB | 718.00 KiB/s   Writing objects:  67% (42/62), 6.92 MiB | 718.00 KiB/s   Writing objects:  69% (43/62), 6.92 MiB | 718.00 KiB/s   Writing objects:  72% (45/62), 7.71 MiB | 757.00 KiB/s   Writing objects:  74% (46/62), 7.71 MiB | 757.00 KiB/s   Writing objects:  75% (47/62), 7.71 MiB | 757.00 KiB/s   Writing objects:  79% (49/62), 7.71 MiB | 757.00 KiB/s   Writing objects:  82% (51/62), 7.71 MiB | 757.00 KiB/s   Writing objects:  83% (52/62), 8.21 MiB | 750.00 KiB/s   Writing objects:  85% (53/62), 8.21 MiB | 750.00 KiB/s   Writing objects:  87% (54/62), 8.21 MiB | 750.00 KiB/s   Writing objects:  88% (55/62), 8.21 MiB | 750.00 KiB/s   Writing objects:  91% (57/62), 8.21 MiB | 750.00 KiB/s   Writing objects:  95% (59/62), 8.21 MiB | 750.00 KiB/s   Writing objects:  96% (60/62), 8.77 MiB | 1.03 MiB/s   Writing objects:  98% (61/62), 8.77 MiB | 1.03 MiB/s   Writing objects: 100% (62/62), 8.77 MiB | 1.03 MiB/s   Writing objects: 100% (62/62), 8.79 MiB | 362.00 KiB/s, done.
+Total 62 (delta 24), reused 0 (delta 0)
+remote: Resolving deltas:   0% (0/24)   [Kremote: Resolving deltas:   4% (1/24)   [Kremote: Resolving deltas:   8% (2/24)   [Kremote: Resolving deltas:  12% (3/24)   [Kremote: Resolving deltas:  16% (4/24)   [Kremote: Resolving deltas:  20% (5/24)   [Kremote: Resolving deltas:  25% (6/24)   [Kremote: Resolving deltas:  29% (7/24)   [Kremote: Resolving deltas:  33% (8/24)   [Kremote: Resolving deltas:  37% (9/24)   [Kremote: Resolving deltas:  41% (10/24)   [Kremote: Resolving deltas:  45% (11/24)   [Kremote: Resolving deltas:  87% (21/24)   [Kremote: Resolving deltas:  91% (22/24)   [Kremote: Resolving deltas:  95% (23/24)   [Kremote: Resolving deltas: 100% (24/24)   [Kremote: Resolving deltas: 100% (24/24), completed with 9 local objects.[K
+To https://github.com/carter-allen/MVSN-FMM.git
+   2f9397d..87ad2b7  master -> master
+[?2004h]0;fish  /Users/carter/Documents/School/Summer_2019/Research/MVSN-FMM[30m(B[m[38;5;237m⏎(B[m                                                                                      ⏎ [2Kcarter@Carters-MacBook-Pro [32m~/D/S/S/R/MVSN-FMM[30m(B[m> [K[7m^C[30m(B[m[K
+[Acarter@Carters-MacBook-Pro [32m~/D/S/S/R/MVSN-FMM[30m(B[m> [K
+[K[A[47C]0;fish  /Users/carter/Documents/School/Summer_2019/Research/MVSN-FMM[30m(B[mcarter@Carters-MacBook-Pro [32m~/D/S/S/R/MVSN-FMM[30m(B[m> [Kgit push[1mgit(B[m [36mpush[30m(B[m[36mcommit -m "algo"[30m(B[m[10D [36m-m[30m(B[m [33m"algo"[30m(B[m[16D[36madd -A[30m(B[m[K [36m-A[30m(B[m
+[30m(B[m[?2004l]0;git  /Users/carter/Documents/School/Summer_2019/Research/MVSN-FMM[30m(B[m
