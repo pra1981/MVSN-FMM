@@ -1,204 +1,4 @@
 
-[30m(B[m[?2004l]0;git  /Users/carter/Documents/School/Summer_2019/Research/MVSN-FMM[30m(B[m[?2004h]0;fish  /Users/carter/Documents/School/Summer_2019/Research/MVSN-FMM[30m(B[m[38;5;237m⏎(B[m                                                                                              ⏎ [2Kcarter@Carters-MBP [32m~/D/S/S/R/MVSN-FMM[30m(B[m> [Kg[91mg[30m(B[m[38;5;240mit add -A[9D[30m(B[m[91mi[38;5;240mt add -A[30m(B[m[91mt[38;5;240m add -A[30m(B[m[1mgit(B[m[38;5;240m add -A[30m(B[m[1m (B[m[38;5;240madd -A[30m(B[m [38;5;240madd -A[30m(B[mc[K[38;5;240mommit -m "manuscript format"[28D[30m(B[m[36mc[38;5;240mommit -m "manuscript format"[28D[30m(B[m[36mo[38;5;240mmmit -m "manuscript format"[27D[30m(B[m[36mm[38;5;240mmit -m "manuscript format"[26D[30m(B[m[36mmit -m "manuscript format"[30m(B[m[23D [36m-m[30m(B[m [33m"manuscript format"[30m(B[m[C
-[30m(B[m[?2004l]0;git  /Users/carter/Documents/School/Summer_2019/Research/MVSN-FMM[30m(B[m[master c8ab6b0] manuscript format
- 15 files changed, 25 insertions(+), 3 deletions(-)
- rename {APPLICATION_2019-05-13 => application/APPLICATION_2019-05-13}/BETA (100%)
- rename {APPLICATION_2019-05-13 => application/APPLICATION_2019-05-13}/DELTA (100%)
- rename {APPLICATION_2019-05-13 => application/APPLICATION_2019-05-13}/META.txt (100%)
- rename {APPLICATION_2019-05-13 => application/APPLICATION_2019-05-13}/PI (100%)
- rename {APPLICATION_2019-05-13 => application/APPLICATION_2019-05-13}/PSI (100%)
- rename {APPLICATION_2019-05-13 => application/APPLICATION_2019-05-13}/SIGMA (100%)
- rename {APPLICATION_2019-05-13 => application/APPLICATION_2019-05-13}/X (100%)
- rename {APPLICATION_2019-05-13 => application/APPLICATION_2019-05-13}/Y (100%)
- rename {APPLICATION_2019-05-13 => application/APPLICATION_2019-05-13}/Z (100%)
- delete mode 100644 logo.jpg
- delete mode 100644 logo.pdf
-[?2004h]0;fish  /Users/carter/Documents/School/Summer_2019/Research/MVSN-FMM[30m(B[m[38;5;237m⏎(B[m                                                                                              ⏎ [2Kcarter@Carters-MBP [32m~/D/S/S/R/MVSN-FMM[30m(B[m> [Kg[91mg[30m(B[m[38;5;240mit commit -m "manuscript format"[32D[30m(B[m[91mi[38;5;240mt commit -m "manuscript format"[31D[30m(B[m[91mt[38;5;240m commit -m "manuscript format"[30D[30m(B[m[1mgit(B[m[38;5;240m commit -m "manuscript format"[30D[30m(B[m[1m (B[m[38;5;240mcommit -m "manuscript format"[29D[30m(B[m [38;5;240mcommit -m "manuscript format"[29D[30m(B[mp[K[38;5;240mush[30m(B[m[36m[4mp[38;5;240m[24mush[30m(B[m[36m[4mu[38;5;240m[24msh[30m(B[m[36mpu[38;5;240msh[30m(B[m[36ms[38;5;240mh[30m(B[m[36mh[30m(B[m
-[30m(B[m[?2004l]0;git  /Users/carter/Documents/School/Summer_2019/Research/MVSN-FMM[30m(B[mCounting objects: 12, done.
-Delta compression using up to 8 threads.
-Compressing objects:   9% (1/11)   Compressing objects:  18% (2/11)   Compressing objects:  27% (3/11)   Compressing objects:  36% (4/11)   Compressing objects:  45% (5/11)   Compressing objects:  54% (6/11)   Compressing objects:  63% (7/11)   Compressing objects:  72% (8/11)   Compressing objects:  81% (9/11)   Compressing objects:  90% (10/11)   Compressing objects: 100% (11/11)   Compressing objects: 100% (11/11), done.
-Writing objects:   8% (1/12)   Writing objects:  16% (2/12)   Writing objects:  25% (3/12)   Writing objects:  33% (4/12)   Writing objects:  41% (5/12)   Writing objects:  50% (6/12)   Writing objects:  58% (7/12)   Writing objects:  66% (8/12)   Writing objects:  75% (9/12)   Writing objects:  83% (10/12)   Writing objects:  91% (11/12)   Writing objects: 100% (12/12)   Writing objects: 100% (12/12), 1.68 KiB | 1.68 MiB/s, done.
-Total 12 (delta 4), reused 0 (delta 0)
-remote: Resolving deltas:   0% (0/4)   [Kremote: Resolving deltas:  25% (1/4)   [Kremote: Resolving deltas:  50% (2/4)   [Kremote: Resolving deltas:  75% (3/4)   [Kremote: Resolving deltas: 100% (4/4)   [Kremote: Resolving deltas: 100% (4/4), completed with 4 local objects.[K
-To https://github.com/carter-allen/MVSN-FMM.git
-   b1d022a..c8ab6b0  master -> master
-[?2004h]0;fish  /Users/carter/Documents/School/Summer_2019/Research/MVSN-FMM[30m(B[m[38;5;237m⏎(B[m                                                                                              ⏎ [2Kcarter@Carters-MBP [32m~/D/S/S/R/MVSN-FMM[30m(B[m> [K[7m^C[30m(B[m[K
-[Acarter@Carters-MBP [32m~/D/S/S/R/MVSN-FMM[30m(B[m> [K
-[K[A[39C]0;fish  /Users/carter/Documents/School/Summer_2019/Research/MVSN-FMM[30m(B[mcarter@Carters-MBP [32m~/D/S/S/R/MVSN-FMM[30m(B[m> [Kf[91mf[30m(B[m[38;5;240malse [30m(B[m[Kg[91mg[30m(B[m[38;5;240mit push[30m(B[m[91mi[38;5;240mt push[30m(B[m[91mt[38;5;240m push[30m(B[m[1mgit(B[m[38;5;240m push[30m(B[m[1m (B[m[38;5;240mpush[30m(B[m [38;5;240mpush[30m(B[mc[K[38;5;240mommit -m "manuscript format"[28D[30m(B[m[36mc[38;5;240mommit -m "manuscript format"[28D[30m(B[m[36mo[38;5;240mmmit -m "manuscript format"[27D[30m(B[m[36mmmit -m "manuscript format"[30m(B[m[23D [36m-m[30m(B[m [33m"manuscript format"[30m(B[m[33m format"[30m(B[m[K[33m format"[30m(B[m[K[33m format"[30m(B[m[K[33m format"[30m(B[m[K[33m format"[30m(B[m[K[33m format"[30m(B[m[K[33m format"[30m(B[m[K[33m format"[30m(B[m[K[33m format"[30m(B[m[K[33m format"[30m(B[m[K[33mr format"[30m(B[m[33me format"[30m(B[m[33ma format"[30m(B[m[33md format"[30m(B[m[33mm format"[30m(B[m[33me format"[30m(B[m[8C
-[30m(B[m[?2004l]0;git  /Users/carter/Documents/School/Summer_2019/Research/MVSN-FMM[30m(B[mOn branch master
-Your branch is up-to-date with 'origin/master'.
-Changes not staged for commit:
-	[31mmodified:   .Rproj.user/284780B9/console06/EBC66EFC[m
-	[31mmodified:   .Rproj.user/284780B9/sources/prop/85FEC6A6[m
-	[31mmodified:   README.md[m
-
-no changes added to commit
-[?2004h]0;fish  /Users/carter/Documents/School/Summer_2019/Research/MVSN-FMM[30m(B[m[38;5;237m⏎(B[m                                                                                              ⏎ [2Kcarter@Carters-MBP [32m~/D/S/S/R/MVSN-FMM[30m(B[m> [Kg[91mg[30m(B[m[38;5;240mit commit -m "readme format"[28D[30m(B[m[91mi[38;5;240mt commit -m "readme format"[27D[30m(B[m[91mt[38;5;240m commit -m "readme format"[26D[30m(B[m[1mgit(B[m[38;5;240m commit -m "readme format"[26D[30m(B[m[1m (B[m[38;5;240mcommit -m "readme format"[25D[30m(B[m [38;5;240mcommit -m "readme format"[25D[30m(B[ma[K[38;5;240mdd -A[30m(B[m[36m[4ma[38;5;240m[24mdd -A[30m(B[m[36m[4mdd -A[30m(B[m[36madd[30m(B[m [36m-A[30m(B[m
-[30m(B[m[?2004l]0;git  /Users/carter/Documents/School/Summer_2019/Research/MVSN-FMM[30m(B[m[?2004h]0;fish  /Users/carter/Documents/School/Summer_2019/Research/MVSN-FMM[30m(B[m[38;5;237m⏎(B[m                                                                                              ⏎ [2Kcarter@Carters-MBP [32m~/D/S/S/R/MVSN-FMM[30m(B[m> [Kgit add -A[10D[1mgit(B[m [36madd[30m(B[m [36m-A[30m(B[m[36mcom[30m(B[mm[36mit -m "readme format"[30m(B[m[22D[36mmit[30m(B[m [36m-m[30m(B[m [33m"readme format"[30m(B[m
-[30m(B[m[?2004l]0;git  /Users/carter/Documents/School/Summer_2019/Research/MVSN-FMM[30m(B[m[master 8e7215f] readme format
- 3 files changed, 38 insertions(+), 2 deletions(-)
-[?2004h]0;fish  /Users/carter/Documents/School/Summer_2019/Research/MVSN-FMM[30m(B[m[38;5;237m⏎(B[m                                                                                              ⏎ [2Kcarter@Carters-MBP [32m~/D/S/S/R/MVSN-FMM[30m(B[m> [Kgit commit -m "readme format"[29D[1mgit(B[m [36mcommit[30m(B[m [36m-m[30m(B[m [33m"readme format"[30m(B[m[25D[36madd -A[30m(B[m[K [36m-A[30m(B[m[36mpus[30m(B[mh[K[36mh[30m(B[m
-[30m(B[m[?2004l]0;git  /Users/carter/Documents/School/Summer_2019/Research/MVSN-FMM[30m(B[mCounting objects: 10, done.
-Delta compression using up to 8 threads.
-Compressing objects:  11% (1/9)   Compressing objects:  22% (2/9)   Compressing objects:  33% (3/9)   Compressing objects:  44% (4/9)   Compressing objects:  55% (5/9)   Compressing objects:  66% (6/9)   Compressing objects:  77% (7/9)   Compressing objects:  88% (8/9)   Compressing objects: 100% (9/9)   Compressing objects: 100% (9/9), done.
-Writing objects:  10% (1/10)   Writing objects:  20% (2/10)   Writing objects:  30% (3/10)   Writing objects:  40% (4/10)   Writing objects:  50% (5/10)   Writing objects:  60% (6/10)   Writing objects:  70% (7/10)   Writing objects:  80% (8/10)   Writing objects:  90% (9/10)   Writing objects: 100% (10/10)   Writing objects: 100% (10/10), 1.50 KiB | 1.50 MiB/s, done.
-Total 10 (delta 4), reused 0 (delta 0)
-remote: Resolving deltas:   0% (0/4)   [Kremote: Resolving deltas:  25% (1/4)   [Kremote: Resolving deltas:  50% (2/4)   [Kremote: Resolving deltas:  75% (3/4)   [Kremote: Resolving deltas: 100% (4/4)   [Kremote: Resolving deltas: 100% (4/4), completed with 4 local objects.[K
-To https://github.com/carter-allen/MVSN-FMM.git
-   c8ab6b0..8e7215f  master -> master
-[?2004h]0;fish  /Users/carter/Documents/School/Summer_2019/Research/MVSN-FMM[30m(B[m[38;5;237m⏎(B[m                                                                                              ⏎ [2Kcarter@Carters-MBP [32m~/D/S/S/R/MVSN-FMM[30m(B[m> [K[7m^C[30m(B[m[K
-[Acarter@Carters-MBP [32m~/D/S/S/R/MVSN-FMM[30m(B[m> [K
-[K[A[39C]0;fish  /Users/carter/Documents/School/Summer_2019/Research/MVSN-FMM[30m(B[mcarter@Carters-MBP [32m~/D/S/S/R/MVSN-FMM[30m(B[m> [K]0;fish  /Users/carter/Documents/School/Summer_2019/Research/MVSN-FMM[30m(B[mcarter@Carters-MBP [32m~/D/S/S/R/MVSN-FMM[30m(B[m> [J]0;fish  /Users/carter/Documents/School/Summer_2019/Research/MVSN-FMM[30m(B[mWelcome to fish, the friendly interactive shell
-]0;fish  /Users/carter/Documents/School/Summer_2019/Research/MVSN-FMM[30m(B[mcarter@Carters-MBP [32m~/D/S/S/R/MVSN-FMM[30m(B[m> [Jg[91mg[30m(B[m[38;5;240mit push[30m(B[m[91mi[38;5;240mt push[30m(B[m[91mt[38;5;240m push[30m(B[m[1mgit(B[m[38;5;240m push[30m(B[m[1m (B[m[38;5;240mpush[30m(B[m [38;5;240mpush[30m(B[ma[K[38;5;240mdd -A[30m(B[m[36m[4ma[38;5;240m[24mdd -A[30m(B[m[36m[4mdd -A[30m(B[m[36madd[30m(B[m [36m-A[30m(B[m
-[30m(B[m[?2004l]0;git  /Users/carter/Documents/School/Summer_2019/Research/MVSN-FMM[30m(B[m[?2004h]0;fish  /Users/carter/Documents/School/Summer_2019/Research/MVSN-FMM[30m(B[m[38;5;237m⏎(B[m                                                                                                   ⏎ [2Kcarter@Carters-MBP [32m~/D/S/S/R/MVSN-FMM[30m(B[m> [Kg[91mg[30m(B[m[38;5;240mit add -A[9D[30m(B[m[91mi[38;5;240mt add -A[30m(B[m[91mt[38;5;240m add -A[30m(B[m[1mgit(B[m[38;5;240m add -A[30m(B[m[1m (B[m[38;5;240madd -A[30m(B[m [38;5;240madd -A[30m(B[mc[K[38;5;240mommit -m "slides"[17D[30m(B[m[36mc[38;5;240mommit -m "slides"[17D[30m(B[m[36mo[38;5;240mmmit -m "slides"[16D[30m(B[m[36mmmit -m "slides"[30m(B[m[12D [36m-m[30m(B[m [33m"slides"[30m(B[m[33m"[30m(B[m[K[33m"[30m(B[m[K[33m"[30m(B[m[K[33m"[30m(B[m[K[33m"[30m(B[m[K[33m[4m"s"[30m(B[m[33m[4m"[30m(B[m[K[33m""[30m(B[m[33mo"[30m(B[m[33mu"[30m(B[m[33mt"[30m(B[m[33ml"[30m(B[m[33mi"[30m(B[m[33mn"[30m(B[m[33me"[30m(B[m[C
-[30m(B[m[?2004l]0;git  /Users/carter/Documents/School/Summer_2019/Research/MVSN-FMM[30m(B[m[master e2860c8] outline
- 21 files changed, 163 insertions(+), 44312 deletions(-)
- rewrite .Rproj.user/284780B9/console06/INDEX001 (87%)
- create mode 100644 literature/.Ganjali and Baghafalaki (2014) MVSN Shared Parameter Model for Nonignorable Dropout.pdf.icloud
- delete mode 100644 literature/Ganjali and Baghafalaki (2014) MVSN Shared Parameter Model for Nonignorable Dropout.pdf
- create mode 100644 literature/Talk10.pdf
- create mode 100644 literature/Talk11.pdf
- rewrite manuscript/manuscript.aux (74%)
- rewrite manuscript/manuscript.synctex.gz (99%)
- create mode 100644 manuscript/manuscript.synctex.synctex.gz
- create mode 100644 manuscript/manuscript.toc
- rewrite poster/poster.synctex.gz (94%)
-[?2004h]0;fish  /Users/carter/Documents/School/Summer_2019/Research/MVSN-FMM[30m(B[m[38;5;237m⏎(B[m                                                                                                   ⏎ [2Kcarter@Carters-MBP [32m~/D/S/S/R/MVSN-FMM[30m(B[m> [Kg[91mg[30m(B[m[38;5;240mit commit -m "outline"[22D[30m(B[m[91mi[38;5;240mt commit -m "outline"[21D[30m(B[m[91mt[38;5;240m commit -m "outline"[20D[30m(B[m[1mgit(B[m[38;5;240m commit -m "outline"[20D[30m(B[m[1m (B[m[38;5;240mcommit -m "outline"[19D[30m(B[m [38;5;240mcommit -m "outline"[19D[30m(B[mp[K[38;5;240mush[30m(B[m[36m[4mp[38;5;240m[24mush[30m(B[m[36m[4mu[38;5;240m[24msh[30m(B[m[36mpu[38;5;240msh[30m(B[m[36ms[38;5;240mh[30m(B[m[36mh[30m(B[m
-[30m(B[m[?2004l]0;git  /Users/carter/Documents/School/Summer_2019/Research/MVSN-FMM[30m(B[mCounting objects: 30, done.
-Delta compression using up to 8 threads.
-Compressing objects:   3% (1/29)   Compressing objects:   6% (2/29)   Compressing objects:  10% (3/29)   Compressing objects:  13% (4/29)   Compressing objects:  17% (5/29)   Compressing objects:  20% (6/29)   Compressing objects:  24% (7/29)   Compressing objects:  27% (8/29)   Compressing objects:  31% (9/29)   Compressing objects:  34% (10/29)   Compressing objects:  37% (11/29)   Compressing objects:  41% (12/29)   Compressing objects:  44% (13/29)   Compressing objects:  48% (14/29)   Compressing objects:  51% (15/29)   Compressing objects:  55% (16/29)   Compressing objects:  58% (17/29)   Compressing objects:  62% (18/29)   Compressing objects:  65% (19/29)   Compressing objects:  68% (20/29)   Compressing objects:  72% (21/29)   Compressing objects:  75% (22/29)   Compressing objects:  79% (23/29)   Compressing objects:  82% (24/29)   Compressing objects:  86% (25/29)   Compressing objects:  89% (26/29)   Compressing objects:  93% (27/29)   Compressing objects:  96% (28/29)   Compressing objects: 100% (29/29)   Compressing objects: 100% (29/29), done.
-Writing objects:   3% (1/30)   Writing objects:   6% (2/30)   Writing objects:  10% (3/30)   Writing objects:  13% (4/30)   Writing objects:  16% (5/30)   Writing objects:  20% (6/30)   Writing objects:  23% (7/30)   Writing objects:  26% (8/30)   Writing objects:  30% (9/30)   Writing objects:  33% (10/30)   Writing objects:  36% (11/30)   Writing objects:  40% (12/30)   Writing objects:  43% (13/30)   Writing objects:  46% (14/30)   Writing objects:  50% (15/30)   Writing objects:  53% (16/30)   Writing objects:  56% (17/30)   Writing objects:  60% (18/30)   Writing objects:  63% (19/30)   Writing objects:  66% (20/30)   Writing objects:  70% (21/30)   Writing objects:  73% (22/30)   Writing objects:  76% (23/30)   Writing objects:  80% (24/30)   Writing objects:  83% (25/30)   Writing objects:  86% (26/30)   Writing objects:  90% (27/30)   Writing objects:  93% (28/30)   Writing objects:  96% (29/30)   Writing objects: 100% (30/30)   Writing objects: 100% (30/30), 779.26 KiB | 12.37 MiB/s, done.
-Total 30 (delta 15), reused 0 (delta 0)
-remote: Resolving deltas:   0% (0/15)   [Kremote: Resolving deltas:   6% (1/15)   [Kremote: Resolving deltas:  13% (2/15)   [Kremote: Resolving deltas:  20% (3/15)   [Kremote: Resolving deltas:  26% (4/15)   [Kremote: Resolving deltas:  33% (5/15)   [Kremote: Resolving deltas:  40% (6/15)   [Kremote: Resolving deltas:  46% (7/15)   [Kremote: Resolving deltas:  53% (8/15)   [Kremote: Resolving deltas:  60% (9/15)   [Kremote: Resolving deltas:  66% (10/15)   [Kremote: Resolving deltas:  73% (11/15)   [Kremote: Resolving deltas:  80% (12/15)   [Kremote: Resolving deltas:  86% (13/15)   [Kremote: Resolving deltas:  93% (14/15)   [Kremote: Resolving deltas: 100% (15/15)   [Kremote: Resolving deltas: 100% (15/15), completed with 15 local objects.[K
-To https://github.com/carter-allen/MVSN-FMM.git
-   8e7215f..e2860c8  master -> master
-[?2004h]0;fish  /Users/carter/Documents/School/Summer_2019/Research/MVSN-FMM[30m(B[m[38;5;237m⏎(B[m                                                                                                   ⏎ [2Kcarter@Carters-MBP [32m~/D/S/S/R/MVSN-FMM[30m(B[m> [K[7m^C[30m(B[m[K
-[Acarter@Carters-MBP [32m~/D/S/S/R/MVSN-FMM[30m(B[m> [K
-[K[A[39C]0;fish  /Users/carter/Documents/School/Summer_2019/Research/MVSN-FMM[30m(B[mcarter@Carters-MBP [32m~/D/S/S/R/MVSN-FMM[30m(B[m> [K]0;fish  /Users/carter/Documents/School/Summer_2019/Research/MVSN-FMM[30m(B[mcarter@Carters-MBP [32m~/D/S/S/R/MVSN-FMM[30m(B[m> [J]0;fish  /Users/carter/Documents/School/Summer_2019/Research/MVSN-FMM[30m(B[mWelcome to fish, the friendly interactive shell
-]0;fish  /Users/carter/Documents/School/Summer_2019/Research/MVSN-FMM[30m(B[mcarter@Carters-MacBook-Pro [32m~/D/S/S/R/MVSN-FMM[30m(B[m> [Jg[91mg[30m(B[m[38;5;240mit commit -m "fixes"[20D[30m(B[m[91mi[38;5;240mt commit -m "fixes"[19D[30m(B[m[91mt[38;5;240m commit -m "fixes"[18D[30m(B[m[1mgit(B[m[38;5;240m commit -m "fixes"[18D[30m(B[m[1m (B[m[38;5;240mcommit -m "fixes"[17D[30m(B[m [38;5;240mcommit -m "fixes"[17D[30m(B[ms[K[38;5;240mtatus[30m(B[m[36m[4ms[38;5;240m[24mtatus[30m(B[m[36m[4mt[38;5;240m[24matus[30m(B[m[36mst[38;5;240matus[30m(B[m[36matus[30m(B[m
-[30m(B[m[?2004l]0;git  /Users/carter/Documents/School/Summer_2019/Research/MVSN-FMM[30m(B[mOn branch master
-Your branch is up-to-date with 'origin/master'.
-Changes not staged for commit:
-  (use "git add <file>..." to update what will be committed)
-  (use "git checkout -- <file>..." to discard changes in working directory)
-
-	[31mmodified:   .Rproj.user/284780B9/console06/EBC66EFC[m
-	[31mmodified:   .Rproj.user/284780B9/console06/INDEX001[m
-	[31mmodified:   .Rproj.user/284780B9/sources/prop/5D01419B[m
-	[31mmodified:   .Rproj.user/284780B9/sources/prop/DED631F0[m
-	[31mmodified:   .Rproj.user/284780B9/sources/prop/INDEX[m
-	[31mmodified:   .Rproj.user/shared/notebooks/paths[m
-
-Untracked files:
-  (use "git add <file>..." to include in what will be committed)
-
-	[31mliterature/Fruhwirth-Schnatter and Pyne (2010) Supplement.pdf[m
-	[31mliterature/lin_2018.pdf[m
-	[31mliterature/melnykov_2010.pdf[m
-	[31mliterature/sharon_2013.pdf[m
-	[31mliterature/vrbik_2013.pdf[m
-	[31mmcmc_draws_2019-05-21/[m
-
-no changes added to commit (use "git add" and/or "git commit -a")
-[?2004h]0;fish  /Users/carter/Documents/School/Summer_2019/Research/MVSN-FMM[30m(B[m[38;5;237m⏎(B[m                                                                                          ⏎ [2Kcarter@Carters-MacBook-Pro [32m~/D/S/S/R/MVSN-FMM[30m(B[m> [Kg[91mg[30m(B[m[38;5;240mit status[9D[30m(B[m[91mi[38;5;240mt status[30m(B[m[91mt[38;5;240m status[30m(B[m[1mgit(B[m[38;5;240m status[30m(B[m[1m (B[m[38;5;240mstatus[30m(B[m [38;5;240mstatus[30m(B[ma[K[38;5;240mdd -A[30m(B[m[36m[4ma[38;5;240m[24mdd -A[30m(B[m[36m[4mdd -A[30m(B[m[36madd[30m(B[m [36m-A[30m(B[m
-[30m(B[m[?2004l]0;git  /Users/carter/Documents/School/Summer_2019/Research/MVSN-FMM[30m(B[m[?2004h]0;fish  /Users/carter/Documents/School/Summer_2019/Research/MVSN-FMM[30m(B[m[38;5;237m⏎(B[m                                                                                          ⏎ [2Kcarter@Carters-MacBook-Pro [32m~/D/S/S/R/MVSN-FMM[30m(B[m> [Kg[91mg[30m(B[m[38;5;240mit add -A[9D[30m(B[m[91mi[38;5;240mt add -A[30m(B[m[91mt[38;5;240m add -A[30m(B[m[1mgit(B[m[38;5;240m add -A[30m(B[m[1m (B[m[38;5;240madd -A[30m(B[m [38;5;240madd -A[30m(B[mc[K[38;5;240mommit -m "fixes"[16D[30m(B[m[36mc[38;5;240mommit -m "fixes"[16D[30m(B[m[36mo[38;5;240mmmit -m "fixes"[15D[30m(B[m[36mmmit -m "fixes"[30m(B[m[11D [36m-m[30m(B[m [33m"fixes"[30m(B[m[33m"[30m(B[m[K[33m"[30m(B[m[K[33m"[30m(B[m[K[33m[4m"fi"[30m(B[m[33m[4m"[30m(B[m[K[33m[4m"[30m(B[m[K[33m""[30m(B[m[33mt"[30m(B[m[33me"[30m(B[m[33ms"[30m(B[m[33mt"[30m(B[m[33mi"[30m(B[m[33mn"[30m(B[m[33mg"[30m(B[m[33m "[30m(B[m[33ms"[30m(B[m[33mi"[30m(B[m[33mm"[30m(B[m[33mu"[30m(B[m[33ml"[30m(B[m[33ma"[30m(B[m[33mt"[30m(B[m[33mi"[30m(B[m[33mo"[30m(B[m[33mn"[30m(B[m[C
-[30m(B[m[?2004l]0;git  /Users/carter/Documents/School/Summer_2019/Research/MVSN-FMM[30m(B[m[master ca1b16a] testing simulation
- 28 files changed, 85 insertions(+), 6 deletions(-)
- rewrite .Rproj.user/284780B9/console06/INDEX001 (87%)
- create mode 100644 literature/Fruhwirth-Schnatter and Pyne (2010) Supplement.pdf
- create mode 100644 literature/lin_2018.pdf
- create mode 100644 literature/melnykov_2010.pdf
- create mode 100644 literature/sharon_2013.pdf
- create mode 100644 literature/vrbik_2013.pdf
- create mode 100644 mcmc_draws_2019-05-21/BETA
- create mode 100644 mcmc_draws_2019-05-21/DELTA
- create mode 100644 mcmc_draws_2019-05-21/META.txt
- create mode 100644 mcmc_draws_2019-05-21/PI
- create mode 100644 mcmc_draws_2019-05-21/PSI
- create mode 100644 mcmc_draws_2019-05-21/SIGMA
- create mode 100644 mcmc_draws_2019-05-21/X
- create mode 100644 mcmc_draws_2019-05-21/Y
- create mode 100644 mcmc_draws_2019-05-21/Y_true
- create mode 100644 mcmc_draws_2019-05-21/Z
- create mode 100644 mcmc_draws_2019-05-21/beta_true
- create mode 100644 mcmc_draws_2019-05-21/c_true
- create mode 100644 mcmc_draws_2019-05-21/delta_true
- create mode 100644 mcmc_draws_2019-05-21/pi_true
- create mode 100644 mcmc_draws_2019-05-21/psi_true
- create mode 100644 mcmc_draws_2019-05-21/sig2_true
- create mode 100644 mcmc_draws_2019-05-21/tables.R
-[?2004h]0;fish  /Users/carter/Documents/School/Summer_2019/Research/MVSN-FMM[30m(B[m[38;5;237m⏎(B[m                                                                                          ⏎ [2Kcarter@Carters-MacBook-Pro [32m~/D/S/S/R/MVSN-FMM[30m(B[m> [Kg[91mg[30m(B[m[38;5;240mit commit -m "testing simulation"[33D[30m(B[m[91mi[38;5;240mt commit -m "testing simulation"[32D[30m(B[m[91mt[38;5;240m commit -m "testing simulation"[31D[30m(B[m[1mgit(B[m[38;5;240m commit -m "testing simulation"[31D[30m(B[m[1m (B[m[38;5;240mcommit -m "testing simulation"[30D[30m(B[m [38;5;240mcommit -m "testing simulation"[30D[30m(B[mp[K[38;5;240mull[30m(B[m[36m[4mp[38;5;240m[24mull[30m(B[m[36m[4mu[38;5;240m[24mll[30m(B[m[36mpu[38;5;240mll[30m(B[m[36ms[30m(B[m[K[38;5;240mh[30m(B[m[36mh[30m(B[m
-[30m(B[m[?2004l]0;git  /Users/carter/Documents/School/Summer_2019/Research/MVSN-FMM[30m(B[mCounting objects: 38, done.
-Delta compression using up to 8 threads.
-Compressing objects:   2% (1/36)   Compressing objects:   5% (2/36)   Compressing objects:   8% (3/36)   Compressing objects:  11% (4/36)   Compressing objects:  13% (5/36)   Compressing objects:  16% (6/36)   Compressing objects:  19% (7/36)   Compressing objects:  22% (8/36)   Compressing objects:  25% (9/36)   Compressing objects:  27% (10/36)   Compressing objects:  30% (11/36)   Compressing objects:  33% (12/36)   Compressing objects:  36% (13/36)   Compressing objects:  38% (14/36)   Compressing objects:  41% (15/36)   Compressing objects:  44% (16/36)   Compressing objects:  47% (17/36)   Compressing objects:  50% (18/36)   Compressing objects:  52% (19/36)   Compressing objects:  55% (20/36)   Compressing objects:  58% (21/36)   Compressing objects:  61% (22/36)   Compressing objects:  63% (23/36)   Compressing objects:  66% (24/36)   Compressing objects:  69% (25/36)   Compressing objects:  72% (26/36)   Compressing objects:  75% (27/36)   Compressing objects:  77% (28/36)   Compressing objects:  80% (29/36)   Compressing objects:  83% (30/36)   Compressing objects:  86% (31/36)   Compressing objects:  88% (32/36)   Compressing objects:  91% (33/36)   Compressing objects:  94% (34/36)   Compressing objects:  97% (35/36)   Compressing objects: 100% (36/36)   Compressing objects: 100% (36/36), done.
-Writing objects:   2% (1/38)   Writing objects:   5% (2/38)   Writing objects:   7% (3/38)   Writing objects:  10% (4/38)   Writing objects:  13% (5/38)   Writing objects:  15% (6/38)   Writing objects:  18% (7/38)   Writing objects:  21% (8/38)   Writing objects:  23% (9/38)   Writing objects:  26% (10/38)   Writing objects:  28% (11/38)   Writing objects:  31% (12/38)   Writing objects:  34% (13/38)   Writing objects:  36% (14/38)   Writing objects:  39% (15/38)   Writing objects:  42% (16/38)   Writing objects:  44% (17/38)   Writing objects:  47% (18/38)   Writing objects:  50% (19/38), 1.07 MiB | 1.92 MiB/s   Writing objects:  52% (20/38), 1.07 MiB | 1.92 MiB/s   Writing objects:  52% (20/38), 4.06 MiB | 1.37 MiB/s   Writing objects:  55% (21/38), 4.06 MiB | 1.37 MiB/s   Writing objects:  57% (22/38), 4.06 MiB | 1.37 MiB/s   Writing objects:  60% (23/38), 4.25 MiB | 1.20 MiB/s   Writing objects:  63% (24/38), 4.25 MiB | 1.20 MiB/s   Writing objects:  65% (25/38), 4.25 MiB | 1.20 MiB/s   Writing objects:  68% (26/38), 4.25 MiB | 1.20 MiB/s   Writing objects:  71% (27/38), 4.25 MiB | 1.20 MiB/s   Writing objects:  73% (28/38), 4.25 MiB | 1.20 MiB/s   Writing objects:  76% (29/38), 4.25 MiB | 1.20 MiB/s   Writing objects:  78% (30/38), 4.25 MiB | 1.20 MiB/s   Writing objects:  81% (31/38), 4.25 MiB | 1.20 MiB/s   Writing objects:  84% (32/38), 4.25 MiB | 1.20 MiB/s   Writing objects:  86% (33/38), 4.25 MiB | 1.20 MiB/s   Writing objects:  89% (34/38), 4.25 MiB | 1.20 MiB/s   Writing objects:  92% (35/38), 4.25 MiB | 1.20 MiB/s   Writing objects:  94% (36/38), 4.25 MiB | 1.20 MiB/s   Writing objects:  97% (37/38), 4.25 MiB | 1.20 MiB/s   Writing objects: 100% (38/38), 4.25 MiB | 1.20 MiB/s   Writing objects: 100% (38/38), 4.68 MiB | 1.19 MiB/s, done.
-Total 38 (delta 8), reused 0 (delta 0)
-remote: Resolving deltas:   0% (0/8)   [Kremote: Resolving deltas:  12% (1/8)   [Kremote: Resolving deltas:  25% (2/8)   [Kremote: Resolving deltas:  37% (3/8)   [Kremote: Resolving deltas:  50% (4/8)   [Kremote: Resolving deltas:  62% (5/8)   [Kremote: Resolving deltas:  75% (6/8)   [Kremote: Resolving deltas:  87% (7/8)   [Kremote: Resolving deltas: 100% (8/8)   [Kremote: Resolving deltas: 100% (8/8), completed with 8 local objects.[K
-To https://github.com/carter-allen/MVSN-FMM.git
-   e2860c8..ca1b16a  master -> master
-[?2004h]0;fish  /Users/carter/Documents/School/Summer_2019/Research/MVSN-FMM[30m(B[m[38;5;237m⏎(B[m                                                                                          ⏎ [2Kcarter@Carters-MacBook-Pro [32m~/D/S/S/R/MVSN-FMM[30m(B[m> [K[7m^C[30m(B[m[K
-[Acarter@Carters-MacBook-Pro [32m~/D/S/S/R/MVSN-FMM[30m(B[m> [K
-[K[A[47C]0;fish  /Users/carter/Documents/School/Summer_2019/Research/MVSN-FMM[30m(B[mcarter@Carters-MacBook-Pro [32m~/D/S/S/R/MVSN-FMM[30m(B[m> [K]0;fish  /Users/carter/Documents/School/Summer_2019/Research/MVSN-FMM[30m(B[mcarter@Carters-MacBook-Pro [32m~/D/S/S/R/MVSN-FMM[30m(B[m> [Jg[91mg[30m(B[m[38;5;240mit push[30m(B[m[91mi[38;5;240mt push[30m(B[m[91mt[38;5;240m push[30m(B[m[1mgit(B[m[38;5;240m push[30m(B[m[1m (B[m[38;5;240mpush[30m(B[m [38;5;240mpush[30m(B[ms[K[38;5;240mtatus[30m(B[m[36m[4ms[38;5;240m[24mtatus[30m(B[m[36m[4mt[38;5;240m[24matus[30m(B[m[36mst[38;5;240matus[30m(B[m[36matus[30m(B[m
-[30m(B[m[?2004l]0;git  /Users/carter/Documents/School/Summer_2019/Research/MVSN-FMM[30m(B[mOn branch master
-Your branch is up-to-date with 'origin/master'.
-Changes not staged for commit:
-  (use "git add <file>..." to update what will be committed)
-  (use "git checkout -- <file>..." to discard changes in working directory)
-
-	[31mmodified:   .Rproj.user/284780B9/console06/EBC66EFC[m
-	[31mmodified:   .Rproj.user/284780B9/console06/INDEX001[m
-	[31mmodified:   .Rproj.user/284780B9/sources/prop/24A3E305[m
-	[31mmodified:   .Rproj.user/284780B9/sources/prop/5D01419B[m
-	[31mmodified:   .Rproj.user/284780B9/sources/prop/INDEX[m
-	[31mmodified:   .Rproj.user/shared/notebooks/paths[m
-	[31mmodified:   manuscript/manuscript.aux[m
-	[31mmodified:   manuscript/manuscript.log[m
-	[31mmodified:   manuscript/manuscript.pdf[m
-	[31mmodified:   manuscript/manuscript.synctex.gz[m
-	[31mmodified:   manuscript/manuscript.tex[m
-	[31mmodified:   manuscript/manuscript.toc[m
-	[31mmodified:   mcmc_draws_2019-05-21/BETA[m
-	[31mmodified:   mcmc_draws_2019-05-21/DELTA[m
-	[31mmodified:   mcmc_draws_2019-05-21/META.txt[m
-	[31mmodified:   mcmc_draws_2019-05-21/PI[m
-	[31mmodified:   mcmc_draws_2019-05-21/PSI[m
-	[31mmodified:   mcmc_draws_2019-05-21/SIGMA[m
-	[31mmodified:   mcmc_draws_2019-05-21/X[m
-	[31mmodified:   mcmc_draws_2019-05-21/Y[m
-	[31mmodified:   mcmc_draws_2019-05-21/Y_true[m
-	[31mmodified:   mcmc_draws_2019-05-21/Z[m
-	[31mmodified:   mcmc_draws_2019-05-21/beta_true[m
-	[31mmodified:   mcmc_draws_2019-05-21/c_true[m
-	[31mmodified:   mcmc_draws_2019-05-21/delta_true[m
-	[31mmodified:   mcmc_draws_2019-05-21/pi_true[m
-	[31mmodified:   mcmc_draws_2019-05-21/psi_true[m
-	[31mmodified:   mcmc_draws_2019-05-21/sig2_true[m
-	[31mmodified:   simulation/simulation.R[m
-
-Untracked files:
-  (use "git add <file>..." to include in what will be committed)
-
-	[31mmcmc_draws_2019-05-22/[m
-
-no changes added to commit (use "git add" and/or "git commit -a")
-[?2004h]0;fish  /Users/carter/Documents/School/Summer_2019/Research/MVSN-FMM[30m(B[m[38;5;237m⏎(B[m                                                                                                    ⏎ [2Kcarter@Carters-MacBook-Pro [32m~/D/S/S/R/MVSN-FMM[30m(B[m> [Kg[91mg[30m(B[m[38;5;240mit status[9D[30m(B[m[91mi[38;5;240mt status[30m(B[m[91mt[38;5;240m status[30m(B[m[1mgit(B[m[38;5;240m status[30m(B[m[1m (B[m[38;5;240mstatus[30m(B[m [38;5;240mstatus[30m(B[ma[K[38;5;240mdd -A[30m(B[m[36m[4ma[38;5;240m[24mdd -A[30m(B[m[36m[4md[38;5;240m[24md -A[30m(B[m[36mad[38;5;240md -A[30m(B[m[36md -A[30m(B[m [36m-A[30m(B[m
-[30m(B[m[?2004l]0;git  /Users/carter/Documents/School/Summer_2019/Research/MVSN-FMM[30m(B[m[?2004h]0;fish  /Users/carter/Documents/School/Summer_2019/Research/MVSN-FMM[30m(B[m[38;5;237m⏎(B[m                                                                                                    ⏎ [2Kcarter@Carters-MacBook-Pro [32m~/D/S/S/R/MVSN-FMM[30m(B[m> [Kg[91mg[30m(B[m[38;5;240mit add -A[9D[30m(B[m[91mi[38;5;240mt add -A[30m(B[m[91mt[38;5;240m add -A[30m(B[m[1mgit(B[m[38;5;240m add -A[30m(B[m[1m (B[m[38;5;240madd -A[30m(B[m [38;5;240madd -A[30m(B[mc[K[38;5;240mommit -m "testing simulation"[29D[30m(B[m[36mc[38;5;240mommit -m "testing simulation"[29D[30m(B[m[36mo[38;5;240mmmit -m "testing simulation"[28D[30m(B[m[36mmmit -m "testing simulation"[30m(B[m[24D [36m-m[30m(B[m [33m"testing simulation"[30m(B[m[33m"[30m(B[m[K[33m"[30m(B[m[K[33m"[30m(B[m[K[33m"[30m(B[m[K[33m"[30m(B[m[K[33m"[30m(B[m[K[33m"[30m(B[m[K[33m"[30m(B[m[K[33m"[30m(B[m[K[33m"[30m(B[m[K[33m"[30m(B[m[K[33m"[30m(B[m[K[33m"[30m(B[m[K[33m"[30m(B[m[K[33m"[30m(B[m[K[33m"[30m(B[m[K[33m"[30m(B[m[K[33m"[30m(B[m[K[33md"[30m(B[m[33me"[30m(B[m[33mr"[30m(B[m[33mi"[30m(B[m[33mv"[30m(B[m[33ma"[30m(B[m[33mt"[30m(B[m[33mi"[30m(B[m[33mo"[30m(B[m[33mn"[30m(B[m[33ms"[30m(B[m[C
-[30m(B[m[?2004l]0;git  /Users/carter/Documents/School/Summer_2019/Research/MVSN-FMM[30m(B[m[master 33816c1] derivations
- 45 files changed, 205 insertions(+), 77 deletions(-)
- rewrite .Rproj.user/284780B9/console06/INDEX001 (75%)
- rewrite manuscript/manuscript.synctex.gz (99%)
- rewrite mcmc_draws_2019-05-21/BETA (97%)
- rewrite mcmc_draws_2019-05-21/DELTA (99%)
- rewrite mcmc_draws_2019-05-21/PI (100%)
- rewrite mcmc_draws_2019-05-21/PSI (98%)
- rewrite mcmc_draws_2019-05-21/SIGMA (95%)
- rewrite mcmc_draws_2019-05-21/X (100%)
- rewrite mcmc_draws_2019-05-21/Y (99%)
- rewrite mcmc_draws_2019-05-21/Y_true (99%)
- rewrite mcmc_draws_2019-05-21/Z (99%)
- create mode 100644 mcmc_draws_2019-05-22/BETA
- create mode 100644 mcmc_draws_2019-05-22/DELTA
- create mode 100644 mcmc_draws_2019-05-22/META.txt
  create mode 100644 mcmc_draws_2019-05-22/PI
  create mode 100644 mcmc_draws_2019-05-22/PSI
  create mode 100644 mcmc_draws_2019-05-22/SIGMA
@@ -1107,4 +907,97 @@ To https://github.com/carter-allen/MVSN-FMM.git
 [?2004h]0;fish  /Users/carter/Documents/School/Summer_2019/Research/MVSN-FMM[30m(B[m[38;5;237m⏎(B[m                                                                                      ⏎ [2Kcarter@Carters-MacBook-Pro [32m~/D/S/S/R/MVSN-FMM[30m(B[m> [K[7m^C[30m(B[m[K
 [Acarter@Carters-MacBook-Pro [32m~/D/S/S/R/MVSN-FMM[30m(B[m> [K
 [K[A[47C]0;fish  /Users/carter/Documents/School/Summer_2019/Research/MVSN-FMM[30m(B[mcarter@Carters-MacBook-Pro [32m~/D/S/S/R/MVSN-FMM[30m(B[m> [Kgit push[1mgit(B[m [36mpush[30m(B[m[36mcommit -m "algo"[30m(B[m[10D [36m-m[30m(B[m [33m"algo"[30m(B[m[16D[36madd -A[30m(B[m[K [36m-A[30m(B[m
-[30m(B[m[?2004l]0;git  /Users/carter/Documents/School/Summer_2019/Research/MVSN-FMM[30m(B[m
+[30m(B[m[?2004l]0;git  /Users/carter/Documents/School/Summer_2019/Research/MVSN-FMM[30m(B[m[?2004h]0;fish  /Users/carter/Documents/School/Summer_2019/Research/MVSN-FMM[30m(B[m[38;5;237m⏎(B[m                                                                                      ⏎ [2Kcarter@Carters-MacBook-Pro [32m~/D/S/S/R/MVSN-FMM[30m(B[m> [Kgit add -A[10D[1mgit(B[m [36madd[30m(B[m [36m-A[30m(B[m[36mpus[30m(B[mh[K[36mh[30m(B[m[36mcommit -m "algo"[30m(B[m[10D [36m-m[30m(B[m [33m"algo"[30m(B[m
+[30m(B[m[?2004l]0;git  /Users/carter/Documents/School/Summer_2019/Research/MVSN-FMM[30m(B[m[master 70e015e] algo
+ 79 files changed, 66 insertions(+), 15877 deletions(-)
+ delete mode 100644 manuscript/manuscript 10.log
+ delete mode 100644 manuscript/manuscript 11.log
+ delete mode 100644 manuscript/manuscript 12.log
+ delete mode 100644 manuscript/manuscript 13.log
+ delete mode 100644 manuscript/manuscript 15.log
+ delete mode 100644 manuscript/manuscript 16.log
+ delete mode 100644 manuscript/manuscript 17.log
+ delete mode 100644 manuscript/manuscript 18.log
+ delete mode 100644 manuscript/manuscript 19.log
+ delete mode 100644 manuscript/manuscript 2.log
+ delete mode 100644 manuscript/manuscript 20.log
+ delete mode 100644 manuscript/manuscript 3.log
+ delete mode 100644 manuscript/manuscript 4.log
+ delete mode 100644 manuscript/manuscript 5.log
+ delete mode 100644 manuscript/manuscript 5.synctex.gz
+ delete mode 100644 manuscript/manuscript 6.log
+ delete mode 100644 manuscript/manuscript 6.synctex.gz
+ delete mode 100644 manuscript/manuscript 7.log
+ delete mode 100644 manuscript/manuscript 8.log
+ delete mode 100644 manuscript/manuscript 9.log
+ delete mode 100644 manuscript/manuscript.aux
+ delete mode 100644 manuscript/manuscript.log
+ delete mode 100644 manuscript/manuscript.synctex 10.gz
+ delete mode 100644 manuscript/manuscript.synctex 10.synctex.gz
+ delete mode 100644 manuscript/manuscript.synctex 11.gz
+ delete mode 100644 manuscript/manuscript.synctex 11.synctex.gz
+ delete mode 100644 manuscript/manuscript.synctex 12.gz
+ delete mode 100644 manuscript/manuscript.synctex 12.synctex.gz
+ delete mode 100644 manuscript/manuscript.synctex 13.gz
+ delete mode 100644 manuscript/manuscript.synctex 13.synctex.gz
+ delete mode 100644 manuscript/manuscript.synctex 14.gz
+ delete mode 100644 manuscript/manuscript.synctex 15.gz
+ delete mode 100644 manuscript/manuscript.synctex 15.synctex.gz
+ delete mode 100644 manuscript/manuscript.synctex 16.gz
+ delete mode 100644 manuscript/manuscript.synctex 16.synctex.gz
+ delete mode 100644 manuscript/manuscript.synctex 17.gz
+ delete mode 100644 manuscript/manuscript.synctex 18.gz
+ delete mode 100644 manuscript/manuscript.synctex 19.gz
+ delete mode 100644 manuscript/manuscript.synctex 19.synctex.gz
+ delete mode 100644 manuscript/manuscript.synctex 2.gz
+ delete mode 100644 manuscript/manuscript.synctex 2.synctex.gz
+ delete mode 100644 manuscript/manuscript.synctex 20.gz
+ delete mode 100644 manuscript/manuscript.synctex 21.gz
+ delete mode 100644 manuscript/manuscript.synctex 21.synctex.gz
+ delete mode 100644 manuscript/manuscript.synctex 22.gz
+ delete mode 100644 manuscript/manuscript.synctex 23.gz
+ delete mode 100644 manuscript/manuscript.synctex 24.gz
+ delete mode 100644 manuscript/manuscript.synctex 25.gz
+ delete mode 100644 manuscript/manuscript.synctex 26.gz
+ delete mode 100644 manuscript/manuscript.synctex 27.gz
+ delete mode 100644 manuscript/manuscript.synctex 27.synctex.gz
+ delete mode 100644 manuscript/manuscript.synctex 28.gz
+ delete mode 100644 manuscript/manuscript.synctex 28.synctex.gz
+ delete mode 100644 manuscript/manuscript.synctex 29.gz
+ delete mode 100644 manuscript/manuscript.synctex 29.synctex.gz
+ delete mode 100644 manuscript/manuscript.synctex 3.gz
+ delete mode 100644 manuscript/manuscript.synctex 3.synctex.gz
+ delete mode 100644 manuscript/manuscript.synctex 30.synctex.gz
+ delete mode 100644 manuscript/manuscript.synctex 31.synctex.gz
+ delete mode 100644 manuscript/manuscript.synctex 32.synctex.gz
+ delete mode 100644 manuscript/manuscript.synctex 33.synctex.gz
+ delete mode 100644 manuscript/manuscript.synctex 34.synctex.gz
+ delete mode 100644 manuscript/manuscript.synctex 4.gz
+ delete mode 100644 manuscript/manuscript.synctex 4.synctex.gz
+ delete mode 100644 manuscript/manuscript.synctex 5.gz
+ delete mode 100644 manuscript/manuscript.synctex 5.synctex.gz
+ delete mode 100644 manuscript/manuscript.synctex 6.gz
+ delete mode 100644 manuscript/manuscript.synctex 6.synctex.gz
+ delete mode 100644 manuscript/manuscript.synctex 7.gz
+ delete mode 100644 manuscript/manuscript.synctex 7.synctex.gz
+ delete mode 100644 manuscript/manuscript.synctex 8.gz
+ delete mode 100644 manuscript/manuscript.synctex 8.synctex.gz
+ delete mode 100644 manuscript/manuscript.synctex 9.gz
+ delete mode 100644 manuscript/manuscript.synctex 9.synctex.gz
+ delete mode 100644 manuscript/manuscript.synctex(1).gz
+ delete mode 100644 manuscript/manuscript.synctex.gz
+ delete mode 100644 manuscript/manuscript.synctex.synctex.gz
+ delete mode 100644 manuscript/manuscript.toc
+[?2004h]0;fish  /Users/carter/Documents/School/Summer_2019/Research/MVSN-FMM[30m(B[m[38;5;237m⏎(B[m                                                                                      ⏎ [2Kcarter@Carters-MacBook-Pro [32m~/D/S/S/R/MVSN-FMM[30m(B[m> [Kgit commit -m "algo"[20D[1mgit(B[m [36mcommit[30m(B[m [36m-m[30m(B[m [33m"algo"[30m(B[m[16D[36madd -A[30m(B[m[K [36m-A[30m(B[m[36mpus[30m(B[mh[K[36mh[30m(B[m
+[30m(B[m[?2004l]0;git  /Users/carter/Documents/School/Summer_2019/Research/MVSN-FMM[30m(B[mCounting objects: 7, done.
+Delta compression using up to 8 threads.
+Compressing objects:  14% (1/7)   Compressing objects:  28% (2/7)   Compressing objects:  42% (3/7)   Compressing objects:  57% (4/7)   Compressing objects:  71% (5/7)   Compressing objects:  85% (6/7)   Compressing objects: 100% (7/7)   Compressing objects: 100% (7/7), done.
+Writing objects:  14% (1/7)   Writing objects:  28% (2/7)   Writing objects:  42% (3/7)   Writing objects:  57% (4/7)   Writing objects:  71% (5/7)   Writing objects:  85% (6/7)   Writing objects: 100% (7/7)   Writing objects: 100% (7/7), 2.08 KiB | 709.00 KiB/s, done.
+Total 7 (delta 3), reused 0 (delta 0)
+remote: Resolving deltas:   0% (0/3)   [Kremote: Resolving deltas:  33% (1/3)   [Kremote: Resolving deltas:  66% (2/3)   [Kremote: Resolving deltas: 100% (3/3)   [Kremote: Resolving deltas: 100% (3/3), completed with 3 local objects.[K
+To https://github.com/carter-allen/MVSN-FMM.git
+   87ad2b7..70e015e  master -> master
+[?2004h]0;fish  /Users/carter/Documents/School/Summer_2019/Research/MVSN-FMM[30m(B[m[38;5;237m⏎(B[m                                                                                      ⏎ [2Kcarter@Carters-MacBook-Pro [32m~/D/S/S/R/MVSN-FMM[30m(B[m> [K[7m^C[30m(B[m[K
+[Acarter@Carters-MacBook-Pro [32m~/D/S/S/R/MVSN-FMM[30m(B[m> [K
+[K[A[47C]0;fish  /Users/carter/Documents/School/Summer_2019/Research/MVSN-FMM[30m(B[mcarter@Carters-MacBook-Pro [32m~/D/S/S/R/MVSN-FMM[30m(B[m> [K]0;fish  /Users/carter/Documents/School/Summer_2019/Research/MVSN-FMM[30m(B[mWelcome to fish, the friendly interactive shell
+]0;fish  /Users/carter/Documents/School/Summer_2019/Research/MVSN-FMM[30m(B[mcarter@Carters-MacBook-Pro [32m~/D/S/S/R/MVSN-FMM[30m(B[m> [Jg[91mg[30m(B[m[38;5;240mit push[30m(B[m[91mi[38;5;240mt push[30m(B[m[91mt[38;5;240m push[30m(B[m[1mgit(B[m[38;5;240m push[30m(B[m[1m (B[m[38;5;240mpush[30m(B[m [38;5;240mpush[30m(B[ma[K[38;5;240mdd -A[30m(B[m[36m[4ma[38;5;240m[24mdd -A[30m(B[m[K[K[K[91mgi[30m(B[m[K[Kgit push[1mgit(B[m [36mpush[30m(B[m[36mcommit -m "algo"[30m(B[m[10D [36m-m[30m(B[m [33m"algo"[30m(B[m[16D[36madd -A[30m(B[m[K [36m-A[30m(B[m
