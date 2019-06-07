@@ -208,7 +208,7 @@ Heterogeneity of treatment effects (HTE) (Lanza and Rhoades, 2013).
 
 \subsection{Existing Approaches}
 
-Mixtures of multivariate non-symmetric distributions such as the multivariate skew-normal (MSN) distribution allow for the nuances of the marginal density to be captured with a more parsimonious set of mixture components. Mixtures of MSN distributions have been dealt with previously in a Bayesian context (Fr\"{u}hwirth-Schnatter \& Pyne, 2010), however in these models, focus lies primary on marginal density estimation and inference on the mixture components (i.e. clusters) is not discussed. More recently, the mixtures of skew-$t$ factor analysis (MSTFA) model has been proposed for settings in which cluster-specific inference is of primary interest (Lin \textit{et al.} 2018). However, an important feature not included in the MSTFA is the ability to explain individual-level cluster membership as a function of covariates of interest. Additionally, parameter estimation proposed by Lin et al. for the MSTFA relies on a prohibitively complex EM algorithm and does not enjoy the inferential benefits of a Bayesian approach, namely the ability to incorporate prior information into a model and make posterier probability statements. Our proposed model improves on these previous works by estimating parameters in a Bayesian framework as well as including the ability to fit a multinomial logit regression to cluster membership probabilities using a novel application of data augmentation with the P\'olya Gamma distribution.
+Mixtures of multivariate non-symmetric distributions such as the multivariate skew-normal (MSN) distribution allow for the nuances of the marginal density to be captured with a more parsimonious set of mixture components. Mixtures of MSN distributions have been dealt with previously in a Bayesian context (Fr\"{u}hwirth-Schnatter \& Pyne, 2010), however in these models, focus lies primary on marginal density estimation and inference on the mixture components (i.e. clusters) is not discussed. More recently, the mixtures of skew-$t$ factor analysis (MSTFA) model has been proposed for settings in which cluster-specific inference is of primary interest (Lin \textit{et al.} 2018). However, an important feature not included in the MSTFA is the ability to explain individual-level cluster membership as a function of covariates of interest. Additionally, parameter estimation proposed by Lin et al. for the MSTFA relies on a prohibitively complex EM algorithm and does not enjoy the inferential benefits of a Bayesian approach, namely the ability to incorporate prior information into a model and make posterior probability statements. Our proposed model improves on these previous works by estimating parameters in a Bayesian framework as well as including the ability to fit a multinomial logit regression to cluster membership probabilities using a novel application of data augmentation with the P\'olya Gamma distribution.
 
 \textbf{\textit{Put lit review of Bayesian PG multinomial logistic regression here}}
 
@@ -231,7 +231,7 @@ A ubiquitous feature of repeated measures studies is loss of data due to intermi
 
 \subsection{Generic Mixture}
 
-Let $\mathbf{y}_{i}$ be the $J \times 1$ observation vector for subject $i$ such that $y_{ij}$ is the observation for subject $i$ at timepoint $j$. We assume for now that $\mathbf{y}_{i}$ is fully observed. Later, we relax this assumptin by allowing for missingness in the components of $\mathbf{y}_{i}$. The general formulation of the multivariate skew normal mixure model is as follows.
+Let $\mathbf{y}_{i}$ be the $J \times 1$ observation vector for subject $i$ such that $y_{ij}$ is the observation for subject $i$ at timepoint $j$. We assume for now that $\mathbf{y}_{i}$ is fully observed. Later, we relax this assumption by allowing for missingness in the components of $\mathbf{y}_{i}$. The general formulation of the multivariate skew normal mixture model is as follows.
 
 $$f(\mathbf{y}_i) = \sum_{k = 1}^{K} \pi_{ik} f(\mathbf{y}_i|\boldsymbol\theta_k)$$
 
@@ -252,7 +252,7 @@ where $\mathbf{x}_i$ is the $P \times 1$ vector of covariate values for subject 
 
 \subsection{Multinomial Regression on Class Probabilities}
 
-A primary concern of our model is with identification of latent infant development clusters. We accomplish this via multinomial logit regression model on cluster membership, which utilizes P\'{o}lya-Gamma data-aumentation to allow for updating of all parameters using Gibbs sampling. The multinomial logit model is as follows for $k = 1,...,K$.
+A primary concern of our model is with identification of latent infant development clusters. We accomplish this via multinomial logit regression model on cluster membership, which utilizes P\'{o}lya-Gamma data-augmentation to allow for updating of all parameters using Gibbs sampling. The multinomial logit model is as follows for $k = 1,...,K$.
 
 $$P(Z_i = k|\mathbf{w}_i) = \pi_{ik} = \frac{e^{\mathbf{w}_i^T \boldsymbol\delta_k}}{\sum_{k' = 1}^K e^{\mathbf{w}_i^T \boldsymbol\delta_{k'}}}$$
 
@@ -292,7 +292,7 @@ An attractive feature of this imputation approach is that each missing outcome i
 
 \begin{itemize}
 
-\item Emphasize that PG data augmentation for the multinomial model results in a PG mixure of experts model, which is a computationally efficient way to model edge weights. 
+\item Emphasize that PG data augmentation for the multinomial model results in a PG mixture of experts model, which is a computationally efficient way to model edge weights. 
 
 \end{itemize}
 
@@ -357,7 +357,7 @@ An attractive feature of this imputation approach is that each missing outcome i
 
 \subsection{Simulation to Compare Imputation Methods}
 
-\subsection{Simulation to Assess Sensitivity to Mispecified K}
+\subsection{Simulation to Assess Sensitivity to Misspecified K}
 
 \newpage
 
@@ -453,7 +453,7 @@ We choose conjugate priors for $\mathbf{B}^*$ and $\boldsymbol\Sigma$ as follows
 $$\boldsymbol\Sigma \sim \text{inverse-Wishart}(\mathbf{V}_0,\nu_0)$$
 $$\mathbf{B}^*|\boldsymbol\Sigma \sim MatNorm_{(m+1), p}(\mathbf{B}_0^*,\mathbf{L}_0^{-1},\boldsymbol\Sigma)$$
 
-We now dervive the joint posterior distribution of the parameters $\mathbf{B}^*$ and $\boldsymbol\Sigma$.
+We now derive the joint posterior distribution of the parameters $\mathbf{B}^*$ and $\boldsymbol\Sigma$.
 \begin{align*} 
 p(\mathbf{B}^*,\boldsymbol\Sigma|\mathbf{X}^*,\mathbf{Y}) & \propto  p(\mathbf{Y}|\mathbf{X}^*,\mathbf{B}^*,\boldsymbol\Sigma)p(\mathbf{B}^*|\boldsymbol\Sigma)p(\boldsymbol\Sigma)\\
 &  \propto |\boldsymbol\Sigma|^{-n/2}\exp \left \{ -\frac{1}{2} \tr \left [(\mathbf{Y} - \mathbf{X^*}\mathbf{B}^*)^T(\mathbf{Y} - \mathbf{X^*}\mathbf{B}^*)\boldsymbol\Sigma^{-1} \right ]\right \} \\
@@ -467,7 +467,7 @@ p(\mathbf{B}^*,\boldsymbol\Sigma|\mathbf{X}^*,\mathbf{Y}) & \propto  p(\mathbf{Y
 
 \subsubsection{Multivariate Normal Conditional Imputation}
 
-The multivariate normal conditional imputation derivations are given for a single cluster without loss of generality. In practive, the data and parameters in this section would be replaced by cluster specific estimates in the case of clustering. 
+The multivariate normal conditional imputation derivations are given for a single cluster without loss of generality. In practice, the data and parameters in this section would be replaced by cluster specific estimates in the case of clustering. 
 
 For a given observation vector $\mathbf{y} \sim N_J(\boldsymbol\mu, \boldsymbol\Sigma)$, we allow for missingness in at most $J - 1$ of the multivariate outcomes through the use of a conditional imputation step embedded within our Gibbs sampler. Suppose $\mathbf{y}$ contains $q$ missing observations and can be partitioned into two vectors $\mathbf{y_{1}}$ and $\mathbf{y_{2}}$ such that $\mathbf{y_{1}}$ is a $q \times 1$ vector of missing observations and $\mathbf{y_{2}}$ is a $(J-q) \times 1$ vector of complete observations. Similarly, partition $\boldsymbol\mu$ and $\boldsymbol\Sigma$ as follows.
 $$\boldsymbol\mu = \begin{bmatrix} \boldsymbol\mu_1 \\ \boldsymbol\mu_2 \end{bmatrix} \ \ \ \ \ \boldsymbol\Sigma = \begin{bmatrix} \boldsymbol\Sigma_{11} & \boldsymbol\Sigma_{12} \\ \boldsymbol\Sigma_{21} & \boldsymbol\Sigma_{22} \end{bmatrix}$$
@@ -484,7 +484,7 @@ f(\mathbf{y_1}|\mathbf{y_2},\boldsymbol\mu,\boldsymbol\Sigma) & \propto  f(\math
 $$\Rightarrow \mathbf{y_1}|\mathbf{y_2},\boldsymbol\mu,\boldsymbol\Sigma \sim N_q(\boldsymbol\mu_{cond},\boldsymbol\Sigma_{cond})$$
 $$\boldsymbol\mu_{cond} = \boldsymbol\mu_1 + \boldsymbol\Sigma_{12}\boldsymbol\Sigma_{22}^{-1}(\mathbf{y}_2 - \boldsymbol\mu_2), \ \ \ \ \ \ \boldsymbol\Sigma_{cond} = \boldsymbol\Sigma_{11} - \boldsymbol\Sigma_{12}\boldsymbol\Sigma_{22}^{-1}\boldsymbol\Sigma_{21}$$
 
-The blockwise inversion formula was used to invert $\boldsymbol\Sigma$ according to the following reparameterizations.
+The block-wise inversion formula was used to invert $\boldsymbol\Sigma$ according to the following reparameterizations.
 \begin{align*}
 \boldsymbol\Sigma_{11}^* & = \boldsymbol\Sigma_{11}^{-1} + \boldsymbol\Sigma_{11}^{-1}\boldsymbol\Sigma_{12}(\boldsymbol\Sigma_{22} - \boldsymbol\Sigma_{21}\boldsymbol\Sigma_{11}^{-1}\boldsymbol\Sigma_{12})^{-1}\boldsymbol\Sigma_{21}\boldsymbol\Sigma_{11}^{-1}\\
 \boldsymbol\Sigma_{12}^* & = -\boldsymbol\Sigma_{11} \boldsymbol\Sigma_{12}(\boldsymbol\Sigma_{22}-\boldsymbol\Sigma_{21}\boldsymbol\Sigma_{11}^{-1}\boldsymbol\Sigma_{12})^{-1}\\
@@ -521,6 +521,8 @@ The blockwise inversion formula was used to invert $\boldsymbol\Sigma$ according
 
 \bibitem{ } Azzalini, A. and Dalla Valle, A. (1996). The multivariate skew normal distribution. Biometrika 83, 715–726.
 
+\bibitem{ } Chen JT, Gupta AK. Matrix variate skew normal distributions. \textit{Statistics}. 2005 Jun 1;39(3):247-53.
+
 \bibitem{ } Neelon SE, \O stbye T, Bennett GG, Kravitz RM, Clancy SM, Stroo M, Iversen E, Hoyo C. Cohort profile for the Nurture Observational Study examining associations of multiple caregivers on infant growth in the Southeastern USA. \textit{BMJ Open}. 2017 Feb 1;7(2):e013939.
 
 \bibitem{ } Franczak BC, Tortora C, Browne RP, McNicholas PD. Unsupervised learning via mixtures of skewed distributions with hypercube contours. \textit{Pattern Recognition Letters}. 2015 Jun 1;58:69-76.
@@ -553,7 +555,11 @@ The blockwise inversion formula was used to invert $\boldsymbol\Sigma$ according
 
 \bibitem{ } Tiao GC, Zellner A. On the Bayesian estimation of multivariate regression. \textit{Journal of the Royal Statistical Society}: Series B (Methodological). 1964 Jul;26(2):277-85.
 
+\bibitem{ } Viroli C. Finite mixtures of matrix normal distributions for classifying three-way data. \textit{Statistics and Computing}. 2011 Oct 1;21(4):511-22.
+
 \bibitem{ } Vrbik I, Mcnicholas PD. Parsimonious skew mixture models for model-based clustering and classification. \textit{Computational Statistics \& Data Analysis}. 2014 Mar 1;71:196-210.
+
+\bibitem{ } Zeller CB, Cabral CR, Lachos VH. Robust mixture regression modeling based on scale mixtures of skew-normal distributions. \textit{Test}. 2016 Jun 1;25(2):375-96.
 
 \bibitem{ } Zhou X, Reiter JP. A note on Bayesian inference after multiple imputation. \textit{The American Statistician}. 2010 May 1;64(2):159-63.
 
