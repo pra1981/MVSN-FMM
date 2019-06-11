@@ -1,0 +1,136 @@
+\documentclass[]{article}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+\else % if luatex or xelatex
+  \ifxetex
+    \usepackage{mathspec}
+  \else
+    \usepackage{fontspec}
+  \fi
+  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+\fi
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+% use microtype if available
+\IfFileExists{microtype.sty}{%
+\usepackage{microtype}
+\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\usepackage[margin=1in]{geometry}
+\usepackage{hyperref}
+\hypersetup{unicode=true,
+            pdftitle={Paper Tables},
+            pdfauthor={Carter Allen},
+            pdfborder={0 0 0},
+            breaklinks=true}
+\urlstyle{same}  % don't use monospace font for urls
+\usepackage{graphicx,grffile}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+\IfFileExists{parskip.sty}{%
+\usepackage{parskip}
+}{% else
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{0}
+% Redefines (sub)paragraphs to behave more like sections
+\ifx\paragraph\undefined\else
+\let\oldparagraph\paragraph
+\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+\let\oldsubparagraph\subparagraph
+\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+
+%%% Use protect on footnotes to avoid problems with footnotes in titles
+\let\rmarkdownfootnote\footnote%
+\def\footnote{\protect\rmarkdownfootnote}
+
+%%% Change title format to be more compact
+\usepackage{titling}
+
+% Create subtitle command for use in maketitle
+\providecommand{\subtitle}[1]{
+  \posttitle{
+    \begin{center}\large#1\end{center}
+    }
+}
+
+\setlength{\droptitle}{-2em}
+
+  \title{Paper Tables}
+    \pretitle{\vspace{\droptitle}\centering\huge}
+  \posttitle{\par}
+    \author{Carter Allen}
+    \preauthor{\centering\large\emph}
+  \postauthor{\par}
+      \predate{\centering\large\emph}
+  \postdate{\par}
+    \date{3/26/2019}
+
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{wrapfig}
+\usepackage{float}
+\usepackage{colortbl}
+\usepackage{pdflscape}
+\usepackage{tabu}
+\usepackage{threeparttable}
+\usepackage{threeparttablex}
+\usepackage[normalem]{ulem}
+\usepackage{makecell}
+\usepackage{xcolor}
+
+\begin{document}
+\maketitle
+
+\begin{tabular}{l|l|l|l|l|l}
+\hline
+True & Est. (95\textbackslash{}\% CrI) & True & Est. (95\textbackslash{}\% CrI) & True & Est. (95\textbackslash{}\% CrI)\\
+\hline
+-1.77 & -1.92 (-2.52, -1.38) & 0.11 & 0.24 (-0.16, 1.02) & 1.22 & 0.25 (-0.3, 0.99)\\
+\hline
+-1.9 & -1.91 (-2.03, -1.8) & -0.01 & 0.06 (-0.15, 0.32) & 1.69 & 1.59 (1.39, 1.83)\\
+\hline
+-2.43 & -2.48 (-3.11, -1.98) & 0.19 & 0.68 (-0.21, 1.31) & 1.2 & 0.69 (-0.1, 1.24)\\
+\hline
+-1.94 & -1.9 (-2.04, -1.79) & 0.01 & 0.16 (-0.06, 0.55) & 1.35 & 1.36 (1.16, 1.53)\\
+\hline
+1 & 1 (0.75, 1.21) & 1 & 0.95 (0.59, 1.81) & 1 & 1.57 (0.9, 1.98)\\
+\hline
+-0.3 & -0.19 (-0.33, 0.08) & -0.34 & -0.1 (-0.62, 0.3) & -0.78 & -0.45 (-0.76, 0.22)\\
+\hline
+1 & 1.1 (0.77, 1.39) & 1 & 1.16 (0.81, 1.99) & 1 & 1.09 (0.73, 1.48)\\
+\hline
+-0.33 & -0.08 (-0.73, 0.69) & 0.67 & 0.51 (-0.41, 0.95) & -1 & 0.32 (-0.59, 0.92)\\
+\hline
+-0.33 & -0.25 (-0.94, 0.53) & 0.67 & -0.02 (-1, 0.9) & -1 & -0.43 (-1.02, 0.63)\\
+\hline
+-0.73 & -0.94 (-1.17, -0.72) & -0.73 & -0.94 (-1.17, -0.72) & -0.73 & -0.94 (-1.17, -0.72)\\
+\hline
+-0.77 & -0.54 (-0.74, -0.36) & -0.77 & -0.54 (-0.74, -0.36) & -0.77 & -0.54 (-0.74, -0.36)\\
+\hline
+0.33 & 0.43 (0.4, 0.45) & 0.33 & 0.26 (0.22, 0.3) & 0.33 & 0.32 (0.27, 0.35)\\
+\hline
+\end{tabular}
+
+
+\end{document}

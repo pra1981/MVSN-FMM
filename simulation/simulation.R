@@ -23,10 +23,10 @@ library(BayesLogit) # For rpg function
 # No scientific notation
 options(scipen=999)
 # Generate data
-k <- 4 # number of outcomes
+k <- 2 # number of outcomes
 p <- 2 # number of predictors 
 h <- 3 # number of clusters
-n <- 1000 # number of observations (takes alot of data to estimate this many parameters)
+n <- 1500 # number of observations (takes alot of data to estimate this many parameters)
 print(paste("Generating data with",n,"observations of dimension",k,
             "with",p,"covariates and",h,"clusters"))
 
@@ -35,15 +35,34 @@ P <- matrix(rep(rep(1/h,h),each=n),n,h) # probability matrix governing cluster m
 
 # Generate covariates
 X <- matrix(rnorm(n*p),nrow = n,ncol = p) # random predictors
+X[,1] <- 1
 t <- rtruncnorm(n,0,Inf,0,1) # trunc norm random effects
 Xstar <- cbind(X,t) # Combine X and t
+# # Generate X manually
+# xi <- matrix(c(1, 0, 0, 0,
+#                1, 1, 0, 0,
+#                1, 0, 1, 0,
+#                1, 0, 0, 1),
+#              nrow = 4,
+#              ncol = 4,
+#              byrow = TRUE)
+# t <- rtruncnorm(n,0,Inf,0,1) # trunc norm random effects
+# X <- NULL 
+# capT <- NULL
+# for(i in 1:n)
+# {
+#     X <- rbind(X,xi)
+#     capT <- rbind(capT,diag(t[i],nrow = 4,ncol = 4))
+# }
+# 
+# Xstar <- cbind(X,capT) # Combine X and t
 
 # Covariates corresponding to multinomial regression
 #w1 <- rnorm(n) # continuous predictor
 #w2 <- rnorm(n) # continuous predictor
 w3 <- rbinom(n,1,0.5) # binary predictor
 w4 <- rbinom(n,1,0.5) # binary predictor
-W <- cbind(1,w3,w4) # design matrix
+W <- cbind(w3) # design matrix
 v <- ncol(W) # number of multinomial predictors
 delta.true <- matrix(rtruncnorm(n = v*(h-1),
                                 a = -1, 
@@ -98,12 +117,12 @@ for(l in 1:h)
     A.l <- matrix(runif(k^2)*k-1,ncol = k) # make a symmetric matrix
     sig2.true.l <- cov2cor(t(A.l) %*% A.l) # true covariance matrix
     sig2.true.list[[l]] <- sig2.true.l # Add to list of true class-specific sig2 matrices
-    
+
     # Cluster specific Ys
     E.l <- rmvnorm(n.l,rep(0,k),sig2.true.l) # zero centered MVN error matrix
     Y.l <- Xstar.l %*% betastar.true.l + E.l # generated data
     Y <- rbind(Y,Y.l) # add class specific observations to total outcome matrix
-    
+
     # Cluster specific MLEs
     beta.mle.l <- solve(t(X.l) %*% X.l) %*% t(X.l) %*% Y.l # MLE of Beta matrix
     beta.mle.list[[l]] <- beta.mle.l
@@ -112,7 +131,7 @@ for(l in 1:h)
     sig2.mle.l <- mlest(Y.l - Xstar.l %*% betastar.true.l)$sigmahat # MLE of v-cov matrix
     sig2.mle.list[[l]] <- sig2.mle.l
     sig2.init.list[[l]] <- sig2.mle.l # convinient to just set the inits to sig2.mle.l here
-    
+
     # Cluster specific inits
     psi.init.l <- betastar.mle.l[p+1,]
     psi.init.list[[l]] <- psi.init.l
@@ -134,8 +153,8 @@ delta0 <- rep(0,v) # prior mean for delta coefficients (multinomial regression)
 S0 <- diag(0.5,v) # prior covariance for delta coefficients (multinomial regression)
 
 # Sample storage
-nsim <- 1000 # number of iterations
-burn <- 300 # number of iterations to save
+nsim <- 5000 # number of iterations
+burn <- 1000 # number of iterations to save
 n.iter <- nsim - burn # number of saved iterations
 Z <- matrix(0,nrow = n.iter,ncol = n) # large matrix where each row is the value of z at a specific iteration
 PI <- matrix(0,nrow = n.iter,ncol = h) # matrix w/ each row as pi vector at each iteration
@@ -259,6 +278,7 @@ for(i in 1:nsim)
     
     # Step 1B:
     # Update multinomial regression parameters
+    W <- as.matrix(W)
     for(l in 1:(h-1))
     {
         delta.l <- delta[,l]
