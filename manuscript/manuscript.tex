@@ -255,13 +255,11 @@ where $\mathbf{x}_i$ is the $P \times 1$ vector of covariate values for subject 
 \subsection{Representation as Matrix Skew Normal}
 
 We note that the multivariate skew normal regression problem can be expressed more succinctly through the use of Matrix Skew Normal distributions. In particular, we define $\mathbf{Y}_{n_k \times J}$ as the response matrix with rows $\mathbf{y}_i^T$, $(i = 1,...,n_k)$, where $n_k = \sum_{i = 1}^n(Z_i = k)$ is the total number of observations belonging to class $k$ ($k = 1,...,K$). 
-
 $$\mathbf{Y}_{n_k \times J} \sim \mathcal{MATSN}_{n_k \times J}(\mathbf{M},\boldsymbol\alpha_k,\mathbf{I}_{n_k},\boldsymbol\Sigma_k)$$
 $$\text{vec}(\mathbf{Y}) = \mathbf{y}_{n_kJ \times 1} = (\mathbf{y}^T_1,...,\mathbf{y}^T_{n_k})$$
 $$\text{vec}(\mathbf{M}) = \boldsymbol\mu_{n_k J \times 1} = (\boldsymbol\mu_1^T,...,\boldsymbol\mu_{n_k}^T)$$
 
 where $\boldsymbol\mu_i = \mathbf{x}_i \boldsymbol\beta_k$ and $\boldsymbol\alpha_k = (\alpha_{k1},...,\alpha{kJ})$. This implies that the $i^{th}$ row of $\mathbf{Y}$ is $\mathbf{y}_i \sim \mathcal{MSN}_J(\boldsymbol\mu_i, \boldsymbol\alpha_k, \boldsymbol\Sigma_{J \times J}) = \mathcal{MSN}_J(\mathbf{x}_i \boldsymbol\beta_k, \boldsymbol\alpha_k, \boldsymbol\Sigma)$. Using the stochastic representation presented in Section 3.2, the conditional distribution $\mathbf{y}_i | Z_i, t_i \sim N_J (\mathbf{x}_i \boldsymbol\beta_k + \boldsymbol\psi_k t_i,\boldsymbol\Sigma_k)$. This implies that all responses for cluster $k$ conditioned on $\mathbf{T}_{n_k \times 1}$ is distributed as 
-
 $$\mathbf{Y}_{n_k \times J} | \mathbf{T}_k = \mathbf{t}_k \sim N_{n_k \times J}(\mathbf{M}_k, \mathbf{I}_{n_k}, \boldsymbol\Sigma_k)$$
 $$\text{vec}(\mathbf{M}_k)_{n_kJ \times 1} = \mathbf{X}_{k} \boldsymbol\beta_k + \mathbf{t}_k \otimes \boldsymbol\psi_k$$\
 
@@ -270,7 +268,6 @@ where $\mathbf{t}_k = (t_1,...,t_{n_k})$.
 \subsection{Multinomial Regression on Class Probabilities}
 
 A primary concern of our model is with identification of latent infant development clusters. We accomplish this via multinomial logit regression model on cluster membership, which utilizes P\'{o}lya-Gamma data-augmentation to allow for updating of all parameters using Gibbs sampling. The multinomial logit model is as follows for $k = 1,...,K$.
-
 $$P(Z_i = k|\mathbf{w}_i) = \pi_{ik} = \frac{e^{\mathbf{w}_i^T \boldsymbol\delta_k}}{\sum_{k' = 1}^K e^{\mathbf{w}_i^T \boldsymbol\delta_{k'}}}$$
 
 
@@ -280,20 +277,32 @@ where $\mathbf{w}_i$ is the vector of class probability covariates for subject $
 \subsection{Conditional MVN Imputation}
 
 We allow for missingness of outcomes in the MSN mixture model by imputing missing values from their conditional multivariate normal distributions. We note that
-
 $$\mathbf{y}_i|Z_i,\mathbf{x}_i,t_i,\boldsymbol\beta_{Z_i},\boldsymbol\psi_{Z_i},\boldsymbol\Sigma_{Z_i} \sim N_J(\boldsymbol\beta_{Z_i}^T\mathbf{x}_i  + t_i \boldsymbol\psi_{Z_i}, \boldsymbol\Sigma_{Z_i})$$
 
 This allows us to appeal to standard conditional forms of the multivariate normal distribution to specify the distribution of missing observations. For subject $i$, we use $q_i$ to denote the number of the total $J$ possible repeated measurements are missing. We partition the full $J \times 1$ outcome vector $\mathbf{y}_i$ into the $(J - q_i) \times 1$ observed data vector $\mathbf{y}_i^{obs}$ and the $q_i \times 1$ missing data vector $\mathbf{y}_i^{miss}$. $Y_i = [Y^{miss}_{i_{q \times 1}} | Y^{obs}_{i_{J - q \times 1}}]^T$. We have
-
 $$\mathbf{y}_i^{miss}|\mathbf{y}_i^{obs},\mathbf{x}_i,t_i,Z_i,\boldsymbol\beta_{Z_i},\boldsymbol\psi_{Z_i},\boldsymbol\Sigma_{Z_i} \sim N(\boldsymbol\mu^{miss},\boldsymbol\Sigma^{miss})$$
 
 where $\boldsymbol\mu^{miss}$ and $\boldsymbol\Sigma^{miss}$ take standard forms detailed in the Appendix. 
 
 An attractive feature of this imputation approach is that each missing outcome is imputed ``online", i.e. once per MCMC iteration. This provides more opportunities to explore the parameter space than multiple imputation and avoids multiplicative run-time scaling in $m$, the number of imputations.
 
-\textit{\textbf{Discuss non-ignorable missingness here}}
-
 \subsection{Bayesian Inference}
+
+\subsubsection{P\'olya--Gamma Data Augmentation}
+
+Polson \textit{et al.} (2012) introduced a data augmentation approach to fitting the multinomial logit regression model specified by Holmes and Held (2006), which specifies the full conditional distributions of the multinomial regression parameters as a function of a Bernoulli likelihood. 
+$$p(\boldsymbol\delta_k|\mathbf{z},\boldsymbol\delta_{k' \ne k}) \propto p(\boldsymbol\delta_k) \prod_{i = 1}^{n} \pi_{ik}^{U_{ik}}(1-\pi_{ik})^{1-U_{ik}}$$
+
+where $p(\boldsymbol\delta_k)$ denotes the prior distribution of $\boldsymbol\delta_k$, $U_{ik} = \mathds{1}_{Z_i = k}$ is an indicator that subject $i$ belongs to class $k$, and $\pi_{ik}$ is defined as in Section 3.4. We can rewrite $\pi_{ik}$ as follows
+$$\pi_{ik} = P(U_{ik} = 1) = \frac{e^{\mathbf{w}_i^T \boldsymbol\delta_k - {c}_{ik}}}{1 + e^{\mathbf{w}_i^T \boldsymbol\delta_k - {c}_{ik}}} = \frac{e^{\eta_{ik}}}{1 + e^{\eta_{ik}}}$$
+
+where ${c}_{ik} = \log \sum_{k' \ne k} e^{\mathbf{w}_i^T \boldsymbol\delta_{k'}}$ and $\eta_{ik} = \mathbf{w}_i^T \boldsymbol\delta_k - {c}_{ik}$. We note that the sum $\sum_{k' \ne k} e^{\mathbf{w}_i^T \boldsymbol\delta_{k'}}$ includes the reference category, but since we fix $\boldsymbol\delta_K = \mathbf{0}$, we have $e^{\mathbf{w}_i^T \boldsymbol\delta_K} = 1$, and hence
+$$c_{ik} = \log \sum_{k' \ne k} e^{\mathbf{w}_i^T \boldsymbol\delta_{k'}} = \log \left ( 1 + \sum_{k' \notin \{k,K \}} e^{\mathbf{w}_i^T \boldsymbol\delta_{k'}} \right )$$
+
+We can use the quantities to re-express the full conditionals for $\boldsymbol\delta_k$ as 
+$$p(\boldsymbol\delta_k|\mathbf{Z},\boldsymbol\delta_{k' \ne k}) \propto p(\boldsymbol\delta_k) \prod_{i = 1}^{n} \left (\frac{e^{\eta_{ik}}}{1 + e^{\eta_{ik}}} \right )^{U_{ik}} \left (\frac{1}{1 + e^{\eta_{ik}}} \right )^{1-U_{ik}} = p(\boldsymbol\delta_k) \prod_{i = 1}^n \frac{(e^{\eta_{ik}})^{U_{ik}}}{1 + e^{\eta_{ik}}}$$
+
+which we note is essentially a logistic regression likelihood. We thus apply this P\'olya--Gamma data augmentation scheme to update each $\boldsymbol\delta_k$ ($k = 1,...,K-1$) one at a time based on the binary indicators $U_{ik}$.
 
 \begin{itemize}
 
@@ -425,6 +434,9 @@ Model Component & Parameter & True & Est. (95\% CrI) & True & Est. (95\% CrI) & 
 
 \section{Discussion}
 \label{s:discuss}
+
+\textit{\textbf{Discuss non-ignorable missingness here}}
+
 
 \begin{itemize}
 
