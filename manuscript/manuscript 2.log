@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  14 JUN 2019 10:39
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  14 JUN 2019 10:31
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -580,18 +580,18 @@ LaTeX Warning: Label ` ' multiply defined.
 )
 \openout1 = `manuscript.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 121.
-LaTeX Font Info:    ... okay on input line 121.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 121.
-LaTeX Font Info:    ... okay on input line 121.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 121.
-LaTeX Font Info:    ... okay on input line 121.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 121.
-LaTeX Font Info:    ... okay on input line 121.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 121.
-LaTeX Font Info:    ... okay on input line 121.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 121.
-LaTeX Font Info:    ... okay on input line 121.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 120.
+LaTeX Font Info:    ... okay on input line 120.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 120.
+LaTeX Font Info:    ... okay on input line 120.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 120.
+LaTeX Font Info:    ... okay on input line 120.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 120.
+LaTeX Font Info:    ... okay on input line 120.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 120.
+LaTeX Font Info:    ... okay on input line 120.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 120.
+LaTeX Font Info:    ... okay on input line 120.
  (./endrotfloat.sty
 Package: endrotfloat 2007/01/23 v1.0 LaTeX2e package puts sideways figures and 
 tables at end
@@ -664,12 +664,12 @@ Missing character: There is no œ in font cmr9!
 Missing character: There is no â in font cmr9!
 Missing character: There is no € in font cmr9!
 Missing character: There is no  in font cmr9!
-LaTeX Font Info:    Try loading font information for U+eur on input line 179.
+LaTeX Font Info:    Try loading font information for U+eur on input line 178.
 
 (/usr/local/texlive/2016/texmf-dist/tex/latex/amsfonts/ueur.fd
 File: ueur.fd 2013/01/14 v3.01 Euler Roman
 )
-LaTeX Font Info:    Try loading font information for U+msa on input line 179.
+LaTeX Font Info:    Try loading font information for U+msa on input line 178.
 
 (/usr/local/texlive/2016/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
@@ -730,7 +730,7 @@ Overfull \hbox (4.62497pt too wide) has occurred while \output is active
  []
 
 [6]
-Overfull \hbox (1.04814pt too wide) in paragraph at lines 263--264
+Overfull \hbox (1.04814pt too wide) in paragraph at lines 262--263
 [][]\OT1/cmr/m/n/12 ([][]\OML/cmm/m/it/12 ; [][]; [][]\OT1/cmr/m/n/12 ) = [][](
 \OT1/cmr/bx/n/12 x[][][]\OML/cmm/m/it/12 ; [][]; []\OT1/cmr/m/n/12 )$. Us-ing t
 he stochas-tic rep-re-sen-ta-tion pre-sented
@@ -747,7 +747,7 @@ Overfull \hbox (4.62497pt too wide) has occurred while \output is active
  []
 
 [8]
-LaTeX Font Info:    Try loading font information for U+dsrom on input line 324.
+LaTeX Font Info:    Try loading font information for U+dsrom on input line 323.
 
  (/usr/local/texlive/2016/texmf-dist/tex/latex/doublestroke/Udsrom.fd
 File: Udsrom.fd 1995/08/01 v0.1 Double stroke roman font definitions
@@ -762,9 +762,6 @@ Overfull \hbox (9.24994pt too wide) has occurred while \output is active
  []
 
 [10]
-\openout4 = `manuscript.ttt'.
-
- (manuscript.ttt)
 Overfull \hbox (9.24994pt too wide) has occurred while \output is active
 \OT1/cmr/m/n/9 11
  []
@@ -836,21 +833,16 @@ Overfull \hbox (9.24994pt too wide) has occurred while \output is active
 \OT1/cmr/m/n/9 20
  []
 
-[20] (./manuscript.ttt
-Overfull \hbox (9.24994pt too wide) has occurred while \output is active
-\OT1/cmr/m/n/9 21
- []
-
-[21]) (./manuscript.aux)
+[20] (./manuscript.aux)
 
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 11285 strings out of 493014
- 195807 string characters out of 6133351
- 233651 words of memory out of 5000000
- 14688 multiletter control sequences out of 15000+600000
+ 11278 strings out of 493014
+ 195717 string characters out of 6133351
+ 232642 words of memory out of 5000000
+ 14684 multiletter control sequences out of 15000+600000
  23383 words of font info for 87 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  38i,18n,40p,10383b,334s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -885,10 +877,10 @@ texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/local/texlive/2016/t
 exmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb></usr/local/texlive/2016/tex
 mf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb></usr/local/texlive/2016/texmf
 -dist/fonts/type1/public/doublestroke/dsrom8.pfb>
-Output written on manuscript.pdf (23 pages, 387415 bytes).
+Output written on manuscript.pdf (22 pages, 371459 bytes).
 PDF statistics:
- 203 PDF objects out of 1000 (max. 8388607)
- 145 compressed objects within 2 object streams
+ 200 PDF objects out of 1000 (max. 8388607)
+ 143 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 

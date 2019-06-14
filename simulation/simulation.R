@@ -20,6 +20,8 @@ library(QRM)        # For rGumbel function
 library(nnet)       # To fit multinom function
 library(BayesLogit) # For rpg function
 
+seed <- rnorm(1)
+set.seed(seed)
 # No scientific notation
 options(scipen=999)
 # Generate data
@@ -107,7 +109,7 @@ for(l in 1:h)
     n.l <- sum(c == l) # number of observations truly assigned to cluster l
     
     # Cluster specific betas and psis
-    beta.true.l <- matrix(rnorm(p*k,mean = seq(-h/2,h/2,length.out = h)[l],sd = 0.5),nrow = p,ncol = k) # true beta matrix
+    beta.true.l <- matrix(rnorm(p*k,mean = seq(-h,h,length.out = h)[l],sd = 0.5),nrow = p,ncol = k) # true beta matrix
     psi.true.l <- rep(((-1)^l)*l/3,k) # control skewness of each outcome in cluster l
     betastar.true.l <- rbind(beta.true.l,psi.true.l)
     beta.true.list[[l]] <- beta.true.l
@@ -153,7 +155,7 @@ delta0 <- rep(0,v) # prior mean for delta coefficients (multinomial regression)
 S0 <- diag(0.5,v) # prior covariance for delta coefficients (multinomial regression)
 
 # Sample storage
-nsim <- 2000 # number of iterations
+nsim <- 10000 # number of iterations
 burn <- 1000 # number of iterations to save
 n.iter <- nsim - burn # number of saved iterations
 Z <- matrix(0,nrow = n.iter,ncol = n) # large matrix where each row is the value of z at a specific iteration
@@ -382,7 +384,7 @@ if(!dir.exists(store))
 meta_file <- paste(store,"/META.txt",sep = "")
 file.create(meta_file)
 write(paste("MCMC Run Date:",Sys.time()),file = meta_file, append = TRUE)
-#write(paste("Seed:",seed),file = meta_file, append = TRUE)
+write(paste("Seed:",seed),file = meta_file, append = TRUE)
 write(paste("Number of subjects (n):",n),file = meta_file, append = TRUE)
 write(paste("Number of outcomes (k):",k),file = meta_file, append = TRUE)
 write(paste("Number of predictors (p):",p),file = meta_file, append = TRUE)
