@@ -26,7 +26,7 @@ options(scipen=999)
 k <- 4 # number of outcomes
 p <- 1 # number of predictors 
 h <- 3 # number of clusters
-n <- 1500 # number of observations (takes alot of data to estimate this many parameters)
+n <- 10000 # number of observations (takes alot of data to estimate this many parameters)
 print(paste("Generating data with",n,"observations of dimension",k,
             "with",p,"covariates and",h,"clusters"))
 
@@ -153,7 +153,7 @@ delta0 <- rep(0,v) # prior mean for delta coefficients (multinomial regression)
 S0 <- diag(0.5,v) # prior covariance for delta coefficients (multinomial regression)
 
 # Sample storage
-nsim <- 5000 # number of iterations
+nsim <- 2000 # number of iterations
 burn <- 1000 # number of iterations to save
 n.iter <- nsim - burn # number of saved iterations
 Z <- matrix(0,nrow = n.iter,ncol = n) # large matrix where each row is the value of z at a specific iteration

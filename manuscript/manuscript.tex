@@ -255,8 +255,15 @@ where $\mathbf{x}_i$ is the $P \times 1$ vector of covariate values for subject 
 We note that the multivariate skew normal regression problem can be expressed more succinctly through the use of Matrix Skew Normal distributions. In particular, we define $\mathbf{Y}_{n_k \times J}$ as the response matrix with rows $\mathbf{y}_i^T$, $(i = 1,...,n_k)$, where $n_k = \sum_{i = 1}^n(Z_i = k)$ is the total number of observations belonging to class $k$ ($k = 1,...,K$). 
 
 $$\mathbf{Y}_{n_k \times J} \sim \mathcal{MATSN}_{n_k \times J}(\mathbf{M},\boldsymbol\alpha_k,\mathbf{I}_{n_k},\boldsymbol\Sigma_k)$$
+$$\text{vec}(\mathbf{Y}) = \mathbf{y}_{n_kJ \times 1} = (\mathbf{y}^T_1,...,\mathbf{y}^T_{n_k})$$
+$$\text{vec}(\mathbf{M}) = \boldsymbol\mu_{n_k J \times 1} = (\boldsymbol\mu_1^T,...,\boldsymbol\mu_{n_k}^T)$$
 
-$$\text{vec}(Y) = \mathbf{y}_{n_kJ \times 1} = (\mathbf{y}^T_1,...,\mathbf{y}^T_{n_k})$$
+where $\boldsymbol\mu_i = \mathbf{x}_i \boldsymbol\beta_k$ and $\boldsymbol\alpha_k = (\alpha_{k1},...,\alpha{kJ})$. This implies that the $i^{th}$ row of $\mathbf{Y}$ is $\mathbf{y}_i \sim \mathcal{MSN}_J(\boldsymbol\mu_i, \boldsymbol\alpha_k, \boldsymbol\Sigma_{J \times J}) = \mathcal{MSN}_J(\mathbf{x}_i \boldsymbol\beta_k, \boldsymbol\alpha_k, \boldsymbol\Sigma)$. Using the stochastic representation presented in Section 3.2, the conditional distribution $\mathbf{y}_i | Z_i, t_i \sim N_J (\mathbf{x}_i \boldsymbol\beta_k + \boldsymbol\psi_k t_i,\boldsymbol\Sigma_k)$. This implies that all responses for cluster $k$ conditioned on $\mathbf{T}_{n_k \times 1}$ is distributed as 
+
+$$\mathbf{Y}_{n_k \times J} | \mathbf{T} = \mathbf{t} \sim N_{n_k \times J}(\mathbf{M}_k, \mathbf{I}_{n_k}, \boldsymbol\Sigma_k)$$
+$$\text{vec}(\mathbf{M}_k)_{n_kJ \times 1} = \mathbf{X}_{k} \boldsymbol\beta_k + \mathbf{t}_k \otimes \boldsymbol\psi_k$$\
+
+where $\mathbf{t}_k = (t_1,...,t_{n_k})$.
 
 \subsection{Multinomial Regression on Class Probabilities}
 
@@ -266,21 +273,7 @@ $$P(Z_i = k|\mathbf{w}_i) = \pi_{ik} = \frac{e^{\mathbf{w}_i^T \boldsymbol\delta
 
 
 
-where $\mathbf{w}_i$ is the vector of class probability covariates for subject $i$, $\boldsymbol\delta_k$ contains the multinomial regression parameters for class $k$, and $K$ is the number of putative clusters specified \textit{a priori}. For identifiability purposes, we fix the reference category $k = K$ and set $\boldsymbol\delta_K = \mathbf{0}$.
-
-\[   P(Z_i = k|\mathbf{w}_i,\boldsymbol\delta_k) = \left \{
-\begin{array}{ll}
-      \pi_{ik} = \frac{e^{\mathbf{w}_i^T \boldsymbol\delta_k}}{1 + \sum_{k' = 1}^{K-1} e^{\mathbf{w}_i^T \boldsymbol\delta_{k'}}} & k < K \\
-      \\
-      \pi_{ik} = \frac{1}{1 + \sum_{k' = 1}^{K-1} e^{\mathbf{w}_i^T \boldsymbol\delta_{k'}}} & k = K \\
-\end{array} 
-\right. \]
-
-\
-
-Under this model, $Z_i|\mathbf{w}_i \sim Multinom.(1,\boldsymbol\pi_i)$, where $\boldsymbol\pi_i = (\pi_{i1},...,\pi_{1K})$
-
-During MCMC estimation, the class labels $z_i$ are updated from their multinomial full conditional distribution and used in the remaining MCMC steps as class assignments.
+where $\mathbf{w}_i$ is the vector of class probability covariates for subject $i$, $\boldsymbol\delta_k$ contains the multinomial regression parameters for class $k$, and $K$ is the number of putative clusters specified \textit{a priori}. For identifiability purposes, we fix the reference category $k = K$ and set $\boldsymbol\delta_K = \mathbf{0}$. Under this model, $Z_i|\mathbf{w}_i \sim Multinom.(1,\boldsymbol\pi_i)$, where $\boldsymbol\pi_i = (\pi_{i1},...,\pi_{1K})$. During MCMC estimation, the class labels $z_i$ are updated from their multinomial full conditional distribution and used in the remaining MCMC steps as class assignments.
 
 \subsection{Conditional MVN Imputation}
 

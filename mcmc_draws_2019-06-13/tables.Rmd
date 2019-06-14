@@ -1,0 +1,134 @@
+---
+title: "Simulation Tables"
+author: "Carter Allen"
+date: "4/11/2019"
+output: 
+  pdf_document: 
+    keep_tex: yes
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+library(tidyverse)
+library(knitr)
+library(kableExtra)
+```
+
+```{r}
+load("BETA")
+load("beta_true")
+load("DELTA")
+load("delta_true")
+load("PI")
+load("PSI")
+load("psi_true")
+load("SIGMA")
+load("sig2_true")
+load("pi_true")
+load("Z")
+```
+
+```{r}
+col_summarize <- function(MAT,dig = 2)
+{
+    k <- ncol(MAT)
+    ret_vec <- rep(0,k)
+    for(i in 1:k)
+    {
+        dat <- MAT[,i]
+        est <- round(median(dat),dig)
+        cri <- round(unname(quantile(dat,probs = c(0.025,0.975))),dig)
+        res <- paste(est," (",cri[1],", ",cri[2],")",sep = "")
+        ret_vec[i] <- res
+    }
+    return(ret_vec)
+}
+```
+
+```{r}
+beta_true_c1 <- c(beta.true.list[[1]]) %>% round(.,2)
+beta_true_c2 <- c(beta.true.list[[2]]) %>% round(.,2)
+beta_true_c3 <- c(beta.true.list[[3]]) %>% round(.,2)
+beta_est_c1 <- col_summarize(BETA.list[[1]]) 
+beta_est_c2 <- col_summarize(BETA.list[[2]]) 
+beta_est_c3 <- col_summarize(BETA.list[[3]]) 
+
+sig2_true_c1 <- c(sig2.true.list[[1]])[c(lower.tri(sig2.true.list[[1]],diag = TRUE))] %>% round(.,2)
+sig2_true_c2 <- c(sig2.true.list[[2]])[c(lower.tri(sig2.true.list[[2]],diag = TRUE))] %>% round(.,2)
+sig2_true_c3 <- c(sig2.true.list[[3]])[c(lower.tri(sig2.true.list[[3]],diag = TRUE))] %>% round(.,2)
+sig2_est_c1 <- col_summarize(SIGMA.list[[1]])[c(lower.tri(sig2.true.list[[1]],diag = TRUE))]
+sig2_est_c2 <- col_summarize(SIGMA.list[[2]])[c(lower.tri(sig2.true.list[[2]],diag = TRUE))]
+sig2_est_c3 <- col_summarize(SIGMA.list[[3]])[c(lower.tri(sig2.true.list[[3]],diag = TRUE))] 
+
+psi_true_c1 <- psi.true.list[[1]] %>% round(.,2)
+psi_true_c2 <- psi.true.list[[2]] %>% round(.,2)
+psi_true_c3 <- psi.true.list[[3]] %>% round(.,2)
+psi_est_c1 <- col_summarize(PSI.list[[1]]) 
+psi_est_c2 <- col_summarize(PSI.list[[2]]) 
+psi_est_c3 <- col_summarize(PSI.list[[3]])
+
+delta_true <- c(delta.true) %>% round(.,2)
+delta_est <- col_summarize(DELTA)
+
+pi_est <- col_summarize(PI)
+pi_true <- round(pi.true,2)
+
+model_component <- c("MVSN","Regression","","","","","","","","","","","","","","","","",
+                     "Multinom.","",
+                     "Clustering")
+params <- c("$\\beta_{0}$","$\\beta_{1}$","$\\beta_{2}$","$\\beta_{3}$",
+            "$\\sigma_{11}$","$\\sigma_{12}$","$\\sigma_{13}$","$\\sigma_{14}$",
+            "$\\sigma_{22}$","$\\sigma_{23}$","$\\sigma_{24}$",
+            "$\\sigma_{33}$","$\\sigma_{34}$",
+            "$\\sigma_{44}$",
+            "$\\psi_{1}$","$\\psi_{2}$", "$\\psi_{3}$","$\\psi_{4}$",
+            "$\\delta_{11}$","$\\delta_{12}$",
+            "$\\pi_l$")
+
+true_c1 <- c(beta_true_c1,sig2_true_c1,psi_true_c1,delta_true,pi_true[1])
+true_c2 <- c(beta_true_c2,sig2_true_c2,psi_true_c2,delta_true,pi_true[2])
+true_c3 <- c(beta_true_c3,sig2_true_c3,psi_true_c3,delta_true,pi_true[3])
+est_c1 <- c(beta_est_c1,sig2_est_c1,psi_est_c1,delta_est,pi_est[1])
+est_c2 <- c(beta_est_c2,sig2_est_c2,psi_est_c2,delta_est,pi_est[2])
+est_c3 <- c(beta_est_c3,sig2_est_c3,psi_est_c3,delta_est,pi_est[3])
+
+
+
+t1 <- cbind(model_component,
+            params,
+            true_c1,est_c1,
+            true_c2,est_c2,
+            true_c3,est_c3)
+colnames(t1) <- c("Model Component",
+                  "Parameter",
+                  "True","Est. (95\\% CrI)",
+                  "True","Est. (95\\% CrI)",
+                  "True","Est. (95\\% CrI)")
+```
+
+```{r}
+rownames(t1) <- NULL
+kable(t1, booktabs = T, escape = F,caption = "Model results for simulated data with n = 1500, k = 4, p = 1, h = 3, v = 1. 5000 iterations were run with a burn in of 1000. Missingness mechanism was MAR and P(miss) = 0") %>%
+  kable_styling(font_size = 8) %>%
+  add_header_above(c(" " = 2,"Class 1" = 2, "Class 2" = 2, "Class 3" = 2)) %>%
+  group_rows(" ",1,4) %>%
+  group_rows(" ",5,14) %>%
+  group_rows(" ",15,18) %>%
+  group_rows(" ",19,20) %>%
+  group_rows(" ",21,21)
+```
+
+
+```{r,eval=FALSE}
+
+kable(t1,booktabs = T,escape = F,caption = "Model results for simulated data with n = 500, k = 4, p = 2, h = 3, v = 3. 500 iterations were run with a burn in of 100. Missingness mechanism was MAR and P(miss) = 0.25.",
+      row.names = NA) %>%
+    kable_styling(font_size = 8) %>%
+    add_header_above(c(" " = 2,"Class 1" = 2, "Class 2" = 2, "Class 3" = 2)) %>%
+    group_rows(" ",1,4) %>%
+    group_rows(" ",5,7) %>%
+    group_rows(" ",8,10) %>%
+    group_rows(" ",11,11) %>%
+    group_rows(" ",12,12)
+```
+
