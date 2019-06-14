@@ -7,8 +7,8 @@
 \contentsline {subsubsection}{\numberline {2.2.1}Skewness of Bayley score residuals}{5}
 \contentsline {subsubsection}{\numberline {2.2.2}Attrition and Intermittent Missingness}{5}
 \contentsline {section}{\numberline {3}Model}{6}
-\contentsline {subsection}{\numberline {3.1}Generic Mixture}{6}
-\contentsline {subsection}{\numberline {3.2}Multivariate Skew Normal Regression}{7}
+\contentsline {subsection}{\numberline {3.1}Generic Multivariate Skew Normal Mixture}{6}
+\contentsline {subsection}{\numberline {3.2}Multivariate Skew Normal Stochastic Representation}{7}
 \contentsline {subsection}{\numberline {3.3}Multinomial Regression on Class Probabilities}{7}
 \contentsline {subsection}{\numberline {3.4}Conditional MVN Imputation}{8}
 \contentsline {subsection}{\numberline {3.5}Bayesian Inference}{9}
@@ -19,7 +19,7 @@
 \contentsline {section}{\numberline {4}Simulation Studies}{11}
 \contentsline {subsection}{\numberline {4.1}Simulation to Compare to Multivariate Normal}{11}
 \contentsline {subsection}{\numberline {4.2}Simulation to Compare Imputation Methods}{11}
-\contentsline {subsection}{\numberline {4.3}Simulation to Assess Sensitivity to Mispecified K}{11}
+\contentsline {subsection}{\numberline {4.3}Simulation to Assess Sensitivity to Misspecified K}{11}
 \contentsline {section}{\numberline {5}Application}{12}
 \contentsline {section}{\numberline {6}Discussion}{13}
 \contentsline {section}{\numberline {7}Appendix}{13}

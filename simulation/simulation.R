@@ -23,8 +23,8 @@ library(BayesLogit) # For rpg function
 # No scientific notation
 options(scipen=999)
 # Generate data
-k <- 2 # number of outcomes
-p <- 2 # number of predictors 
+k <- 4 # number of outcomes
+p <- 1 # number of predictors 
 h <- 3 # number of clusters
 n <- 1500 # number of observations (takes alot of data to estimate this many parameters)
 print(paste("Generating data with",n,"observations of dimension",k,
@@ -102,7 +102,7 @@ Y <- NULL
 
 for(l in 1:h)
 {
-    X.l <- X[c == l,]
+    X.l <- as.matrix(X[c == l,])
     Xstar.l <- Xstar[c == l,] # subset of covariates belonging to cluster l
     n.l <- sum(c == l) # number of observations truly assigned to cluster l
     
@@ -300,7 +300,7 @@ for(i in 1:nsim)
     # Update class-specific regression parameters
     for(l in 1:h) # loop through each cluster
     {
-        X.l <- X[z == l,] # all covariates for those in class l
+        X.l <- as.matrix(X[z == l,]) # all covariates for those in class l
         Y.l <- Y[z == l,] # all outcomes for those in class l
         n.l <- sum(z == l) # current class specific sample size
         psi.l <- psi.list[[l]] # current class specific psis 

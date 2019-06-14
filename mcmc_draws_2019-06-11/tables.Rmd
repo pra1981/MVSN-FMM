@@ -1,7 +1,7 @@
 ---
-title: "Paper Tables"
+title: "Simulation Tables"
 author: "Carter Allen"
-date: "3/26/2019"
+date: "4/11/2019"
 output: 
   pdf_document: 
     keep_tex: yes
@@ -24,6 +24,7 @@ load("PSI")
 load("psi_true")
 load("SIGMA")
 load("sig2_true")
+load("pi_true")
 load("Z")
 ```
 
@@ -70,20 +71,16 @@ delta_true <- c(delta.true) %>% round(.,2)
 delta_est <- col_summarize(DELTA)
 
 pi_est <- col_summarize(PI)
-pi_true <- rep(0.33,3)
+pi_true <- round(pi.true,2)
 
-model_component <- c("MVSN","Regression","","","","","","","","","","","","","","","","","","","","",
-                     "Multinom.","Logit","","","","",
+model_component <- c("MVSN","Regression","","","","","","","",
+                     "Multinom.","",
                      "Clustering")
-params <- c("$\\beta_{11}$","$\\beta_{12}$","$\\beta_{13}$","$\\beta_{14}$",
-            "$\\beta_{21}$","$\\beta_{22}$","$\\beta_{23}$","$\\beta_{24}$",
-            "$\\sigma_{11}$","$\\sigma_{12}$","$\\sigma_{13}$","$\\sigma_{14}$",
-            "$\\sigma_{22}$","$\\sigma_{23}$","$\\sigma_{24}$",
-            "$\\sigma_{33}$","$\\sigma_{34}$",
-            "$\\sigma_{44}$",
-            "$\\psi_{1}$","$\\psi_{2}$","$\\psi_{3}$","$\\psi_{4}$",
-            "$\\delta_{11}$","$\\delta_{12}$","$\\delta_{21}$",
-            "$\\delta_{22}$","$\\delta_{31}$","$\\delta_{32}$",
+params <- c("$\\beta_{0}$","$\\beta_{1}$","$\\beta_{2}$","$\\beta_{3}$",
+            "$\\sigma_{11}$","$\\sigma_{12}$",
+            "$\\sigma_{22}$",
+            "$\\psi_{1}$","$\\psi_{2}$",
+            "$\\delta_{11}$","$\\delta_{12}$",
             "$\\pi_l$")
 
 true_c1 <- c(beta_true_c1,sig2_true_c1,psi_true_c1,delta_true,pi_true[1])
@@ -95,30 +92,41 @@ est_c3 <- c(beta_est_c3,sig2_est_c3,psi_est_c3,delta_est,pi_est[3])
 
 
 
-t1 <- cbind(#model_component,params,
+t1 <- cbind(model_component,
+            params,
             true_c1,est_c1,
             true_c2,est_c2,
             true_c3,est_c3)
-colnames(t1) <- c(# "Model Component",
-                  # "Parameter",
+colnames(t1) <- c("Model Component",
+                  "Parameter",
                   "True","Est. (95\\% CrI)",
                   "True","Est. (95\\% CrI)",
                   "True","Est. (95\\% CrI)")
 ```
 
 ```{r}
-kable(t1)
+rownames(t1) <- NULL
+kable(t1, booktabs = T, escape = F,caption = "Model results for simulated data with n = 1500, k = 2, p = 2, h = 3, v = 1. 5000 iterations were run with a burn in of 1000. Missingness mechanism was MAR and P(miss) = 0") %>%
+  kable_styling(font_size = 8) %>%
+  add_header_above(c(" " = 2,"Class 1" = 2, "Class 2" = 2, "Class 3" = 2)) %>%
+  group_rows(" ",1,4) %>%
+  group_rows(" ",5,7) %>%
+  group_rows(" ",8,10) %>%
+  group_rows(" ",10,10) %>%
+  group_rows(" ",12,12)
 ```
 
 
 ```{r,eval=FALSE}
-kable(t1,booktabs = T,escape = F,caption = "Model results for simulated data with n = 500, k = 4, p = 2, h = 3, v = 3. 500 iterations were run with a burn in of 100. Missingness mechanism was MAR and P(miss) = 0.25.") %>%
+
+kable(t1,booktabs = T,escape = F,caption = "Model results for simulated data with n = 500, k = 4, p = 2, h = 3, v = 3. 500 iterations were run with a burn in of 100. Missingness mechanism was MAR and P(miss) = 0.25.",
+      row.names = NA) %>%
     kable_styling(font_size = 8) %>%
     add_header_above(c(" " = 2,"Class 1" = 2, "Class 2" = 2, "Class 3" = 2)) %>%
-    group_rows(" ",1,8) %>%
-    group_rows(" ",9,18) %>%
-    group_rows(" ",19,22) %>%
-    group_rows(" ",23,28) %>%
-    group_rows(" ",29,29)
+    group_rows(" ",1,4) %>%
+    group_rows(" ",5,7) %>%
+    group_rows(" ",8,10) %>%
+    group_rows(" ",11,11) %>%
+    group_rows(" ",12,12)
 ```
 

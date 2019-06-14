@@ -229,7 +229,7 @@ A ubiquitous feature of repeated measures studies is loss of data due to intermi
 \section{Model}
 \label{s:model}
 
-\subsection{Generic Mixture}
+\subsection{Generic Multivariate Skew Normal Mixture}
 
 Let $\mathbf{y}_{i}$ be the $J \times 1$ observation vector for subject $i$ such that $y_{ij}$ is the observation for subject $i$ at timepoint $j$. We assume for now that $\mathbf{y}_{i}$ is fully observed. Later, we relax this assumption by allowing for missingness in the components of $\mathbf{y}_{i}$. The general formulation of the multivariate skew normal mixture model is as follows.
 
@@ -243,7 +243,7 @@ $$\mathbf{y}_{i}|Z_i = k \sim MSN_J(\boldsymbol\zeta_k,\boldsymbol\alpha_k,\bold
 
 where $\boldsymbol\zeta_k$ is a $J \times 1$ vector of class specific location parameters, $\boldsymbol\alpha_k$ is a $J \times 1$ vector of class specific skewness parameters, and $\boldsymbol\Omega_k$ is a $J \times J$ class specific scale matrix.
 
-\subsection{Multivariate Skew Normal Regression}
+\subsection{Multivariate Skew Normal Stochastic Representation}
 
 We model the effect of covariates on longitudinal development outcomes through the use of a MSN regression model. We adopt a standard stochastic representation of a MSN random variable as the sum of a latent truncated normal random effect and a correlated multivariate normal random error term. The MSN stochastic representation is as follows.
 $$\mathbf{y}_{i} = \boldsymbol\beta^T \mathbf{x}_{i} + t_{i}\boldsymbol\psi + \boldsymbol\epsilon_{i}$$
