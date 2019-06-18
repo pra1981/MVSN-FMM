@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  15 JUN 2019 23:57
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  18 JUN 2019 15:12
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -727,6 +727,11 @@ Overfull \hbox (4.62497pt too wide) has occurred while \output is active
  []
 
 [6]
+LaTeX Font Info:    Try loading font information for U+dsrom on input line 261.
+
+ (/usr/local/texlive/2016/texmf-dist/tex/latex/doublestroke/Udsrom.fd
+File: Udsrom.fd 1995/08/01 v0.1 Double stroke roman font definitions
+)
 Overfull \hbox (4.62497pt too wide) has occurred while \output is active
 \OT1/cmr/m/n/9 7
  []
@@ -737,11 +742,6 @@ Overfull \hbox (4.62497pt too wide) has occurred while \output is active
  []
 
 [8]
-LaTeX Font Info:    Try loading font information for U+dsrom on input line 300.
-
- (/usr/local/texlive/2016/texmf-dist/tex/latex/doublestroke/Udsrom.fd
-File: Udsrom.fd 1995/08/01 v0.1 Double stroke roman font definitions
-)
 Overfull \hbox (4.62497pt too wide) has occurred while \output is active
 \OT1/cmr/m/n/9 9
  []
@@ -819,6 +819,10 @@ Overfull \hbox (9.24994pt too wide) has occurred while \output is active
  []
 
 [19]
+Missing character: There is no â in font cmr12!
+Missing character: There is no € in font cmr12!
+Missing character: There is no “ in font cmr12!
+
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
@@ -881,7 +885,7 @@ exmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb></usr/local/texlive/2016/tex
 mf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb></usr/local/texlive/2016/texmf
 -dist/fonts/type1/public/doublestroke/dsrom12.pfb></usr/local/texlive/2016/texm
 f-dist/fonts/type1/public/doublestroke/dsrom8.pfb>
-Output written on manuscript.pdf (24 pages, 393918 bytes).
+Output written on manuscript.pdf (24 pages, 394349 bytes).
 PDF statistics:
  210 PDF objects out of 1000 (max. 8388607)
  150 compressed objects within 2 object streams

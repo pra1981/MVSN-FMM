@@ -5,7 +5,7 @@
 \fontsize{8}{10}\selectfont
 \begin{tabular}{llllllll}
 \toprule
-\multicolumn{2}{c}{ } & \multicolumn{2}{c}{Class 1} & \multicolumn{2}{c}{Class 2} & \multicolumn{2}{c}{Class 3} \\
+\multicolumn{2}{c}{ } & \multicolumn{2}{c}{Cluster 1} & \multicolumn{2}{c}{Cluster 2} & \multicolumn{2}{c}{Cluster 3} \\
 \cmidrule(l{3pt}r{3pt}){3-4} \cmidrule(l{3pt}r{3pt}){5-6} \cmidrule(l{3pt}r{3pt}){7-8}
 Model Component & Parameter & True & Est. (95\% CrI) & True & Est. (95\% CrI) & True & Est. (95\% CrI)\\
 \midrule

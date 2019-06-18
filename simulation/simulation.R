@@ -156,7 +156,7 @@ S0 <- diag(0.5,v) # prior covariance for delta coefficients (multinomial regress
 
 # Sample storage
 nsim <- 10000 # number of iterations
-burn <- 1000 # number of iterations to save
+burn <- 2500 # number of iterations to save
 n.iter <- nsim - burn # number of saved iterations
 Z <- matrix(0,nrow = n.iter,ncol = n) # large matrix where each row is the value of z at a specific iteration
 PI <- matrix(0,nrow = n.iter,ncol = h) # matrix w/ each row as pi vector at each iteration

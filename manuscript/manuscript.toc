@@ -10,14 +10,14 @@
 \contentsline {subsection}{\numberline {3.1}Generic Multivariate Skew Normal Mixture}{6}
 \contentsline {subsection}{\numberline {3.2}Multivariate Skew Normal Stochastic Representation}{6}
 \contentsline {subsection}{\numberline {3.3}Representation as Matrix Skew Normal}{7}
-\contentsline {subsection}{\numberline {3.4}Multinomial Regression on Class Probabilities}{8}
+\contentsline {subsection}{\numberline {3.4}Multinomial Regression on Cluster Probabilities}{8}
 \contentsline {subsection}{\numberline {3.5}Conditional MVN Imputation}{8}
 \contentsline {subsection}{\numberline {3.6}Bayesian Inference}{9}
 \contentsline {subsubsection}{\numberline {3.6.1}P\'olya--Gamma Data Augmentation}{9}
 \contentsline {subsubsection}{\numberline {3.6.2}Prior Choice}{10}
-\contentsline {subsubsection}{\numberline {3.6.3}MCMC Algorithm}{11}
-\contentsline {subsubsection}{\numberline {3.6.4}Assessment of MCMC Convergence}{11}
-\contentsline {subsubsection}{\numberline {3.6.5}Label Switching}{11}
+\contentsline {subsubsection}{\numberline {3.6.3}MCMC Algorithm}{10}
+\contentsline {subsubsection}{\numberline {3.6.4}Assessment of MCMC Convergence}{10}
+\contentsline {subsubsection}{\numberline {3.6.5}Label Switching}{10}
 \contentsline {section}{\numberline {4}Simulation Studies}{12}
 \contentsline {subsection}{\numberline {4.1}Simulation to Compare to Multivariate Normal}{12}
 \contentsline {subsection}{\numberline {4.2}Simulation to Compare Imputation Methods}{12}

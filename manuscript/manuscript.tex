@@ -161,7 +161,7 @@ Accepted March} 2008.}
 %  put the summary for your paper here
 
 \begin{abstract}
-In studies of infant motor development, a crucial research goal is to identify latent classes of infants that experience delayed development, as this is a known risk factor for adverse outcomes later in life. However, there are a number of statistical challenges in modeling infant development: the data are typically skewed, exhibit intermittent missingness, and are highly correlated across the repeated measurements collected during infancy. Using data from the Nurture study, a cohort of over 600 mother-infant pairs followed from pregnancy to 12 months postpartum, we develop a flexible Bayesian latent class model for the analysis infant motor development. Our model has a number of attractive features. First, we adopt the multivariate skew normal distribution with class-specific parameters that accommodate the inherent correlation and skewness in the data. Second, we model the class membership probabilities using a novel Pólya-Gamma data-augmentation scheme, thereby improving predictions of the class membership allocations. Lastly, we impute missing responses under missing at random assumption by drawing from appropriate conditional skew normal distributions. Bayesian inference is achieved through straightforward Gibbs sampling, and can be carried out in available software such as R.  Through simulation studies, we show that the proposed model yields improved inferences over models that ignore skewness. In addition, our imputation method yields improvements compared to conventional missing data methods, including multiple imputation and complete or available case analysis. When applied to Nurture data, we identified two distinct development classes: one characterized by delayed “U-shaped” development and a higher percentage of male infants and another characterized by more steady development and a lower percentage of males. The classes also differed in terms of key demographic variables, such as infant race and maternal pre-pregnancy body mass index. These findings can aid investigators in targeting interventions during this critical early-life developmental window.
+In studies of infant motor development, a crucial research goal is to identify latent clusters of infants that experience delayed development, as this is a known risk factor for adverse outcomes later in life. However, there are a number of statistical challenges in modeling infant development: the data are typically skewed, exhibit intermittent missingness, and are highly correlated across the repeated measurements collected during infancy. Using data from the Nurture study, a cohort of over 600 mother-infant pairs followed from pregnancy to 12 months postpartum, we develop a flexible Bayesian latent class model for the analysis infant motor development. Our model has a number of attractive features. First, we adopt the multivariate skew normal distribution with cluster-specific parameters that accommodate the inherent correlation and skewness in the data. Second, we model the cluster membership probabilities using a novel Pólya-Gamma data-augmentation scheme, thereby improving predictions of the cluster membership allocations. Lastly, we impute missing responses under missing at random assumption by drawing from appropriate conditional skew normal distributions. Bayesian inference is achieved through straightforward Gibbs sampling, and can be carried out in available software such as R.  Through simulation studies, we show that the proposed model yields improved inferences over models that ignore skewness. In addition, our imputation method yields improvements compared to conventional missing data methods, including multiple imputation and complete or available case analysis. When applied to Nurture data, we identified two distinct development clusters: one characterized by delayed “U-shaped” development and a higher percentage of male infants and another characterized by more steady development and a lower percentage of males. The clusters also differed in terms of key demographic variables, such as infant race and maternal pre-pregnancy body mass index. These findings can aid investigators in targeting interventions during this critical early-life developmental window.
 \end{abstract}
 
 %  Please place your key words in alphabetical order, separated
@@ -238,14 +238,14 @@ Let $\mathbf{y}_{i}$ be the $J \times 1$ observation vector for subject $i$ such
 f(\mathbf{y}_i) = \sum_{k = 1}^{K} \pi_{ik} f(\mathbf{y}_i|\boldsymbol\theta_k)
 \end{equation}
 
-Here $\boldsymbol\theta_k$ is the set of parameters shared by subjects belonging to class $k$ ($k = 1,...,K$). The probability of subject $i$ ($i = 1,...,n$) belonging to class $k$ ($k = 1,...,K$) is denoted $\pi_{ik}$. Note that $\pi_{ik}$ is not indexed by time and we do not allow for subjects switching classes over the study period. This feature of the model is a result of our interest in clustering based on development patterns rather than time-specific development scores. Later, we detail a multinomial logit regression model placed on $\pi_{ik}$ to allow for flexible modeling of class membership probabilities as a function of covariates of interest.
+Here $\boldsymbol\theta_k$ is the set of parameters shared by subjects belonging to cluster $k$ ($k = 1,...,K$). The probability of subject $i$ ($i = 1,...,n$) belonging to cluster $k$ ($k = 1,...,K$) is denoted $\pi_{ik}$. Note that $\pi_{ik}$ is not indexed by time and we do not allow for subjects switching clusters over the study period. This feature of the model is a result of our interest in clustering based on development patterns rather than time-specific development scores. Later, we detail a multinomial logit regression model placed on $\pi_{ik}$ to allow for flexible modeling of cluster membership probabilities as a function of covariates of interest.
 
-In each development class, we assume that a subject's $J\times 1$ outcome vector follows a multivariate skew normal (MSN) distribution. We define a latent variable $Z_i \in \{1,...,K\}$ to denote the cluster membership of subject $i$ for $i = 1,...,n$. We model $\mathbf{y}_{i}|Z_i$ as 
+In each development cluster, we assume that a subject's $J\times 1$ outcome vector follows a multivariate skew normal (MSN) distribution. We define a latent variable $Z_i \in \{1,...,K\}$ to denote the cluster membership of subject $i$ for $i = 1,...,n$. We model $\mathbf{y}_{i}|Z_i$ as 
 \begin{equation}
-\mathbf{y}_{i}|Z_i = k \sim MSN_J(\boldsymbol\zeta_k,\boldsymbol\alpha_k,\boldsymbol\Omega_k)
+\mathbf{y}_{i}|Z_i \sim MSN_J(\boldsymbol\zeta_k,\boldsymbol\alpha_k,\boldsymbol\Omega_k)
 \end{equation}
 
-where $\boldsymbol\zeta_k$ is a $J \times 1$ vector of class specific location parameters, $\boldsymbol\alpha_k$ is a $J \times 1$ vector of class specific skewness parameters, and $\boldsymbol\Omega_k$ is a $J \times J$ class specific scale matrix.
+where $Z_i = k$ is the cluster labeling of subject $i$, $\boldsymbol\zeta_k$ is a $J \times 1$ vector of cluster specific location parameters, $\boldsymbol\alpha_k$ is a $J \times 1$ vector of cluster specific skewness parameters, and $\boldsymbol\Omega_k$ is a $J \times J$ cluster specific scale matrix. 
 
 \subsection{Multivariate Skew Normal Stochastic Representation}
 
@@ -254,29 +254,29 @@ We model the effect of covariates on longitudinal development outcomes through t
 \mathbf{y}_{i} = \boldsymbol\beta^T \mathbf{x}_{i} + t_{i}\boldsymbol\psi + \boldsymbol\epsilon_{i}
 \end{equation}
 
-where $\mathbf{x}_i$ is the $P \times 1$ vector of covariate values for subject $i$, $\boldsymbol\beta$ is the $P \times J$ vector of fixed effects coefficients , $t_i \stackrel{iid}{\sim} N_{[0,\infty)}(0,1)$ is a conditional truncated normal random effect, $\boldsymbol\psi$ is the $J \times 1$ vector containing cluster-specific skewness parameters, and $\boldsymbol\epsilon_i \sim N_J(0,\boldsymbol\Sigma)$ is the correlated error term. In can be shown that under these conditions $\mathbf{y}_i$ is multivariate skew normal with location. For conciseness, we present the MSN distribution here outside of the finite mixture context. When using this stochastic representation in our finite mixture model, the parameters $\boldsymbol\beta$, $\boldsymbol\psi$, and $\boldsymbol\Sigma$ are replaced with class-specific counterparts $\boldsymbol\beta_k$, $\boldsymbol\psi_k$, and $\boldsymbol\Sigma_k$.
+where $\mathbf{x}_i$ is the $P \times 1$ vector of covariate values for subject $i$, $\boldsymbol\beta$ is the $P \times J$ vector of fixed effects coefficients , $t_i \stackrel{iid}{\sim} N_{[0,\infty)}(0,1)$ is a conditional truncated normal random effect, $\boldsymbol\psi$ is the $J \times 1$ vector containing cluster-specific skewness parameters, and $\boldsymbol\epsilon_i \sim N_J(0,\boldsymbol\Sigma)$ is the correlated error term. In can be shown that under these conditions $\mathbf{y}_i$ is multivariate skew normal with location. For conciseness, we present the MSN distribution here outside of the finite mixture context. When using this stochastic representation in our finite mixture model, the parameters $\boldsymbol\beta$, $\boldsymbol\psi$, and $\boldsymbol\Sigma$ are replaced with cluster-specific counterparts $\boldsymbol\beta_k$, $\boldsymbol\psi_k$, and $\boldsymbol\Sigma_k$.
 
 \subsection{Representation as Matrix Skew Normal}
 
-We note that the multivariate skew normal regression problem can be expressed more succinctly through the use of Matrix Skew Normal distributions. In particular, we define $\mathbf{Y}_{n_k \times J}$ as the response matrix with rows $\mathbf{y}_i^T$, $(i = 1,...,n_k)$, where $n_k = \sum_{i = 1}^n(Z_i = k)$ is the total number of observations belonging to class $k$ ($k = 1,...,K$). 
+We note that the multivariate skew normal regression problem can be expressed more succinctly through the use of Matrix Skew Normal distributions. In particular, we define $\mathbf{Y}_{n_k \times J}$ as the response matrix with rows $\mathbf{y}_i^T$, $(i = 1,...,n_k)$, where $n_k = \sum_{i = 1}^n \mathds{1}_{(Z_i = k)}$ is the total number of observations belonging to cluster $k$ ($k = 1,...,K$). 
 $$\mathbf{Y}_{n_k \times J} \sim MatSN_{n_k \times J}(\mathbf{M},\boldsymbol\alpha_k,\mathbf{I}_{n_k},\boldsymbol\Sigma_k)$$
 $$\text{vec}(\mathbf{Y}) = \mathbf{y}_{n_kJ \times 1} = (\mathbf{y}^T_1,...,\mathbf{y}^T_{n_k})$$
 $$\text{vec}(\mathbf{M}) = \boldsymbol\mu_{n_k J \times 1} = (\boldsymbol\mu_1^T,...,\boldsymbol\mu_{n_k}^T)$$
 
 where $\boldsymbol\mu_i = \mathbf{x}_i \boldsymbol\beta_k$ and $\boldsymbol\alpha_k = (\alpha_{k1},...,\alpha_{kJ})$. This implies that the $i^{th}$ row of $\mathbf{Y}$ is $\mathbf{y}_i \sim MSN_J(\boldsymbol\mu_i, \boldsymbol\alpha_k, \boldsymbol\Sigma_k) = {MSN}_J(\mathbf{x}_i \boldsymbol\beta_k, \boldsymbol\alpha_k, \boldsymbol\Sigma_k)$. Using the stochastic representation presented in Section 3.2, the conditional distribution of $\mathbf{y}_i | Z_i, t_i$ is $N_J (\mathbf{x}_i \boldsymbol\beta_k + \boldsymbol\psi_k t_i,\boldsymbol\Sigma_k)$. This implies that all responses for cluster $k$ conditioned on $\mathbf{T}_{n_k \times 1}$ is distributed as 
-$$\mathbf{Y}_{n_k \times J} | \mathbf{T}_k = \mathbf{t}_k \sim N_{n_k \times J}(\mathbf{M}_k, \mathbf{I}_{n_k}, \boldsymbol\Sigma_k)$$
+$$\mathbf{Y}_{n_k \times J} | \mathbf{T}_k = \mathbf{t}_k \sim MatNorm_{n_k \times J}(\mathbf{M}_k, \mathbf{I}_{n_k}, \boldsymbol\Sigma_k)$$
 $$\text{vec}(\mathbf{M}_k)_{n_kJ \times 1} = \mathbf{X}_{k} \boldsymbol\beta_k + \mathbf{t}_k \otimes \boldsymbol\psi_k$$\
 
 where $\mathbf{t}_k = (t_1,...,t_{n_k})$.
 
-\subsection{Multinomial Regression on Class Probabilities}
+\subsection{Multinomial Regression on Cluster Probabilities}
 
-A primary concern of our model is with identification of latent infant development clusters. We accomplish this via multinomial logit regression model on cluster membership, which utilizes P\'{o}lya-Gamma data-augmentation to allow for updating of all parameters using Gibbs sampling. The multinomial logit model is as follows for $k = 1,...,K$.
+A primary concern of our model is with identification of latent infant development classs. We accomplish this via multinomial logit regression model on cluster membership, which utilizes P\'{o}lya-Gamma data-augmentation, as described in Section 3.6 to allow for updating of all parameters using Gibbs sampling. The multinomial logit model is as follows for $k = 1,...,K$.
 $$P(Z_i = k|\mathbf{w}_i) = \pi_{ik} = \frac{e^{\mathbf{w}_i^T \boldsymbol\delta_k}}{\sum_{k' = 1}^K e^{\mathbf{w}_i^T \boldsymbol\delta_{k'}}}$$
 
 
 
-where $\mathbf{w}_i$ is the vector of class probability covariates for subject $i$, $\boldsymbol\delta_k$ contains the multinomial regression parameters for class $k$, and $K$ is the number of putative clusters specified \textit{a priori}. For identifiability purposes, we fix the reference category $k = K$ and set $\boldsymbol\delta_K = \mathbf{0}$. Under this model, $Z_i|\mathbf{w}_i \sim Multinom(1,\boldsymbol\pi_i)$, where $\boldsymbol\pi_i = (\pi_{i1},...,\pi_{1K})$. During MCMC estimation, the class labels $z_i$ are updated from their multinomial full conditional distribution and used in the remaining MCMC steps as class assignments.
+where $\mathbf{w}_i$ is the vector of cluster probability covariates for subject $i$, $\boldsymbol\delta_k$ contains the multinomial regression parameters for cluster $k$, and $K$ is the number of putative classs specified \textit{a priori}. For identifiability purposes, we fix the reference category $k = K$ and set $\boldsymbol\delta_K = \mathbf{0}$. Under this model, $Z_i|\mathbf{w}_i \sim Multinom(1,\boldsymbol\pi_i)$, where $\boldsymbol\pi_i = (\pi_{i1},...,\pi_{1K})$. During MCMC estimation, the cluster labels $z_i$ are updated from their multinomial full conditional distribution and used in the remaining MCMC steps as cluster assignments.
 
 \subsection{Conditional MVN Imputation}
 
@@ -288,16 +288,16 @@ $$\mathbf{y}_i^{miss}|\mathbf{y}_i^{obs},\mathbf{x}_i,t_i,Z_i,\boldsymbol\beta_{
 
 where $\boldsymbol\mu^{miss}$ and $\boldsymbol\Sigma^{miss}$ take standard forms detailed in the Appendix. 
 
-An attractive feature of this imputation approach is that each missing outcome is imputed ``online", i.e. once per MCMC iteration. This provides more opportunities to explore the parameter space than multiple imputation and avoids multiplicative run-time scaling in $m$, the number of imputations.
+An attractive feature of this imputation approach is that each missing outcome is imputed ``online", i.e. once per MCMC iteration. This provides more opportunities to explore the parameter space than multiple imputation and avoids multiplicative run-time scaling in $m$, the number of imputations. We demonstrate this feature using simulations detailed in Section 4. 
 
 \subsection{Bayesian Inference}
 
 \subsubsection{P\'olya--Gamma Data Augmentation}
 
-Polson \textit{et al.} (2012) introduced a data augmentation approach to fitting the multinomial logit regression model specified by Holmes and Held (2006), which specifies the full conditional distributions of the multinomial regression parameters as a function of a Bernoulli likelihood. 
+Polson \textit{et al.} (2013) introduced an efficient data augmentation approach to fitting several GLMs including the multinomial logit regression model specified by Holmes and Held (2006), which specifies the full conditional distributions of the multinomial regression parameters as a function of a Bernoulli likelihood. 
 $$p(\boldsymbol\delta_k|\mathbf{z},\boldsymbol\delta_{k' \ne k}) \propto p(\boldsymbol\delta_k) \prod_{i = 1}^{n} \pi_{ik}^{U_{ik}}(1-\pi_{ik})^{1-U_{ik}}$$
 
-where $p(\boldsymbol\delta_k)$ denotes the prior distribution of $\boldsymbol\delta_k$, $U_{ik} = \mathds{1}_{Z_i = k}$ is an indicator that subject $i$ belongs to class $k$, and $\pi_{ik}$ is defined as in Section 3.4. We can rewrite $\pi_{ik}$ as follows
+where $p(\boldsymbol\delta_k)$ denotes the prior distribution of $\boldsymbol\delta_k$, $U_{ik} = \mathds{1}_{Z_i = k}$ is an indicator that subject $i$ belongs to cluster $k$, and $\pi_{ik}$ is defined as in Section 3.4. We can rewrite $\pi_{ik}$ as follows
 $$\pi_{ik} = P(U_{ik} = 1) = \frac{e^{\mathbf{w}_i^T \boldsymbol\delta_k - {c}_{ik}}}{1 + e^{\mathbf{w}_i^T \boldsymbol\delta_k - {c}_{ik}}} = \frac{e^{\eta_{ik}}}{1 + e^{\eta_{ik}}}$$
 
 where ${c}_{ik} = \log \sum_{k' \ne k} e^{\mathbf{w}_i^T \boldsymbol\delta_{k'}}$ and $\eta_{ik} = \mathbf{w}_i^T \boldsymbol\delta_k - {c}_{ik}$. We note that the sum $\sum_{k' \ne k} e^{\mathbf{w}_i^T \boldsymbol\delta_{k'}}$ includes the reference category, but since we fix $\boldsymbol\delta_K = \mathbf{0}$, we have $e^{\mathbf{w}_i^T \boldsymbol\delta_K} = 1$, and hence
@@ -380,7 +380,7 @@ which we note is essentially a logistic regression likelihood. We thus apply thi
 \fontsize{8}{10}\selectfont
 \begin{tabular}{llllllll}
 \toprule
-\multicolumn{2}{c}{ } & \multicolumn{2}{c}{Class 1} & \multicolumn{2}{c}{Class 2} & \multicolumn{2}{c}{Class 3} \\
+\multicolumn{2}{c}{ } & \multicolumn{2}{c}{Cluster 1} & \multicolumn{2}{c}{Cluster 2} & \multicolumn{2}{c}{Cluster 3} \\
 \cmidrule(l{3pt}r{3pt}){3-4} \cmidrule(l{3pt}r{3pt}){5-6} \cmidrule(l{3pt}r{3pt}){7-8}
 Model Component & Parameter & True & Est. (95\% CrI) & True & Est. (95\% CrI) & True & Est. (95\% CrI)\\
 \midrule
@@ -618,7 +618,7 @@ The block-wise inversion formula was used to invert $\boldsymbol\Sigma$ accordin
 
 \bibitem{ } Melnykov V, Maitra R. Finite mixture models and model-based clustering. \textit{Statistics Surveys}. 2010;4:80-116.
 
-\bibitem{ } Polson NG, Scott JG, Windle J. Bayesian inference for logistic models using P\'olya--Gamma latent variables. \textit{Journal of the American Statistical Association}. 2013 Dec 1;108(504):1339-49.
+\bibitem{ } Polson NG, Scott JG, Windle J. Bayesian inference for logistic models using P\'olya –- Gamma latent variables. Journal of the American statistical Association. 2013 Dec 1;108(504):1339-49.
 
 \bibitem{ } Tiao GC, Zellner A. On the Bayesian estimation of multivariate regression. \textit{Journal of the Royal Statistical Society}: Series B (Methodological). 1964 Jul;26(2):277-85.
 
