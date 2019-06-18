@@ -8,7 +8,7 @@
 \contentsline {subsubsection}{\numberline {2.2.2}Attrition and Intermittent Missingness}{5}
 \contentsline {section}{\numberline {3}Model}{6}
 \contentsline {subsection}{\numberline {3.1}Generic Multivariate Skew Normal Mixture}{6}
-\contentsline {subsection}{\numberline {3.2}Multivariate Skew Normal Stochastic Representation}{6}
+\contentsline {subsection}{\numberline {3.2}Multivariate Skew Normal Stochastic Representation}{7}
 \contentsline {subsection}{\numberline {3.3}Representation as Matrix Skew Normal}{7}
 \contentsline {subsection}{\numberline {3.4}Multinomial Regression on Cluster Probabilities}{8}
 \contentsline {subsection}{\numberline {3.5}Conditional MVN Imputation}{8}
