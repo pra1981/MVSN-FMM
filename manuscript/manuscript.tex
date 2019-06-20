@@ -249,7 +249,7 @@ where $\boldsymbol\zeta_k$ is a $J \times 1$ vector of cluster-specific location
 
 We model the effect of covariates on longitudinal motor development outcomes through the use of a MSN regression model. We adopt a standard stochastic representation of a MSN random variable by conditioning on a subject-specific latent truncated normal random effect, denoted $t_i$ (Fr\"{u}hwirth-Schnatter and Pyne 2010). Conditional on membership in cluster $k$, the stochastic representation for the $j^{th}$ component of the multivariate skew normal distribution for subject $i$ is 
 \begin{equation}
-y_{ij} = \zeta_{ijk} + t_i \psi_{jk} + \sqrt{1-\psi^2_{jk}}\epsilon_{ijk}.
+y_{ij} = \zeta_{ijk} +  \psi_{jk} t_i + \sqrt{1-\psi^2_{jk}}\epsilon_{ijk}.
 \end{equation}
 where $y_{ij}$ denotes the $j^{th}$ observation for subject $i$, $\zeta_{ijk}$ denotes the location parameter for the $j^{th}$ observation for subject $i$ in cluster $k$, $t_i \stackrel{iid}{\sim} N_{[0,\infty)}(0,1)$ is a subject-specific truncated normal random effect, $\psi_{jk}$ controls the skewness of the $j^{th}$ outcome in cluster $k$, and $(\epsilon_{i1k},...,\epsilon_{iJk}) = \boldsymbol\epsilon_{ik} \sim N_J(0,\boldsymbol\Sigma_k)$ is a multivariate normal error term. Combining all observations for subject $i$ into $\mathbf{y}_i$, and conditional on $t_i$ and $z_i = k$, $\mathbf{y}_i$ follows a multivariate normal distribution with conditional mean $\mathbf{x}_i^T \boldsymbol\beta_k + t_i \boldsymbol\psi_k$ and conditional covariance $\boldsymbol\Sigma_k$. In the multivariate case, $\boldsymbol\psi_k$ is a $J \times 1$ vector containing cluster-specific skewness parameters. Marginally (after integrating over $t_i$), $\mathbf{y}_i$ is distributed $MSN_J(\boldsymbol\zeta_{ik}, \boldsymbol\alpha_k, \boldsymbol\Omega_k)$, where
 $$\boldsymbol\zeta_{ik} = \mathbf{x}_i^T \boldsymbol\beta_k,$$
@@ -259,16 +259,13 @@ where $\boldsymbol\Psi_k = \text{Diag}\left ( \sqrt{1 - \psi^2_{k1}},...,\sqrt{1
 
 \subsection{Representation as Matrix Skew Normal}
 
-We note that the multivariate skew normal density can be expressed more compactly in terms of the matrix skew normal (MatSN) density (Chen and Gupta 2005). In particular, we define $\mathbf{Y}_{n_k \times J}$ as the response matrix with rows $\mathbf{y}_i^T$, $(i = 1,...,n_k)$, where $n_k = \sum_{i = 1}^n \mathds{1}_{(z_i = k)}$ is the total number of observations belonging to cluster $k$ ($k = 1,...,K$). 
-$$\mathbf{Y}_{n_k \times J} \sim MatSN_{n_k \times J}(\mathbf{M},\boldsymbol\alpha_k,\mathbf{I}_{n_k},\boldsymbol\Sigma_k)$$
-$$\text{vec}(\mathbf{Y}) = \mathbf{y}_{n_kJ \times 1} = (\mathbf{y}^T_1,...,\mathbf{y}^T_{n_k})$$
-$$\text{vec}(\mathbf{M}) = \boldsymbol\mu_{n_k J \times 1} = (\boldsymbol\mu_1^T,...,\boldsymbol\mu_{n_k}^T)$$
-
-where $\boldsymbol\mu_i = \mathbf{x}_i \boldsymbol\beta_k$ and $\boldsymbol\alpha_k = (\alpha_{k1},...,\alpha_{kJ})$. This implies that the $i^{th}$ row of $\mathbf{Y}$ is $\mathbf{y}_i \sim MSN_J(\boldsymbol\mu_i, \boldsymbol\alpha_k, \boldsymbol\Sigma_k) = {MSN}_J(\mathbf{x}_i \boldsymbol\beta_k, \boldsymbol\alpha_k, \boldsymbol\Sigma_k)$. Using the stochastic representation presented in Section 3.2, the conditional distribution of $\mathbf{y}_i | z_i, t_i$ is $N_J (\mathbf{x}_i \boldsymbol\beta_k + \boldsymbol\psi_k t_i,\boldsymbol\Sigma_k)$. This implies that all responses for cluster $k$ conditioned on $\mathbf{T}_{n_k \times 1}$ is distributed as 
-$$\mathbf{Y}_{n_k \times J} | \mathbf{T}_k = \mathbf{t}_k \sim MatNorm_{n_k \times J}(\mathbf{M}_k, \mathbf{I}_{n_k}, \boldsymbol\Sigma_k)$$
-$$\text{vec}(\mathbf{M}_k)_{n_kJ \times 1} = \mathbf{X}_{k} \boldsymbol\beta_k + \mathbf{t}_k \otimes \boldsymbol\psi_k$$\
-
-where $\mathbf{t}_k = (t_1,...,t_{n_k})$.
+We note that the multivariate skew normal density can be expressed more compactly in terms of the matrix skew normal (MatSN) density (Chen and Gupta 2005). As we will see in Section 3.6, this specification facilitates prior specification by admitting convenient joint prior distributions for the regression coefficients and scale matrices. In particular, we define $\mathbf{Y}_k$ as the ${n_k \times J}$  response matrix with rows $\mathbf{y}_i^T$, $(i = 1,...,n_k)$, where $n_k = \sum_{i = 1}^n \mathds{1}_{(z_i = k)}$ is the total number of observations belonging to cluster $k$ ($k = 1,...,K$). 
+$$\mathbf{Y}_{k} \sim MatSN_{n_k \times J}(\mathbf{M},\boldsymbol\alpha_k,\mathbf{I}_{n_k},\boldsymbol\Omega_k)$$
+$$\text{vec}(\mathbf{Y}) =  (\mathbf{y}^T_1,...,\mathbf{y}^T_{n_k})$$
+$$\text{vec}(\mathbf{M}) = (\boldsymbol\zeta_1^T,...,\boldsymbol\zeta_{n_k}^T)$$
+where $\boldsymbol\mu_i = \mathbf{x}_i^T \boldsymbol\beta_k$ and $\boldsymbol\alpha_k = (\alpha_{k1},...,\alpha_{kJ})$. This implies that the $i^{th}$ row of $\mathbf{Y}$ is $\mathbf{y}_i \sim MSN_J(\boldsymbol\zeta_i, \boldsymbol\alpha_k, \boldsymbol\Omega_k)$. Using the stochastic representation presented in Section 3.2, the conditional distribution of $\mathbf{y}_i | z_i, t_i$ is $N_J (\mathbf{x}_i \boldsymbol\beta_k + \boldsymbol\psi_k t_i,\boldsymbol\Sigma_k)$. This implies that all responses for cluster $k$ conditioned on $\mathbf{t}_{k}$ is distributed as 
+$$\mathbf{Y}_{n_k \times J} | \mathbf{t}_k \sim MatNorm_{n_k \times J}(\mathbf{M}_k, \mathbf{I}_{n_k}, \boldsymbol\Sigma_k),$$
+where $\text{vec}(\mathbf{M}_k)_{n_kJ \times 1} = \mathbf{X}_{k} \boldsymbol\beta_k + \mathbf{t}_k \otimes \boldsymbol\psi_k$ and $\mathbf{X}_k$ is an $n_k \times p$ design matrix.
 
 \subsection{Multinomial Regression on Cluster Probabilities}
 
