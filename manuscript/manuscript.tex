@@ -81,7 +81,7 @@ Brian Neelon, PhD \\
 Department of Public Health Sciences, Medical University of South Carolina, Charleston, SC, U.S.A
 \and
 Sara Benjamin-Neelon, PhD, MPH, RD \\
-Department of Health, Behavior and Society, Johns Hopkins University, Baltimore, MD, U.S.S}
+Department of Health, Behavior and Society, Johns Hopkins University, Baltimore, MD, U.S.A}
 
 %  Three or more authors from same institution with all emails displayed
 %  and footnoted using asterisks -- use \email{ } 
@@ -247,16 +247,19 @@ where $\boldsymbol\zeta_k$ is a $J \times 1$ vector of cluster-specific location
 
 \subsection{Multivariate Skew Normal Stochastic Representation}
 
-We model the effect of covariates on longitudinal motor development outcomes through the use of a MSN regression model. We adopt a standard stochastic representation of a MSN random variable by conditioning on a subject-specific latent truncated normal random effect, denoted $t_i$ (Fr\"{u}hwirth-Schnatter and Pyne 2010). Conditional on membership in cluster $k$, the stochastic representation of the MSN takes the form
+We model the effect of covariates on longitudinal motor development outcomes through the use of a MSN regression model. We adopt a standard stochastic representation of a MSN random variable by conditioning on a subject-specific latent truncated normal random effect, denoted $t_i$ (Fr\"{u}hwirth-Schnatter and Pyne 2010). Conditional on membership in cluster $k$, the stochastic representation for the $j^{th}$ component of the multivariate skew normal distribution for subject $i$ is 
 \begin{equation}
-\mathbf{y}_{ik} = \mathbf{x}_{ik}^T\boldsymbol\beta_k  + t_{i}\boldsymbol\psi_k + \boldsymbol\epsilon_{ik}
+y_{ij} = \zeta_{ijk} + t_i \psi_{jk} + \sqrt{1-\psi^2_{jk}}\epsilon_{ijk}.
 \end{equation}
-
-where $\mathbf{x}_i$ is the $P \times 1$ vector of covariate values for subject $i$, $\boldsymbol\beta$ is the $P \times J$ vector of fixed effects coefficients , $t_i \stackrel{iid}{\sim} N_{[0,\infty)}(0,1)$ is a conditional truncated normal random effect, $\boldsymbol\psi$ is the $J \times 1$ vector containing cluster-specific skewness parameters, and $\boldsymbol\epsilon_i \sim N_J(0,\boldsymbol\Sigma)$ is the correlated error term. In can be shown that under these conditions $\mathbf{y}_i$ is multivariate skew normal with location. For conciseness, we present the MSN distribution here outside of the finite mixture context. When using this stochastic representation in our finite mixture model, the parameters $\boldsymbol\beta$, $\boldsymbol\psi$, and $\boldsymbol\Sigma$ are replaced with cluster-specific counterparts $\boldsymbol\beta_k$, $\boldsymbol\psi_k$, and $\boldsymbol\Sigma_k$.
+where $y_{ij}$ denotes the $j^{th}$ observation for subject $i$, $\zeta_{ijk}$ denotes the location parameter for the $j^{th}$ observation for subject $i$ in cluster $k$, $t_i \stackrel{iid}{\sim} N_{[0,\infty)}(0,1)$ is a subject-specific truncated normal random effect, $\psi_{jk}$ controls the skewness of the $j^{th}$ outcome in cluster $k$, and $(\epsilon_{i1k},...,\epsilon_{iJk}) = \boldsymbol\epsilon_{ik} \sim N_J(0,\boldsymbol\Sigma_k)$ is a multivariate normal error term. Combining all observations for subject $i$ into $\mathbf{y}_i$, and conditional on $t_i$ and $z_i = k$, $\mathbf{y}_i$ follows a multivariate normal distribution with conditional mean $\mathbf{x}_i^T \boldsymbol\beta_k + t_i \boldsymbol\psi_k$ and conditional covariance $\boldsymbol\Sigma_k$. In the multivariate case, $\boldsymbol\psi_k$ is a $J \times 1$ vector containing cluster-specific skewness parameters. Marginally (after integrating over $t_i$), $\mathbf{y}_i$ is distributed $MSN_J(\boldsymbol\zeta_{ik}, \boldsymbol\alpha_k, \boldsymbol\Omega_k)$, where
+$$\boldsymbol\zeta_{ik} = \mathbf{x}_i^T \boldsymbol\beta_k,$$
+$$\boldsymbol\alpha_k = \frac{1}{\sqrt{1 - \boldsymbol\psi_k^T \boldsymbol\psi_k}} \boldsymbol\Omega^{-1}_k\boldsymbol\psi_k,$$
+$$\boldsymbol\Omega_k = \boldsymbol\Psi_k \boldsymbol\Sigma_k \boldsymbol\Psi_k + \boldsymbol\psi_k \boldsymbol\psi_k^T,$$
+where $\boldsymbol\Psi_k = \text{Diag}\left ( \sqrt{1 - \psi^2_{k1}},...,\sqrt{1 - \psi^2_{kJ}} \right )$. To allow for time varying effects in our model, we structure $\mathbf{X}_i$ as a $J \times pJ$ vector of covariate values for subject $i$, and $\boldsymbol\beta_k$ as a $pJ \times 1$ vector of fixed effects coefficients for cluster $k$ (think about how to explain this better). 
 
 \subsection{Representation as Matrix Skew Normal}
 
-We note that the multivariate skew normal regression problem can be expressed more succinctly through the use of Matrix Skew Normal distributions. In particular, we define $\mathbf{Y}_{n_k \times J}$ as the response matrix with rows $\mathbf{y}_i^T$, $(i = 1,...,n_k)$, where $n_k = \sum_{i = 1}^n \mathds{1}_{(z_i = k)}$ is the total number of observations belonging to cluster $k$ ($k = 1,...,K$). 
+We note that the multivariate skew normal density can be expressed more compactly in terms of the matrix skew normal (MatSN) density (Chen and Gupta 2005). In particular, we define $\mathbf{Y}_{n_k \times J}$ as the response matrix with rows $\mathbf{y}_i^T$, $(i = 1,...,n_k)$, where $n_k = \sum_{i = 1}^n \mathds{1}_{(z_i = k)}$ is the total number of observations belonging to cluster $k$ ($k = 1,...,K$). 
 $$\mathbf{Y}_{n_k \times J} \sim MatSN_{n_k \times J}(\mathbf{M},\boldsymbol\alpha_k,\mathbf{I}_{n_k},\boldsymbol\Sigma_k)$$
 $$\text{vec}(\mathbf{Y}) = \mathbf{y}_{n_kJ \times 1} = (\mathbf{y}^T_1,...,\mathbf{y}^T_{n_k})$$
 $$\text{vec}(\mathbf{M}) = \boldsymbol\mu_{n_k J \times 1} = (\boldsymbol\mu_1^T,...,\boldsymbol\mu_{n_k}^T)$$

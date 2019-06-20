@@ -9,9 +9,9 @@
 \contentsline {section}{\numberline {3}Model}{6}
 \contentsline {subsection}{\numberline {3.1}Generic Multivariate Skew Normal Mixture}{6}
 \contentsline {subsection}{\numberline {3.2}Multivariate Skew Normal Stochastic Representation}{7}
-\contentsline {subsection}{\numberline {3.3}Representation as Matrix Skew Normal}{7}
+\contentsline {subsection}{\numberline {3.3}Representation as Matrix Skew Normal}{8}
 \contentsline {subsection}{\numberline {3.4}Multinomial Regression on Cluster Probabilities}{8}
-\contentsline {subsection}{\numberline {3.5}Conditional MVN Imputation}{8}
+\contentsline {subsection}{\numberline {3.5}Conditional MVN Imputation}{9}
 \contentsline {subsection}{\numberline {3.6}Bayesian Inference}{9}
 \contentsline {subsubsection}{\numberline {3.6.1}P\'olya--Gamma Data Augmentation}{9}
 \contentsline {subsubsection}{\numberline {3.6.2}Prior Choice}{10}
