@@ -10,8 +10,8 @@
 \contentsline {subsection}{\numberline {3.1}Multivariate Skew Normal Mixture Model}{6}
 \contentsline {subsection}{\numberline {3.2}Multinomial Regression for the Cluster Indicators}{8}
 \contentsline {subsection}{\numberline {3.3}Conditional MSN Imputation}{9}
-\contentsline {subsection}{\numberline {3.4}Bayesian Inference}{9}
-\contentsline {subsubsection}{\numberline {3.4.1}Prior Specification}{9}
+\contentsline {subsection}{\numberline {3.4}Bayesian Inference}{10}
+\contentsline {subsubsection}{\numberline {3.4.1}Prior Specification}{10}
 \contentsline {subsubsection}{\numberline {3.4.2}Posterior Inference}{10}
 \contentsline {paragraph}{P\'olya--Gamma Data Augmentation for $z_i$.}{10}
 \contentsline {subsubsection}{\numberline {3.4.3}MCMC Algorithm}{11}
