@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  24 JUN 2019 17:50
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  24 JUN 2019 18:31
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -736,16 +736,25 @@ Overfull \hbox (4.62497pt too wide) has occurred while \output is active
  []
 
 [7]
+Underfull \vbox (badness 4899) has occurred while \output is active []
+
+
 Overfull \hbox (4.62497pt too wide) has occurred while \output is active
 \OT1/cmr/m/n/9 8
  []
 
 [8]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
 Overfull \hbox (4.62497pt too wide) has occurred while \output is active
 \OT1/cmr/m/n/9 9
  []
 
 [9]
+Underfull \vbox (badness 7344) has occurred while \output is active []
+
+
 Overfull \hbox (9.24994pt too wide) has occurred while \output is active
 \OT1/cmr/m/n/9 10
  []
@@ -761,14 +770,14 @@ Overfull \hbox (9.24994pt too wide) has occurred while \output is active
  []
 
 [12]
-\openout4 = `manuscript.ttt'.
-
- (manuscript.ttt)
 Overfull \hbox (9.24994pt too wide) has occurred while \output is active
 \OT1/cmr/m/n/9 13
  []
 
 [13]
+\openout4 = `manuscript.ttt'.
+
+ (manuscript.ttt)
 Overfull \hbox (9.24994pt too wide) has occurred while \output is active
 \OT1/cmr/m/n/9 14
  []
@@ -784,9 +793,6 @@ Overfull \hbox (9.24994pt too wide) has occurred while \output is active
  []
 
 [16]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
 Overfull \hbox (9.24994pt too wide) has occurred while \output is active
 \OT1/cmr/m/n/9 17
  []
@@ -800,29 +806,25 @@ Overfull \hbox (9.24994pt too wide) has occurred while \output is active
  []
 
 [18]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
 Overfull \hbox (9.24994pt too wide) has occurred while \output is active
 \OT1/cmr/m/n/9 19
  []
 
 [19]
-Missing character: There is no ‚ in font cmr12!
-Missing character: There is no Ä in font cmr12!
-Missing character: There is no ê in font cmr12!
-Missing character: There is no ‚ in font cmr12!
-Missing character: There is no Ä in font cmr12!
-Missing character: There is no ê in font cmr12!
-Missing character: There is no ‚ in font cmr12!
-Missing character: There is no Ä in font cmr12!
-Missing character: There is no ì in font cmr12!
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
 Overfull \hbox (9.24994pt too wide) has occurred while \output is active
 \OT1/cmr/m/n/9 20
  []
 
 [20]
+Missing character: There is no ‚ in font cmr12!
+Missing character: There is no Ä in font cmr12!
+Missing character: There is no ê in font cmr12!
+Missing character: There is no ‚ in font cmr12!
+Missing character: There is no Ä in font cmr12!
+Missing character: There is no ê in font cmr12!
 Missing character: There is no ‚ in font cmr12!
 Missing character: There is no Ä in font cmr12!
 Missing character: There is no ì in font cmr12!
@@ -834,17 +836,29 @@ Overfull \hbox (9.24994pt too wide) has occurred while \output is active
 \OT1/cmr/m/n/9 21
  []
 
-[21] AED endfloat: Processing end Figures and Tables
+[21]
+Missing character: There is no ‚ in font cmr12!
+Missing character: There is no Ä in font cmr12!
+Missing character: There is no ì in font cmr12!
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
 Overfull \hbox (9.24994pt too wide) has occurred while \output is active
 \OT1/cmr/m/n/9 22
  []
 
-[22] (./manuscript.ttt
+[22] AED endfloat: Processing end Figures and Tables
 Overfull \hbox (9.24994pt too wide) has occurred while \output is active
 \OT1/cmr/m/n/9 23
  []
 
-[23]) (./manuscript.aux)
+[23] (./manuscript.ttt
+Overfull \hbox (9.24994pt too wide) has occurred while \output is active
+\OT1/cmr/m/n/9 24
+ []
+
+[24]) (./manuscript.aux)
 
 LaTeX Warning: There were multiply-defined labels.
 
@@ -852,11 +866,11 @@ LaTeX Warning: There were multiply-defined labels.
 Here is how much of TeX's memory you used:
  11273 strings out of 493014
  195548 string characters out of 6133351
- 234667 words of memory out of 5000000
+ 235667 words of memory out of 5000000
  14682 multiletter control sequences out of 15000+600000
  22903 words of font info for 82 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 38i,18n,40p,10383b,334s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 38i,18n,40p,10383b,332s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
 ></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
 </usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx6.pfb></
@@ -887,10 +901,10 @@ e/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/
 texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/local/texlive/2016/t
 exmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb></usr/local/texlive/2016/tex
 mf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb>
-Output written on manuscript.pdf (25 pages, 399225 bytes).
+Output written on manuscript.pdf (26 pages, 400773 bytes).
 PDF statistics:
- 206 PDF objects out of 1000 (max. 8388607)
- 147 compressed objects within 2 object streams
+ 209 PDF objects out of 1000 (max. 8388607)
+ 149 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 
