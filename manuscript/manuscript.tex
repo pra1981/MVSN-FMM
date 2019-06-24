@@ -247,16 +247,17 @@ where $MSN_J(\cdot)$ denotes the $J$-dimensional multivariate skew normal densit
 
 We can extend model (\ref{eq:msndens}) to the regression setting by modeling $\boldsymbol\zeta_{ki}$ as a function of covariates. Here we adopt a convenient stochastic representation of the MSN density (Azzalini and Dalla Valle, 1996):
 \begin{equation}
-\mathbf{y}_i|(z_i=k,t_i) = \mathbf{X}_i \boldsymbol\beta_k + t_i \boldsymbol\psi_k + \boldsymbol\epsilon_{ki}, \label{eq:msnreg}
+\mathbf{y}_{i}|(z_i=k,t_i) = \mathbf{X}_i \boldsymbol\beta_k + t_i \boldsymbol\psi_k + \boldsymbol\epsilon_{ki}, \label{eq:msnreg}
 \end{equation}
 where 
-$\mathbf{X}_i$ is a $J \times Jp$ design matrix that includes potential time-varying covariates (e.g., indicators denoting quarterly visits); $\boldsymbol{\beta}_k=(\beta_{k11},\ldots,\beta_{k1p},\ldots,\beta_{kJ1},\ldots,\beta_{kJp})^T$ is a $Jp\times 1$ vector of cluster- and outcome-specific regression coefficients; $t_i\sim N_{[0,\infty)}(0,1)$ is a subject-specific standard normal random variable truncated below by zero; $\boldsymbol\psi_k=(\psi_{k1},\ldots,\psi_{kJ})^T$ is a $J \times 1$ vector of cluster-specific skewness parameters; and $\boldsymbol{\epsilon}_{ki} \sim N_J(\boldsymbol0,\boldsymbol\Sigma_k)$ is a $J\times 1$ vector of error terms. Thus, conditional on $t_i$ and $z_i=k$, $\boldsymbol{y}_i$ is distributed as $N_J(\mathbf{X}_i \boldsymbol\beta_k + t_i \boldsymbol\psi_k, \boldsymbol{\Sigma}_k)$. Marginally (after integrating over $t_i$), $\mathbf{y}_i$ is distributed $MSN_J(\boldsymbol\zeta_{ik}, \boldsymbol\alpha_k, \boldsymbol\Omega_k)$, where through back-transformation \textbf{[Carter: Please review these expressions carefully and make sure they conform to those in FS and Pyne]}
+$\mathbf{X}_i$ is a $J \times Jp$ design matrix that includes potential time-varying covariates (e.g., indicators denoting quarterly visits); $\boldsymbol{\beta}_k=(\beta_{k11},\ldots,\beta_{k1p},\ldots,\beta_{kJ1},\ldots,\beta_{kJp})^T$ is a $Jp\times 1$ vector of cluster- and outcome-specific regression coefficients; $t_i\sim N_{[0,\infty)}(0,1)$ is a subject-specific standard normal random variable truncated below by zero; $\boldsymbol\psi_k=(\psi_{k1},\ldots,\psi_{kJ})^T$ is a $J \times 1$ vector of cluster-specific skewness parameters; and $\boldsymbol{\epsilon}_{ki} \sim N_J(\boldsymbol0,\boldsymbol\Sigma_k)$ is a $J\times 1$ vector of error terms. Thus, conditional on $t_i$ and $z_i=k$, $\boldsymbol{y}_i$ is distributed as $N_J(\mathbf{X}_i \boldsymbol\beta_k + t_i \boldsymbol\psi_k, \boldsymbol{\Sigma}_k)$. Marginally (after integrating over $t_i$), $\mathbf{y}_i$ is distributed $MSN_J(\boldsymbol\zeta_{ki}, \boldsymbol\alpha_k, \boldsymbol\Omega_k)$, where through back-transformation 
 \begin{eqnarray*}
-\boldsymbol\zeta_{ik} &=& \mathbf{X}_i\boldsymbol\beta_k\\
-\boldsymbol\alpha_k &=& \frac{1}{\sqrt{1 - \boldsymbol\psi_k^T \boldsymbol\Omega^{-1}_k\boldsymbol\psi_k}} \boldsymbol\Omega^{-1}_k\boldsymbol\psi_k~~\text{and}\\
-\boldsymbol\Omega_k &=& \boldsymbol\Sigma_k  + \boldsymbol\psi_k \boldsymbol\psi_k^T.
+\boldsymbol\zeta_{ki} &=& \mathbf{X}_i\boldsymbol\beta_k\\
+\boldsymbol\alpha_k &=& \frac{1}{\sqrt{1 - \boldsymbol\psi_k^T 
+\boldsymbol\Omega^{-1}_k\boldsymbol\psi_k}} \boldsymbol\omega_k \boldsymbol\Omega^{-1}_k\boldsymbol\psi_k~~\text{and}\\
+\boldsymbol\Omega_k &=& \boldsymbol\Sigma_k  + \boldsymbol\psi_k \boldsymbol\psi_k^T,
 \end{eqnarray*}
-Additional details can be found in Fr\:{u}wirth-Schnatter and Pyne (2010). 
+where $\boldsymbol\omega_k = \text{Diag}(\sqrt{\omega_{k,11}},...,\sqrt{\omega_{k,JJ}})$ is the $J \times J$ diagonal matrix containing the square root of the diagonal entries of $\boldsymbol\Omega_k$. Additional details can be found in Fr\"{u}wirth-Schnatter and Pyne (2010). 
 
 Of note, the MSN density can be expressed more compactly in terms of the matrix skew normal (MatSN) density (Chen and Gupta 2005). As we will see in Section 3.6, the matrix representation of the MSN distribution admits convenient conjugate prior distributions for the regression parameters and scale matrices, which in turn leads to efficient Gibbs sampling for posterior inference. Let $\mathbf{Y}_k$ be an ${n_k \times J}$ response matrix with rows $\mathbf{y}_i^T$, $(i = 1,...,n_k)$, where $n_k = \sum_{i = 1}^n {1}_{(z_i = k)}$ is the number of observations in cluster $k$. From equation (\ref{eq:msnreg}), it follows that $\mathbf{Y}_k$ is distributed as
 \begin{eqnarray*}

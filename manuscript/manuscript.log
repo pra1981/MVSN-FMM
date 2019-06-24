@@ -1,6 +1,7 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  24 JUN 2019 10:35
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  24 JUN 2019 13:52
 entering extended mode
  restricted \write18 enabled.
+ file:line:error style messages enabled.
  %&-line parsing enabled.
 **manuscript.tex
 (./manuscript.tex
@@ -688,7 +689,7 @@ LaTeX Warning: There were undefined references.
 Here is how much of TeX's memory you used:
  11222 strings out of 493014
  194919 string characters out of 6133351
- 228575 words of memory out of 5000000
+ 227575 words of memory out of 5000000
  14642 multiletter control sequences out of 15000+600000
  19928 words of font info for 71 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -714,7 +715,7 @@ ive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texliv
 e/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive
 /2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/local/texlive/
 2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb>
-Output written on manuscript.pdf (12 pages, 271327 bytes).
+Output written on manuscript.pdf (12 pages, 271982 bytes).
 PDF statistics:
  127 PDF objects out of 1000 (max. 8388607)
  91 compressed objects within 1 object stream
