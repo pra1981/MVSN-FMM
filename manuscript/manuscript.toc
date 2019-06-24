@@ -1,33 +1,16 @@
-\contentsline {section}{\numberline {1}Introduction}{3}
-\contentsline {subsection}{\numberline {1.1}Infant Development Clustering}{3}
-\contentsline {subsection}{\numberline {1.2}Existing Approaches}{3}
-\contentsline {section}{\numberline {2}Nurture Study}{5}
-\contentsline {subsection}{\numberline {2.1}Baseline Demographics and Description of Variables}{5}
-\contentsline {subsection}{\numberline {2.2}Statistical Challenges}{5}
-\contentsline {subsubsection}{\numberline {2.2.1}Skewness of Bayley score residuals}{5}
-\contentsline {subsubsection}{\numberline {2.2.2}Attrition and Intermittent Missingness}{5}
-\contentsline {section}{\numberline {3}Model}{6}
-\contentsline {subsection}{\numberline {3.1}Generic Multivariate Skew Normal Mixture}{6}
-\contentsline {subsection}{\numberline {3.2}Multivariate Skew Normal Stochastic Representation}{7}
-\contentsline {subsection}{\numberline {3.3}Representation as Matrix Skew Normal}{8}
-\contentsline {subsection}{\numberline {3.4}Multinomial Regression on Cluster Probabilities}{8}
-\contentsline {subsection}{\numberline {3.5}Conditional MVN Imputation}{9}
-\contentsline {subsection}{\numberline {3.6}Bayesian Inference}{9}
-\contentsline {subsubsection}{\numberline {3.6.1}P\'olya--Gamma Data Augmentation}{9}
-\contentsline {subsubsection}{\numberline {3.6.2}Prior Choice}{10}
-\contentsline {subsubsection}{\numberline {3.6.3}MCMC Algorithm}{10}
-\contentsline {subsubsection}{\numberline {3.6.4}Assessment of MCMC Convergence}{10}
-\contentsline {subsubsection}{\numberline {3.6.5}Label Switching}{10}
-\contentsline {section}{\numberline {4}Simulation Studies}{12}
-\contentsline {subsection}{\numberline {4.1}Simulation to Compare to Multivariate Normal}{12}
-\contentsline {subsection}{\numberline {4.2}Simulation to Compare Imputation Methods}{12}
-\contentsline {subsection}{\numberline {4.3}Simulation to Assess Sensitivity to Misspecified K}{12}
-\contentsline {section}{\numberline {5}Application}{13}
-\contentsline {section}{\numberline {6}Discussion}{14}
-\contentsline {section}{\numberline {7}Appendix}{14}
-\contentsline {subsection}{\numberline {7.1}Glossary of Notation}{15}
-\contentsline {subsection}{\numberline {7.2}Derivation of Full Conditional Distributions}{16}
-\contentsline {subsubsection}{\numberline {7.2.1}Multivariate Skew-Normal Regression}{16}
-\contentsline {subsubsection}{\numberline {7.2.2}Multinomial Logit Regression}{17}
-\contentsline {subsubsection}{\numberline {7.2.3}Multivariate Normal Conditional Imputation}{17}
-\contentsline {section}{References}{19}
+\contentsline {section}{\numberline {1}Introduction}{2}
+\contentsline {subsection}{\numberline {1.1}Infant Development Clustering}{2}
+\contentsline {subsection}{\numberline {1.2}Existing Approaches}{2}
+\contentsline {section}{\numberline {2}Nurture Study}{4}
+\contentsline {subsection}{\numberline {2.1}Baseline Demographics and Description of Variables}{4}
+\contentsline {subsection}{\numberline {2.2}Statistical Challenges}{4}
+\contentsline {subsubsection}{\numberline {2.2.1}Skewness of Bayley score residuals}{4}
+\contentsline {subsubsection}{\numberline {2.2.2}Attrition and Intermittent Missingness}{4}
+\contentsline {section}{\numberline {3}Model}{5}
+\contentsline {subsection}{\numberline {3.1}Multivariate Skew Normal Mixture Model}{5}
+\contentsline {subsection}{\numberline {3.2}Multinomial Regression for the Cluster Indicators}{7}
+\contentsline {subsection}{\numberline {3.3}Conditional MSN Imputation}{8}
+\contentsline {subsection}{\numberline {3.4}Bayesian Inference}{8}
+\contentsline {subsubsection}{\numberline {3.4.1}Prior Specification}{8}
+\contentsline {subsubsection}{\numberline {3.4.2}Posterior Inference}{9}
+\contentsline {paragraph}{P\'olya--Gamma Data Augmentation for $z_i$.}{9}
