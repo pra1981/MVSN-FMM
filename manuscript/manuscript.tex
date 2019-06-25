@@ -295,32 +295,42 @@ We adopt a fully Bayesian inferential approach and assign prior distributions to
 We allow the normal-inverse-Wishart and multinomial hyperparameters to vary across clusters, though they may be shared across clusters in practice. An advantage of allowing for cluster-specific prior parameters is that \textit{a priori} knowledge of development trends can be incorporated into certain clusters while still allowing the parameters of other clusters to be almost entirely determined by the data. Additionally, prior information regarding the effect of certain covariates on development cluster membership can be incorporated in to the model by choosing informative values for $\mathbf{d}_k \ \text{and} \ \mathbf{S}_k$
 
 \subsubsection{Posterior Inference} 
-The above prior specification induces closed-form full conditionals that can be efficiently updated as part of a Gibbs sampler outlined below. Additional details, including derivations can be found in the Web Appendix. \textbf{[Think about the best way to organize this section. Maybe see my Bayesian Analysis paper for guidance? We can discuss next week.]}
+The above prior specification induces closed-form full conditionals that can be efficiently updated as part of a Gibbs sampler outlined below. A programatic sketch of our MCMC algorithm is given in table (\ref{alg:MCMC}). Additional details, including derivations can be found in the Web Appendix. 
 
-\paragraph{P\'olya--Gamma Data Augmentation for $z_i$} The sampler begins by updating the latent cluster indicators $z_i$ $(i=1,\ldots,n)$ from its multinomial logit full conditional. To facilitate sampling, we adopt an efficient data-augmentation approach introduced by Polson \textit{et al.} (2013), which expresses the inverse-logit function as a mixture P\'olya--Gamma densities. A random variable $w$ is said to follow a P\'olya--Gamma distribution with parameters $b > 0$ and $c \in {\rm I\!R}$ if
-$$w \sim \text{PG}(b,c) \stackrel{d}{=} \frac{1}{2\pi^2}\sum_{s=1}^{\infty}\frac{g_s}{(s-1/2)^2 + c^2/(4\pi^2)},$$
-where $g_s \stackrel{iid}{\sim} \text{Ga}(b,1)$ for $s = 1,...,\infty$  
-$$p(\boldsymbol\delta_k|\mathbf{z},\boldsymbol\delta_{h \ne k}) \propto p(\boldsymbol\delta_k) \prod_{i = 1}^{n} \pi_{ik}^{U_{ik}}(1-\pi_{ik})^{1-U_{ik}}$$
+\paragraph{P\'olya--Gamma Data Augmentation for $z_i$} The sampler begins by updating the latent cluster indicators $z_i$ $(i=1,\ldots,n)$ from its multinomial logit full conditional. To facilitate sampling, we adopt an efficient data-augmentation approach introduced by Polson \textit{et al.} (2013), which expresses the inverse-logit function as a mixture P\'olya--Gamma densities. By using P\'olya--Gamma data augmentation for the multinomial model, we obtain a P\'olya--Gamma mixture of experts model, a computationally efficient way to model edge weights (\textbf{cite}). A random variable $w$ is said to follow a P\'olya--Gamma distribution with parameters $b > 0$ and $c \in {\rm I\!R}$ if
+\begin{equation}
+w \sim \text{PG}(b,c) \stackrel{d}{=} \frac{1}{2\pi^2}\sum_{s=1}^{\infty}\frac{g_s}{(s-1/2)^2 + c^2/(4\pi^2)}, \label{eq:pg1}
+\end{equation}
+where $g_s \stackrel{iid}{\sim} \text{Ga}(b,1)$ for $s = 1,...,\infty$ . Polson \textit{et al.} (2013) establish that for the $\text{PG}(b,c)$ density, and for $a,\eta \in {\rm I\!R}$, 
+
+\begin{equation}
+\frac{(e^{\eta})^a}{(1 + e^{\eta})^b} = 2^{-b}e^{\kappa \eta} \int_{0}^{\infty} e^{-w\eta^2/2}p(w|b,c = 0)dw. \label{eq:pg2}
+\end{equation}
+where $\kappa = a - b/2$. Polson \textit{et al.} also show that the conditional distribution $p(w|b,c)$ results from an ``exponential tilting'' of the $\text{PG}(b,0)$ density, thus
+
+\begin{equation}
+	p(w|b,c) = \frac{e^{-c^2w/2}p(w|b,0)}{E_w[e^{-c^2w/2}]} = \frac{e^{-c^2w/2}p(w|b,0)}{\int_0^\infty e^{-c^2w/2}p(w|b,0)dw}. \label{eq:pg3}
+\end{equation}
+
+To make use of P\'olya--Gamma data augmentation, we first write the full conditional distribution of $\boldsymbol\delta_k$ as the prior for $\boldsymbol\delta_k$ times the multinomial likelihood for all $z_i$. $$p(\boldsymbol\delta_k|\mathbf{z},\boldsymbol\delta_{h \ne k}) \propto p(\boldsymbol\delta_k) \prod_{i = 1}^{n} \pi_{ik}^{U_{ik}}(1-\pi_{ik})^{1-U_{ik}},$$
 where $p(\boldsymbol\delta_k)$ denotes the prior distribution of $\boldsymbol\delta_k$, $U_{ik} = {1}_{z_i = k}$ is an indicator that subject $i$ belongs to cluster $k$, and $\pi_{ik}$ is defined as in Section 3.4. We can rewrite $\pi_{ik}$ as follows
 $$\pi_{ik} = P(U_{ik} = 1) = \frac{e^{\mathbf{w}_i^T \boldsymbol\delta_k - {c}_{ik}}}{1 + e^{\mathbf{w}_i^T \boldsymbol\delta_k - {c}_{ik}}} = \frac{e^{\eta_{ik}}}{1 + e^{\eta_{ik}}}$$
 where ${c}_{ik} = \log \sum_{h \ne k} e^{\mathbf{w}_i^T \boldsymbol\delta_{h}}$ and $\eta_{ik} = \mathbf{w}_i^T \boldsymbol\delta_k - {c}_{ik}$. We note that the sum $\sum_{h \ne k} e^{\mathbf{w}_i^T \boldsymbol\delta_{h}}$ includes the reference category, but since we fix $\boldsymbol\delta_K = \mathbf{0}$, we have $e^{\mathbf{w}_i^T \boldsymbol\delta_K} = 1$, and hence
 $$c_{ik} = \log \sum_{h \ne k} e^{\mathbf{w}_i^T \boldsymbol\delta_{h}} = \log \left ( 1 + \sum_{h \notin \{k,K \}} e^{\mathbf{w}_i^T \boldsymbol\delta_{h}} \right )$$
 
 We can use the quantities to re-express the full conditionals for $\boldsymbol\delta_k$ as
-$$p(\boldsymbol\delta_k|\mathbf{Z},\boldsymbol\delta_{h \ne k}) \propto p(\boldsymbol\delta_k) \prod_{i = 1}^{n} \left (\frac{e^{\eta_{ik}}}{1 + e^{\eta_{ik}}} \right )^{U_{ik}} \left (\frac{1}{1 + e^{\eta_{ik}}} \right )^{1-U_{ik}} = p(\boldsymbol\delta_k) \prod_{i = 1}^n \frac{(e^{\eta_{ik}})^{U_{ik}}}{1 + e^{\eta_{ik}}}$$
-
+\begin{eqnarray}
+	p(\boldsymbol\delta_k|\mathbf{Z},\boldsymbol\delta_{h \ne k}) &\propto& p(\boldsymbol\delta_k) \prod_{i = 1}^{n} \left (\frac{e^{\eta_{ik}}}{1 + e^{\eta_{ik}}} \right )^{U_{ik}} \left (\frac{1}{1 + e^{\eta_{ik}}} \right )^{1-U_{ik}} \nonumber\\ &=& p(\boldsymbol\delta_k) \prod_{i = 1}^n \frac{(e^{\eta_{ik}})^{U_{ik}}}{1 + e^{\eta_{ik}}} \label{eq:pglogit}
+\end{eqnarray}
 which we note is essentially a logistic regression likelihood. We thus apply this P\'olya--Gamma data augmentation scheme to update each $\boldsymbol\delta_k$ ($k = 1,...,K-1$) one at a time based on the binary indicators $U_{ik}$.
-
-\begin{itemize}
-
-\item Emphasize that PG data augmentation for the multinomial model results in a PG mixture of experts model, which is a computationally efficient way to model edge weights.
-
-\end{itemize}
 
 \subsubsection{MCMC Algorithm}
 
+See Table \ref{alg:MCMC}.
+
 \begin{algorithm}
 \caption{Gibbs Sampler}
+\label{alg:MCMC}
 \begin{algorithmic}
 \small
 \linespread{0.5}
@@ -364,7 +374,11 @@ which we note is essentially a logistic regression likelihood. We thus apply thi
 
 \subsubsection{Assessment of MCMC Convergence}
 
+We monitor conver convergence of our MCMC algorithm through the use of standard approaches such Geweke's (1992) Z-diagnostic. In simulation studies under realistic parameter settings, we observed relatively fast convergence of all MCMC chains (i.e. within 1,000 iterations).
+
 \subsubsection{Label Switching}
+
+A problematic feature of mixture models such as the one proposed here is that the full model likelihood is invariant to permutations of $\mathbf{z} = \{ z_1, z_2,..., z_n \}$, the cluster labeling of each observation, the result of which is label switching across MCMC iterations - a process in which draws of cluster-specific parameters may be assigned to the wrong cluster at some point during the MCMC simulation. After conducting simulation studies under a wide variety of realistic parameter settings, as detailed in Section 4, we found little evidence of label switching in posterior draws of $\mathbf{z}$. When label switching was observed, we implemented \textit{post hoc} relabling algorithms as described in Panagiotis 2016 and implemented in the \texttt{label.switching} package in \texttt{R}. We discuss other possible label switching remedies in Section 6. 
 
 \newpage
 
@@ -440,12 +454,14 @@ Model Component & Parameter & True & Est. (95\% CrI) & True & Est. (95\% CrI) & 
 \section{Discussion}
 \label{s:discuss}
 
-\textit{\textbf{Discuss non-ignorable missingness here}}
-
 
 \begin{itemize}
 
 \item Discuss how we handle non-ignorable missingness 
+
+\item Discuss other label switching approaches
+
+\item Discuss skew-t?
 
 \end{itemize}
 
@@ -599,6 +615,8 @@ The block-wise inversion formula was used to invert $\boldsymbol\Sigma$ accordin
 
 \bibitem{ } Ganjali M, Baghfalaki T. A Bayesian shared parameter model for analysing longitudinal skewed responses with nonignorable dropout. \textit{International Journal of Statistics in Medical Research}. 2014 Apr 1;3(2):103.
 
+\bibitem{ } Geweke, J. Evaluating the accuracy of sampling-based ap- proaches to calculating posterior moments. \textit{Bayesian Statistics} Vol. 4, J. M. Bernardo, J. Berger, A. P. Dawid, and A.F.M. Smith (eds), 169–193. 1992. Cambridge, U.K.: Oxford University Press.
+
 \bibitem{ } Gelman A, Stern HS, Carlin JB, Dunson DB, Vehtari A, Rubin DB. Bayesian data analysis. \textit{Chapman and Hall/CRC}; 2013 Nov 27.
 
 \bibitem{ } Gelman A, Hwang J, Vehtari A. Understanding predictive information criteria for Bayesian models. \textit{Statistics and Computing}. 2014 Nov 1;24(6):997-1016.
@@ -619,6 +637,8 @@ The block-wise inversion formula was used to invert $\boldsymbol\Sigma$ accordin
 
 \bibitem{ } Melnykov V, Maitra R. Finite mixture models and model-based clustering. \textit{Statistics Surveys}. 2010;4:80-116.
 
+\bibitem{ } Panagiotis Papastamoulis (2016). label.switching: An R Package for Dealing with the Label Switching Problem in MCMC Outputs. \textit{Journal of Statistical Software}, 69(1), 1-24. doi:10.18637/jss.v069.c01
+
 \bibitem{ } Polson NG, Scott JG, Windle J. Bayesian inference for logistic models using P\'olya –- Gamma latent variables. Journal of the American statistical Association. 2013 Dec 1;108(504):1339-49.
 
 \bibitem{ } Tiao GC, Zellner A. On the Bayesian estimation of multivariate regression. \textit{Journal of the Royal Statistical Society}: Series B (Methodological). 1964 Jul;26(2):277-85.
@@ -626,6 +646,8 @@ The block-wise inversion formula was used to invert $\boldsymbol\Sigma$ accordin
 \bibitem{ } Viroli C. Finite mixtures of matrix normal distributions for classifying three-way data. \textit{Statistics and Computing}. 2011 Oct 1;21(4):511-22.
 
 \bibitem{ } Vrbik I, Mcnicholas PD. Parsimonious skew mixture models for model-based clustering and classification. \textit{Computational Statistics \& Data Analysis}. 2014 Mar 1;71:196-210.
+
+\bibitem{ } Watanabe S. Asymptotic equivalence of Bayes cross validation and widely applicable information criterion in singular learning theory. \textit{Journal of Machine Learning Research}. 2010;11(Dec):3571-94.
 
 \bibitem{ } Zeller CB, Cabral CR, Lachos VH. Robust mixture regression modeling based on scale mixtures of skew-normal distributions. \textit{Test}. 2016 Jun 1;25(2):375-96.
 
