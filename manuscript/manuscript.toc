@@ -13,20 +13,21 @@
 \contentsline {subsection}{\numberline {3.4}Bayesian Inference}{10}
 \contentsline {subsubsection}{\numberline {3.4.1}Prior Specification}{10}
 \contentsline {subsubsection}{\numberline {3.4.2}Posterior Inference}{10}
-\contentsline {paragraph}{P\'olya--Gamma Data Augmentation for $z_i$}{10}
+\contentsline {paragraph}{\textbf {Step 1}: Conditional MSN Imputation}{11}
+\contentsline {paragraph}{\textbf {Step 3:}P\'olya--Gamma Data Augmentation for $z_i$}{11}
 \contentsline {subsubsection}{\numberline {3.4.3}MCMC Algorithm}{12}
 \contentsline {subsubsection}{\numberline {3.4.4}Assessment of MCMC Convergence}{12}
 \contentsline {subsubsection}{\numberline {3.4.5}Label Switching}{12}
-\contentsline {section}{\numberline {4}Simulation Studies}{14}
-\contentsline {subsection}{\numberline {4.1}Simulation to Compare to Multivariate Normal}{14}
-\contentsline {subsection}{\numberline {4.2}Simulation to Compare Imputation Methods}{14}
-\contentsline {subsection}{\numberline {4.3}Simulation to Assess Sensitivity to Misspecified K}{14}
-\contentsline {section}{\numberline {5}Application}{15}
-\contentsline {section}{\numberline {6}Discussion}{16}
-\contentsline {section}{\numberline {7}Appendix}{16}
-\contentsline {subsection}{\numberline {7.1}Glossary of Notation}{17}
-\contentsline {subsection}{\numberline {7.2}Derivation of Full Conditional Distributions}{18}
-\contentsline {subsubsection}{\numberline {7.2.1}Multivariate Skew-Normal Regression}{18}
-\contentsline {subsubsection}{\numberline {7.2.2}Multinomial Logit Regression}{19}
-\contentsline {subsubsection}{\numberline {7.2.3}Multivariate Normal Conditional Imputation}{19}
-\contentsline {section}{References}{21}
+\contentsline {section}{\numberline {4}Simulation Studies}{15}
+\contentsline {subsection}{\numberline {4.1}Simulation to Compare to Multivariate Normal}{15}
+\contentsline {subsection}{\numberline {4.2}Simulation to Compare Imputation Methods}{15}
+\contentsline {subsection}{\numberline {4.3}Simulation to Assess Sensitivity to Misspecified K}{15}
+\contentsline {section}{\numberline {5}Application}{16}
+\contentsline {section}{\numberline {6}Discussion}{17}
+\contentsline {section}{\numberline {7}Appendix}{17}
+\contentsline {subsection}{\numberline {7.1}Glossary of Notation}{18}
+\contentsline {subsection}{\numberline {7.2}Derivation of Full Conditional Distributions}{19}
+\contentsline {subsubsection}{\numberline {7.2.1}Multivariate Skew-Normal Regression}{19}
+\contentsline {subsubsection}{\numberline {7.2.2}Multinomial Logit Regression}{20}
+\contentsline {subsubsection}{\numberline {7.2.3}Multivariate Normal Conditional Imputation}{20}
+\contentsline {section}{References}{22}
