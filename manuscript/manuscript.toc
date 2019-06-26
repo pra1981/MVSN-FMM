@@ -9,26 +9,26 @@
 \contentsline {section}{\numberline {3}Model}{6}
 \contentsline {subsection}{\numberline {3.1}Multivariate Skew Normal Mixture Model}{6}
 \contentsline {subsection}{\numberline {3.2}Multinomial Regression for the Cluster Indicators}{8}
-\contentsline {subsection}{\numberline {3.3}Conditional MSN Imputation}{9}
-\contentsline {subsection}{\numberline {3.4}Bayesian Inference}{10}
-\contentsline {subsubsection}{\numberline {3.4.1}Prior Specification}{10}
-\contentsline {subsubsection}{\numberline {3.4.2}Posterior Inference}{10}
-\contentsline {paragraph}{\textbf {Step 1}: Conditional MSN Imputation}{10}
-\contentsline {paragraph}{\textbf {Step 2:} Update of MSN Regression Parameters}{11}
-\contentsline {paragraph}{\textbf {Step 3:}P\'olya--Gamma Data Augmentation for $z_i$}{11}
+\contentsline {subsection}{\numberline {3.3}Conditional MSN Imputation}{10}
+\contentsline {subsection}{\numberline {3.4}Bayesian Inference}{11}
+\contentsline {subsubsection}{\numberline {3.4.1}Prior Specification}{11}
+\contentsline {subsubsection}{\numberline {3.4.2}Posterior Inference}{12}
+\contentsline {paragraph}{\textbf {Step 1}: Conditional MSN Imputation}{12}
+\contentsline {paragraph}{\textbf {Step 2:} Update of MSN Regression Parameters}{12}
+\contentsline {paragraph}{\textbf {Step 3:}P\'olya--Gamma Data Augmentation for $z_i$}{13}
 \contentsline {subsubsection}{\numberline {3.4.3}MCMC Algorithm}{13}
-\contentsline {subsubsection}{\numberline {3.4.4}Assessment of MCMC Convergence}{13}
-\contentsline {subsubsection}{\numberline {3.4.5}Label Switching}{13}
-\contentsline {section}{\numberline {4}Simulation Studies}{15}
-\contentsline {subsection}{\numberline {4.1}Simulation to Compare to Multivariate Normal}{15}
-\contentsline {subsection}{\numberline {4.2}Simulation to Compare Imputation Methods}{15}
-\contentsline {subsection}{\numberline {4.3}Simulation to Assess Sensitivity to Misspecified K}{15}
-\contentsline {section}{\numberline {5}Application}{16}
-\contentsline {section}{\numberline {6}Discussion}{17}
-\contentsline {section}{\numberline {7}Appendix}{17}
-\contentsline {subsection}{\numberline {7.1}Glossary of Notation}{18}
-\contentsline {subsection}{\numberline {7.2}Derivation of Full Conditional Distributions}{19}
-\contentsline {subsubsection}{\numberline {7.2.1}Multivariate Skew-Normal Regression}{19}
-\contentsline {subsubsection}{\numberline {7.2.2}Multinomial Logit Regression}{20}
-\contentsline {subsubsection}{\numberline {7.2.3}Multivariate Normal Conditional Imputation}{20}
-\contentsline {section}{References}{22}
+\contentsline {subsubsection}{\numberline {3.4.4}Assessment of MCMC Convergence}{15}
+\contentsline {subsubsection}{\numberline {3.4.5}Label Switching}{15}
+\contentsline {section}{\numberline {4}Simulation Studies}{16}
+\contentsline {subsection}{\numberline {4.1}Simulation to Compare to Multivariate Normal}{16}
+\contentsline {subsection}{\numberline {4.2}Simulation to Compare Imputation Methods}{16}
+\contentsline {subsection}{\numberline {4.3}Simulation to Assess Sensitivity to Misspecified K}{16}
+\contentsline {section}{\numberline {5}Application}{17}
+\contentsline {section}{\numberline {6}Discussion}{18}
+\contentsline {section}{\numberline {7}Appendix}{18}
+\contentsline {subsection}{\numberline {7.1}Glossary of Notation}{19}
+\contentsline {subsection}{\numberline {7.2}Derivation of Full Conditional Distributions}{20}
+\contentsline {subsubsection}{\numberline {7.2.1}Multivariate Skew-Normal Regression}{20}
+\contentsline {subsubsection}{\numberline {7.2.2}Multinomial Logit Regression}{21}
+\contentsline {subsubsection}{\numberline {7.2.3}Multivariate Normal Conditional Imputation}{21}
+\contentsline {section}{References}{23}
