@@ -14,11 +14,11 @@
 \contentsline {subsubsection}{\numberline {3.4.1}Prior Specification}{11}
 \contentsline {subsubsection}{\numberline {3.4.2}Posterior Inference}{12}
 \contentsline {paragraph}{\textbf {Step 1}: Conditional MSN Imputation}{12}
-\contentsline {paragraph}{\textbf {Step 2:} Update of MSN Regression Parameters}{12}
+\contentsline {paragraph}{\textbf {Step 2:} Update of MSN Regression Parameters}{13}
 \contentsline {paragraph}{\textbf {Step 3:}P\'olya--Gamma Data Augmentation for $z_i$}{13}
-\contentsline {subsubsection}{\numberline {3.4.3}MCMC Algorithm}{13}
-\contentsline {subsubsection}{\numberline {3.4.4}Assessment of MCMC Convergence}{15}
-\contentsline {subsubsection}{\numberline {3.4.5}Label Switching}{15}
+\contentsline {subsubsection}{\numberline {3.4.3}MCMC Algorithm}{14}
+\contentsline {subsubsection}{\numberline {3.4.4}Assessment of MCMC Convergence}{14}
+\contentsline {subsubsection}{\numberline {3.4.5}Label Switching}{14}
 \contentsline {section}{\numberline {4}Simulation Studies}{16}
 \contentsline {subsection}{\numberline {4.1}Simulation to Compare to Multivariate Normal}{16}
 \contentsline {subsection}{\numberline {4.2}Simulation to Compare Imputation Methods}{16}

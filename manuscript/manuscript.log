@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  26 JUN 2019 13:58
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  26 JUN 2019 15:23
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -764,6 +764,9 @@ Overfull \hbox (4.62497pt too wide) has occurred while \output is active
  []
 
 [5]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
 Overfull \hbox (4.62497pt too wide) has occurred while \output is active
 \OT1/cmr/m/n/9 6
  []
@@ -794,7 +797,7 @@ Overfull \hbox (4.62497pt too wide) has occurred while \output is active
  []
 
 [8]
-Underfull \vbox (badness 4454) has occurred while \output is active []
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 Overfull \hbox (4.62497pt too wide) has occurred while \output is active
@@ -802,6 +805,9 @@ Overfull \hbox (4.62497pt too wide) has occurred while \output is active
  []
 
 [9]
+Underfull \vbox (badness 1231) has occurred while \output is active []
+
+
 Overfull \hbox (9.24994pt too wide) has occurred while \output is active
 \OT1/cmr/m/n/9 10
  []
@@ -812,21 +818,35 @@ Overfull \hbox (9.24994pt too wide) has occurred while \output is active
  []
 
 [11]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
 Overfull \hbox (9.24994pt too wide) has occurred while \output is active
 \OT1/cmr/m/n/9 12
  []
 
 [12]
-LaTeX Font Info:    Font shape `U/dutchcal/m/n' will be
-(Font)              scaled to size 9.0pt on input line 368.
-LaTeX Font Info:    Font shape `U/dutchcal/m/n' will be
-(Font)              scaled to size 5.0pt on input line 368.
+Overfull \hbox (6.60861pt too wide) in paragraph at lines 344--345
+\OT1/cmr/m/n/12 from a $[][](\OT1/cmr/bx/n/12 B[]\OML/cmm/m/it/12 ; \OT1/cmr/bx
+/n/12 L[]\OML/cmm/m/it/12 ; [][]\OT1/cmr/m/n/12 )$ den-sity, where $[](\U/msb/m
+/n/12 B[]\OT1/cmr/m/n/12 ) = [][] = (\OML/cmm/m/it/12 ^^L[]; :::; ^^L[];  []; :
+::;  []\OT1/cmr/m/n/12 )[]$
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
 
 Overfull \hbox (9.24994pt too wide) has occurred while \output is active
 \OT1/cmr/m/n/9 13
  []
 
 [13]
+LaTeX Font Info:    Font shape `U/dutchcal/m/n' will be
+(Font)              scaled to size 9.0pt on input line 369.
+LaTeX Font Info:    Font shape `U/dutchcal/m/n' will be
+(Font)              scaled to size 5.0pt on input line 369.
+
 Overfull \hbox (9.24994pt too wide) has occurred while \output is active
 \OT1/cmr/m/n/9 14
  []
@@ -931,7 +951,7 @@ LaTeX Warning: There were multiply-defined labels.
 Here is how much of TeX's memory you used:
  11579 strings out of 493014
  200129 string characters out of 6133351
- 242221 words of memory out of 5000000
+ 239221 words of memory out of 5000000
  14956 multiletter control sequences out of 15000+600000
  26872 words of font info for 99 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -969,7 +989,7 @@ texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb></usr/local/texlive/2016/te
 xmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/local/texlive/2016/tex
 mf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb></usr/local/texlive/2016/texmf
 -dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on manuscript.pdf (28 pages, 424688 bytes).
+Output written on manuscript.pdf (28 pages, 426201 bytes).
 PDF statistics:
  227 PDF objects out of 1000 (max. 8388607)
  162 compressed objects within 2 object streams
