@@ -1,5 +1,5 @@
 # Fdb version 3
-["pdflatex"] 1561492106 "manuscript.tex" "manuscript.pdf" "manuscript" 1561492107
+["pdflatex"] 1561492106 "manuscript.tex" "manuscript.pdf" "manuscript" 1561552739
   "/usr/local/texlive/2016/texmf-dist/fonts/map/fontname/texfonts.map" 1272929888 3287 e6b82fe08f5336d4d5ebc73fb1152e87 ""
   "/usr/local/texlive/2016/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmbsy5.tfm" 1246382020 1120 1e8878807317373affa7f7bba4cf2f6a ""
   "/usr/local/texlive/2016/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmbsy6.tfm" 1246382020 1124 14ccf5552bc7f77ca02a8a402bea8bfb ""
@@ -149,11 +149,11 @@
   "biom.cls" 1557755616 64886 7f92938f68a55af22b193f888017a891 ""
   "endrotfloat.sty" 1557756168 2946 ab291a0c99b9cbaadf6db93583610dec ""
   "manuscript.aux" 1561492107 4474 c7d171a87e00464672d97240cf102ccc ""
-  "manuscript.tex" 1561492105 55048 468e4b2881340edd52ea4f3c61a00f69 ""
+  "manuscript.tex" 1561492142 55048 468e4b2881340edd52ea4f3c61a00f69 ""
   "manuscript.toc" 1561492107 2595 8cba8736e9e33964857750414de06349 ""
   (generated)
-  "manuscript.ttt"
-  "manuscript.log"
   "manuscript.toc"
-  "manuscript.pdf"
+  "manuscript.log"
   "manuscript.aux"
+  "manuscript.ttt"
+  "manuscript.pdf"
