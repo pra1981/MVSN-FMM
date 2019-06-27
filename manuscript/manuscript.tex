@@ -237,7 +237,7 @@ A ubiquitous feature of repeated measures studies is loss of data due to intermi
 
 A primary goal of the Nurture study is to identify clusters of infants characterized by distinct motor development trajectories. To address this aim, we propose a flexible finite mixture model that accommodates relevant features of the data, such as skewness and dependence among the responses. For $i = 1,...,n$, let $\mathbf{y}_{i}=(y_{i1},\ldots,y_{iJ})^T$ be a $J \times 1$ vector of responses (i.e., Baley scores) for subject $i$ across the $J$ measurement occasions. For the analysis of the Nurture data, we propose a finite mixture model of the form
 \begin{equation}
-f(\mathbf{y}_i) = \sum_{k = 1}^{K} \pi_{ik} f(\mathbf{y}_i|\boldsymbol\theta_k),
+f(\mathbf{y}_i) = \sum_{k = 1}^{K} \pi_{ki} f(\mathbf{y}_i|\boldsymbol\theta_k),
 \end{equation}
 where $\boldsymbol\theta_k$ is the set of parameters specific to cluster $k$ ($k = 1,...,K$) and $\pi_{ik}$ is a subject-specific mixing weight representing the probability that subject $i$ belongs to cluster $k$. A distinguishing feature of our model is that we treat $\pi_{ik}$ as a gating function (\textbf{cite book}) that depends on a subject's observed data as well as the parameters specific to the cluster to which they belong. For now we assume that $K$ is fixed; in Section 4, we discuss model selection strategies for choosing the optimal value of $K$. 
 
@@ -418,6 +418,12 @@ A common challenge for Bayesian mixtures models is the so-called ``label switchi
 \label{s:sim}
 
 \subsection{Simulation to Compare to Multivariate Normal}
+
+Our first simulation study will be concerned with comarison of the MSN mixture model to a standard multivariate normal mixture model. Here, the goal is to investigate to what degree allowing for skewness in outcome components reduces the number of mixture components necessary to estimate the marginal density. For the purposes of illustration, we consider the following generative model 
+\begin{eqnarray}
+	f(\mathbf{y}_i) = \pi_{1i}f(\mathbf{y}_i|\boldsymbol\theta_1) + \pi_{2i}f(\mathbf{y}_i|\boldsymbol\theta_2) + \pi_{3i}f(\mathbf{y}_i|\boldsymbol\theta_3), \nonumber
+\end{eqnarray}
+where $\boldsymbol\theta_k$ is the set of parameters specific to cluster $k$, for $k \in \{1,2,3\}$, and $\mathbf{y}_i | \boldsymbol\theta_k \sim \N$
 
 \begin{table}[t]
 
