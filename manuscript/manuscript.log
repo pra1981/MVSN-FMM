@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  26 JUN 2019 16:33
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  27 JUN 2019 14:26
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -857,19 +857,22 @@ Overfull \hbox (9.24994pt too wide) has occurred while \output is active
  []
 
 [15]
-\openout4 = `manuscript.ttt'.
-
- (manuscript.ttt)
 Overfull \hbox (9.24994pt too wide) has occurred while \output is active
 \OT1/cmr/m/n/9 16
  []
 
 [16]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
 Overfull \hbox (9.24994pt too wide) has occurred while \output is active
 \OT1/cmr/m/n/9 17
  []
 
 [17]
+\openout4 = `manuscript.ttt'.
+
+ (manuscript.ttt)
 Overfull \hbox (9.24994pt too wide) has occurred while \output is active
 \OT1/cmr/m/n/9 18
  []
@@ -880,40 +883,24 @@ Overfull \hbox (9.24994pt too wide) has occurred while \output is active
  []
 
 [19]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
 Overfull \hbox (9.24994pt too wide) has occurred while \output is active
 \OT1/cmr/m/n/9 20
  []
 
 [20]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
 Overfull \hbox (9.24994pt too wide) has occurred while \output is active
 \OT1/cmr/m/n/9 21
  []
 
 [21]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
 Overfull \hbox (9.24994pt too wide) has occurred while \output is active
 \OT1/cmr/m/n/9 22
  []
 
 [22]
-Missing character: There is no â in font cmr12!
-Missing character: There is no € in font cmr12!
-Missing character: There is no  in font cmr12!
-Missing character: There is no â in font cmr12!
-Missing character: There is no € in font cmr12!
-Missing character: There is no  in font cmr12!
-Missing character: There is no â in font cmr12!
-Missing character: There is no € in font cmr12!
-Missing character: There is no “ in font cmr12!
-Missing character: There is no â in font cmr12!
-Missing character: There is no € in font cmr12!
-Missing character: There is no “ in font cmr12!
-
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
@@ -922,6 +909,20 @@ Overfull \hbox (9.24994pt too wide) has occurred while \output is active
  []
 
 [23]
+Overfull \hbox (9.24994pt too wide) has occurred while \output is active
+\OT1/cmr/m/n/9 24
+ []
+
+[24]
+Missing character: There is no â in font cmr12!
+Missing character: There is no € in font cmr12!
+Missing character: There is no  in font cmr12!
+Missing character: There is no â in font cmr12!
+Missing character: There is no € in font cmr12!
+Missing character: There is no  in font cmr12!
+Missing character: There is no â in font cmr12!
+Missing character: There is no € in font cmr12!
+Missing character: There is no “ in font cmr12!
 Missing character: There is no â in font cmr12!
 Missing character: There is no € in font cmr12!
 Missing character: There is no “ in font cmr12!
@@ -930,20 +931,32 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 Overfull \hbox (9.24994pt too wide) has occurred while \output is active
-\OT1/cmr/m/n/9 24
- []
-
-[24] AED endfloat: Processing end Figures and Tables
-Overfull \hbox (9.24994pt too wide) has occurred while \output is active
 \OT1/cmr/m/n/9 25
  []
 
-[25] (./manuscript.ttt
+[25]
+Missing character: There is no â in font cmr12!
+Missing character: There is no € in font cmr12!
+Missing character: There is no “ in font cmr12!
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
 Overfull \hbox (9.24994pt too wide) has occurred while \output is active
 \OT1/cmr/m/n/9 26
  []
 
-[26]) (./manuscript.aux)
+[26] AED endfloat: Processing end Figures and Tables
+Overfull \hbox (9.24994pt too wide) has occurred while \output is active
+\OT1/cmr/m/n/9 27
+ []
+
+[27] (./manuscript.ttt
+Overfull \hbox (9.24994pt too wide) has occurred while \output is active
+\OT1/cmr/m/n/9 28
+ []
+
+[28]) (./manuscript.aux)
 
 LaTeX Warning: There were multiply-defined labels.
 
@@ -989,10 +1002,10 @@ texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb></usr/local/texlive/2016/te
 xmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/local/texlive/2016/tex
 mf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb></usr/local/texlive/2016/texmf
 -dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on manuscript.pdf (28 pages, 426898 bytes).
+Output written on manuscript.pdf (30 pages, 430667 bytes).
 PDF statistics:
- 227 PDF objects out of 1000 (max. 8388607)
- 162 compressed objects within 2 object streams
+ 233 PDF objects out of 1000 (max. 8388607)
+ 166 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 

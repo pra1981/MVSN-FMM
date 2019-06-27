@@ -358,7 +358,7 @@ The cluster labels $z_i$ are updated from a $\text{Multinomial}(1,\boldsymbol\va
 
 \subsubsection{MCMC Algorithm}
 
-See Table \ref{alg:MCMC}.
+See Algorithm \ref{alg:MCMC}.
 
 \begin{algorithm}
 \caption{Gibbs Sampler}
@@ -412,6 +412,8 @@ We monitor conver convergence of our MCMC algorithm through the use of standard 
 
 A common challenge for Bayesian mixtures models is the so-called ``label switching" problem, in which draws of cluster-specific parameters may be assigned to the wrong cluster at some point during the MCMC simulation, rendering summaries of class-specific parameters incoherent. After conducting simulation studies under a wide variety of realistic parameter settings, as detailed in Section 4, we found little evidence of label switching in posterior draws of $\mathbf{z}$. When label switching was observed, we implemented \textit{post hoc} relabling algorithms as described in Panagiotis 2016 and implemented in the \texttt{label.switching} package in \texttt{R}.
 
+\subsubsection{Model Fit Diagnostics and Specification of K}
+
 \newpage
 
 \section{Simulation Studies}
@@ -419,11 +421,40 @@ A common challenge for Bayesian mixtures models is the so-called ``label switchi
 
 \subsection{Simulation to Compare to Multivariate Normal}
 
-Our first simulation study will be concerned with comarison of the MSN mixture model to a standard multivariate normal mixture model. Here, the goal is to investigate to what degree allowing for skewness in outcome components reduces the number of mixture components necessary to estimate the marginal density. For the purposes of illustration, we consider the following generative model 
+Our first simulation study will be concerned with comarison of the MSN mixture model to a standard multivariate normal mixture model. Here, the primary goal is to validate our parameter estimation scheme in a setting that resembles our application to the Nurture data. Our secondary goal is to investigate to what degree allowing for skewness in outcome components reduces the number of mixture components necessary to estimate the marginal density. For the purposes of illustration, we consider the following generative model 
 \begin{eqnarray}
 	f(\mathbf{y}_i) = \pi_{1i}f(\mathbf{y}_i|\boldsymbol\theta_1) + \pi_{2i}f(\mathbf{y}_i|\boldsymbol\theta_2) + \pi_{3i}f(\mathbf{y}_i|\boldsymbol\theta_3), \nonumber
 \end{eqnarray}
-where $\boldsymbol\theta_k$ is the set of parameters specific to cluster $k$, for $k \in \{1,2,3\}$, and $\mathbf{y}_i | \boldsymbol\theta_k \sim \N$
+where $\boldsymbol\theta_k$ is the set of parameters specific to cluster $k$, for $k \in \{1,2,3 \}$, and $\mathbf{y}_i | \boldsymbol\theta_k \sim \text{MSN}_4(\boldsymbol\zeta_{ki},\boldsymbol\alpha_k,\boldsymbol\Omega_k)$, where $\boldsymbol\zeta_{ki} = (\zeta_{ki1},\zeta_{ki2},\zeta_{ki3},\zeta_{ki4}) = \mathbf{X}_i \boldsymbol\beta_{k}$. We note from the above model specification that the number of clusters $K = 3$ and the number of measurement occasions $J = 4$. For the MSN regression model, we fit a main effect for time (i.e. measurement occasion) in addition to a baseline covariate, whose value does not vary with time, but whose effect does vary with time (\textbf{is this a weird way to say this?}). Under this setting with $p = 2$ covariates, the design matrix $\mathbf{X}_i$ for subject $i$ and the matrix of regression coefficients for cluster $k$, $\mathbf{B}_k$ are structured as
+
+\begin{eqnarray}
+	\mathbf{X}_i = 
+	\begin{bmatrix}
+		1 & 0 & 0 & 0 & x_i & 0 & 0 & 0\\
+		0 & 1 & 0 & 0 & 0 & x_i & 0 & 0\\
+		0 & 0 & 1 & 0 & 0 & 0 & x_i & 0\\
+		0 & 0 & 0 & 1 & 0 & 0 & 0 & x_i\\
+	\end{bmatrix}, \ \text{and} \ 
+	\mathbf{B}_k = 
+	\begin{bmatrix}
+		\beta_{k11} & \beta_{k12} \\
+		\beta_{k21} & \beta_{k22} \\
+		\beta_{k31} & \beta_{k32} \\
+		\beta_{k41} & \beta_{k42} \\
+	\end{bmatrix}, \nonumber
+\end{eqnarray}
+where $\text{vec}({\mathbf{B}_k}) = \boldsymbol\beta_k$. Thus, for subject $i$ in cluster $k$, the $J = 4$ measurements have location parameters given by
+
+\begin{eqnarray}
+	\zeta_{ki1} &=& \beta_{k11} + \beta_{k12}x_i \nonumber \\
+	\zeta_{ki2} &=& \beta_{k21} + \beta_{k22}x_i \nonumber \\
+	\zeta_{ki3} &=& \beta_{k31} + \beta_{k32}x_i \nonumber \\
+	\zeta_{ki4} &=& \beta_{k41} + \beta_{k42}x_i. \nonumber \\
+\end{eqnarray}
+
+For cluster $k$, we can collect all observations $\mathbf{y}_i$ ($i = 1,...,n_k$) into the $n_k \times 4$ matrix $\mathbf{Y}_k$ and all covariates $\mathbf{X}_i$ into the $4n_k \times 8$ matrix $\mathbf{X}_k$ (\textbf{clash of notation here}) to utilize the matrix Normal model specification detailed in Section 3, which allows for simultaneous updates of all MSN regression parameters in cluster $k$. For the multinomial regression model component of this simulation, we model the class labels $z_i$ as a function of an intercept and one baseline covariate, thus $r = 2$. 
+
+For our second goal in this simulation, to compare model performance when skewness is accounted for skewness to model performance when skewness is ignored, we fit both the proposed MSN finite mixture model as well as a classic multivariate Normal finite mixture model to data generated from an MSN distribution. We evaluate model fit in terms of absolute difference of parameter estimates as well as WAIC. 
 
 \begin{table}[t]
 

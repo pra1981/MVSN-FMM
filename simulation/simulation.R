@@ -26,9 +26,9 @@ set.seed(seed)
 options(scipen=999)
 # Generate data
 k <- 4 # number of outcomes
-p <- 1 # number of predictors 
+p <- 2 # number of predictors 
 h <- 3 # number of clusters
-n <- 10000 # number of observations (takes alot of data to estimate this many parameters)
+n <- 1000 # number of observations (takes alot of data to estimate this many parameters)
 print(paste("Generating data with",n,"observations of dimension",k,
             "with",p,"covariates and",h,"clusters"))
 
@@ -64,7 +64,7 @@ Xstar <- cbind(X,t) # Combine X and t
 #w2 <- rnorm(n) # continuous predictor
 w3 <- rbinom(n,1,0.5) # binary predictor
 w4 <- rbinom(n,1,0.5) # binary predictor
-W <- cbind(w3) # design matrix
+W <- cbind(1,w3) # design matrix
 v <- ncol(W) # number of multinomial predictors
 delta.true <- matrix(rtruncnorm(n = v*(h-1),
                                 a = -1, 
@@ -155,8 +155,8 @@ delta0 <- rep(0,v) # prior mean for delta coefficients (multinomial regression)
 S0 <- diag(0.5,v) # prior covariance for delta coefficients (multinomial regression)
 
 # Sample storage
-nsim <- 10000 # number of iterations
-burn <- 2500 # number of iterations to save
+nsim <- 1000 # number of iterations
+burn <- 250 # number of iterations to save
 n.iter <- nsim - burn # number of saved iterations
 Z <- matrix(0,nrow = n.iter,ncol = n) # large matrix where each row is the value of z at a specific iteration
 PI <- matrix(0,nrow = n.iter,ncol = h) # matrix w/ each row as pi vector at each iteration
