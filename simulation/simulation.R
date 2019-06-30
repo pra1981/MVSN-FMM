@@ -24,10 +24,11 @@ seed <- rnorm(1)
 set.seed(seed)
 # No scientific notation
 options(scipen=999)
+options(warn=2)
 # Generate data
-k <- 4 # number of outcomes
-p <- 2 # number of predictors 
-h <- 3 # number of clusters
+k <- 2 # number of outcomes
+p <- 1 # number of predictors 
+h <- 2 # number of clusters
 n <- 1000 # number of observations (takes alot of data to estimate this many parameters)
 print(paste("Generating data with",n,"observations of dimension",k,
             "with",p,"covariates and",h,"clusters"))
@@ -92,6 +93,7 @@ beta.true.list <- list(0)
 beta.mle.list <- list(0)
 beta.init.list <- list(0)
 betastar.mle.list <- list(0)
+betastar.true.list <- list(0)
 sig2.true.list <- list(0)
 sig2.mle.list <- list(0)
 sig2.init.list <- list(0)
@@ -110,8 +112,9 @@ for(l in 1:h)
     
     # Cluster specific betas and psis
     beta.true.l <- matrix(rnorm(p*k,mean = seq(-h,h,length.out = h)[l],sd = 0.5),nrow = p,ncol = k) # true beta matrix
-    psi.true.l <- rep(((-1)^l)*l/3,k) # control skewness of each outcome in cluster l
+    psi.true.l <- rep(0,k) # control skewness of each outcome in cluster l
     betastar.true.l <- rbind(beta.true.l,psi.true.l)
+    betastar.true.list[[l]] <- betastar.true.l
     beta.true.list[[l]] <- beta.true.l
     psi.true.list[[l]] <- psi.true.l # can also accomodate different skewness across clusters 
     
@@ -132,7 +135,7 @@ for(l in 1:h)
     betastar.mle.list[[l]] <- betastar.mle.l
     sig2.mle.l <- mlest(Y.l - Xstar.l %*% betastar.true.l)$sigmahat # MLE of v-cov matrix
     sig2.mle.list[[l]] <- sig2.mle.l
-    sig2.init.list[[l]] <- sig2.mle.l # convinient to just set the inits to sig2.mle.l here
+    sig2.init.list[[l]] <- sig2.mle.l # convinient to set the inits to sig2.mle.l here
 
     # Cluster specific inits
     psi.init.l <- betastar.mle.l[p+1,]
@@ -148,15 +151,16 @@ for(l in 1:h)
 print("Defining prior structure")
 a <- rep(2,h) # prior parameter vector for pi1,...,pih
 nu0 <- rep(2,h)  # scalar df hyperparam for Sigma (same across classes)
-V0 <- diag(rep(1,k)) # kxk hyperparam for Sigma (same across classes)
-B0 <- rbind(beta.init.list[[1]],rep(0,k)) # zero matrix
-L0 <- diag(rep(1,p+1)) # appears in Kronecker of beta0.vec prior
+V0 <- diag(rep(0.001,k)) # kxk hyperparam for Sigma (same across classes)
+# B0 <- rbind(beta.init.list[[1]],rep(0,k)) # zero matrix
+B0 <- betastar.true.list
+L0 <- diag(rep(0,p+1)) # appears in Kronecker of beta0.vec prior
 delta0 <- rep(0,v) # prior mean for delta coefficients (multinomial regression)
-S0 <- diag(0.5,v) # prior covariance for delta coefficients (multinomial regression)
+S0 <- diag(0.001,v) # prior covariance for delta coefficients (multinomial regression)
 
 # Sample storage
-nsim <- 1000 # number of iterations
-burn <- 250 # number of iterations to save
+nsim <- 1500 # number of iterations
+burn <- 1000 # number of iterations to save
 n.iter <- nsim - burn # number of saved iterations
 Z <- matrix(0,nrow = n.iter,ncol = n) # large matrix where each row is the value of z at a specific iteration
 PI <- matrix(0,nrow = n.iter,ncol = h) # matrix w/ each row as pi vector at each iteration
@@ -164,6 +168,8 @@ BETA.list <- vector("list",h) # storage for Beta (vectorized by row)
 SIGMA.list <- vector("list",h) # storage for S matrix (vectorized by row)
 PSI.list <- vector("list",h) # storage for psi vector
 DELTA <- matrix(0,nrow = n.iter,ncol = v*(h-1))
+OMEGA.list <- vector("list",h) # storage for omega matrix (vectorized by row)
+ALPHA.list <- vector("list",h)
 
 # Initialized values
 # pi <- rep(1/h,h) # mixing probabilities
@@ -177,7 +183,9 @@ nun <- nu0
 Vn.list <- V0.list
 beta.list <- beta.init.list
 sig2.list <- sig2.init.list
+omega.list <- sig2.init.list
 psi.list <- psi.init.list
+alpha.list <- psi.init.list
 delta <- matrix(0,nrow = v, ncol = h-1)
 
 # Artificial data amputation phase
@@ -334,6 +342,8 @@ for(i in 1:nsim)
         nun.l <- nu0.l + n.l
         sig2.l <- riwish(nun.l,Vn.l)
         sig2.list[[l]] <- sig2.l
+        omega.l <- sig2.l + outer(psi.l,psi.l)
+        omega.list[[l]] <- omega.l
         # sig2.list <- sig2.true.list # used for testing purposes
         
         # Update beta
@@ -348,6 +358,7 @@ for(i in 1:nsim)
         psi.l <- betastar.l[p+1,]
         beta.list[[l]] <- beta.l
         psi.list[[l]] <- psi.l
+        # alpha.list[[l]] <- (diag(sqrt(diag(omega.l))) %*% solve(omega.l) %*% psi.l)/c(sqrt(1 - t(psi.l) %*% solve(omega.l) %*% psi.l))
         # beta.list <- beta.true.list # used for testing purposes
         # psi.list <- psi.true.list # used for testing purposes
     }
@@ -363,6 +374,8 @@ for(i in 1:nsim)
         DELTA[j,] <- c(delta)
         for(l in 1:h)
         {
+            # ALPHA.list[[l]] <- rbind(ALPHA.list[[l]],alpha.list[[l]])
+            OMEGA.list[[l]] <- rbind(OMEGA.list[[l]],c(omega.list[[l]]))
             BETA.list[[l]] <- rbind(BETA.list[[l]],c(beta.list[[l]]))
             SIGMA.list[[l]] <- rbind(SIGMA.list[[l]],c(sig2.list[[l]]))
             PSI.list[[l]] <- rbind(PSI.list[[l]],psi.list[[l]])

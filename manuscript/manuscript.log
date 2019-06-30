@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  27 JUN 2019 14:26
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  30 JUN 2019 09:48
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -616,6 +616,9 @@ LaTeX Warning: Label ` ' multiply defined.
 
 LaTeX Warning: Label ` ' multiply defined.
 
+
+LaTeX Warning: Label ` ' multiply defined.
+
 )
 \openout1 = `manuscript.aux'.
 
@@ -764,9 +767,6 @@ Overfull \hbox (4.62497pt too wide) has occurred while \output is active
  []
 
 [5]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
 Overfull \hbox (4.62497pt too wide) has occurred while \output is active
 \OT1/cmr/m/n/9 6
  []
@@ -780,18 +780,6 @@ Overfull \hbox (4.62497pt too wide) has occurred while \output is active
  []
 
 [7]
-LaTeX Font Info:    Try loading font information for U+dutchcal on input line 2
-83.
- (/usr/local/texlive/2016/texmf-dist/tex/latex/dutchcal/udutchcal.fd
-File: udutchcal.fd 2011/06/16 Fontinst v1.933 font definitions for U/dutchcal.
-)
-LaTeX Font Info:    Font shape `U/dutchcal/m/n' will be
-(Font)              scaled to size 12.0pt on input line 283.
-LaTeX Font Info:    Font shape `U/dutchcal/m/n' will be
-(Font)              scaled to size 8.0pt on input line 283.
-LaTeX Font Info:    Font shape `U/dutchcal/m/n' will be
-(Font)              scaled to size 6.0pt on input line 283.
-
 Overfull \hbox (4.62497pt too wide) has occurred while \output is active
 \OT1/cmr/m/n/9 8
  []
@@ -833,6 +821,17 @@ Overfull \hbox (6.60861pt too wide) in paragraph at lines 344--345
 ::;  []\OT1/cmr/m/n/12 )[]$
  []
 
+LaTeX Font Info:    Try loading font information for U+dutchcal on input line 3
+50.
+(/usr/local/texlive/2016/texmf-dist/tex/latex/dutchcal/udutchcal.fd
+File: udutchcal.fd 2011/06/16 Fontinst v1.933 font definitions for U/dutchcal.
+)
+LaTeX Font Info:    Font shape `U/dutchcal/m/n' will be
+(Font)              scaled to size 12.0pt on input line 350.
+LaTeX Font Info:    Font shape `U/dutchcal/m/n' will be
+(Font)              scaled to size 8.0pt on input line 350.
+LaTeX Font Info:    Font shape `U/dutchcal/m/n' will be
+(Font)              scaled to size 6.0pt on input line 350.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
@@ -870,9 +869,6 @@ Overfull \hbox (9.24994pt too wide) has occurred while \output is active
  []
 
 [17]
-\openout4 = `manuscript.ttt'.
-
- (manuscript.ttt)
 Overfull \hbox (9.24994pt too wide) has occurred while \output is active
 \OT1/cmr/m/n/9 18
  []
@@ -937,7 +933,7 @@ Overfull \hbox (9.24994pt too wide) has occurred while \output is active
 [25]
 Missing character: There is no â in font cmr12!
 Missing character: There is no € in font cmr12!
-Missing character: There is no “ in font cmr12!
+Missing character: There is no  in font cmr12!
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
@@ -946,26 +942,25 @@ Overfull \hbox (9.24994pt too wide) has occurred while \output is active
 \OT1/cmr/m/n/9 26
  []
 
-[26] AED endfloat: Processing end Figures and Tables
+[26]
+Missing character: There is no â in font cmr12!
+Missing character: There is no € in font cmr12!
+Missing character: There is no “ in font cmr12!
+ AED endfloat: Processing end Figures and Tables
 Overfull \hbox (9.24994pt too wide) has occurred while \output is active
 \OT1/cmr/m/n/9 27
  []
 
-[27] (./manuscript.ttt
-Overfull \hbox (9.24994pt too wide) has occurred while \output is active
-\OT1/cmr/m/n/9 28
- []
-
-[28]) (./manuscript.aux)
+[27] (./manuscript.aux)
 
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 11579 strings out of 493014
- 200129 string characters out of 6133351
- 239221 words of memory out of 5000000
- 14956 multiletter control sequences out of 15000+600000
+ 11572 strings out of 493014
+ 200039 string characters out of 6133351
+ 239212 words of memory out of 5000000
+ 14952 multiletter control sequences out of 15000+600000
  26872 words of font info for 99 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  38i,18n,40p,10383b,332s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1002,10 +997,10 @@ texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb></usr/local/texlive/2016/te
 xmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/local/texlive/2016/tex
 mf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb></usr/local/texlive/2016/texmf
 -dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on manuscript.pdf (30 pages, 430667 bytes).
+Output written on manuscript.pdf (29 pages, 416922 bytes).
 PDF statistics:
- 233 PDF objects out of 1000 (max. 8388607)
- 166 compressed objects within 2 object streams
+ 230 PDF objects out of 1000 (max. 8388607)
+ 164 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 

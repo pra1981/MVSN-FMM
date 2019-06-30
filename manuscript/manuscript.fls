@@ -213,9 +213,6 @@ INPUT /usr/local/texlive/2016/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmmib
 INPUT /usr/local/texlive/2016/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmbsy9.tfm
 INPUT /usr/local/texlive/2016/texmf-dist/fonts/tfm/public/amsfonts/euler/eurb10.tfm
 INPUT /usr/local/texlive/2016/texmf-dist/fonts/tfm/public/cm/cmtt12.tfm
-OUTPUT manuscript.ttt
-INPUT manuscript.ttt
-INPUT manuscript.ttt
 INPUT manuscript.aux
 INPUT /usr/local/texlive/2016/texmf-dist/fonts/type1/public/dutchcal/DutchCalReg.pfb
 INPUT /usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb

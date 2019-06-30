@@ -239,13 +239,13 @@ A primary goal of the Nurture study is to identify clusters of infants character
 \begin{equation}
 f(\mathbf{y}_i) = \sum_{k = 1}^{K} \pi_{ki} f(\mathbf{y}_i|\boldsymbol\theta_k),
 \end{equation}
-where $\boldsymbol\theta_k$ is the set of parameters specific to cluster $k$ ($k = 1,...,K$) and $\pi_{ik}$ is a subject-specific mixing weight representing the probability that subject $i$ belongs to cluster $k$. A distinguishing feature of our model is that we treat $\pi_{ik}$ as a gating function (\textbf{cite book}) that depends on a subject's observed data as well as the parameters specific to the cluster to which they belong. For now we assume that $K$ is fixed; in Section 4, we discuss model selection strategies for choosing the optimal value of $K$. 
+where $\boldsymbol\theta_k$ is the set of parameters specific to cluster $k$ ($k = 1,...,K$) and $\pi_{ki}$ is a subject-specific mixing weight representing the probability that subject $i$ belongs to cluster $k$. For now we assume that $K$ is fixed; in Section 4, we discuss model selection strategies for choosing the optimal value of $K$. 
 
 To facilitate posterior inference, we introduce a latent cluster indicator variable $z_i$ taking the value $k \in \{1,...,K\}$ with probability $\pi_{ik}$. Conditional on $z_i = k$, we assume $\mathbf{y}_{i}$ is distributed as
 \begin{equation}
 \mathbf{y}_{i}|(z_i=k) \sim \text{MSN}_J(\boldsymbol\zeta_{ki},\boldsymbol\alpha_k,\boldsymbol\Omega_k), \label{eq:msndens}
 \end{equation}
-where $\text{MSN}_J(\cdot)$ denotes the $J$-dimensional multivariate skew normal density, $\boldsymbol\zeta_{ki}$ is a $J \times 1$ vector of subject- and cluster-specific location parameters, $\boldsymbol\alpha_k$ is a $J \times 1$ vector of cluster-specific skewness parameters, and $\boldsymbol\Omega_k$ is a $J \times J$ cluster-specific scale matrix that captures dependence among the $J$ responses for subject $i$. The vector $\boldsymbol\alpha_k$ has components $\alpha_{kj}$, $j = 1,...,J$, that control the skewness of outcome $j$ in cluster $k$. When $\boldsymbol\alpha_k = \mathbf{0}$, the MSN distribution reduces to the multivariate normal distribution $\text{N}_J(\boldsymbol\zeta_k,\boldsymbol\Omega_k)$, where $\boldsymbol\zeta_k$ is a $J \times 1$ mean vector and $\boldsymbol\Omega_k$ is a $J \times J$ covariance matrix (Azzalini and Dalla Valle, 1996).
+where $\text{MSN}_J(\cdot)$ denotes the $J$-dimensional multivariate skew normal density, $\boldsymbol\zeta_{ki}$ is a $J \times 1$ vector of subject- and cluster-specific location parameters, $\boldsymbol\alpha_k$ is a $J \times 1$ vector of cluster-specific skewness parameters, and $\boldsymbol\Omega_k$ is a $J \times J$ cluster-specific scale matrix that captures dependence among the $J$ responses for subject $i$. The vector $\boldsymbol\alpha_k$ has components $\alpha_{kj}$, $j = 1,...,J$, that control the skewness of outcome $j$ in cluster $k$. When $\boldsymbol\alpha_k = \mathbf{0}$, the MSN distribution reduces to the multivariate normal distribution $\text{N}_J(\boldsymbol\zeta_{ki},\boldsymbol\Omega_k)$, where $\boldsymbol\zeta_{ki}$ is a $J \times 1$ mean vector and $\boldsymbol\Omega_k$ is a $J \times J$ covariance matrix (Azzalini and Dalla Valle, 1996).
 
 We can extend model (\ref{eq:msndens}) to the regression setting by modeling $\boldsymbol\zeta_{ki}$ as a function of covariates. Here we adopt a convenient stochastic representation of the MSN density (Azzalini and Dalla Valle, 1996):
 \begin{equation}
@@ -278,21 +278,21 @@ To accommodate heterogeneity in the cluster-membership probabilities, we model $
 \begin{eqnarray}
 \pi_{ik} = \Pr(z_i = k|\mathbf{w}_i) = \frac{\text{e}^{\mathbf{w}_i^T \boldsymbol\delta_k}}{\sum_{h = 1}^K \text{e}^{\mathbf{w}_i^T \boldsymbol\delta_{h}}},~ k=1,\ldots,K,
 \end{eqnarray}
-where $\mathbf{w}_i$ is an $r\times 1$ vector of subject-level covariates, $\boldsymbol\delta_k$ is a $r\times 1$ vector of regression parameters associated with membership in cluster $k$. For identifiability purposes, we fix the reference category $k = K$ and set $\boldsymbol\delta_K = \mathbf{0}$. Under this model, $z_i|\mathbf{w}_i \sim \text{Multinom}(1,\boldsymbol\pi_i)$, where $\boldsymbol\pi_i = (\pi_{i1},...,\pi_{1K})$. During MCMC estimation, the cluster labels $z_i$ are updated from their multinomial full conditional distribution and used in the remaining MCMC steps as cluster assignments as detailed later in section (\textbf{what section}).
+where $\mathbf{w}_i$ is an $r\times 1$ vector of subject-level covariates, $\boldsymbol\delta_k$ is a $r\times 1$ vector of regression parameters associated with membership in cluster $k$. For identifiability purposes, we fix the reference category $k = K$ and set $\boldsymbol\delta_K = \mathbf{0}$. Under this model, $z_i|\mathbf{w}_i \sim \text{Multinom}(1,\boldsymbol\pi_i)$, where $\boldsymbol\pi_i = (\pi_{i1},...,\pi_{1K})$. During MCMC estimation, the cluster labels $z_i$ are updated from their multinomial full conditional distribution and used in the remaining MCMC steps as cluster assignments as detailed later in section (\textbf{what section}). By allowing the cluster probabilities to vary across subjects, our model can be viewed as a \textit{mixture of experts} model in which $\pi_{ki}$ acts as a \textit{gating function} (\textbf{cite book}). 
 
-To facilitate sampling, we adopt an efficient data-augmentation approach introduced by Polson \textit{et al.} (2013), which expresses the inverse-logit function as a mixture P\'olya--Gamma densities. By using P\'olya--Gamma data augmentation for the multinomial model (\textbf{cite}), we obtain a P\'olya--Gamma mixture of experts model, a computationally efficient way to model edge weights (\textbf{cite}). A random variable $\mathcal{w}$ is said to follow a P\'olya--Gamma distribution with parameters $b > 0$ and $c \in {\rm I\!R}$ if
+To facilitate sampling, we adopt an efficient data-augmentation approach introduced by Polson \textit{et al.} (2013), which expresses the inverse-logit function as a mixture P\'olya--Gamma densities. By using P\'olya--Gamma data augmentation for the multinomial model (\textbf{cite}), we obtain a P\'olya--Gamma mixture of experts model, a computationally efficient way to model edge weights (\textbf{cite}). A random variable ${w}$ is said to follow a P\'olya--Gamma distribution with parameters $b > 0$ and $c \in {\rm I\!R}$ if
 \begin{equation}
-\mathcal{w} \sim \text{PG}(b,c) \stackrel{d}{=} \frac{1}{2\pi^2}\sum_{s=1}^{\infty}\frac{g_s}{(s-1/2)^2 + c^2/(4\pi^2)}, \label{eq:pg1}
+{w} \sim \text{PG}(b,c) \stackrel{d}{=} \frac{1}{2\pi^2}\sum_{s=1}^{\infty}\frac{g_s}{(s-1/2)^2 + c^2/(4\pi^2)}, \label{eq:pg1}
 \end{equation}
 where $g_s \stackrel{iid}{\sim} \text{Ga}(b,1)$ for $s = 1,...,\infty$ . Polson \textit{et al.} (2013) establish that for the $\text{PG}(b,c)$ density, and for $a,\eta \in {\rm I\!R}$, 
 
 \begin{equation}
-\frac{(\text{e}^{\eta})^a}{(1 + \text{e}^{\eta})^b} = 2^{-b}\text{e}^{\kappa \eta} \int_{0}^{\infty} \text{e}^{-\mathcal{w}\eta^2/2}p(\mathcal{w}|b,c = 0)d\mathcal{w}. \label{eq:pg2}
+\frac{(\text{e}^{\eta})^a}{(1 + \text{e}^{\eta})^b} = 2^{-b}\text{e}^{\kappa \eta} \int_{0}^{\infty} \text{e}^{-{w}\eta^2/2}p({w}|b,c = 0)d{w}. \label{eq:pg2}
 \end{equation}
-where $\kappa = a - b/2$. Polson \textit{et al.} also show that the conditional distribution $p(\mathcal{w}|b,c)$ results from an ``exponential tilting'' of the $\text{PG}(b,0)$ density, thus
+where $\kappa = a - b/2$. Polson \textit{et al.} also show that the conditional distribution $p(w|b,c)$ results from an ``exponential tilting'' of the $\text{PG}(b,0)$ density, thus
 
 \begin{equation}
-	p(\mathcal{w}|b,c) = \frac{\text{e}^{-c^2\mathcal{w}/2}p(\mathcal{w}|b,0)}{E_{\mathcal{w}}[\text{e}^{-c^2\mathcal{w}/2}]} = \frac{\text{e}^{-c^2\mathcal{w}/2}p(\mathcal{w}|b,0)}{\int_0^\infty \text{e}^{-c^2\mathcal{w}/2}p(\mathcal{w}|b,0)d\mathcal{w}}. \label{eq:pg3}
+	p({w}|b,c) = \frac{\text{e}^{-c^2{w}/2}p({w}|b,0)}{E_{{w}}[\text{e}^{-c^2{w}/2}]} = \frac{\text{e}^{-c^2{w}/2}p({w}|b,0)}{\int_0^\infty \text{e}^{-c^2{w}/2}p({w}|b,0)d{w}}. \label{eq:pg3}
 \end{equation}
 
 To make use of P\'olya--Gamma data augmentation, we first write the full conditional distribution of $\boldsymbol\delta_k$ as the prior for $\boldsymbol\delta_k$ times the multinomial likelihood for all $z_i$. $$p(\boldsymbol\delta_k|\mathbf{z},\boldsymbol\delta_{h \ne k}) \propto p(\boldsymbol\delta_k) \prod_{i = 1}^{n} \pi_{ik}^{U_{ik}}(1-\pi_{ik})^{1-U_{ik}},$$
@@ -303,7 +303,7 @@ $$c_{ik} = \log \sum_{h \ne k} \text{e}^{\mathbf{w}_i^T \boldsymbol\delta_{h}} =
 
 We can use the quantities to re-express the full conditionals for $\boldsymbol\delta_k$ as
 \begin{eqnarray}
-	p(\boldsymbol\delta_k|\mathbf{Z},\boldsymbol\delta_{h \ne k}) &\propto& p(\boldsymbol\delta_k) \prod_{i = 1}^{n} \left (\frac{\text{e}^{\eta_{ik}}}{1 + \text{e}^{\eta_{ik}}} \right )^{U_{ik}} \left (\frac{1}{1 + \text{e}^{\eta_{ik}}} \right )^{1-U_{ik}} \nonumber\\ &=& p(\boldsymbol\delta_k) \prod_{i = 1}^n \frac{(\text{e}^{\eta_{ik}})^{U_{ik}}}{1 + \text{e}^{\eta_{ik}}} \label{eq:pglogit}
+	p(\boldsymbol\delta_k|\mathbf{U}_k,\boldsymbol\delta_{h \ne k}) &\propto& p(\boldsymbol\delta_k) \prod_{i = 1}^{n} \left (\frac{\text{e}^{\eta_{ik}}}{1 + \text{e}^{\eta_{ik}}} \right )^{U_{ik}} \left (\frac{1}{1 + \text{e}^{\eta_{ik}}} \right )^{1-U_{ik}} \nonumber\\ &=& p(\boldsymbol\delta_k) \prod_{i = 1}^n \frac{(\text{e}^{\eta_{ik}})^{U_{ik}}}{1 + \text{e}^{\eta_{ik}}} \label{eq:pglogit}
 \end{eqnarray}
 which we note is essentially a logistic regression likelihood. We thus apply this P\'olya--Gamma data augmentation scheme from Polson et al. (2013) to update each $\boldsymbol\delta_k$ ($k = 1,...,K-1$) one at a time based on the binary indicators $U_{ik}$.
 
@@ -414,6 +414,8 @@ A common challenge for Bayesian mixtures models is the so-called ``label switchi
 
 \subsubsection{Model Fit Diagnostics and Specification of K}
 
+We model fit diagnostics, we choose the WAIC statistic introduced by Watanabe (2010). To specify the number of cluster $K$, we follow Neelon and Chung (2016), who use WAIC to determine the optimal number of latent factors in a Bayesian latent factor zero-inflated Poisson model for the analysis of correlated and zero-inflated count data. In Section 6, we discuss possible extentions to other methods for choosing $K$.
+
 \newpage
 
 \section{Simulation Studies}
@@ -452,58 +454,14 @@ where $\text{vec}({\mathbf{B}_k}) = \boldsymbol\beta_k$. Thus, for subject $i$ i
 	\zeta_{ki4} &=& \beta_{k41} + \beta_{k42}x_i. \nonumber \\
 \end{eqnarray}
 
-For cluster $k$, we can collect all observations $\mathbf{y}_i$ ($i = 1,...,n_k$) into the $n_k \times 4$ matrix $\mathbf{Y}_k$ and all covariates $\mathbf{X}_i$ into the $4n_k \times 8$ matrix $\mathbf{X}_k$ (\textbf{clash of notation here}) to utilize the matrix Normal model specification detailed in Section 3, which allows for simultaneous updates of all MSN regression parameters in cluster $k$. For the multinomial regression model component of this simulation, we model the class labels $z_i$ as a function of an intercept and one baseline covariate, thus $r = 2$. 
+For cluster $k$, we can collect all observations $\mathbf{y}_i$ ($i = 1,...,n_k$) into the $n_k \times 4$ matrix $\mathbf{Y}_k$ and all covariates $\mathbf{X}_i$ into the $4n_k \times 8$ matrix $\mathbf{X}_k$ (\textbf{clash of notation here}) to utilize the matrix Normal model specification detailed in Section 3, which allows for simultaneous updates of all MSN regression parameters in cluster $k$. For the multinomial regression model component of this simulation, we model the class labels $z_i$ as a function of an intercept and one baseline covariate, thus $r = 2$. We leave the problem of missing data to simulation study \#2 and do not incorporate missing data into this simulation.  
 
 For our second goal in this simulation, to compare model performance when skewness is accounted for skewness to model performance when skewness is ignored, we fit both the proposed MSN finite mixture model as well as a classic multivariate Normal finite mixture model to data generated from an MSN distribution. We evaluate model fit in terms of absolute difference of parameter estimates as well as WAIC. 
 
-\begin{table}[t]
-
-\caption{\label{tab:unnamed-chunk-4}Model results for simulated data with n = 1500, k = 4, p = 1, h = 3, v = 1. 5000 iterations were run with a burn in of 1000. Missingness mechanism was MAR and P(miss) = 0}
-\centering
-\fontsize{8}{10}\selectfont
-\begin{tabular}{llllllll}
-\toprule
-\multicolumn{2}{c}{ } & \multicolumn{2}{c}{Class 1} & \multicolumn{2}{c}{Class 2} & \multicolumn{2}{c}{Class 3} \\
-\cmidrule(l{3pt}r{3pt}){3-4} \cmidrule(l{3pt}r{3pt}){5-6} \cmidrule(l{3pt}r{3pt}){7-8}
-Model Component & Parameter & True & Est. (95\% CrI) & True & Est. (95\% CrI) & True & Est. (95\% CrI)\\
-\midrule
-\addlinespace[0.3em]
-\multicolumn{8}{l}{\textbf{ }}\\
-\hspace{1em}MVSN & $\beta_{0}$ & -3.21 & -3.34 (-3.8, -2.99) & -0.32 & -0.33 (-0.48, -0.14) & 3.35 & 3.33 (3.22, 3.44)\\
-\hspace{1em}Regression & $\beta_{1}$ & -3.08 & -3.3 (-3.73, -2.87) & -0.75 & -0.72 (-0.87, -0.52) & 2.6 & 2.5 (2.39, 2.6)\\
-\hspace{1em} & $\beta_{2}$ & -2.97 & -3.18 (-3.58, -2.76) & -0.45 & -0.44 (-0.58, -0.26) & 3.43 & 3.42 (3.31, 3.53)\\
-\hspace{1em} & $\beta_{3}$ & -2.91 & -3.08 (-3.49, -2.68) & -0.66 & -0.68 (-0.83, -0.48) & 3.04 & 2.98 (2.87, 3.09)\\
-\addlinespace[0.3em]
-\multicolumn{8}{l}{\textbf{ }}\\
-\hspace{1em} & $\sigma_{11}$ & 1 & 0.95 (0.84, 1.02) & 1 & 1 (0.89, 1.11) & 1 & 1.06 (0.97, 1.16)\\
-\hspace{1em} & $\sigma_{12}$ & 0.74 & 0.7 (0.59, 0.76) & 0.68 & 0.68 (0.59, 0.78) & -0.45 & -0.41 (-0.47, -0.36)\\
-\hspace{1em} & $\sigma_{13}$ & 0.74 & 0.69 (0.58, 0.75) & -0.16 & -0.13 (-0.2, -0.06) & 0.82 & 0.88 (0.79, 0.97)\\
-\hspace{1em} & $\sigma_{14}$ & 0.98 & 0.93 (0.81, 0.99) & 0.64 & 0.65 (0.56, 0.75) & 0.7 & 0.75 (0.67, 0.83)\\
-\hspace{1em} & $\sigma_{22}$ & 1 & 0.94 (0.82, 1.01) & 1 & 1.03 (0.93, 1.13) & 1 & 1.07 (0.99, 1.16)\\
-\hspace{1em} & $\sigma_{23}$ & 0.83 & 0.79 (0.67, 0.85) & -0.43 & -0.4 (-0.46, -0.34) & -0.66 & -0.62 (-0.68, -0.57)\\
-\hspace{1em} & $\sigma_{24}$ & 0.81 & 0.77 (0.66, 0.83) & 0.63 & 0.67 (0.58, 0.77) & 0.01 & 0.07 (0.01, 0.13)\\
-\hspace{1em} & $\sigma_{33}$ & 1 & 0.96 (0.84, 1.03) & 1 & 1 (0.91, 1.09) & 1 & 1.05 (0.96, 1.15)\\
-\hspace{1em} & $\sigma_{34}$ & 0.85 & 0.81 (0.69, 0.87) & 0.15 & 0.15 (0.08, 0.23) & 0.59 & 0.64 (0.56, 0.72)\\
-\hspace{1em} & $\sigma_{44}$ & 1 & 0.95 (0.83, 1.01) & 1 & 1.02 (0.92, 1.13) & 1 & 1.06 (0.97, 1.15)\\
-\addlinespace[0.3em]
-\multicolumn{8}{l}{\textbf{ }}\\
-\hspace{1em} & $\psi_{1}$ & -0.33 & -0.33 (-0.62, 0.69) & 0.67 & 0.7 (0.46, 0.89) & -1 & -1.01 (-1.13, -0.87)\\
-\hspace{1em} & $\psi_{2}$ & -0.33 & -0.32 (-0.61, 0.64) & 0.67 & 0.63 (0.38, 0.82) & -1 & -0.88 (-1.01, -0.75)\\
-\hspace{1em} & $\psi_{3}$ & -0.33 & -0.33 (-0.61, 0.69) & 0.67 & 0.64 (0.43, 0.82) & -1 & -1.01 (-1.14, -0.88)\\
-\hspace{1em} & $\psi_{4}$ & -0.33 & -0.31 (-0.63, 0.67) & 0.67 & 0.7 (0.45, 0.89) & -1 & -0.94 (-1.07, -0.81)\\
-\addlinespace[0.3em]
-\multicolumn{8}{l}{\textbf{ }}\\
-\hspace{1em}Multinom. & $\delta_{11}$ & 0.9 & 0.88 (0.81, 0.95) & 0.9 & 0.88 (0.81, 0.95) & 0.9 & 0.88 (0.81, 0.95)\\
-\hspace{1em} & $\delta_{12}$ & 0.23 & 0.22 (0.14, 0.3) & 0.23 & 0.22 (0.14, 0.3) & 0.23 & 0.22 (0.14, 0.3)\\
-\addlinespace[0.3em]
-\multicolumn{8}{l}{\textbf{ }}\\
-\hspace{1em}Clustering & $\pi_l$ & 0.28 & 0.28 (0.27, 0.28) & 0.42 & 0.43 (0.42, 0.43) & 0.3 & 0.3 (0.3, 0.3)\\
-\bottomrule
-\end{tabular}
-\end{table}
-
 
 \subsection{Simulation to Compare Imputation Methods}
+
+In our second simulation study, we compare our online conditional multivariate normal imputation method to standard Bayesian multiple imputation. 
 
 \subsection{Simulation to Assess Sensitivity to Misspecified K}
 
@@ -705,6 +663,8 @@ The block-wise inversion formula was used to invert $\boldsymbol\Sigma$ accordin
 \bibitem{ } Luo S, Lawson AB, He B, Elm JJ, Tilley BC. Bayesian multiple imputation for missing multivariate longitudinal data from a Parkinson's disease clinical trial. \textit{Statistical Methods in Medical Research}. 2016 Apr;25(2):821-37.
 
 \bibitem{ } Melnykov V, Maitra R. Finite mixture models and model-based clustering. \textit{Statistics Surveys}. 2010;4:80-116.
+
+\bibitem{ } Neelon B, Chung D. The LZIP: A Bayesian latent factor model for correlated zero‐inflated counts. Biometrics. 2017 Mar;73(1):185-96.
 
 \bibitem{ } Panagiotis Papastamoulis (2016). label.switching: An R Package for Dealing with the Label Switching Problem in MCMC Outputs. \textit{Journal of Statistical Software}, 69(1), 1-24. doi:10.18637/jss.v069.c01
 
