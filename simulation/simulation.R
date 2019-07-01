@@ -20,15 +20,15 @@ library(QRM)        # For rGumbel function
 library(nnet)       # To fit multinom function
 library(BayesLogit) # For rpg function
 
-seed <- rnorm(1)
-set.seed(seed)
+#seed <- rnorm(1)
+#set.seed(seed)
 # No scientific notation
 options(scipen=999)
 options(warn=2)
 # Generate data
-k <- 2 # number of outcomes
-p <- 1 # number of predictors 
-h <- 2 # number of clusters
+k <- 4 # number of outcomes
+p <- 2 # number of predictors 
+h <- 3 # number of clusters
 n <- 1000 # number of observations (takes alot of data to estimate this many parameters)
 print(paste("Generating data with",n,"observations of dimension",k,
             "with",p,"covariates and",h,"clusters"))
@@ -397,7 +397,7 @@ if(!dir.exists(store))
 meta_file <- paste(store,"/META.txt",sep = "")
 file.create(meta_file)
 write(paste("MCMC Run Date:",Sys.time()),file = meta_file, append = TRUE)
-write(paste("Seed:",seed),file = meta_file, append = TRUE)
+# write(paste("Seed:",seed),file = meta_file, append = TRUE)
 write(paste("Number of subjects (n):",n),file = meta_file, append = TRUE)
 write(paste("Number of outcomes (k):",k),file = meta_file, append = TRUE)
 write(paste("Number of predictors (p):",p),file = meta_file, append = TRUE)

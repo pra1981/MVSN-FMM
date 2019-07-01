@@ -1,5 +1,5 @@
 # Fdb version 3
-["pdflatex"] 1561919530 "manuscript.tex" "manuscript.pdf" "manuscript" 1561919531
+["pdflatex"] 1561962093 "manuscript.tex" "manuscript.pdf" "manuscript" 1561962094
   "/usr/local/texlive/2016/texmf-dist/fonts/map/fontname/texfonts.map" 1272929888 3287 e6b82fe08f5336d4d5ebc73fb1152e87 ""
   "/usr/local/texlive/2016/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmbsy5.tfm" 1246382020 1120 1e8878807317373affa7f7bba4cf2f6a ""
   "/usr/local/texlive/2016/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmbsy6.tfm" 1246382020 1124 14ccf5552bc7f77ca02a8a402bea8bfb ""
@@ -149,14 +149,16 @@
   "/usr/local/texlive/2016/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1487006281 1888048 f2c5faed5981a516f406b2ccc20bff71 ""
   "/usr/local/texlive/2016/texmf-var/web2c/pdftex/pdflatex.fmt" 1463979169 3873397 413fbfbbedb8e719ddc392043a7add02 ""
   "/usr/local/texlive/2016/texmf.cnf" 1463979140 577 2938757e76f31531e65cc647e3507693 ""
+  "bayley_resids_plot.jpg" 1561962073 164722 6ff322fab30ce8b6b7417759e11681b3 ""
   "biom.cls" 1557755616 64886 7f92938f68a55af22b193f888017a891 ""
   "endrotfloat.sty" 1557756168 2946 ab291a0c99b9cbaadf6db93583610dec ""
-  "manuscript.aux" 1561919531 4320 51a746932623308c7eb745a99c6d7a8f ""
-  "manuscript.tex" 1561919529 61240 3d3701ad0a4d0829a943dbccd63d7687 ""
-  "manuscript.toc" 1561919531 2695 8a0e87fffe1d3a3d24fe6d5c8c0beebb ""
+  "manuscript.aux" 1561962093 4519 46d5ac92756a2367bebb7ee8b17185f3 ""
+  "manuscript.tex" 1561962035 61409 66f715bf949090b1342f70b22cfffda3 ""
+  "manuscript.toc" 1561962093 2695 8a0e87fffe1d3a3d24fe6d5c8c0beebb ""
   (generated)
-  "manuscript.aux"
-  "manuscript.pdf"
-  "manuscript.log"
-  "manuscript.ttt"
   "manuscript.toc"
+  "manuscript.pdf"
+  "manuscript.aux"
+  "manuscript.fff"
+  "manuscript.ttt"
+  "manuscript.log"

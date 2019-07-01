@@ -225,6 +225,14 @@ A ubiquitous feature of repeated measures studies is loss of data due to intermi
 
 \subsection{Statistical Challenges}
 \subsubsection{Skewness of Bayley score residuals}
+
+\vspace{1mm}
+\begin{figure}[h]
+	\caption{The distribution of residuals in repeates measures regression model of Bayley composite scores adjusted for race and sex.}
+	\centering
+	\includegraphics[scale = 0.14]{bayley_resids_plot}
+\end{figure}
+
 \subsubsection{Attrition and Intermittent Missingness}
 
 \newpage
@@ -426,7 +434,7 @@ We model fit diagnostics, we choose the WAIC statistic introduced by Watanabe (2
 
 Our first simulation study will be concerned with comarison of the MSN mixture model to a standard multivariate normal mixture model. Here, the primary goal is to validate our parameter estimation scheme in a setting that resembles our application to the Nurture data. Our secondary goal is to investigate to what degree allowing for skewness in outcome components reduces the number of mixture components necessary to estimate the marginal density. For the purposes of illustration, we consider the following generative model 
 \begin{eqnarray}
-	f(\mathbf{y}_i) = \pi_{1i}f(\mathbf{y}_i|\boldsymbol\theta_1) + \pi_{2i}f(\mathbf{y}_i|\boldsymbol\theta_2) + \pi_{3i}f(\mathbf{y}_i|\boldsymbol\theta_3), \nonumber
+	f(\mathbf{y}_i) = \sum_{k = 1}^K \pi_{ki} f(\mathbf{y}_i | \boldsymbol\theta_k), \nonumber
 \end{eqnarray}
 where $\boldsymbol\theta_k$ is the set of parameters specific to cluster $k$, for $k \in \{1,2,3 \}$, and $\mathbf{y}_i | \boldsymbol\theta_k \sim \text{MSN}_4(\boldsymbol\zeta_{ki},\boldsymbol\alpha_k,\boldsymbol\Omega_k)$, where $\boldsymbol\zeta_{ki} = (\zeta_{ki1},\zeta_{ki2},\zeta_{ki3},\zeta_{ki4}) = \mathbf{X}_i \boldsymbol\beta_{k}$. We note from the above model specification that the number of clusters $K = 3$ and the number of measurement occasions $J = 4$. For the MSN regression model, we fit a main effect for time (i.e. measurement occasion) in addition to a baseline covariate, whose value does not vary with time, but whose effect does vary with time (\textbf{is this a weird way to say this?}). Under this setting with $p = 2$ covariates, the design matrix $\mathbf{X}_i$ for subject $i$ and the matrix of regression coefficients for cluster $k$, $\mathbf{B}_k$ are structured as
 
