@@ -1,4 +1,4 @@
-MCMC Run Date: 2019-07-01 13:24:51
+MCMC Run Date: 2019-07-02 08:50:26
 Number of subjects (n): 1000
 Number of outcomes (k): 4
 Number of predictors (p): 2

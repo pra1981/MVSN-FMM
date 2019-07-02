@@ -29,7 +29,7 @@ options(warn=2)
 k <- 4 # number of outcomes
 p <- 2 # number of predictors 
 h <- 3 # number of clusters
-n <- 1500 # number of observations (takes alot of data to estimate this many parameters)
+n <- 1000 # number of observations (takes alot of data to estimate this many parameters)
 print(paste("Generating data with",n,"observations of dimension",k,
             "with",p,"covariates and",h,"clusters"))
 
@@ -104,6 +104,7 @@ L0.list <- list(0)
 B0.list <- list(0)
 Y <- NULL
 
+sig2.true.ar1 <- 1 * 0.5^(abs(outer(1:k,1:k,"-")))
 for(l in 1:h)
 {
     X.l <- as.matrix(X[c == l,])
@@ -119,9 +120,10 @@ for(l in 1:h)
     psi.true.list[[l]] <- psi.true.l # can also accomodate different skewness across clusters 
     
     # Cluster specific sigmas
-    A.l <- matrix(runif(k^2)*k-1,ncol = k) # make a symmetric matrix
-    sig2.true.l <- cov2cor(t(A.l) %*% A.l) # true covariance matrix
-    sig2.true.list[[l]] <- sig2.true.l # Add to list of true class-specific sig2 matrices
+    # A.l <- matrix(runif(k^2)*k-1,ncol = k) # make a symmetric matrix
+    # sig2.true.l <- t(A.l) %*% A.l
+    # sig2.true.l <- cov2cor(sig2.true.l) # true covariance matrix
+    sig2.true.list[[l]] <- sig2.true.l <- sig2.true.ar1 # Add to list of true class-specific sig2 matrices
 
     # Cluster specific Ys
     E.l <- rmvnorm(n.l,rep(0,k),sig2.true.l) # zero centered MVN error matrix
@@ -135,7 +137,7 @@ for(l in 1:h)
     betastar.mle.list[[l]] <- betastar.mle.l
     sig2.mle.l <- mlest(Y.l - Xstar.l %*% betastar.true.l)$sigmahat # MLE of v-cov matrix
     sig2.mle.list[[l]] <- sig2.mle.l
-    sig2.init.list[[l]] <- sig2.mle.l # convinient to set the inits to sig2.mle.l here
+    sig2.init.list[[l]] <- sig2.true.ar1 # convinient to set the inits to sig2.mle.l here
 
     # Cluster specific inits
     psi.init.l <- betastar.mle.l[p+1,]
@@ -150,17 +152,17 @@ for(l in 1:h)
 # Define prior structure
 print("Defining prior structure")
 a <- rep(2,h) # prior parameter vector for pi1,...,pih
-nu0 <- rep(2,h)  # scalar df hyperparam for Sigma (same across classes)
-V0 <- diag(rep(1,k)) # kxk hyperparam for Sigma (same across classes)
+nu0 <- rep(10,h)  # scalar df hyperparam for Sigma (same across classes)
+V0 <- sig2.true.ar1 # kxk hyperparam for Sigma (same across classes)
 # B0 <- rbind(beta.init.list[[1]],rep(0,k)) # zero matrix
 B0 <- betastar.true.list
 L0 <- diag(rep(1,p+1)) # appears in Kronecker of beta0.vec prior
 delta0 <- rep(0,v) # prior mean for delta coefficients (multinomial regression)
-S0 <- diag(0.5,v) # prior covariance for delta coefficients (multinomial regression)
+S0 <- diag(1,v) # prior covariance for delta coefficients (multinomial regression)
 
 # Sample storage
 nsim <- 1000 # number of iterations
-burn <- 500 # number of iterations to save
+burn <- 100 # number of iterations to save
 n.iter <- nsim - burn # number of saved iterations
 Z <- matrix(0,nrow = n.iter,ncol = n) # large matrix where each row is the value of z at a specific iteration
 PI <- matrix(0,nrow = n.iter,ncol = h) # matrix w/ each row as pi vector at each iteration

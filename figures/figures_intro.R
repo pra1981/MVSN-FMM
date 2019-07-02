@@ -34,3 +34,7 @@ resids_plot <- ggplot() +
 ggsave(filename = "figures/bayley_resids_plot.jpg",
        plot = resids_plot,
        device = "jpg")
+
+nurt_quart %>%
+    group_by(timepoint) %>%
+    summarize(n_miss = sum(!is.na(bayley_composite))/666)

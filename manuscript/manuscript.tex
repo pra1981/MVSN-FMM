@@ -211,7 +211,7 @@ Heterogeneity of treatment effects (HTE) (Lanza and Rhoades, 2013).
 
 \subsection{Existing Approaches}
 
-Mixtures of multivariate non-symmetric distributions such as the multivariate skew-normal (MSN) distribution allow for the nuances of the marginal density to be captured with a more parsimonious set of mixture components. Mixtures of MSN distributions have been dealt with previously in a Bayesian context (Fr\"{u}hwirth-Schnatter \& Pyne, 2010 and others), however in these models, focus lies primary on marginal density estimation and inference on the mixture components (i.e. clusters) is often not discussed. More recently, the mixtures of skew-$t$ factor analysis (MSTFA) model has been proposed for settings in which cluster-specific inference is of primary interest (Lin \textit{et al.} 2018). However, an important feature not included in the MSTFA is the ability to explain individual-level cluster membership as a function of covariates of interest. Additionally, parameter estimation proposed by Lin et al. for the MSTFA relies on a prohibitively complex EM algorithm and does not enjoy the inferential benefits of a Bayesian approach, namely the ability to incorporate prior information into a model and make posterior probability statements. Our proposed model improves on these previous works by estimating parameters in a Bayesian framework as well as including the ability to fit a multinomial logit regression to cluster membership probabilities using a novel application of data augmentation with the P\'olya-Gamma distribution.
+Mixtures of multivariate non-symmetric distributions such as the multivariate skew-normal (MSN) distribution allow for the nuances of the marginal density to be captured with a more parsimonious set of mixture components. Mixtures of MSN distributions have been dealt with previously in a Bayesian context (Fr\"{u}hwirth-Schnatter \& Pyne, 2010 and others), however in these models, focus lies primary on marginal density estimation, and inference on the mixture components (i.e. clusters) is often not discussed. More recently, the mixtures of skew-$t$ factor analysis (MSTFA) model has been proposed for settings in which cluster-specific inference is of primary interest (Lin \textit{et al.} 2018). However, an important feature not included in the MSTFA is the ability to explain individual-level cluster membership as a function of covariates of interest. Additionally, parameter estimation proposed by Lin et al. for the MSTFA relies on a prohibitively complex EM algorithm and does not enjoy the inferential benefits of a Bayesian approach, namely the ability to incorporate prior information into a model and make posterior probability statements. Our proposed model improves on these previous works by estimating parameters in a Bayesian framework as well as including the ability to fit a multinomial logit regression to cluster membership probabilities using a novel application of data augmentation with the P\'olya-Gamma distribution.
 
 Polson et al. (2013) introduce a data augmentation scheme using the P\'olya-Gamma distribution which allows for sampling of multinomial regression parameters using straightforward Gibb's updates from Gaussian full conditional distributions. In addition to more convinient parameter estimation, the P\'olya-Gamma data augmentation method for logistic regression has the advantage of direct sampling from the posterior distributions of multinomial parameters. This approach avoids the need for approximations of the posterior distribution, thus yeilding more stable sampling, especially when the number of parameters approaches the number of observations (Polson et al., 2013). P\'olya-Gamma data augmentation for multinomial regression has not yet been applied to the analysis of longitudinally clustered data. 
 
@@ -224,18 +224,19 @@ A ubiquitous feature of repeated measures studies is loss of data due to intermi
 \subsection{Baseline Demographics and Description of Variables}
 
 \subsection{Statistical Challenges}
-\subsubsection{Skewness of Bayley score residuals}
+
+The analysis of infant development trends in the Nurture data presents a number of statistical challenges that motivate our proposed model. First, as depicted in Figure \ref{fig:skew_resids}, the residuals from repeated measures models of Bayley composite scores exhibit skewness even after adjusting for covariates such as race, sex, and birthweight. This suggests that the assumption of conditional normality made by standard repeated measures models is violated, and a distinguishing feature of the data, namely skewness, is not being accounted for. 
 
 \vspace{1mm}
 \begin{figure}[h]
+	\label{fig:skew_resids}
 	\caption{The distribution of residuals in repeates measures regression model of Bayley composite scores adjusted for race and sex.}
 	\centering
 	\includegraphics[scale = 0.14]{bayley_resids_plot}
 \end{figure}
 
-\subsubsection{Attrition and Intermittent Missingness}
+The Nurture data also feature intermittent missingness in Bayley composite scores throughout the study period. Of the total cohort (N = 666), 429 (64.4 \%) observations were available at three months, 435 (65.3 \%) observations were available at six months, 418 (62.8 \%) observations were available at nine months, and 437 (65.6 \%) observations were available at twelve months. 
 
-\newpage
 
 \section{Model}
 \label{s:model}
@@ -362,7 +363,7 @@ Lastly, we update $z_1,...,z_n$ by first computing $\boldsymbol\pi_i = (\pi_{1i}
 $$\pi_{ik} = \frac{\text{e}^{\eta_{ik}}}{1 + \sum_{h=1}^{K-1} \text{e}^{\eta_{ih}}},$$ 
 where $\eta_{ik} = \mathbf{w}_i\boldsymbol\delta_k$ for $i = 1,...n$ and $k = 1,...,K$. We also compute according to the multivariate Normal density of $\mathbf{y}_i|t_i$ the probability $P(\mathbf{y}_i|\boldsymbol\zeta^*_{ki},\boldsymbol\Sigma_k)$, where $\boldsymbol\zeta_{ki} = \mathbf{x}_i^*\boldsymbol\beta^*_k$. We use these quantities to compute $\boldsymbol\upsilon_{i} = (\upsilon_{1i},...,\upsilon_{Ki})$, where  
 $$\upsilon_{ik} = P(z_i = k|\mathbf{y}_i,\boldsymbol\zeta^*_i,\boldsymbol\Sigma_k) = \frac{\pi_{ik}P(\mathbf{y}_i|\boldsymbol\zeta^*_{ki},\boldsymbol\Sigma_k)}{\sum_{h = 1}^{K} \pi_{ih}P(\mathbf{y}_i|\boldsymbol\zeta^*_{hi},\boldsymbol\Sigma_h)}$$.
-The cluster labels $z_i$ are updated from a $\text{Multinomial}(1,\boldsymbol\varrho_i)$ density for $i = 1,...n$, thus concluding the Gibbs sampler.
+The cluster labels $z_i$ are updated from a $\text{Multinomial}(1,\boldsymbol\upsilon_i)$ density for $i = 1,...n$, thus concluding the Gibbs sampler.
 
 
 \subsubsection{MCMC Algorithm}
@@ -419,7 +420,7 @@ We monitor conver convergence of our MCMC algorithm through the use of standard 
 
 \subsubsection{Label Switching}
 
-A common challenge for Bayesian mixtures models is the so-called ``label switching" problem, in which draws of cluster-specific parameters may be assigned to the wrong cluster at some point during the MCMC simulation, rendering summaries of class-specific parameters incoherent. After conducting simulation studies under a wide variety of realistic parameter settings, as detailed in Section 4, we found little evidence of label switching in posterior draws of $\mathbf{z}$. When label switching was observed, we implemented \textit{post hoc} relabling algorithms as described in Panagiotis 2016 and implemented in the \texttt{label.switching} package in \texttt{R}.
+A common challenge for Bayesian mixtures models is the so-called ``label switching" problem, in which draws of cluster-specific parameters may be assigned to the wrong cluster at some point during the MCMC simulation, rendering summaries of class-specific parameters incoherent. After conducting simulation studies under a wide variety of realistic parameter settings, as detailed in Section 4, we found little evidence of label switching in posterior draws of $\mathbf{z}$. When label switching was observed, we implemented \textit{post hoc} relabling algorithms as described in Papastamoulis 2016 and implemented in the \texttt{label.switching} package in \texttt{R}.
 
 \subsubsection{Model Fit Diagnostics and Specification of K}
 
@@ -665,7 +666,7 @@ The block-wise inversion formula was used to invert $\boldsymbol\Sigma$ accordin
 
 \bibitem{ } Lee SX, McLachlan GJ. Model-based clustering and classification with non-normal mixture distributions. Statistical Methods \& Applications. 2013 Nov 1;22(4):427-54.
 
-\bibitem{ } Lee SX, Mclachlan GJ. On mixtures of skew normal and skew $t$-distributions. \textit{Advances in Data Analysis and Classification}. 2013 Sep 1;7(3):241-66.
+\bibitem{ } Lee SX, Mclachlan GJ. On mixtures of skew normal and skew-$t$ distributions. \textit{Advances in Data Analysis and Classification}. 2013 Sep 1;7(3):241-66.
 
 \bibitem{ } Lin TI, Wang WL, McLachlan GJ, Lee SX. Robust mixtures of factor analysis models using the restricted multivariate skew-t distribution. \textit{Statistical Modelling}. 2018 Feb;18(1):50-72.
 
@@ -675,7 +676,7 @@ The block-wise inversion formula was used to invert $\boldsymbol\Sigma$ accordin
 
 \bibitem{ } Neelon B, Chung D. The LZIP: A Bayesian latent factor model for correlated zero‐inflated counts. Biometrics. 2017 Mar;73(1):185-96.
 
-\bibitem{ } Panagiotis Papastamoulis (2016). label.switching: An R Package for Dealing with the Label Switching Problem in MCMC Outputs. \textit{Journal of Statistical Software}, 69(1), 1-24. doi:10.18637/jss.v069.c01
+\bibitem{ } Papastamoulis, P (2016). label.switching: An R Package for Dealing with the Label Switching Problem in MCMC Outputs. \textit{Journal of Statistical Software}, 69(1), 1-24. doi:10.18637/jss.v069.c01
 
 \bibitem{ } Polson NG, Scott JG, Windle J. Bayesian inference for logistic models using P\'olya –- Gamma latent variables. Journal of the American statistical Association. 2013 Dec 1;108(504):1339-49.
 
