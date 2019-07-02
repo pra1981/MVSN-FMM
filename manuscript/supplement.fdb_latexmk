@@ -1,5 +1,5 @@
 # Fdb version 3
-["pdflatex"] 1562079047 "supplement.tex" "supplement.pdf" "supplement" 1562079048
+["pdflatex"] 1562088278 "supplement.tex" "supplement.pdf" "supplement" 1562088279
   "/usr/local/texlive/2016/texmf-dist/fonts/map/fontname/texfonts.map" 1272929888 3287 e6b82fe08f5336d4d5ebc73fb1152e87 ""
   "/usr/local/texlive/2016/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmbsy5.tfm" 1246382020 1120 1e8878807317373affa7f7bba4cf2f6a ""
   "/usr/local/texlive/2016/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmbsy7.tfm" 1246382020 1120 7f9f170e8aa57527ad6c49feafd45d54 ""
@@ -99,9 +99,9 @@
   "/usr/local/texlive/2016/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1487006281 1888048 f2c5faed5981a516f406b2ccc20bff71 ""
   "/usr/local/texlive/2016/texmf-var/web2c/pdftex/pdflatex.fmt" 1463979169 3873397 413fbfbbedb8e719ddc392043a7add02 ""
   "/usr/local/texlive/2016/texmf.cnf" 1463979140 577 2938757e76f31531e65cc647e3507693 ""
-  "supplement.aux" 1562079048 1066 0842c83c0aeff2bcad5845416eb3843e ""
-  "supplement.tex" 1562079046 15305 cde1ad28b149505425ccfe705339719f ""
+  "supplement.aux" 1562088279 1137 7e6e12be41f9f68821c7e3e125d00b95 ""
+  "supplement.tex" 1562088277 15452 4e33b982f1c674b983455425e157e199 ""
   (generated)
-  "supplement.log"
-  "supplement.pdf"
   "supplement.aux"
+  "supplement.pdf"
+  "supplement.log"

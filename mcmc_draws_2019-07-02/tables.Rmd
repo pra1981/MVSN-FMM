@@ -47,6 +47,41 @@ col_summarize <- function(MAT,dig = 2)
 ```
 
 ```{r}
+L <- length(BETA.list)
+n_sim <- nrow(BETA.list[[1]])
+OMEGA.list <- SIGMA.list
+ALPHA.list <- PSI.list
+omega.true.list <- sig2.true.list
+alpha.true.list <- psi.true.list
+for(l in 1:L)
+{
+  SIGMA.l <- SIGMA.list[[l]]
+  PSI.l <- PSI.list[[l]]
+  OMEGA.l <- OMEGA.list[[l]]
+  ALPHA.l <- ALPHA.list[[l]]
+  for(i in 1:n_sim)
+  {
+    sig2.l.i <- matrix(SIGMA.l[i,],nrow = 4,ncol = 4,byrow = TRUE)
+    psi.l.i <- PSI.l[i,]
+    omega.l.i <- sig2.l.i + outer(psi.l.i,psi.l.i)
+    alpha.l.i <- c(1/sqrt(1-t(psi.l.i) %*% solve(omega.l.i) %*% psi.l.i)) * (diag(sqrt(diag(omega.l.i))) %*% solve(omega.l.i) %*% psi.l.i)
+    
+    OMEGA.l[i,] <- c(omega.l.i)
+    ALPHA.l[i,] <- c(alpha.l.i)
+  }
+  OMEGA.list[[l]] <- OMEGA.l
+  ALPHA.list[[l]] <- ALPHA.l
+  
+  sig2_true.l <- sig2.true.list[[l]]
+  psi_true.l <- psi.true.list[[l]]
+  omega_true.l <- sig2_true.l + outer(psi_true.l,psi_true.l)
+  alpha_true.l <- c(1/sqrt(1-t(psi_true.l) %*% solve(omega_true.l) %*% psi_true.l)) * (diag(sqrt(diag(omega_true.l))) %*% solve(omega_true.l) %*% psi_true.l)
+  omega.true.list[[l]] <- omega_true.l
+  alpha.true.list[[l]] <- alpha_true.l
+}
+```
+
+```{r}
 beta_true_c1 <- c(beta.true.list[[1]]) %>% round(.,2)
 beta_true_c2 <- c(beta.true.list[[2]]) %>% round(.,2)
 beta_true_c3 <- c(beta.true.list[[3]]) %>% round(.,2)
@@ -54,19 +89,19 @@ beta_est_c1 <- col_summarize(BETA.list[[1]])
 beta_est_c2 <- col_summarize(BETA.list[[2]]) 
 beta_est_c3 <- col_summarize(BETA.list[[3]]) 
 
-sig2_true_c1 <- c(sig2.true.list[[1]])[c(lower.tri(sig2.true.list[[1]],diag = TRUE))] %>% round(.,2)
-sig2_true_c2 <- c(sig2.true.list[[2]])[c(lower.tri(sig2.true.list[[2]],diag = TRUE))] %>% round(.,2)
-sig2_true_c3 <- c(sig2.true.list[[3]])[c(lower.tri(sig2.true.list[[3]],diag = TRUE))] %>% round(.,2)
-sig2_est_c1 <- col_summarize(SIGMA.list[[1]])[c(lower.tri(sig2.true.list[[1]],diag = TRUE))]
-sig2_est_c2 <- col_summarize(SIGMA.list[[2]])[c(lower.tri(sig2.true.list[[2]],diag = TRUE))]
-sig2_est_c3 <- col_summarize(SIGMA.list[[3]])[c(lower.tri(sig2.true.list[[3]],diag = TRUE))] 
+omega_true_c1 <- c(omega.true.list[[1]])[c(lower.tri(omega.true.list[[1]],diag = TRUE))] %>% round(.,2)
+omega_true_c2 <- c(omega.true.list[[2]])[c(lower.tri(omega.true.list[[2]],diag = TRUE))] %>% round(.,2)
+omega_true_c3 <- c(omega.true.list[[3]])[c(lower.tri(omega.true.list[[3]],diag = TRUE))] %>% round(.,2)
+omega_est_c1 <- col_summarize(OMEGA.list[[1]])[c(lower.tri(omega.true.list[[1]],diag = TRUE))]
+omega_est_c2 <- col_summarize(OMEGA.list[[2]])[c(lower.tri(omega.true.list[[2]],diag = TRUE))]
+omega_est_c3 <- col_summarize(OMEGA.list[[3]])[c(lower.tri(omega.true.list[[3]],diag = TRUE))] 
 
-psi_true_c1 <- psi.true.list[[1]] %>% round(.,2)
-psi_true_c2 <- psi.true.list[[2]] %>% round(.,2)
-psi_true_c3 <- psi.true.list[[3]] %>% round(.,2)
-psi_est_c1 <- col_summarize(PSI.list[[1]]) 
-psi_est_c2 <- col_summarize(PSI.list[[2]]) 
-psi_est_c3 <- col_summarize(PSI.list[[3]])
+alpha_true_c1 <- alpha.true.list[[1]] %>% round(.,2)
+alpha_true_c2 <- alpha.true.list[[2]] %>% round(.,2)
+alpha_true_c3 <- alpha.true.list[[3]] %>% round(.,2)
+alpha_est_c1 <- col_summarize(ALPHA.list[[1]]) 
+alpha_est_c2 <- col_summarize(ALPHA.list[[2]]) 
+alpha_est_c3 <- col_summarize(ALPHA.list[[3]])
 
 delta_true <- c(delta.true) %>% round(.,2)
 delta_est <- col_summarize(DELTA)
@@ -79,21 +114,21 @@ model_component <- c("MVSN","Regression","","","","","","","","","","","","","",
                      "Clustering")
 params <- c("$\\beta_{11}$","$\\beta_{21}$","$\\beta_{31}$","$\\beta_{41}$",
             "$\\beta_{12}$","$\\beta_{22}$","$\\beta_{32}$","$\\beta_{42}$",
-            "$\\sigma_{11}$","$\\sigma_{12}$","$\\sigma_{13}$","$\\sigma_{14}$",
-            "$\\sigma_{22}$","$\\sigma_{23}$","$\\sigma_{24}$",
-            "$\\sigma_{33}$","$\\sigma_{34}$",
-            "$\\sigma_{44}$",
-            "$\\psi_{1}$","$\\psi_{2}$", "$\\psi_{3}$","$\\psi_{4}$",
+            "$\\Omega_{11}$","$\\Omega_{12}$","$\\Omega_{13}$","$\\Omega_{14}$",
+            "$\\Omega_{22}$","$\\Omega_{23}$","$\\Omega_{24}$",
+            "$\\Omega_{33}$","$\\Omega_{34}$",
+            "$\\Omega_{44}$",
+            "$\\alpha_{1}$","$\\alpha_{2}$", "$\\alpha_{3}$","$\\alpha_{4}$",
             "$\\delta_{11}$","$\\delta_{12}$",
             "$\\delta_{21}$","$\\delta_{22}$",
             "$\\pi_l$")
 
-true_c1 <- c(beta_true_c1,sig2_true_c1,psi_true_c1,delta_true,pi_true[1])
-true_c2 <- c(beta_true_c2,sig2_true_c2,psi_true_c2,delta_true,pi_true[2])
-true_c3 <- c(beta_true_c3,sig2_true_c3,psi_true_c3,delta_true,pi_true[3])
-est_c1 <- c(beta_est_c1,sig2_est_c1,psi_est_c1,delta_est,pi_est[1])
-est_c2 <- c(beta_est_c2,sig2_est_c2,psi_est_c2,delta_est,pi_est[2])
-est_c3 <- c(beta_est_c3,sig2_est_c3,psi_est_c3,delta_est,pi_est[3])
+true_c1 <- c(beta_true_c1,omega_true_c1,alpha_true_c1,delta_true,pi_true[1])
+true_c2 <- c(beta_true_c2,omega_true_c2,alpha_true_c2,delta_true,pi_true[2])
+true_c3 <- c(beta_true_c3,omega_true_c3,alpha_true_c3,delta_true,pi_true[3])
+est_c1 <- c(beta_est_c1,omega_est_c1,alpha_est_c1,delta_est,pi_est[1])
+est_c2 <- c(beta_est_c2,omega_est_c2,alpha_est_c2,delta_est,pi_est[2])
+est_c3 <- c(beta_est_c3,omega_est_c3,alpha_est_c3,delta_est,pi_est[3])
 
 load("mcmc_draws_NOSKEW_2019-07-02/class_1_est")
 load("mcmc_draws_NOSKEW_2019-07-02/class_2_est")
@@ -101,9 +136,9 @@ load("mcmc_draws_NOSKEW_2019-07-02/class_3_est")
 
 t1 <- cbind(model_component,
             params,
-            true_c1,est_c1,est_c1_noskew,
+            true_c1,est_c1,est_c3_noskew,
             true_c2,est_c2,est_c2_noskew,
-            true_c3,est_c3,est_c3_noskew)
+            true_c3,est_c3,est_c1_noskew)
 colnames(t1) <- c("Component",
                   "Param.",
                   "True","MSN Est. (95\\% CrI)","MN Est. (95\\% CrI) ",
