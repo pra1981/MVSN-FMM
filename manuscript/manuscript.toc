@@ -12,17 +12,17 @@
 \contentsline {subsubsection}{\numberline {3.4.1}Prior Specification}{11}
 \contentsline {subsubsection}{\numberline {3.4.2}Posterior Inference}{12}
 \contentsline {paragraph}{\textbf {Step 1}: Conditional MSN Imputation}{12}
-\contentsline {paragraph}{\textbf {Step 2:} Update of MSN Regression Parameters}{12}
+\contentsline {paragraph}{\textbf {Step 2:} Update of MSN Regression Parameters}{13}
 \contentsline {paragraph}{\textbf {Step 3:}P\'olya--Gamma Data Augmentation for $z_i$}{13}
 \contentsline {subsubsection}{\numberline {3.4.3}MCMC Algorithm}{14}
 \contentsline {subsubsection}{\numberline {3.4.4}Assessment of MCMC Convergence}{14}
 \contentsline {subsubsection}{\numberline {3.4.5}Label Switching}{14}
-\contentsline {subsubsection}{\numberline {3.4.6}Model Fit Diagnostics and Specification of K}{14}
-\contentsline {section}{\numberline {4}Simulation Studies}{16}
-\contentsline {subsection}{\numberline {4.1}Simulation to Compare to Multivariate Normal}{16}
-\contentsline {subsection}{\numberline {4.2}Simulation to Compare Imputation Methods}{17}
-\contentsline {subsection}{\numberline {4.3}Simulation to Assess Sensitivity to Misspecified K}{17}
-\contentsline {section}{\numberline {5}Application}{18}
-\contentsline {section}{\numberline {6}Discussion}{19}
-\contentsline {section}{References}{19}
-\contentsline {section}{\numberline {7}Appendix}{21}
+\contentsline {subsubsection}{\numberline {3.4.6}Model Fit Diagnostics and Specification of K}{16}
+\contentsline {section}{\numberline {4}Simulation Studies}{17}
+\contentsline {subsection}{\numberline {4.1}Simulation to Compare to Multivariate Normal}{17}
+\contentsline {subsection}{\numberline {4.2}Simulation to Compare Imputation Methods}{18}
+\contentsline {subsection}{\numberline {4.3}Simulation to Assess Sensitivity to Misspecified K}{18}
+\contentsline {section}{\numberline {5}Application}{19}
+\contentsline {section}{\numberline {6}Discussion}{20}
+\contentsline {section}{References}{20}
+\contentsline {section}{\numberline {7}Appendix}{22}

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  2 JUL 2019 10:51
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  2 JUL 2019 15:08
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -762,9 +762,6 @@ Overfull \hbox (4.62497pt too wide) has occurred while \output is active
 \openout3 = `manuscript.fff'.
 
  (manuscript.fff)
-Underfull \vbox (badness 2564) has occurred while \output is active []
-
-
 Overfull \hbox (4.62497pt too wide) has occurred while \output is active
 \OT1/cmr/m/n/9 5
  []
@@ -793,6 +790,9 @@ Overfull \hbox (4.62497pt too wide) has occurred while \output is active
  []
 
 [9]
+Underfull \vbox (badness 2818) has occurred while \output is active []
+
+
 Overfull \hbox (9.24994pt too wide) has occurred while \output is active
 \OT1/cmr/m/n/9 10
  []
@@ -816,6 +816,9 @@ Overfull \hbox (6.60861pt too wide) in paragraph at lines 356--357
  []
 
 
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
 Overfull \hbox (9.24994pt too wide) has occurred while \output is active
 \OT1/cmr/m/n/9 13
  []
@@ -831,14 +834,14 @@ Overfull \hbox (9.24994pt too wide) has occurred while \output is active
  []
 
 [15]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
 Overfull \hbox (9.24994pt too wide) has occurred while \output is active
 \OT1/cmr/m/n/9 16
  []
 
 [16]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
 Overfull \hbox (9.24994pt too wide) has occurred while \output is active
 \OT1/cmr/m/n/9 17
  []
@@ -849,16 +852,6 @@ Overfull \hbox (9.24994pt too wide) has occurred while \output is active
  []
 
 [18]
-Missing character: There is no ‚ in font cmr12!
-Missing character: There is no Ä in font cmr12!
-Missing character: There is no ê in font cmr12!
-Missing character: There is no ‚ in font cmr12!
-Missing character: There is no Ä in font cmr12!
-Missing character: There is no ê in font cmr12!
-Missing character: There is no ‚ in font cmr12!
-Missing character: There is no Ä in font cmr12!
-Missing character: There is no ì in font cmr12!
-
 Overfull \hbox (9.24994pt too wide) has occurred while \output is active
 \OT1/cmr/m/n/9 19
  []
@@ -866,10 +859,13 @@ Overfull \hbox (9.24994pt too wide) has occurred while \output is active
 [19]
 Missing character: There is no ‚ in font cmr12!
 Missing character: There is no Ä in font cmr12!
+Missing character: There is no ê in font cmr12!
+Missing character: There is no ‚ in font cmr12!
+Missing character: There is no Ä in font cmr12!
+Missing character: There is no ê in font cmr12!
+Missing character: There is no ‚ in font cmr12!
+Missing character: There is no Ä in font cmr12!
 Missing character: There is no ì in font cmr12!
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
 
 Overfull \hbox (9.24994pt too wide) has occurred while \output is active
 \OT1/cmr/m/n/9 20
@@ -878,22 +874,34 @@ Overfull \hbox (9.24994pt too wide) has occurred while \output is active
 [20]
 Missing character: There is no ‚ in font cmr12!
 Missing character: There is no Ä in font cmr12!
+Missing character: There is no ì in font cmr12!
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Overfull \hbox (9.24994pt too wide) has occurred while \output is active
+\OT1/cmr/m/n/9 21
+ []
+
+[21]
+Missing character: There is no ‚ in font cmr12!
+Missing character: There is no Ä in font cmr12!
 Missing character: There is no ê in font cmr12!
 Missing character: There is no ‚ in font cmr12!
 Missing character: There is no Ä in font cmr12!
 Missing character: There is no ì in font cmr12!
  AED endfloat: Processing end Figures and Tables
 Overfull \hbox (9.24994pt too wide) has occurred while \output is active
-\OT1/cmr/m/n/9 21
- []
-
-[21]
-Overfull \hbox (9.24994pt too wide) has occurred while \output is active
 \OT1/cmr/m/n/9 22
  []
 
-[22] (./manuscript.fff
-<bayley_resids_plot.jpg, id=110, 3311.37125pt x 1927.2pt>
+[22]
+Overfull \hbox (9.24994pt too wide) has occurred while \output is active
+\OT1/cmr/m/n/9 23
+ []
+
+[23] (./manuscript.fff
+<bayley_resids_plot.jpg, id=114, 3311.37125pt x 1927.2pt>
 File: bayley_resids_plot.jpg Graphic file (type jpg)
 
 <use bayley_resids_plot.jpg>
@@ -901,10 +909,10 @@ Package pdftex.def Info: bayley_resids_plot.jpg used on input line 5.
 (pdftex.def)             Requested size: 463.58882pt x 269.80617pt.
 
 Overfull \hbox (9.24994pt too wide) has occurred while \output is active
-\OT1/cmr/m/n/9 23
+\OT1/cmr/m/n/9 24
  []
 
-[23
+[24
 
 
  <./bayley_resids_plot.jpg>]) (./manuscript.aux)
@@ -915,7 +923,7 @@ LaTeX Warning: There were multiply-defined labels.
 Here is how much of TeX's memory you used:
  11557 strings out of 493014
  199644 string characters out of 6133351
- 238113 words of memory out of 5000000
+ 239113 words of memory out of 5000000
  14943 multiletter control sequences out of 15000+600000
  24517 words of font info for 90 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -952,10 +960,10 @@ exmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb></usr/local/texlive/2016/tex
 mf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/local/texlive/2016/texm
 f-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb></usr/local/texlive/2016/texmf-
 dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on manuscript.pdf (25 pages, 563482 bytes).
+Output written on manuscript.pdf (26 pages, 564176 bytes).
 PDF statistics:
- 215 PDF objects out of 1000 (max. 8388607)
- 153 compressed objects within 2 object streams
+ 218 PDF objects out of 1000 (max. 8388607)
+ 155 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  6 words of extra memory for PDF output out of 10000 (max. 10000000)
 
