@@ -1,6 +1,6 @@
 \begin{figure}[H] 
 \label{fig:skew_resids}
-\caption{The distribution of residuals in repeates measures regression model of Bayley composite scores adjusted for race and sex.}
+\caption{The distribution of residuals in repeated measures regression model of Bayley composite scores adjusted for race and sex.}
 \centering
 \includegraphics[scale = 0.14]{bayley_resids_plot}
 \end{figure}

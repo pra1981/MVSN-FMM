@@ -15,7 +15,7 @@ library(kableExtra)
 ```
 
 ```{r}
-setwd("~/Documents/School/Summer_2019/Research/MVSN-FMM/mcmc_draws_2019-07-02")
+setwd("~/Documents/School/Summer_2019/Research/MVSN-FMM/mcmc_draws_2019-07-02/mcmc_draws_NOSKEW_2019-07-02/")
 load("BETA")
 load("beta_true")
 load("DELTA")
@@ -91,35 +91,36 @@ params <- c("$\\beta_{11}$","$\\beta_{21}$","$\\beta_{31}$","$\\beta_{41}$",
 true_c1 <- c(beta_true_c1,sig2_true_c1,psi_true_c1,delta_true,pi_true[1])
 true_c2 <- c(beta_true_c2,sig2_true_c2,psi_true_c2,delta_true,pi_true[2])
 true_c3 <- c(beta_true_c3,sig2_true_c3,psi_true_c3,delta_true,pi_true[3])
-est_c1 <- c(beta_est_c1,sig2_est_c1,psi_est_c1,delta_est,pi_est[1])
-est_c2 <- c(beta_est_c2,sig2_est_c2,psi_est_c2,delta_est,pi_est[2])
-est_c3 <- c(beta_est_c3,sig2_est_c3,psi_est_c3,delta_est,pi_est[3])
+est_c3_noskew <- est_c3 <- c(beta_est_c1,sig2_est_c1,psi_est_c1,delta_est,pi_est[1])
+est_c2_noskew <- est_c2 <- c(beta_est_c2,sig2_est_c2,psi_est_c2,delta_est,pi_est[2])
+est_c1_noskew <- est_c1 <- c(beta_est_c3,sig2_est_c3,psi_est_c3,delta_est,pi_est[3])
 
-load("mcmc_draws_NOSKEW_2019-07-02/class_1_est")
-load("mcmc_draws_NOSKEW_2019-07-02/class_2_est")
-load("mcmc_draws_NOSKEW_2019-07-02/class_3_est")
+save(est_c1_noskew,file = "class_1_est")
+save(est_c2_noskew,file = "class_2_est")
+save(est_c3_noskew,file = "class_3_est")
+
+
 
 t1 <- cbind(model_component,
             params,
-            true_c1,est_c1,est_c1_noskew,
-            true_c2,est_c2,est_c2_noskew,
-            true_c3,est_c3,est_c3_noskew)
-colnames(t1) <- c("Component",
-                  "Param.",
-                  "True","MSN Est. (95\\% CrI)","MN Est. (95\\% CrI) ",
-                  "True","MSN Est. (95\\% CrI)","MN Est. (95\\% CrI)",
-                  "True","MSN Est. (95\\% CrI)","MN Est. (95\\% CrI)")
+            true_c1,est_c1,
+            true_c2,est_c2,
+            true_c3,est_c3)
+colnames(t1) <- c("Model Component",
+                  "Parameter",
+                  "True","Est. (95\\% CrI)",
+                  "True","Est. (95\\% CrI)",
+                  "True","Est. (95\\% CrI)")
 ```
 
 ```{r}
 rownames(t1) <- NULL
-kable(t1, booktabs = T, escape = F,caption = "Model results for simulated data with n = 1000, k = 4, p = 2, h = 3, r = 2. 1000 iterations were run with a burn in of 100. Missingness mechanism was MAR and P(miss) = 0. Model results for the multivariate skew normal (MSN) and multivariate normal (MN) mixtures are presented.") %>%
-  kable_styling(font_size = 7) %>%
-  add_header_above(c(" " = 2,"Class 1" = 3, "Class 2" = 3, "Class 3" = 3)) %>%
+kable(t1, booktabs = T, escape = F,caption = "Model results for simulated data with n = 1000, k = 4, p = 2, h = 3, r = 2. 1000 iterations were run with a burn in of 250. Missingness mechanism was MAR and P(miss) = 0") %>%
+  kable_styling(font_size = 8) %>%
+  add_header_above(c(" " = 2,"Class 1" = 2, "Class 2" = 2, "Class 3" = 2)) %>%
   group_rows(" ",1,8) %>%
   group_rows(" ",9,18) %>%
   group_rows(" ",19,22) %>%
   group_rows(" ",23,26) %>%
-  group_rows(" ",27,27) %>%
-  landscape()
+  group_rows(" ",27,27)
 ```

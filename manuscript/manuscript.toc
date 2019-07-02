@@ -24,10 +24,5 @@
 \contentsline {subsection}{\numberline {4.3}Simulation to Assess Sensitivity to Misspecified K}{17}
 \contentsline {section}{\numberline {5}Application}{18}
 \contentsline {section}{\numberline {6}Discussion}{19}
-\contentsline {section}{\numberline {7}Appendix}{19}
-\contentsline {subsection}{\numberline {7.1}Glossary of Notation}{20}
-\contentsline {subsection}{\numberline {7.2}Derivation of Full Conditional Distributions}{21}
-\contentsline {subsubsection}{\numberline {7.2.1}Multivariate Skew-Normal Regression}{21}
-\contentsline {subsubsection}{\numberline {7.2.2}Multinomial Logit Regression}{22}
-\contentsline {subsubsection}{\numberline {7.2.3}Multivariate Normal Conditional Imputation}{22}
-\contentsline {section}{References}{24}
+\contentsline {section}{References}{19}
+\contentsline {section}{\numberline {7}Appendix}{21}
