@@ -5,6 +5,7 @@ This repository contains materials for the development of a novel method for mod
 ## Manuscript
 
 [Manuscript](manuscript/manuscript.pdf)
+[Supplement](manuscript/supplement.pdf)
 
 ## Poster (SRCOS 2019)
 
