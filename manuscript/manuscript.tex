@@ -247,6 +247,7 @@ The Nurture data also feature intermittent missingness in Bayley composite score
 
 A primary goal of the Nurture study is to identify clusters of infants characterized by distinct motor development trajectories throughout the first year of life. To address this aim, we propose a flexible finite mixture model that accommodates relevant features of the data, such as skewness and dependence among the responses. For $i = 1,...,n$, let $\mathbf{y}_{i}=(y_{i1},\ldots,y_{iJ})^T$ be a $J \times 1$ vector of responses (i.e., Baley composite scores) for subject $i$ across the $J$ measurement occasions. For the analysis of the Nurture data, we propose a finite mixture model of the form
 \begin{equation}
+	\label{eq:mixture}
 f(\mathbf{y}_i) = \sum_{k = 1}^{K} \pi_{ki} f(\mathbf{y}_i|\boldsymbol\theta_k),
 \end{equation}
 where $\boldsymbol\theta_k$ is the set of parameters specific to cluster $k$ ($k = 1,...,K$) and $\pi_{ki}$ is a subject-specific mixing weight representing the probability that subject $i$ belongs to cluster $k$. For now we assume that $K$ is fixed; in Section 4, we discuss model selection strategies for choosing the optimal value of $K$. 
@@ -262,39 +263,39 @@ We can extend model (\ref{eq:msndens}) to the regression setting by modeling $\b
 \mathbf{y}_{i}|(z_i=k,t_i) = \mathbf{X}_i \boldsymbol\beta_k + t_i \boldsymbol\psi_k + \boldsymbol\epsilon_{ki}, \label{eq:msnreg}
 \end{equation}
 where 
-$\mathbf{X}_i$ is a $J \times Jp$ design matrix that includes potential time-varying covariates (e.g., indicators denoting quarterly visits); $\boldsymbol{\beta}_k=(\beta_{k11},\ldots,\beta_{k1p},\ldots,\beta_{kJ1},\ldots,\beta_{kJp})^T$ is a $Jp\times 1$ vector of cluster- and outcome-specific regression coefficients; $t_i\sim \text{N}_{[0,\infty)}(0,1)$ is a subject-specific standard normal random variable truncated below by zero; $\boldsymbol\psi_k=(\psi_{k1},\ldots,\psi_{kJ})^T$ is a $J \times 1$ vector of cluster-specific skewness parameters; and $\boldsymbol{\epsilon}_{ki} \sim \text{N}_J(\boldsymbol0,\boldsymbol\Sigma_k)$ is a $J\times 1$ vector of error terms. Thus, conditional on $t_i$ and $z_i=k$, $\boldsymbol{y}_i$ is distributed as $\text{N}_J(\mathbf{X}_i \boldsymbol\beta_k + t_i \boldsymbol\psi_k, \boldsymbol{\Sigma}_k)$. Marginally (after integrating over $t_i$), $\mathbf{y}_i$ is distributed $\text{MSN}_J(\boldsymbol\zeta_{ki}, \boldsymbol\alpha_k, \boldsymbol\Omega_k)$, where through back-transformation 
-\begin{eqnarray*}
-\boldsymbol\zeta_{ki} &=& \mathbf{X}_i\boldsymbol\beta_k,\\
+$\mathbf{X}_i$ is a $J \times Jp$ design matrix that includes potential time-varying covariates (e.g., indicators denoting quarterly visits); $\boldsymbol{\beta}_k=(\beta_{k11},\ldots,\beta_{k1p},\ldots,\beta_{kJ1},\ldots,\beta_{kJp})^T$ is a $Jp\times 1$ vector of cluster- and outcome-specific regression coefficients; $t_i\sim \text{N}_{[0,\infty)}(0,1)$ is a subject-specific standard normal random variable truncated below by zero; $\boldsymbol\psi_k=(\psi_{k1},\ldots,\psi_{kJ})^T$ is a $J \times 1$ vector of cluster-specific skewness parameters; and $\boldsymbol{\epsilon}_{ki} \sim \text{N}_J(\boldsymbol0,\boldsymbol\Sigma_k)$ is a $J\times 1$ vector of correlated error terms. Thus, conditional on $t_i$ and $z_i=k$, $\boldsymbol{y}_i$ is distributed as $\text{N}_J(\mathbf{X}_i \boldsymbol\beta_k + t_i \boldsymbol\psi_k, \boldsymbol{\Sigma}_k)$. Marginally (after integrating over $t_i$), $\mathbf{y}_i|(z_i = k)$ is distributed $\text{MSN}_J(\boldsymbol\zeta_{ki}, \boldsymbol\alpha_k, \boldsymbol\Omega_k)$, where through back-transformation 
+\begin{eqnarray}
+\boldsymbol\zeta_{ki} &=& \mathbf{X}_i\boldsymbol\beta_k, \nonumber \\
 \boldsymbol\alpha_k &=& \frac{1}{\sqrt{1 - \boldsymbol\psi_k^T 
-\boldsymbol\Omega^{-1}_k\boldsymbol\psi_k}} \boldsymbol\omega_k \boldsymbol\Omega^{-1}_k\boldsymbol\psi_k,~~\text{and}\\
-\boldsymbol\Omega_k &=& \boldsymbol\Sigma_k  + \boldsymbol\psi_k \boldsymbol\psi_k^T,
-\end{eqnarray*}
+\boldsymbol\Omega^{-1}_k\boldsymbol\psi_k}} \boldsymbol\omega_k \boldsymbol\Omega^{-1}_k\boldsymbol\psi_k,~~\text{and} \label{eqn:back_transform}\\
+\boldsymbol\Omega_k &=& \boldsymbol\Sigma_k  + \boldsymbol\psi_k \boldsymbol\psi_k^T \nonumber,
+\end{eqnarray}
 where $\boldsymbol\omega_k = \text{Diag}(\boldsymbol\Omega_k)^{1/2}$ is the $J \times J$ diagonal matrix containing the square root of the diagonal entries of $\boldsymbol\Omega_k$. Additional details can be found in Fr\"{u}wirth-Schnatter and Pyne (2010). 
 
 Of note, the MSN density can be expressed more compactly in terms of the matrix skew normal (MatSN) density (Chen and Gupta 2005). As we will see in Section 3.6, the matrix representation of the MSN distribution admits convenient conjugate prior distributions for the regression parameters and scale matrices, which in turn leads to efficient Gibbs sampling for posterior inference. Let $\mathbf{Y}_k$ be an ${n_k \times J}$ response matrix with rows $\mathbf{y}_i^T$, $(i = 1,...,n_k)$, where $n_k = \sum_{i = 1}^n {1}_{(z_i = k)}$ is the number of observations in cluster $k$. From equation (\ref{eq:msnreg}), it follows that $\mathbf{Y}_k$ is distributed as
-\begin{eqnarray*}
+\begin{eqnarray}
 \mathbf{Y}_{k} &\sim& \text{MatSN}_{n_k \times J}(\mathbf{M}_k,\boldsymbol\alpha_k,\mathbf{I}_{n_k},\boldsymbol\Omega_k)\\
 %\text{vec}(\mathbf{Y}_k) =  (\mathbf{y}^T_1,...,\mathbf{y}^T_{n_k})^T\\
-\text{vec}(\mathbf{M}_k) &=& (\boldsymbol\zeta_{k1}^T,...,\boldsymbol\zeta_{kn_k}^T)^T,
-\end{eqnarray*}
+\text{vec}(\mathbf{M}_k) &=& (\boldsymbol\zeta_{k1}^T,...,\boldsymbol\zeta_{kn_k}^T)^T, \nonumber
+\end{eqnarray}
 where $\boldsymbol\zeta_{ki} = \mathbf{X}_i \boldsymbol\beta_k$ as in equation (\ref{eq:msnreg}), $\boldsymbol\alpha_k = (\alpha_{k1},...,\alpha_{kJ})^T$, $\mathbf{I}_{n_k}$ is the $n_k\times n_k$ identity matrix, and $\boldsymbol\Omega_k$ is the $J\times J$ scale matrix defined above in equation (\ref{eq:msndens}). From equation (\ref{eq:msnreg}), it follows that $\mathbf{Y}_{k}$, conditional on the $n_k\times 1$ vector of random effects $\mathbf{t}_{k} = (t_1,...,t_{n_k})^T$, is jointly distributed in matrix form as
-\[
-\mathbf{Y}_k | \mathbf{t}_k \sim \text{MatNorm}_{n_k \times J}(\mathbf{M}_k, \mathbf{I}_{n_k}, \boldsymbol\Sigma_k),
-\]
-where $\text{MatNorm}_{n_k \times J}(\cdot)$ denotes a $n_k\times J$ matrix normal density, $\text{vec}(\mathbf{M}_k) = \mathbf{X}_{k} \boldsymbol\beta_k + \mathbf{t}_k \otimes \boldsymbol\psi_k$ is an $n_kJ\times 1$ mean vector, $\mathbf{X}_k$ is an $n_kJ \times Jp$ design matrix, $\boldsymbol\beta_k$ is the $Jp\times 1$ vector of regression coefficients defined in equation (\ref{eq:msnreg}), and $\boldsymbol\Sigma_k$ is the $J\times J$ conditional covariance of $\boldsymbol\epsilon_{ik}$ given in equation (\ref{eq:msnreg}).
+\begin{equation}
+\mathbf{Y}_k | \mathbf{t}_k \sim \text{MatNorm}_{n_k \times J}(\mathbf{M}^*_k, \mathbf{I}_{n_k}, \boldsymbol\Sigma_k),
+\end{equation}
+where $\text{MatNorm}_{n_k \times J}(\cdot)$ denotes a $n_k\times J$ matrix normal density, $\text{vec}(\mathbf{M}^*_k) = \mathbf{X}_{k} \boldsymbol\beta_k + \mathbf{t}_k \otimes \boldsymbol\psi_k$ is an $n_kJ\times 1$ mean vector, $\mathbf{X}_k$ is an $n_kJ \times Jp$ design matrix, $\boldsymbol\beta_k$ is the $Jp\times 1$ vector of regression coefficients defined in equation (\ref{eq:msnreg}), and $\boldsymbol\Sigma_k$ is the $J\times J$ conditional covariance of $\boldsymbol\epsilon_{ik}$ given in equation (\ref{eq:msnreg}).
 
 \subsection{Multinomial Regression for the Cluster Indicators}
 To accommodate heterogeneity in the cluster-membership probabilities, we model $\pi_{ik}$ as a function of covariates using a multinomial logit model 
 \begin{eqnarray}
 \pi_{ik} = \Pr(z_i = k|\mathbf{w}_i) = \frac{\text{e}^{\mathbf{w}_i^T \boldsymbol\delta_k}}{\sum_{h = 1}^K \text{e}^{\mathbf{w}_i^T \boldsymbol\delta_{h}}},~ k=1,\ldots,K,
 \end{eqnarray}
-where $\mathbf{w}_i$ is an $r\times 1$ vector of subject-level covariates, $\boldsymbol\delta_k$ is a $r\times 1$ vector of regression parameters associated with membership in cluster $k$. For identifiability purposes, we fix the reference category $k = K$ and set $\boldsymbol\delta_K = \mathbf{0}$. Under this model, $z_i|\mathbf{w}_i \sim \text{Multinomial}(1,\boldsymbol\pi_i)$, where $\boldsymbol\pi_i = (\pi_{i1},...,\pi_{1K})$. During MCMC estimation, the cluster labels $z_i$ are updated from their multinomial full conditional distribution and used in the remaining MCMC steps as cluster assignments as detailed later in section (\textbf{what section}). By allowing the cluster probabilities to vary across subjects, our model can be viewed as a \textit{mixture of experts} model in which $\pi_{ki}$ acts as a \textit{gating function} (\textbf{cite book}). 
+where $\mathbf{w}_i$ is an $r\times 1$ vector of subject-level covariates, $\boldsymbol\delta_k$ is a $r\times 1$ vector of regression parameters associated with membership in cluster $k$. For identifiability purposes, we fix the reference category $k = K$ and set $\boldsymbol\delta_K = \mathbf{0}$. Under this model, $z_i|\mathbf{w}_i \sim \text{Multinomial}(1,\boldsymbol\pi_i)$, where $\boldsymbol\pi_i = (\pi_{i1},...,\pi_{1K})$. During MCMC estimation, the cluster labels $z_i$ are updated from their multinomial full conditional distribution and used in the remaining MCMC steps as cluster assignments as detailed later in section (\textbf{what section}). By allowing the cluster probabilities to vary across subjects, our model can be viewed as a \textit{mixture of experts} model in which $\pi_{ki}$ acts as a \textit{gating function} controlling the prior probability of membership in cluster $k$, and $f(\mathbf{y}_i|\boldsymbol\theta_k)$ in Equation \ref{eq:mixture} is the ``expert'' (Bishop 2016). 
 
-To facilitate sampling, we adopt an efficient data-augmentation approach introduced by Polson \textit{et al.} (2013), which expresses the inverse-logit function as a mixture P\'olya--Gamma densities. By using P\'olya--Gamma data augmentation for the multinomial model (\textbf{cite}), we obtain a P\'olya--Gamma mixture of experts model, a computationally efficient way to model edge weights (\textbf{cite}). A random variable ${w}$ is said to follow a P\'olya--Gamma distribution with parameters $b > 0$ and $c \in {\rm I\!R}$ if
+To facilitate sampling, we adopt an efficient data-augmentation approach introduced by Polson \textit{et al.} (2013), which expresses the inverse-logit function as a mixture P\'olya--Gamma densities. By using P\'olya--Gamma data augmentation for the multinomial model, we obtain a \textit{P\'olya--Gamma mixture of experts model}, a computationally efficient way to obtain inferences for the mixing weights in the Bayesian setting. A random variable ${w}$ is said to follow a P\'olya--Gamma distribution with parameters $b > 0$ and $c \in \mathbb{R}$ if
 \begin{equation}
 {w} \sim \text{PG}(b,c) \stackrel{d}{=} \frac{1}{2\pi^2}\sum_{s=1}^{\infty}\frac{g_s}{(s-1/2)^2 + c^2/(4\pi^2)}, \label{eq:pg1}
 \end{equation}
-where $g_s \stackrel{iid}{\sim} \text{Ga}(b,1)$ for $s = 1,...,\infty$ . Polson \textit{et al.} (2013) establish that for the $\text{PG}(b,c)$ density, and for $a,\eta \in {\rm I\!R}$, 
+where $g_s \stackrel{iid}{\sim} \text{Ga}(b,1)$ for $s = 1,...,\infty$ . Polson \textit{et al.} (2013) establish that for the $\text{PG}(b,c)$ density, and for $a,\eta \in \mathbb{R}$, 
 
 \begin{equation}
 \frac{(\text{e}^{\eta})^a}{(1 + \text{e}^{\eta})^b} = 2^{-b}\text{e}^{\kappa \eta} \int_{0}^{\infty} \text{e}^{-{w}\eta^2/2}p({w}|b,c = 0)d{w}. \label{eq:pg2}
@@ -306,7 +307,7 @@ where $\kappa = a - b/2$. Polson \textit{et al.} also show that the conditional 
 \end{equation}
 
 To make use of P\'olya--Gamma data augmentation, we first write the full conditional distribution of $\boldsymbol\delta_k$ as the prior for $\boldsymbol\delta_k$ times the multinomial likelihood for all $z_i$. $$p(\boldsymbol\delta_k|\mathbf{U}_k,\boldsymbol\delta_{h \ne k}) \propto p(\boldsymbol\delta_k) \prod_{i = 1}^{n} \pi_{ki}^{U_{ki}}(1-\pi_{ki})^{1-U_{ki}},$$
-where $p(\boldsymbol\delta_k)$ denotes the prior distribution of $\boldsymbol\delta_k$, $\mathbf{U}_k = (U_{k1},...,U_{kn})$, $U_{ik} = {1}_{z_i = k}$ is an indicator that subject $i$ belongs to cluster $k$, and $\pi_{ki}$ is defined as in Section 3.4. We can rewrite $\pi_{ki}$ as follows
+where $p(\boldsymbol\delta_k)$ denotes the prior distribution of $\boldsymbol\delta_k$, $\mathbf{U}_k = (U_{k1},...,U_{kn})$, $U_{ik} = {1}_{(z_i = k)}$ is an indicator that subject $i$ belongs to cluster $k$, and $\pi_{ki}$ is defined as in Section 3.4. We can rewrite $\pi_{ki}$ as follows
 $$\pi_{ki} = P(U_{ki} = 1) = \frac{\text{e}^{\mathbf{w}_i^T \boldsymbol\delta_k - {c}_{ki}}}{1 + \text{e}^{\mathbf{w}_i^T \boldsymbol\delta_k - {c}_{ki}}} = \frac{\text{e}^{\eta_{ki}}}{1 + \text{e}^{\eta_{ki}}}$$
 where ${c}_{ik} = \log \sum_{h \ne k} \text{e}^{\mathbf{w}_i^T \boldsymbol\delta_{h}}$ and $\eta_{ik} = \mathbf{w}_i^T \boldsymbol\delta_k - {c}_{ki}$. We note that the sum $\sum_{h \ne k} \text{e}^{\mathbf{w}_i^T \boldsymbol\delta_{h}}$ includes the reference category, but since we fix $\boldsymbol\delta_K = \mathbf{0}$, we have $\text{e}^{\mathbf{w}_i^T \boldsymbol\delta_K} = 1$, and hence
 $$c_{ki} = \log \sum_{h \ne k} \text{e}^{\mathbf{w}_i^T \boldsymbol\delta_{h}} = \log \left ( 1 + \sum_{h \notin \{k,K \}} \text{e}^{\mathbf{w}_i^T \boldsymbol\delta_{h}} \right )^T$$. 
@@ -314,9 +315,9 @@ We can use these quantities to re-express the full conditionals for $\boldsymbol
 \begin{eqnarray}
 	p(\boldsymbol\delta_k|\mathbf{U}_k,\boldsymbol\delta_{h \ne k}) &\propto& p(\boldsymbol\delta_k) \prod_{i = 1}^{n} \left (\frac{\text{e}^{\eta_{ki}}}{1 + \text{e}^{\eta_{ki}}} \right )^{U_{ki}} \left (\frac{1}{1 + \text{e}^{\eta_{ki}}} \right )^{1-U_{ki}} \nonumber\\ &=& p(\boldsymbol\delta_k) \prod_{i = 1}^n \frac{(\text{e}^{\eta_{ki}})^{U_{ki}}}{1 + \text{e}^{\eta_{ki}}} \label{eq:pglogit}
 \end{eqnarray}
-which is essentially a logistic regression likelihood. We thus apply this P\'olya--Gamma data augmentation scheme from Polson et al. (2013) to update each $\boldsymbol\delta_k$ ($k = 1,...,K-1$) one at a time based on the binary indicators $U_{ki}$. To accomplish this, we define $\mathbf{U}^*_{k} = \left( \frac{U_{k1}-1/2}{w_{k1}},...,\frac{U_{kn}-1/2}{w_{kn}} \right )$. Polson et al. (2013) show that $\mathbf{U}^*_{k}$ follows a multivariate normal distribution with mean $\boldsymbol\eta_k = (\eta_{k1},...,\eta_{kn})$ and covariance matrix $\mathbf{O}_k = \text{Diag}(w_{k1},...,w_{kn})$. Thus, it follows that the full conditional distribution of $\boldsymbol\delta_k$ is given by 
+which is essentially a logistic regression likelihood. We can thus apply the P\'olya--Gamma sampler described in Polson et al. (2013) for logistic regression to update each $\boldsymbol\delta_k$ one at a time based on the binary indicators $U_{ki}$. To accomplish this, we first define for $k = 1,...,k$, the $n \times 1$ vector $\mathbf{U}^*_{k} = \left( \frac{U_{k1}-1/2}{w_{k1}},...,\frac{U_{kn}-1/2}{w_{kn}} \right )^T$. Polson et al. (2013) show that, conditional on $\boldsymbol{w} = (w_{k1},...,w_{kn})^T$, $\mathbf{U}^*_{k}$ follows a $\text{N}_n (\boldsymbol\eta_k,\mathbf{O}_k^{-1})$ distribution with mean $\boldsymbol\eta_k = (\eta_{k1},...,\eta_{kn})^T$ and precision matrix $\mathbf{O}_k = \text{Diag}(w_{k1},...,w_{kn})$. Thus, it follows that the full conditional distribution of $\boldsymbol\delta_k$ is given by 
 \begin{equation}
-	p(\boldsymbol\delta_k|\mathbf{z},\mathbf{W}, \mathbf{O}_k) \propto p_0(\boldsymbol\delta_k) \text{exp} \left [ - \frac{1}{2} (\mathbf{U}^*_k - \mathbf{W}\boldsymbol\delta_k)^T \mathbf{O}_k (\mathbf{U}^*_k - \mathbf{W}\boldsymbol\delta_k)\right].
+	p(\boldsymbol\delta_k|\mathbf{z},\mathbf{W}, \mathbf{O}_k) \propto p(\boldsymbol\delta_k) \text{exp} \left [ - \frac{1}{2} (\mathbf{U}^*_k - \mathbf{W}\boldsymbol\delta_k)^T \mathbf{O}_k (\mathbf{U}^*_k - \mathbf{W}\boldsymbol\delta_k)\right].
 \end{equation}
 By assuming a normal prior for $\boldsymbol\delta_k$, as detailed in Section 3.4, the full conditional distribution for $\boldsymbol\delta_k$ is normal with parameters that follow standard forms, which we provide in Section (\textbf{what section}).
 \subsection{Conditional MSN Imputation}
@@ -512,6 +513,8 @@ In our second simulation study, we compare our online conditional multivariate n
 \bibitem{ } Azzalini A. A class of distributions which includes the normal ones. \textit{Scandinavian journal of statistics}. 1985 Jan 1:171-8.
 
 \bibitem{ } Azzalini, A. and Dalla Valle, A. (1996). The multivariate skew normal distribution. Biometrika 83, 715–726.
+
+\bibitem{ } Bishop, CM. Pattern recognition and machine learning. Springer; 2006.
 
 \bibitem{ } Chen JT, Gupta AK. Matrix variate skew normal distributions. \textit{Statistics}. 2005 Jun 1;39(3):247-53.
 

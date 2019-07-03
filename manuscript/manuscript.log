@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  3 JUL 2019 08:09
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  3 JUL 2019 11:04
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -616,6 +616,9 @@ LaTeX Warning: Label ` ' multiply defined.
 
 LaTeX Warning: Label ` ' multiply defined.
 
+
+LaTeX Warning: Label ` ' multiply defined.
+
 )
 \openout1 = `manuscript.aux'.
 
@@ -777,9 +780,6 @@ Overfull \hbox (4.62497pt too wide) has occurred while \output is active
  []
 
 [7]
-Underfull \vbox (badness 2875) has occurred while \output is active []
-
-
 Overfull \hbox (4.62497pt too wide) has occurred while \output is active
 \OT1/cmr/m/n/9 8
  []
@@ -790,9 +790,6 @@ Overfull \hbox (4.62497pt too wide) has occurred while \output is active
  []
 
 [9]
-Underfull \vbox (badness 2818) has occurred while \output is active []
-
-
 Overfull \hbox (9.24994pt too wide) has occurred while \output is active
 \OT1/cmr/m/n/9 10
  []
@@ -808,7 +805,7 @@ Overfull \hbox (9.24994pt too wide) has occurred while \output is active
  []
 
 [12]
-Overfull \hbox (6.60861pt too wide) in paragraph at lines 356--357
+Overfull \hbox (6.60861pt too wide) in paragraph at lines 357--358
 \OT1/cmr/m/n/12 from a $[][](\OT1/cmr/bx/n/12 B[]\OML/cmm/m/it/12 ; \OT1/cmr/bx
 /n/12 L[]\OML/cmm/m/it/12 ; [][]\OT1/cmr/m/n/12 )$ den-sity, where $[](\U/msb/m
 /n/12 B[]\OT1/cmr/m/n/12 ) = [][] = (\OML/cmm/m/it/12 ^^L[]; :::; ^^L[];  []; :
@@ -890,12 +887,15 @@ Missing character: There is no  in font cmr12!
 Missing character: There is no â in font cmr12!
 Missing character: There is no € in font cmr12!
 Missing character: There is no “ in font cmr12!
- AED endfloat: Processing end Figures and Tables
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
 Overfull \hbox (9.24994pt too wide) has occurred while \output is active
 \OT1/cmr/m/n/9 22
  []
 
-[22]
+[22] AED endfloat: Processing end Figures and Tables
 Overfull \hbox (9.24994pt too wide) has occurred while \output is active
 \OT1/cmr/m/n/9 23
  []
@@ -921,10 +921,10 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 11557 strings out of 493014
- 199644 string characters out of 6133351
- 239113 words of memory out of 5000000
- 14943 multiletter control sequences out of 15000+600000
+ 11559 strings out of 493014
+ 199676 string characters out of 6133351
+ 239131 words of memory out of 5000000
+ 14945 multiletter control sequences out of 15000+600000
  24517 words of font info for 90 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  38i,15n,40p,10383b,332s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -960,7 +960,7 @@ exmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb></usr/local/texlive/2016/tex
 mf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/local/texlive/2016/texm
 f-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb></usr/local/texlive/2016/texmf-
 dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on manuscript.pdf (26 pages, 564002 bytes).
+Output written on manuscript.pdf (26 pages, 565098 bytes).
 PDF statistics:
  218 PDF objects out of 1000 (max. 8388607)
  155 compressed objects within 2 object streams
