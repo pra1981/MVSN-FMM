@@ -6,8 +6,8 @@ library(vapoRwave)
 
 vaporwave <- vapoRwave:::jazzCup_palette
 
-
-load_dir <- "mcmc_draws_2019-03-28"
+setwd("~/Documents/School/Summer_2019/Research/MVSN-FMM")
+load_dir <- "mcmc_draws_2019-07-02"
 load(paste(load_dir,"/BETA",sep = ""))
 load(paste(load_dir,"/beta_true",sep = ""))
 load(paste(load_dir,"/DELTA",sep = ""))
@@ -73,7 +73,7 @@ ggsave(PSI_trace,filename = paste(load_dir,"psi_trace.pdf",sep = "/"))
 DELTA_trace <- mcmc_trace(DELTA) + 
     scale_color_manual(name = "Cluster",
                        values = vaporwave) + 
-    ggtitle("Trace plots of Psi Coefficients")
+    ggtitle("Trace plots of Delta Coefficients")
 ggsave(DELTA_trace,filename = paste(load_dir,"delta_trace.pdf",sep = "/"))
 
 ## PI plots

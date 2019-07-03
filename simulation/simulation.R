@@ -152,7 +152,7 @@ for(l in 1:h)
 # Define prior structure
 print("Defining prior structure")
 a <- rep(2,h) # prior parameter vector for pi1,...,pih
-nu0 <- rep(10,h)  # scalar df hyperparam for Sigma (same across classes)
+nu0 <- rep(4,h)  # scalar df hyperparam for Sigma (same across classes)
 V0 <- sig2.true.ar1 # kxk hyperparam for Sigma (same across classes)
 # B0 <- rbind(beta.init.list[[1]],rep(0,k)) # zero matrix
 B0 <- betastar.true.list
@@ -161,8 +161,8 @@ delta0 <- rep(0,v) # prior mean for delta coefficients (multinomial regression)
 S0 <- diag(1,v) # prior covariance for delta coefficients (multinomial regression)
 
 # Sample storage
-nsim <- 1000 # number of iterations
-burn <- 100 # number of iterations to save
+nsim <- 10000 # number of iterations
+burn <- 2500 # number of iterations to save
 n.iter <- nsim - burn # number of saved iterations
 Z <- matrix(0,nrow = n.iter,ncol = n) # large matrix where each row is the value of z at a specific iteration
 PI <- matrix(0,nrow = n.iter,ncol = h) # matrix w/ each row as pi vector at each iteration
@@ -395,6 +395,8 @@ store <- paste("mcmc_draws_",run_date,sep = "")
 if(!dir.exists(store))
 {
     dir.create(store)
+} else {
+    store <- paste(store,"_2",sep = "")
 }
 meta_file <- paste(store,"/META.txt",sep = "")
 file.create(meta_file)
