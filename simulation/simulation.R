@@ -113,7 +113,7 @@ for(l in 1:h)
     
     # Cluster specific betas and psis
     beta.true.l <- matrix(rnorm(p*k,mean = seq(-h,h,length.out = h)[l],sd = 0.5),nrow = p,ncol = k) # true beta matrix
-    psi.true.l <- rep((((-1)^l)*l - 1)/h,k) # control skewness of each outcome in cluster l
+    psi.true.l <- rep((((-1)^l)*l*2 - 1)/h,k) # control skewness of each outcome in cluster l
     betastar.true.l <- rbind(beta.true.l,psi.true.l)
     betastar.true.list[[l]] <- betastar.true.l
     beta.true.list[[l]] <- beta.true.l
@@ -161,8 +161,8 @@ delta0 <- rep(0,v) # prior mean for delta coefficients (multinomial regression)
 S0 <- diag(1,v) # prior covariance for delta coefficients (multinomial regression)
 
 # Sample storage
-nsim <- 10000 # number of iterations
-burn <- 2500 # number of iterations to save
+nsim <- 500 # number of iterations
+burn <- 0 # number of iterations to save
 n.iter <- nsim - burn # number of saved iterations
 Z <- matrix(0,nrow = n.iter,ncol = n) # large matrix where each row is the value of z at a specific iteration
 PI <- matrix(0,nrow = n.iter,ncol = h) # matrix w/ each row as pi vector at each iteration
@@ -395,9 +395,7 @@ store <- paste("mcmc_draws_",run_date,sep = "")
 if(!dir.exists(store))
 {
     dir.create(store)
-} else {
-    store <- paste(store,"_2",sep = "")
-}
+} 
 meta_file <- paste(store,"/META.txt",sep = "")
 file.create(meta_file)
 write(paste("MCMC Run Date:",Sys.time()),file = meta_file, append = TRUE)

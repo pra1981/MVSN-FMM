@@ -229,14 +229,6 @@ A ubiquitous feature of repeated measures studies is loss of data due to intermi
 
 The analysis of infant development trends in the Nurture data presents a number of statistical challenges that motivate our proposed model. First, as depicted in Figure 1, the residuals from repeated measures models of Bayley composite scores exhibit skewness even after adjusting for covariates such as race, sex, and birthweight. This suggests that the assumption of conditional normality made by standard repeated measures models is violated, and a distinguishing feature of the data, skewness, is not being accounted for. 
 
-\vspace{1mm}
-\begin{figure}[h]
-	\label{fig:skew_resids}
-	\caption{The distribution of residuals in repeated measures regression model of Bayley composite scores adjusted for race and sex.}
-	\centering
-	\includegraphics[scale = 0.14]{bayley_resids_plot}
-\end{figure}
-
 The Nurture data also feature intermittent missingness in Bayley composite scores throughout the study period. Of the total cohort (N = 666), 429 (64.4 \%) observations were available at three months, 435 (65.3 \%) observations were available at six months, 418 (62.8 \%) observations were available at nine months, and 437 (65.6 \%) observations were available at twelve months. As such, we require a modeling framework capable of dealing with missing data. 
 
 
@@ -274,7 +266,7 @@ where $\boldsymbol\omega_k = \text{Diag}(\boldsymbol\Omega_k)^{1/2}$ is the $J \
 
 Of note, the MSN density can be expressed more compactly in terms of the matrix skew normal (MatSN) density (Chen and Gupta 2005). As we will see in Section 3.6, the matrix representation of the MSN distribution admits convenient conjugate prior distributions for the regression parameters and scale matrices, which in turn leads to efficient Gibbs sampling for posterior inference. Let $\mathbf{Y}_k$ be an ${n_k \times J}$ response matrix with rows $\mathbf{y}_i^T$, $(i = 1,...,n_k)$, where $n_k = \sum_{i = 1}^n {1}_{(z_i = k)}$ is the number of observations in cluster $k$. From equation (\ref{eq:msnreg}), it follows that $\mathbf{Y}_k$ is distributed as
 \begin{eqnarray}
-\mathbf{Y}_{k} &\sim& \text{MatSN}_{n_k \times J}(\mathbf{M}_k,\boldsymbol\alpha_k,\mathbf{I}_{n_k},\boldsymbol\Omega_k)\\
+\mathbf{Y}_{k} &\sim& \text{MatSN}_{n_k \times J}(\mathbf{M}_k,\boldsymbol\alpha_k,\mathbf{I}_{n_k},\boldsymbol\Omega_k)\label{eq:matsn}\\
 %\text{vec}(\mathbf{Y}_k) =  (\mathbf{y}^T_1,...,\mathbf{y}^T_{n_k})^T\\
 \text{vec}(\mathbf{M}_k) &=& (\boldsymbol\zeta_{k1}^T,...,\boldsymbol\zeta_{kn_k}^T)^T, \nonumber
 \end{eqnarray}
@@ -317,117 +309,63 @@ We can use these quantities to re-express the full conditionals for $\boldsymbol
 \end{eqnarray}
 which is essentially a logistic regression likelihood. We can thus apply the P\'olya--Gamma sampler described in Polson et al. (2013) for logistic regression to update each $\boldsymbol\delta_k$ one at a time based on the binary indicators $U_{ki}$. To accomplish this, we first define for $k = 1,...,k$, the $n \times 1$ vector $\mathbf{U}^*_{k} = \left( \frac{U_{k1}-1/2}{w_{k1}},...,\frac{U_{kn}-1/2}{w_{kn}} \right )^T$. Polson et al. (2013) show that, conditional on $\boldsymbol{w} = (w_{k1},...,w_{kn})^T$, $\mathbf{U}^*_{k}$ follows a $\text{N}_n (\boldsymbol\eta_k,\mathbf{O}_k^{-1})$ distribution with mean $\boldsymbol\eta_k = (\eta_{k1},...,\eta_{kn})^T$ and precision matrix $\mathbf{O}_k = \text{Diag}(w_{k1},...,w_{kn})$. Thus, it follows that the full conditional distribution of $\boldsymbol\delta_k$ is given by 
 \begin{equation}
-	p(\boldsymbol\delta_k|\mathbf{z},\mathbf{W}, \mathbf{O}_k) \propto p(\boldsymbol\delta_k) \text{exp} \left [ - \frac{1}{2} (\mathbf{U}^*_k - \mathbf{W}\boldsymbol\delta_k)^T \mathbf{O}_k (\mathbf{U}^*_k - \mathbf{W}\boldsymbol\delta_k)\right].
+	p(\boldsymbol\delta_k|\mathbf{z},\mathbf{W}, \mathbf{O}_k) \propto p(\boldsymbol\delta_k) \text{exp} \left [ - \frac{1}{2} (\mathbf{U}^*_k - \mathbf{W}\boldsymbol\delta_k)^T \mathbf{O}_k (\mathbf{U}^*_k - \mathbf{W}\boldsymbol\delta_k)\right],
 \end{equation}
-By assuming a normal prior for $\boldsymbol\delta_k$, as detailed in Section 3.4, the full conditional distribution for $\boldsymbol\delta_k$ is normal with parameters that follow standard forms, which we provide in Section (\textbf{what section}).
+where $p(\boldsymbol\delta_k)$ is the prior distribution for $\boldsymbol\delta_k$, which we detail in Section 3.4 As detailed in Section 3.4, if we assume $p(\boldsymbol\delta_k)$ to be multivariate normal, then $\boldsymbol\delta_k$ has a closed-form multivariate normal full conditional distribution that can be easily embedded within our proposed Gibbs sampling routine. 
 \subsection{Conditional MSN Imputation}
 To accommodate missing at random (MAR) responses, we propose a convenient imputation algorithm that can be implemented ``online'' as part of the Gibbs sampler. In Section 6, we discuss extensions to allow for non-ignorable missingness (i.e. observations missing not at random). Suppose $\mathbf{y}_i$ has $q_i\in (1,\ldots,J)$ observed values, denoted $\mathbf{y}^{obs}_i$, and $J-q_i$ intermittent missing values, denoted $\mathbf{y}^{miss}_i$. We can make use of the stochastic representation given in equation (\ref{eq:msnreg}) to impute $\mathbf{y}^{miss}_i$ from its conditional multivariate normal distribution given $(z_i,t_i,\mathbf{y}^{obs}_i)$:
 \begin{eqnarray}
-\mathbf{y}^{miss}_i|(z_i=k,t_i,\mathbf{y}^{obs}_i)&\sim& \text{N}_{J-q_i}(\boldsymbol\mu^{cond}_{ki},\boldsymbol\Sigma^{cond}_k),~\text{where}\nonumber\\
-\boldsymbol\mu^{cond}_{ki}&=& \boldsymbol\mu^{miss}_{ki} + \boldsymbol\Sigma_{k12} \boldsymbol\Sigma_{k22}^{-1}(\mathbf{y}^{obs}_i - \boldsymbol\mu^{obs}_{ki}) \label{eq:impute}\\
+\mathbf{y}^{miss}_i|(z_i=k,t_i,\mathbf{y}^{obs}_i)&\sim& \text{N}_{J-q_i}(\boldsymbol\zeta^{cond}_{ki},\boldsymbol\Sigma^{cond}_k),~\text{where}\nonumber\\
+\boldsymbol\zeta^{cond}_{ki}&=& \boldsymbol\zeta^{miss}_{ki} + \boldsymbol\Sigma_{k12} \boldsymbol\Sigma_{k22}^{-1}(\mathbf{y}^{obs}_i - \boldsymbol\zeta^{obs}_{ki}) \label{eq:impute}\\
 \boldsymbol\Sigma^{cond}_k&=& \boldsymbol\Sigma_{k11} - \boldsymbol\Sigma_{k12}\boldsymbol\Sigma_{k22}^{-1}\boldsymbol\Sigma_{k21},\nonumber \\
-\boldsymbol\mu_{ki} &=& \begin{pmatrix} \boldsymbol\mu_{ki}^{miss} \\ \boldsymbol\mu_{ki}^{obs} \end{pmatrix}, \ \text{and} \nonumber \\
+\boldsymbol\zeta_{ki} &=& \begin{pmatrix} \boldsymbol\zeta_{ki}^{miss} \\ \boldsymbol\zeta_{ki}^{obs} \end{pmatrix}, \ \text{and} \nonumber \\
 \boldsymbol\Sigma_k &=& \begin{pmatrix} 
 	\boldsymbol\Sigma_{k11} & \boldsymbol\Sigma_{k12}\\
 	\boldsymbol\Sigma_{k21} & \boldsymbol\Sigma_{k22}
 \end{pmatrix}, \ \text{where} \nonumber
 \end{eqnarray}
-$\boldsymbol\Sigma_{k11}$ is a $(J-q_i) \times (J-q_i)$ matrix containing the rows and columns of $\boldsymbol\Sigma_k$ corresponding to inicies of $\mathbf{y}_{i}$ where missingness occurs. Similarly, $\boldsymbol\Sigma_{k12}$ is a $(J-q_i) \times q_i$ matrix containing the rows of $\boldsymbol\Sigma_k$ that correspond to missing indices of $\mathbf{y}_i$, but columns of $\boldsymbol\Sigma_k$ that correspond to observed indices of $\mathbf{y}_i$. The remaining partitions $\boldsymbol\Sigma_{k21}, \ \text{and} \ \boldsymbol\Sigma_{k22}$ are defined in the same manner. Likewise, $\boldsymbol\mu_{ki} = \mathbf{X}_i \boldsymbol\beta_k$ is partitioned into $\boldsymbol\mu_{ki}^{miss}$ and $\boldsymbol\mu_{ki}^{obs}$ with respect to the missing and observed indices of $\mathbf{y}_i$, respectively. These results follow from conventional multivariate normal theory, which we detail in the Web Appendix. An attractive feature of this imputation algorithm is that it avoids multiplicative run-time scaling in $m$, the number of imputations (Gelman \textit{et al.} 2013; Zhou and Reiter, 2010). Our approach also provides more opportunities to explore the missing data parameter space than does multiple imputation, since missing values are drawn at each MCMC iteration, and often in practice $n_{sim} >> m$, where $n_{sim}$ is the number of MCMC iterations (\textbf{find a reference}). In Section 4, we conduct simulation studies to demonstrate that imputing the missing MSN responses improves inferences over available-case analysis.
+$\boldsymbol\Sigma_{k11}$ is a $(J-q_i) \times (J-q_i)$ matrix containing the rows and columns of $\boldsymbol\Sigma_k$ corresponding to inicies of $\mathbf{y}_{i}$ where missingness occurs. Similarly, $\boldsymbol\Sigma_{k12}$ is a $(J-q_i) \times q_i$ matrix containing the rows of $\boldsymbol\Sigma_k$ that correspond to missing indices of $\mathbf{y}_i$, but columns of $\boldsymbol\Sigma_k$ that correspond to observed indices of $\mathbf{y}_i$. The remaining partitions $\boldsymbol\Sigma_{k21}, \ \text{and} \ \boldsymbol\Sigma_{k22}$ are defined in the same manner. Likewise, as defined in equation \ref{eq:msndens}, $\boldsymbol\zeta_{ki} = \mathbf{X}_i \boldsymbol\beta_k + t_i \boldsymbol\psi_k$ and is partitioned into $\boldsymbol\zeta_{ki}^{miss}$ and $\boldsymbol\zeta_{ki}^{obs}$ with respect to the missing and observed indices of $\mathbf{y}_i$, respectively. These results follow from conventional multivariate normal theory, which we detail in the Web Appendix. An attractive feature of this imputation algorithm is that it avoids multiplicative run-time scaling in $m$, the number of imputations (Gelman \textit{et al.} 2013; Zhou and Reiter, 2010). Our approach also provides more opportunities to explore the missing data parameter space than does multiple imputation, since missing values are drawn at each MCMC iteration, and often in practice $n_{sim} >> m$, where $n_{sim}$ is the number of MCMC iterations (\textbf{find a reference}). In Section 4, we conduct simulation studies to demonstrate that imputing the missing MSN responses improves inferences over available-case analysis.
 
 \subsection{Bayesian Inference}
 
 \subsubsection{Prior Specification}
-We adopt a fully Bayesian inferential approach and assign prior distributions to all model parameters. Conveniently, all parameters admit conditionally conjugate priors, which greatly improves posterior computation via a data-augmented Gibbs sampler. For the MSN model component, we adopt a conditionally independent prior structure for $\boldsymbol\beta_k$ and $\boldsymbol\Sigma_k$, where $p(\boldsymbol\beta_k,\boldsymbol\Sigma_k) = p(\boldsymbol\Sigma_k)p(\boldsymbol\beta_k|\boldsymbol\Sigma_k)$. We choose the normal-inverse-Wishart distribution for $p(\boldsymbol\beta_k,\boldsymbol\Sigma_k)$ by specifying $\boldsymbol\Sigma_k \sim \text{IW}(\mathbf{V}_{0k},\nu_{0k})$ and $\boldsymbol\beta_k|\boldsymbol\Sigma_k \sim \text{N}_{Jp}(\mathbf{b}_k,\mathbf{I}_p \otimes \boldsymbol\Sigma_k)$. We assign the skewness coefficients $\boldsymbol\psi_k$ a conjugate $\text{N}_J(\mathbf{m}_k,\mathbf{P}_k)$ prior. In practice, the updates of $\boldsymbol\beta_k$ and $\boldsymbol\psi_k$ can be combined into one step by defining the $(Jp + J) \times 1$ vector $\boldsymbol\beta^*_k = (\boldsymbol\beta_k^T,\boldsymbol\psi_k^T)^T$ for which we assume a $\text{N}_{Jp+J}(\mathbf{b}^*_k,\mathbf{I}_{(p+1)} \otimes \boldsymbol\Sigma_k)$ prior, where $\mathbf{b}^*_k$ is formed by concatenating $\mathbf{b}_k$ and $\mathbf{m}_k$. 
+We adopt a fully Bayesian inferential approach and assign prior distributions to all model parameters. Conveniently, all parameters admit conditionally conjugate priors, which greatly improves posterior computation via a data-augmented Gibbs sampler. For $\boldsymbol\beta_k$ and $\boldsymbol\Sigma_k$, we adopt a conditionally independent prior structure for $\boldsymbol\beta_k$ and $\boldsymbol\Sigma_k$, where $p(\boldsymbol\beta_k,\boldsymbol\Sigma_k) = p(\boldsymbol\Sigma_k)p(\boldsymbol\beta_k|\boldsymbol\Sigma_k)$. We choose the normal-inverse-Wishart distribution for $p(\boldsymbol\beta_k,\boldsymbol\Sigma_k)$ by specifying $\boldsymbol\Sigma_k \sim \text{IW}(\mathbf{V}_{0k},\nu_{0k})$ and $\boldsymbol\beta_k|\boldsymbol\Sigma_k \sim \text{N}_{Jp}(\mathbf{b}_k,\mathbf{I}_p \otimes \boldsymbol\Sigma_k)$. We assign the skewness coefficients $\boldsymbol\psi_k$ a conjugate $\text{N}_J(\mathbf{m}_k,\mathbf{P}_k)$ prior. In practice, the updates of $\boldsymbol\beta_k$ and $\boldsymbol\psi_k$ can be combined into one step by defining the $(Jp + J) \times 1$ vector $\boldsymbol\beta^*_k = (\boldsymbol\beta_k^T,\boldsymbol\psi_k^T)^T$ for which we assume a $\text{N}_{Jp+J}(\mathbf{b}^*_k,\mathbf{I}_{(p+1)} \otimes \boldsymbol\Sigma_k)$ prior, where $\mathbf{b}^*_k$ is formed by concatenating $\mathbf{b}_k$ and $\mathbf{m}_k$. 
 
-To make use of the Matrix Normal representation introduced previously in Section (\textbf{what section}), we define the matrix of regression parameters $\mathbb{B}^*_k$, where $\text{vec}(\mathbb{B}^*_k) = \boldsymbol\beta^*_k$. We assign $\mathbb{B}^*_k|\boldsymbol\Sigma_k$ a $\text{MatNorm}(\mathbf{B}^*_{0k},\mathbf{I}_{p+1},\boldsymbol\Sigma_k)$ prior, where $\mathbf{B}^*_{0k}$ is a matrix of location parameters such that $\text{vec}(\mathbf{B}^*_{0k}) = \mathbf{b}^*_k$, $\mathbf{I}_{p+1}$ is the identity matrix of dimensions $(p+1)\times(p+1)$, and $\boldsymbol\Sigma_k$ controls the correlation of the model error. This prior structure allows for convinient Matrix Normal updates of the MSN regression parameters as described in Section (\textbf{what section}).
+To make use of the Matrix Normal representation introduced previously in Section 3, we define the matrix of regression parameters $\mathbb{B}^*_k$, where $\text{vec}(\mathbb{B}^*_k) = \boldsymbol\beta^*_k$. We assign $\mathbb{B}^*_k|\boldsymbol\Sigma_k$ a $\text{MatNorm}(\mathbf{B}^*_{0k},\mathbf{I}_{p+1},\boldsymbol\Sigma_k)$ prior, where $\mathbf{B}^*_{0k}$ is a matrix of location parameters such that $\text{vec}(\mathbf{B}^*_{0k}) = \mathbf{b}^*_k$, $\mathbf{I}_{p+1}$ is the $(p+1)$-dimension identity matrix, and $\boldsymbol\Sigma_k$ is the covariance matrix defined in equation \ref{eq:msndens}. The matrix-Normal-inverse-Wishart is the conjugate joint prior for the regression parameters in the matrix Normal model given in equation \ref{eq:matsn}. This induces convenient closed-form full conditional distributions that can be easily updated within our proposed Gibbs sampler. 
 
 For the multinomial logit model component, the regression parameters $\boldsymbol\delta_k = (\delta_{k1},...,\delta_{kr})$ are assigned a $\text{N}_r(\mathbf{d}_{0k}, \mathbf{S}_{0k})$ prior for $k = 1,...,K-1$, which is conditionally conjugate as described in Section (\textbf{what section}). We allow the normal-inverse-Wishart and multinomial hyperparameters to vary across clusters, though they may be shared across clusters in practice. An advantage of allowing for cluster-specific prior parameters is that \textit{a priori} knowledge of motor development trends can be incorporated into certain clusters while allowing the priors for other clusters to be less informative. Additionally, prior information regarding the effect of certain covariates on cluster membership can be incorporated in to the model by choosing informative values for $\mathbf{d}_{0k} \ \text{and} \ \mathbf{S}_{0k}$
 
 \subsubsection{Posterior Inference} 
 The above prior specification induces closed-form full conditionals that can be efficiently updated as part of a Gibbs sampler outlined below. A programatic sketch of our MCMC algorithm is given in Table (\ref{alg:MCMC}). Additional details, including derivations of full conditionals and MCMC diagnostics can be found in the Web Appendix. 
 
-\paragraph{\textbf{Step 1}: Conditional MSN Imputation} The sampler begins with imputing missing values $\mathbf{y}_i^{miss}$ conditional on current  values of $z_i = k$ and $t_i$ as well as the associated $\mathbf{y}_i^{obs}$ observed data vector. This is accomplished by drawing $\mathbf{y}_i^{miss}$ from $\text{N}_{J-q_i}(\boldsymbol\mu^{cond}_{ki},\boldsymbol\Sigma^{cond}_k)$ as described in equation \ref{eq:impute} for all $i = 1,...,n$. Conditional imputation concludes with construction of a complete outcome vector $\mathbf{y}_i$ by merging the now imputed $\mathbf{y}_i^{miss}$ with $\mathbf{y}_i^{obs}$ with respect for the original ordering of the elements of $\mathbf{y}_i$.
+\paragraph{\textbf{Step 1}: Conditional MSN Imputation} The sampler begins by imputing missing values $\mathbf{y}_i^{miss}$ conditional on current values of $z_i = k$ and $t_i$ as well as the associated $\mathbf{y}_i^{obs}$ observed data vector. Specifically, we draw $\mathbf{y}_i^{miss}$ from $\text{N}_{J-q_i}(\boldsymbol\mu^{cond}_{ki},\boldsymbol\Sigma^{cond}_k)$ as described in equation \ref{eq:impute} for all $i = 1,...,n$. We conclude by constructing a complete outcome vector $\mathbf{y}_i$ that merges $\mathbf{y}_i^{miss}$ with $\mathbf{y}_i^{obs}$.
 
 \paragraph{\textbf{Step 2:} Update of MSN Regression Parameters} We begin the update of MSN regression parameters by updating $t_i$, the truncated Normal random effect used in the stochastic representation of $\mathbf{y}_i$ given in equation \ref{eq:msnreg}. For cluster $k$, compute $A_k = (1 + \boldsymbol\psi_k^T \boldsymbol\Sigma^{-1}_k\boldsymbol
-\psi_k)^{-1}$ according to current values of $\boldsymbol\psi_k$ and $\boldsymbol\Sigma_k$. Now, for $i = 1,...,n_k$, where $n_k$ is the number of members of cluster $k$ according to the current cluster labeling ${z}_1,...,{z}_n$, compute $a_i = A_k \boldsymbol\psi_k^T \boldsymbol\Sigma^{-1}_k(\mathbf{y}_i - \boldsymbol\zeta_{ik})$, where $\boldsymbol\zeta_{ik} = X_i \boldsymbol\beta_k$. Finally, update $t_i$ from $\text{N}_{[0,\infty)}(a_i, \mathbf{A}_k)$ (\textbf{put derivations in supplement}).  Repeat these updates for $k = 1,...,K$
+\psi_k)^{-1}$ using current values of $\boldsymbol\psi_k$ and $\boldsymbol\Sigma_k$. Next, for $i = 1,...,n_k$, compute $a_i = A_k \boldsymbol\psi_k^T \boldsymbol\Sigma^{-1}_k(\mathbf{y}_i - \boldsymbol\zeta_{ik})$, where $\boldsymbol\zeta_{ik} = X_i \boldsymbol\beta_k$. Finally, update $t_i$ from $\text{N}_{[0,\infty)}(a_i, \mathbf{A}_k)$.  Repeat these updates for $k = 1,...,K$. 
 
-The remaining MSN regression parameters are updated from their full conditionals as follows. For each cluster $k$ ($k = 1,...,K$) we update $\boldsymbol\Sigma_k$ from $\text{IW}(\nu_k,\mathbf{V}_k)$, where $\nu_k = \nu_{0k} + n_k$ and\begin{eqnarray}
-	\mathbf{V}_k &=&  (\mathbf{Y}-\mathbf{X}^*_k \mathbf{B}^*_k)^T (\mathbf{Y}_k - \mathbf{X}^*_k \mathbf{B}^*_k)\nonumber \\
-	 &+& (\mathbf{B}_k^* - \mathbf{B}^*_{0k})^T \mathbf{I}_{p+1}(\mathbf{B}^*_k - \mathbf{B}^*_{0k}) + \mathbf{V}_{0k}. \nonumber
-\end{eqnarray}We then make use of the Matrix Normal representation introduced in Section 3.2 to draw $\mathbb{B}^*_k$ from a $\text{MatNorm}_{p+1,J}(\mathbf{B}_k^*,\mathbf{L}_k^{-1},\boldsymbol\Sigma_k)$ density, where $\text{vec}(\mathbb{B}^*_k) = \boldsymbol\beta^*_k = (\beta_{k11},...,\beta_{kJp},\psi_{k1},...,\psi_{kJ})^T$ and
+The remaining MSN regression parameters are updated from their full conditionals as follows. First, we form the $n_k \times (p + 1)$ matrix $\mathbf{X}^*_k$ by column binding $\mathbf{X}_k$ and $\mathbf{t}_k$. For each cluster $k$ ($k = 1,...,K$), we update $\boldsymbol\Sigma_k$ from an $\text{IW}(\nu_k,\mathbf{V}_k)$ density, where $\nu_k = \nu_{0k} + n_k$ and\begin{eqnarray}
+	\mathbf{V}_k &=&  (\mathbf{Y}-\mathbf{X}^*_k \mathbf{B}^*_k)^T (\mathbf{Y}_k - \mathbf{X}^*_k \mathbf{B}^*_k) (\mathbf{B}_k^* - \mathbf{B}^*_{0k})^T \mathbf{I}_{p+1}(\mathbf{B}^*_k - \mathbf{B}^*_{0k}) + \mathbf{V}_{0k}. \nonumber
+\end{eqnarray} The matrix $\mathbf{X}^*_k$ is formed by adding We then make use of the Matrix Normal representation introduced in Section 3.2 to draw $\mathbb{B}^*_k$ from a $\text{MatNorm}_{p+1,J}(\mathbf{B}_k^*,\mathbf{L}_k^{*},\boldsymbol\Sigma_k)$ density, where $\text{vec}(\mathbb{B}^*_k) = \boldsymbol\beta^*_k = (\beta_{k11},...,\beta_{kJp},\psi_{k1},...,\psi_{kJ})^T$ and
 \begin{eqnarray}
-	\mathbf{B}^*_k &=& (\mathbf{X}^{*T}_k \mathbf{X}^*_k + \mathbf{I}_{p+1})^{-1} (\mathbf{X}^{*T}_k \mathbf{Y}_k + \mathbf{I}_{p+1} \mathbf{B}_{0k}) \nonumber \\
-	\mathbf{L}^*_k &=& \mathbf{X}^{*T}_k \mathbf{X}^*_k + \mathbf{I}_{p+1}. \nonumber
+	\mathbf{B}^*_k &=& \mathbf{L}_k^{*} (\mathbf{X}^{*T}_k \mathbf{Y}_k + \mathbf{I}_{p+1} \mathbf{B}^*_{0k}) \nonumber \\
+	\mathbf{L}^*_k &=& (\mathbf{X}^{*T}_k \mathbf{X}^*_k + \mathbf{I}_{p+1})^{-1}. \nonumber
 \end{eqnarray}
 
 \paragraph{\textbf{Step 3:}P\'olya--Gamma Data Augmentation for $z_i$} The sampler concludes with updates of the multinomial regression parameters $\boldsymbol\delta_k$, for $k = 1,...,K-1$, followed by updates of each latent cluster indicator $z_i$ $(i=1,\ldots,n)$ from its multinomial logit full conditional. First, we define $U_{ki} = {1}_{z_i = k}$ for $i = 1,...,n$ and $k = 1,...,K-1$. Next, we update ${w}_{ki}$ from a $\text{PG}(1,\eta_{ki})$ density, where $\eta_{ki} = \mathbf{w}_i^T \boldsymbol\delta_k - {c}_{ki}$, and ${c}_{ki} = \log \sum_{h \ne k} \text{e}^{\mathbf{w}_i^T \boldsymbol\delta_{h}}$. Next, define $U^*_{ki} = \frac{U_{ki} - 1/2}{{w}_{ki}}$ and let $\mathbf{U}^*_k = (U^*_{k1},...,U^*_{kn})^T$. Finally, for $k = 1,...,K-1$, update $\boldsymbol\delta_k$ from a $\text{N}_r(\mathbf{d}_k,\mathbf{S}_k)$ density, where $\mathbf{S}_k = (\mathbf{S}_{k0} + \mathbf{W}^T \mathbf{O}_k \mathbf{W})^{-1}$, $\mathbf{O}_k = \text{Diag}({w}_{k1},...,{w}_{kn})$,  $\mathbf{d}_k = \mathbf{S}_k (\mathbf{S}_{k0}\mathbf{d}_{k0} + \mathbf{W}^T \mathbf{O}_k \boldsymbol\gamma_k)$, and $\mathbf{W}$ is the $n \times r$ matrix of multinomial logit regression covariates such that the $i^{th}$ row of $\mathbf{W}$ is $\mathbf{w}_i$.
 
 Lastly, we update $z_1,...,z_n$ by first computing $\boldsymbol\pi_i = (\pi_{1i},...,\pi_{Ki})$ as
-$$\pi_{ik} = \frac{\text{e}^{\mathbf{w}_i\boldsymbol\delta_k}}{1 + \sum_{h=1}^{K-1} \text{e}^{\mathbf{w}_i\boldsymbol\delta_h}},$$ 
+$$\pi_{ki} = \frac{\text{e}^{\mathbf{w}_i\boldsymbol\delta_k}}{1 + \sum_{h=1}^{K-1} \text{e}^{\mathbf{w}_i\boldsymbol\delta_h}},$$ 
 for $i = 1,...n$ and $k = 1,...,K$. We also compute according to the multivariate Normal density of $\mathbf{y}_i|t_i$ the probability $P(\mathbf{y}_i|\boldsymbol\zeta^*_{ki},\boldsymbol\Sigma_k)$, where $\boldsymbol\zeta^*_{ki} = \mathbf{x}_i^*\boldsymbol\beta^*_k$. We use these quantities to compute $\boldsymbol\upsilon_{i} = (\upsilon_{1i},...,\upsilon_{Ki})$, where  
-$$\upsilon_{ik} = P(z_i = k|\mathbf{y}_i,\boldsymbol\zeta^*_i,\boldsymbol\Sigma_k) = \frac{\pi_{ik}P(\mathbf{y}_i|\boldsymbol\zeta^*_{ki},\boldsymbol\Sigma_k)}{\sum_{h = 1}^{K} \pi_{ih}P(\mathbf{y}_i|\boldsymbol\zeta^*_{hi},\boldsymbol\Sigma_h)}$$.
-The cluster labels $z_i$ are updated from a $\text{Multinomial}(1,\boldsymbol\upsilon_i)$ density for $i = 1,...n$, thus concluding the Gibbs sampler.
+$$\upsilon_{ki} = P(z_i = k|\mathbf{y}_i,\boldsymbol\zeta^*_{ki},\boldsymbol\Sigma_k) = \frac{\pi_{ki}P(\mathbf{y}_i|\boldsymbol\zeta^*_{ki},\boldsymbol\Sigma_k)}{\sum_{h = 1}^{K} \pi_{hi}P(\mathbf{y}_i|\boldsymbol\zeta^*_{hi},\boldsymbol\Sigma_h)}.$$
+The cluster labels $z_i$ are then updated from a $\text{Multinomial}(1,\boldsymbol\upsilon_i)$ density for $i = 1,...n$. A schematic outline of the Gibbs sampler is given in the Web Appendix.
 
-
-\subsubsection{MCMC Algorithm}
-
-See Table 1.
-
-\begin{algorithm}
-\caption{Gibbs Sampler}
-\label{alg:MCMC}
-\begin{algorithmic}
-\small
-\linespread{0.5}
-    \State $\mathbf{Define} \ n_{iter};\  n_{burn}; \ K; \ \boldsymbol\theta_{init}; \ \boldsymbol\theta_0$
-    \State $n_{sim} := n_{iter} - n_{burn}$
-    \State $\boldsymbol\theta := \boldsymbol\theta_{init}$
-    \For {$\iota = 1,...,n_{sim}$}
-        \State \textsc{I. Conditional Imputation}
-          \For {$ i = 1,...,n$}
-            \State $\mathbf{Draw} \ \mathbf{y}_i^{miss} \ \text{from} \ N_q(\boldsymbol\mu_i^{miss}, \boldsymbol\Sigma_i^{miss})$
-            \State $\mathbf{y}_i := \mathbf{y}_i^{miss} \cup \mathbf{y}_i^{obs}$
-         \EndFor
-        \State \textsc{II. MSN Regression}
-          \For {$ k = 1,...,K$}
-            \State $n_k := \sum_{i = 1}^n {1}_{z_i = k}$
-            \For {$i_k = 1,...,n_k$}
-              \State $\mathbf{Draw}\  t_i \ \text{from} \ N_{[0,\infty)}(a_i,A)$
-            \EndFor
-            \State $\mathbf{X^*}_k := $ \texttt{cbind}$(\mathbf{X}_k,\mathbf{t}_k)$
-            \State $\mathbf{Draw} \ \mathbf{B^*}_k \ \text{from} \ \text{MatNorm}(\mathbf{B}_k,\mathbf{L}_k^{-1},\boldsymbol\Sigma_k)$
-            \State $\mathbf{Draw} \ \boldsymbol\Sigma_k \ \text{from} \ \text{InvWish}(\nu_k, \mathbf{V}_k)$
-          \EndFor
-        \State \textsc{III. Multinomial Logit}
-          \For {$i = 1,...,n$}
-            \For {$k = 1,...,K$}
-              \State $\pi_{ik} := P(z_i = k|\mathbf{w}_i,\boldsymbol\delta_k)$
-              \State $p_{ik} := P(\mathbf{y}_i|\boldsymbol\beta_k^{*T} \mathbf{x}^*_i,\boldsymbol\Sigma_k)$
-            \EndFor
-            \State $\mathbf{p}_{z_i} := \frac{\mathbf{p}_i \circ \boldsymbol\pi_i}{\mathbf{p}_i \cdot \boldsymbol\pi_i}$
-            \State $\mathbf{Draw} \ z_i \ \text{from} \ \text{Categorical}(\mathbf{p}_{z_i})$
-            \For {$k = 1,...,K-1$}
-              \State $\mathbf{Draw} \ \boldsymbol\delta_k \ \text{from} \ N(\mathbf{M},\mathbf{S})$
-            \EndFor
-          \EndFor
-        \State $\boldsymbol\theta := \{\mathbf{B^*}, \boldsymbol\Sigma, \mathbf{Z}, \boldsymbol\delta \}$
-        \State $\mathbf{Store} \ \boldsymbol\theta$
-	  \EndFor
-\end{algorithmic}
-\end{algorithm}
-
-
-\subsubsection{Assessment of MCMC Convergence}
+\subsubsection{Assessment of MCMC Convergence, Label Switching, and Model Selection}
 
 We monitor conver convergence of our MCMC algorithm through the use of standard approaches such Geweke's (1992) Z-diagnostic. In simulation studies under realistic parameter settings, we observed relatively fast convergence of all MCMC chains (i.e. within 1,000 iterations).
 
-\subsubsection{Label Switching}
+A common challenge for Bayesian mixture models is the so-called ``label switching" problem, in which draws of cluster-specific parameters may be assigned to the wrong cluster at some point during the MCMC simulation, rendering summaries of class-specific parameters incoherent. After conducting simulation studies under a wide variety of realistic parameter settings, as detailed in Sections 4 and 5, we found little evidence of label switching in posterior draws of $\mathbf{z}$. When label switching was observed, we implemented \textit{post hoc} relabling algorithms as described in Papastamoulis 2016 and implemented in the \texttt{label.switching} package in \texttt{R} (Papastamoulis 2016).
 
-A common challenge for Bayesian mixture models is the so-called ``label switching" problem, in which draws of cluster-specific parameters may be assigned to the wrong cluster at some point during the MCMC simulation, rendering summaries of class-specific parameters incoherent. After conducting simulation studies under a wide variety of realistic parameter settings, as detailed in Section 4, we found little evidence of label switching in posterior draws of $\mathbf{z}$. When label switching was observed, we implemented \textit{post hoc} relabling algorithms as described in Papastamoulis 2016 and implemented in the \texttt{label.switching} package in \texttt{R}.
-
-\subsubsection{Model Fit Diagnostics and Specification of K}
-
-For model fit diagnostics, we choose the WAIC statistic introduced by Watanabe (2010). To specify the number of cluster $K$, we follow Neelon and Chung (2016), who use WAIC to determine the optimal number of latent factors in a Bayesian latent factor zero-inflated Poisson model for the analysis of correlated and zero-inflated count data. In Section 6, we discuss possible extentions to other methods for choosing $K$.
+Since the primary objective of our proposed model is to provide a flexible framework to account for the inherent features of infant development data such as skewness, correlation among repeated measures, and missingness, we assume the number of clusters $K$ to be specified \textit{a priori}.
 
 \newpage
 

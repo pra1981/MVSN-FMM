@@ -7,7 +7,7 @@ library(vapoRwave)
 vaporwave <- vapoRwave:::jazzCup_palette
 
 setwd("~/Documents/School/Summer_2019/Research/MVSN-FMM")
-load_dir <- "mcmc_draws_2019-07-02"
+load_dir <- "mcmc_draws_2019-07-04"
 load(paste(load_dir,"/BETA",sep = ""))
 load(paste(load_dir,"/beta_true",sep = ""))
 load(paste(load_dir,"/DELTA",sep = ""))
@@ -25,7 +25,7 @@ k <- ncol(beta.true.list[[1]])
 p <- nrow(beta.true.list[[1]])
 v <- nrow(delta.true)
 
-burn <- 100
+burn <- 250
 
 colnames(Z) <- paste("Z",seq(1,ncol(Z)),sep = "")
 Z <- Z[-(1:burn),]
