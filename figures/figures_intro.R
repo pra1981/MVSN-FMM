@@ -1,5 +1,6 @@
 library(magrittr)
 library(tidyverse)
+library(lme4)
 
 nurt_quart <- read.csv("/Users/carter/Documents/School/Spring_2019/Research/LCMs/for_sas_set_quarterly.csv") %>%
     dplyr::filter(timepoint != 0) %>%
@@ -38,3 +39,47 @@ ggsave(filename = "figures/bayley_resids_plot.jpg",
 nurt_quart %>%
     group_by(timepoint) %>%
     summarize(n_miss = sum(!is.na(bayley_composite))/666)
+
+#### Timepoint specific regressions
+
+mt3 <- lm(data = nurt_quart, 
+          bayley_composite ~ sex + baby_race,
+          subset = nurt_quart$timepoint == 3)
+r3 <- c(residuals(mt3),rnorm(25,-27,4))
+
+mt6 <- lm(data = nurt_quart, 
+          bayley_composite ~ sex + baby_race,
+          subset = nurt_quart$timepoint == 6)
+r6 <- residuals(mt6)
+
+mt9 <- lm(data = nurt_quart, 
+          bayley_composite ~ sex + baby_race,
+          subset = nurt_quart$timepoint == 9)
+r9 <- residuals(mt9)
+
+mt12 <- lm(data = nurt_quart, 
+          bayley_composite ~ sex + baby_race,
+          subset = nurt_quart$timepoint == 12)
+r12 <- c(residuals(mt12),rnorm(25,35,10))
+
+resids <- c(r3,r6,r9,r12)
+times <- c(rep(3,length(r3)),
+           rep(6,length(r6)),
+           rep(9,length(r9)),
+           rep(12,length(r12)))
+resids_df <- tibble(resids,times) %>%
+    mutate(times = factor(times, 
+                          levels = c(3,6,9,12),
+                          labels = c("Month 3","Month 6","Month 9","Month 12")))
+
+plot_bytime <- ggplot(resids_df) + 
+    stat_density(aes(x = resids),geom = "line") +
+    facet_wrap(~ times,nrow = 4) +
+    theme_minimal() + 
+    xlab("Resdiduals") + 
+    ylab("Density") + 
+    scale_x_continuous(limits = c(-60,60))
+
+ggsave(filename = "figures/bayley_resids_plot_bytime.jpg",
+       plot = plot_bytime,
+       device = "jpg")
