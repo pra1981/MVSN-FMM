@@ -95,9 +95,9 @@ beta.true.list <- list(
            ncol = k)
     )
 psi.true.list <- list(
-    c(-2,-2,-2,-2),
-    c(1,-1,1,-1),
-    c(2,2,2,2)
+    c(0,0,0,0),
+    c(0,0,0,0),
+    c(0,0,0,0)
 )
 for(l in 1:h)
 {
@@ -348,6 +348,7 @@ write(paste("Number of burn-in simulations (burn):",burn),file = meta_file, appe
 
 save(Y,file = paste(store,"/Y",sep = ""))
 save(X,file = paste(store,"/X",sep = ""))
+save(Xstar,file = paste(store,"/Xstar",sep = ""))
 save(Z,file = paste(store,"/Z",sep = ""))
 save(PI,file = paste(store,"/PI",sep = ""))
 save(DELTA,file = paste(store,"/DELTA",sep = ""))

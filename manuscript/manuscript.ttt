@@ -1,6 +1,6 @@
 \begin{table}[t]
 
-\caption{\label{tab:unnamed-chunk-5}Model results for simulated data with n = 1,000, J = 4, p = 2, K = 3, r = 2. 1,000 iterations were run with a burn in of 100. Missingness mechanism was MAR and P(miss) = 0. Model results for the multivariate skew normal (MSN) and multivariate normal (MN) mixtures are presented.}
+\caption{\label{tab:sim1_parms}Model results for simulated data with n = 1,000, J = 4, p = 2, K = 3, r = 2. 1,000 iterations were run with a burn in of 100. Missingness mechanism was MAR and P(miss) = 0. Model results for the multivariate skew normal (MSN) and multivariate normal (MN) mixtures are presented.}
 \centering
 \fontsize{7}{9}\selectfont
 \begin{tabular}{lllll}

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  9 JUL 2019 10:18
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  9 JUL 2019 14:04
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -472,7 +472,11 @@ Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
 LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
 (Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
 )
-(./supplement.aux)
+(./supplement.aux
+
+LaTeX Warning: Label `tab:unnamed-chunk-5' multiply defined.
+
+)
 \openout1 = `supplement.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 19.
@@ -487,8 +491,7 @@ LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 19.
 LaTeX Font Info:    ... okay on input line 19.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 19.
 LaTeX Font Info:    ... okay on input line 19.
-
-(/usr/local/texlive/2016/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+ (/usr/local/texlive/2016/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count173
 \scratchdimen=\dimen184
@@ -568,98 +571,109 @@ Overfull \hbox (91.17067pt too wide) in paragraph at lines 130--175
  [][] 
  []
 
-[4] <bayley_resids_plot.jpg, id=40, 3311.37125pt x 1927.2pt>
+[4]
+Overfull \hbox (94.83728pt too wide) in paragraph at lines 183--228
+ [][] 
+ []
+
+[5] <bayley_resids_plot.jpg, id=43, 3311.37125pt x 1927.2pt>
 File: bayley_resids_plot.jpg Graphic file (type jpg)
 
 <use bayley_resids_plot.jpg>
-Package pdftex.def Info: bayley_resids_plot.jpg used on input line 185.
+Package pdftex.def Info: bayley_resids_plot.jpg used on input line 239.
 (pdftex.def)             Requested size: 345.0pt x 200.78871pt.
- <y_densities.pdf, id=41, 505.89pt x 505.89pt>
+ <y_densities.pdf, id=44, 505.89pt x 505.89pt>
 File: y_densities.pdf Graphic file (type pdf)
 
 <use y_densities.pdf>
-Package pdftex.def Info: y_densities.pdf used on input line 192.
+Package pdftex.def Info: y_densities.pdf used on input line 246.
 (pdftex.def)             Requested size: 345.0pt x 345.00414pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<y_means.pdf, id=42, 505.89pt x 505.89pt>
+<y_means.pdf, id=45, 505.89pt x 505.89pt>
 File: y_means.pdf Graphic file (type pdf)
  <use y_means.pdf>
-Package pdftex.def Info: y_means.pdf used on input line 199.
+Package pdftex.def Info: y_means.pdf used on input line 253.
 (pdftex.def)             Requested size: 345.0pt x 345.00414pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<beta_trace.pdf, id=43, 505.89pt x 505.89pt>
+<beta_trace.pdf, id=46, 505.89pt x 505.89pt>
 File: beta_trace.pdf Graphic file (type pdf)
  <use beta_trace.pdf>
-Package pdftex.def Info: beta_trace.pdf used on input line 206.
+Package pdftex.def Info: beta_trace.pdf used on input line 260.
 (pdftex.def)             Requested size: 345.0pt x 345.00414pt.
 
-<psi_trace.pdf, id=44, 505.89pt x 505.89pt>
+<psi_trace.pdf, id=47, 505.89pt x 505.89pt>
 File: psi_trace.pdf Graphic file (type pdf)
  <use psi_trace.pdf>
-Package pdftex.def Info: psi_trace.pdf used on input line 213.
+Package pdftex.def Info: psi_trace.pdf used on input line 267.
 (pdftex.def)             Requested size: 345.0pt x 345.00414pt.
 
-<sigma_trace.pdf, id=45, 505.89pt x 505.89pt>
+<sigma_trace.pdf, id=48, 505.89pt x 505.89pt>
 File: sigma_trace.pdf Graphic file (type pdf)
  <use sigma_trace.pdf>
-Package pdftex.def Info: sigma_trace.pdf used on input line 220.
+Package pdftex.def Info: sigma_trace.pdf used on input line 274.
 (pdftex.def)             Requested size: 345.0pt x 345.00414pt.
 
-<pi_trace.pdf, id=46, 505.89pt x 505.89pt>
+<pi_trace.pdf, id=49, 505.89pt x 505.89pt>
 File: pi_trace.pdf Graphic file (type pdf)
  <use pi_trace.pdf>
-Package pdftex.def Info: pi_trace.pdf used on input line 227.
+Package pdftex.def Info: pi_trace.pdf used on input line 281.
 (pdftex.def)             Requested size: 345.0pt x 345.00414pt.
- [5
+ [6
 
 
- <./bayley_resids_plot.jpg>] [6 <./y_densities.pdf>] [7 <./y_means.pdf>] [8 <./
-beta_trace.pdf>] [9 <./psi_trace.pdf>] [10 <./sigma_trace.pdf>] [11 <./pi_trace
-.pdf>]
-(./supplement.aux) ) 
+
+
+ <./bayley_resids_plot.jpg>] [7 <./y_densities.pdf>] [8 <./y_means.pdf>] [9 <./
+beta_trace.pdf>] [10 <./psi_trace.pdf>] [11 <./sigma_trace.pdf>] [12 <./pi_trac
+e.pdf>]
+(./supplement.aux)
+
+LaTeX Warning: There were multiply-defined labels.
+
+ ) 
 Here is how much of TeX's memory you used:
  10911 strings out of 493014
  192903 string characters out of 6133351
- 236976 words of memory out of 5000000
+ 237016 words of memory out of 5000000
  14320 multiletter control sequences out of 15000+600000
  14722 words of font info for 55 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  38i,18n,40p,10387b,326s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsf
-onts/cm/cmbx10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfo
-nts/cm/cmbx12.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfon
-ts/cm/cmbx6.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts
-/cm/cmbx7.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/c
-m/cmbx9.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/
-cmcsc10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/
-cmex10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cmex
-tra/cmex9.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/c
-m/cmmi10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm
-/cmmi5.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/c
-mmi6.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmm
-i7.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9
-.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10
-.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cmextra/cm
-mib9.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr
-10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.
-pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb
-></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></
-usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr
-/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/
-local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/lo
-cal/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/loca
-l/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/local/
-texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb>
-Output written on supplement.pdf (11 pages, 898835 bytes).
+</usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
+></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
+</usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx6.pfb></
+usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx7.pfb></us
+r/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></usr/
+local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/
+local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/l
+ocal/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex9.pfb></us
+r/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr
+/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/l
+ocal/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/loc
+al/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local
+/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/local/t
+exlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr/local/t
+exlive/2016/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmmib9.pfb></usr/loc
+al/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local
+/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/local/te
+xlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texli
+ve/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/
+2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/201
+6/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2016
+/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2016/t
+exmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2016/tex
+mf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/local/texlive/2016/texmf
+-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb>
+Output written on supplement.pdf (12 pages, 901979 bytes).
 PDF statistics:
- 178 PDF objects out of 1000 (max. 8388607)
- 125 compressed objects within 2 object streams
+ 181 PDF objects out of 1000 (max. 8388607)
+ 127 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  36 words of extra memory for PDF output out of 10000 (max. 10000000)
 

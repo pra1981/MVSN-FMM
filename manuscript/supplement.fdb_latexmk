@@ -1,5 +1,5 @@
 # Fdb version 3
-["pdflatex"] 1562681883 "supplement.tex" "supplement.pdf" "supplement" 1562681884
+["pdflatex"] 1562695499 "supplement.tex" "supplement.pdf" "supplement" 1562695500
   "/usr/local/texlive/2016/texmf-dist/fonts/map/fontname/texfonts.map" 1272929888 3287 e6b82fe08f5336d4d5ebc73fb1152e87 ""
   "/usr/local/texlive/2016/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmbsy5.tfm" 1246382020 1120 1e8878807317373affa7f7bba4cf2f6a ""
   "/usr/local/texlive/2016/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmbsy6.tfm" 1246382020 1124 14ccf5552bc7f77ca02a8a402bea8bfb ""
@@ -124,11 +124,11 @@
   "pi_trace.pdf" 1562675148 15671 5bc5e717778ce868270efd66e9d92614 ""
   "psi_trace.pdf" 1562675147 66999 13e6a11da16bfb59ad78a90fd33b4a3d ""
   "sigma_trace.pdf" 1562675147 239458 68d85c3f489b8a26a8326ae8eccabdf3 ""
-  "supplement.aux" 1562681884 1877 ddde54c3b1e972f27053908171e8fc96 ""
-  "supplement.tex" 1562681882 16839 ef748d395b7ef344469a648212ea42cb ""
+  "supplement.aux" 1562695500 2336 46fc8a00dfaa2affff28c46b8a992fe8 ""
+  "supplement.tex" 1562695487 22580 0f70764ff6d95eb59dd8ae93444b2f34 ""
   "y_densities.pdf" 1562675151 32238 0a4de92c8c7cfa9f43ae4011ebf9bfe6 ""
   "y_means.pdf" 1562675151 4624 31847dd7cc080c0acc8067cc85e9e778 ""
   (generated)
+  "supplement.log"
   "supplement.aux"
   "supplement.pdf"
-  "supplement.log"

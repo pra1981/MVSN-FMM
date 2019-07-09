@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  9 JUL 2019 10:47
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  9 JUL 2019 14:49
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -875,6 +875,9 @@ Overfull \hbox (9.24994pt too wide) has occurred while \output is active
 \openout4 = `manuscript.ttt'.
 
  (manuscript.ttt)
+Underfull \vbox (badness 3118) has occurred while \output is active []
+
+
 Overfull \hbox (9.24994pt too wide) has occurred while \output is active
 \OT1/cmr/m/n/9 16
  []
@@ -890,16 +893,6 @@ Overfull \hbox (9.24994pt too wide) has occurred while \output is active
  []
 
 [18]
-Missing character: There is no ‚ in font cmr12!
-Missing character: There is no Ä in font cmr12!
-Missing character: There is no ê in font cmr12!
-Missing character: There is no ‚ in font cmr12!
-Missing character: There is no Ä in font cmr12!
-Missing character: There is no ê in font cmr12!
-Missing character: There is no ‚ in font cmr12!
-Missing character: There is no Ä in font cmr12!
-Missing character: There is no ì in font cmr12!
-
 Overfull \hbox (9.24994pt too wide) has occurred while \output is active
 \OT1/cmr/m/n/9 19
  []
@@ -907,19 +900,19 @@ Overfull \hbox (9.24994pt too wide) has occurred while \output is active
 [19]
 Missing character: There is no ‚ in font cmr12!
 Missing character: There is no Ä in font cmr12!
+Missing character: There is no ê in font cmr12!
+Missing character: There is no ‚ in font cmr12!
+Missing character: There is no Ä in font cmr12!
+Missing character: There is no ê in font cmr12!
+Missing character: There is no ‚ in font cmr12!
+Missing character: There is no Ä in font cmr12!
 Missing character: There is no ì in font cmr12!
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
 
 Overfull \hbox (9.24994pt too wide) has occurred while \output is active
 \OT1/cmr/m/n/9 20
  []
 
 [20]
-Missing character: There is no ‚ in font cmr12!
-Missing character: There is no Ä in font cmr12!
-Missing character: There is no ê in font cmr12!
 Missing character: There is no ‚ in font cmr12!
 Missing character: There is no Ä in font cmr12!
 Missing character: There is no ì in font cmr12!
@@ -931,13 +924,28 @@ Overfull \hbox (9.24994pt too wide) has occurred while \output is active
 \OT1/cmr/m/n/9 21
  []
 
-[21] AED endfloat: Processing end Figures and Tables
+[21]
+Missing character: There is no ‚ in font cmr12!
+Missing character: There is no Ä in font cmr12!
+Missing character: There is no ê in font cmr12!
+Missing character: There is no ‚ in font cmr12!
+Missing character: There is no Ä in font cmr12!
+Missing character: There is no ì in font cmr12!
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
 Overfull \hbox (9.24994pt too wide) has occurred while \output is active
 \OT1/cmr/m/n/9 22
  []
 
-[22] (./manuscript.fff
-<bayley_resids_plot_bytime.jpg, id=103, 3169.8425pt x 2542.49875pt>
+[22] AED endfloat: Processing end Figures and Tables
+Overfull \hbox (9.24994pt too wide) has occurred while \output is active
+\OT1/cmr/m/n/9 23
+ []
+
+[23] (./manuscript.fff
+<bayley_resids_plot_bytime.jpg, id=107, 3169.8425pt x 2542.49875pt>
 File: bayley_resids_plot_bytime.jpg Graphic file (type jpg)
 
 <use bayley_resids_plot_bytime.jpg>
@@ -945,25 +953,25 @@ Package pdftex.def Info: bayley_resids_plot_bytime.jpg used on input line 2.
 (pdftex.def)             Requested size: 469.75499pt x 376.7805pt.
 
 Overfull \hbox (9.24994pt too wide) has occurred while \output is active
-\OT1/cmr/m/n/9 23
+\OT1/cmr/m/n/9 24
  []
 
-[23
+[24
 
 
  <./bayley_resids_plot_bytime.jpg>]) (./manuscript.ttt
 Overfull \hbox (9.24994pt too wide) has occurred while \output is active
-\OT1/cmr/m/n/9 24
+\OT1/cmr/m/n/9 25
  []
 
-[24]) (./manuscript.aux)
+[25]) (./manuscript.aux)
 
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
  11577 strings out of 493014
- 200234 string characters out of 6133351
+ 200229 string characters out of 6133351
  236454 words of memory out of 5000000
  14952 multiletter control sequences out of 15000+600000
  22860 words of font info for 87 fonts, out of 8000000 for 9000
@@ -999,10 +1007,10 @@ st/fonts/type1/public/amsfonts/cm/cmti9.pfb></usr/local/texlive/2016/texmf-dist
 fonts/type1/public/amsfonts/cm/cmtt9.pfb></usr/local/texlive/2016/texmf-dist/fo
 nts/type1/public/doublestroke/dsrom12.pfb></usr/local/texlive/2016/texmf-dist/f
 onts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on manuscript.pdf (26 pages, 849985 bytes).
+Output written on manuscript.pdf (27 pages, 851409 bytes).
 PDF statistics:
- 210 PDF objects out of 1000 (max. 8388607)
- 149 compressed objects within 2 object streams
+ 213 PDF objects out of 1000 (max. 8388607)
+ 151 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  6 words of extra memory for PDF output out of 10000 (max. 10000000)
 

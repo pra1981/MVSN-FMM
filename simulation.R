@@ -412,6 +412,7 @@ write(paste("Number of burn-in simulations (burn):",burn),file = meta_file, appe
 save(Y,file = paste(store,"/Y",sep = ""))
 save(Y.true,file = paste(store,"/Y_true",sep = ""))
 save(X,file = paste(store,"/X",sep = ""))
+save(Xstar,file = paste(store,"/X_star",sep = ""))
 save(Z,file = paste(store,"/Z",sep = ""))
 save(PI,file = paste(store,"/PI",sep = ""))
 save(DELTA,file = paste(store,"/DELTA",sep = ""))
