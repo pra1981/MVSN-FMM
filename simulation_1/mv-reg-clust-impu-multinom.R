@@ -23,14 +23,14 @@ library(BayesLogit) # For rpg function
 
 # No scientific notation
 options(scipen=999)
-setwd("/Users/carter/Documents/School/Summer_2019/Research/MVSN-FMM/mcmc_draws_2019-07-02/")
+setwd("/Users/carter/Documents/School/Summer_2019/Research/MVSN-FMM/mcmc_draws_2019-07-09/")
 
 # Generate data
 k <- 4 # number of outcomes
 p <- 2 # number of predictors (coincluding intercept)
 h <- 3 # number of clusters
 n <- 1000 # number of observations (takes alot of data to estimate this many parameters)
-print(paste("Generating data with",n,"observations of dimension",k,
+    print(paste("Reading data with",n,"observations of dimension",k,
             "with",p,"covariates and",h,"clusters"))
 
 N <- n*k # number of measurments 
@@ -42,12 +42,6 @@ load("X")
 t <- rtruncnorm(n,0,Inf,0,1) # trunc norm random effects
 Xstar <- cbind(X,t) # Combine X and t
 
-# Covariates corresponding to multinomial regression
-#w1 <- rnorm(n) # continuous predictor
-#w2 <- rnorm(n) # continuous predictor
-w3 <- rbinom(n,1,0.5) # binary predictor
-w4 <- rbinom(n,1,0.5) # binary predictor
-# W <- cbind(1,w3,w4) # design matrix
 load("W")
 v <- ncol(W) # number of multinomial predictors
 delta.true <- matrix(rtruncnorm(n = v*(h-1),
@@ -141,7 +135,7 @@ S0 <- diag(0.5,v) # prior covariance for delta coefficients (multinomial regress
 
 # Sample storage
 nsim <- 1000 # number of iterations
-burn <- 100 # number of iterations to save
+burn <- 0 # number of iterations to save
 n.iter <- nsim - burn # number of saved iterations
 Z <- matrix(0,nrow = n.iter,ncol = n) # large matrix where each row is the value of z at a specific iteration
 PI <- matrix(0,nrow = n.iter,ncol = h) # matrix w/ each row as pi vector at each iteration

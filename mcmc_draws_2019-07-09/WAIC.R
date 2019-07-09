@@ -1,0 +1,15 @@
+load("Y")
+load("X")
+load("W")
+load("Z")
+load("SIGMA")
+load("PSI")
+load("BETA")
+load("DELTA")
+
+n <- nrow(Y)
+K <- length(BETA.list)
+J <- ncol(Y)
+p <- ncol(X)
+r <- ncol(W)
+

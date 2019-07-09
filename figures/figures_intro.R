@@ -83,3 +83,5 @@ plot_bytime <- ggplot(resids_df) +
 ggsave(filename = "figures/bayley_resids_plot_bytime.jpg",
        plot = plot_bytime,
        device = "jpg")
+
+

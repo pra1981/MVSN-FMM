@@ -7,7 +7,7 @@ library(vapoRwave)
 vaporwave <- vapoRwave:::jazzCup_palette
 
 setwd("~/Documents/School/Summer_2019/Research/MVSN-FMM")
-load_dir <- "mcmc_draws_2019-07-04"
+load_dir <- "mcmc_draws_2019-07-09"
 load(paste(load_dir,"/BETA",sep = ""))
 load(paste(load_dir,"/beta_true",sep = ""))
 load(paste(load_dir,"/DELTA",sep = ""))
@@ -19,14 +19,16 @@ load(paste(load_dir,"/SIGMA",sep = ""))
 load(paste(load_dir,"/sig2_true",sep = ""))
 load(paste(load_dir,"/Z",sep = ""))
 load(paste(load_dir,"/c_true",sep = ""))
+load(paste(load_dir,"/Y",sep = ""))
 
 h <- length(BETA.list)
 k <- ncol(beta.true.list[[1]])
 p <- nrow(beta.true.list[[1]])
 v <- nrow(delta.true)
 
-burn <- 250
+burn <- 0
 
+colnames(Y) <- paste("Y",seq(1,ncol(Y)),sep = "")
 colnames(Z) <- paste("Z",seq(1,ncol(Z)),sep = "")
 Z <- Z[-(1:burn),]
 colnames(DELTA) <- paste("D",seq(1,v*(h-1)),sep = "")
@@ -91,3 +93,36 @@ z_means <- colMeans(Z[-(1:burn),])
 ggplot() + 
     geom_line(aes(x = seq_along(z_means),y = c),color = vaporwave[1]) + 
     geom_line(aes(x = seq_along(z_means),y = z_means),color = vaporwave[2])
+
+## Y densities
+y_density_plot <- data.frame(Y,c) %>%
+    rename(clust = c) %>%
+    gather(variable,value,-clust) %>%
+    ggplot(.) +
+    stat_density(aes(x = value),geom = "line") +
+    facet_grid(cols = vars(variable), rows = vars(clust)) +
+    theme_minimal() + 
+    xlab("Y") + 
+    ylab("Density") 
+ggsave(y_density_plot,
+       filename = paste(load_dir,"y_densities.pdf",
+                        sep = "/"))
+
+## Y means
+y_mean_plot <- data.frame(Y,c) %>%
+    rename(clust = c) %>%
+    gather(variable,value,-clust) %>%
+    group_by(variable,clust) %>%
+    summarize(mean_y = mean(value)) %>%
+    ungroup() %>% 
+    mutate(clust = as.factor(clust)) %>%
+    ggplot(.,aes(x = variable, 
+                 y = mean_y, 
+                 color = clust,
+                 group = clust)) + 
+    geom_line() +
+    theme_minimal()
+ggsave(y_mean_plot,
+       filename = paste(load_dir,"y_means.pdf",
+                        sep = "/"))
+

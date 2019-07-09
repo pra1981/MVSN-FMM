@@ -20,38 +20,9 @@
 
 \section*{Supplementary Materials}
 
-\subsection{Glossary of Notation}
+\subsection*{Derivations of Full Conditional Distributions}
 
-\begin{itemize}
-
-    \item $\mathbf{Y}$: A $n \times J$ matrix containing all multivariate skew-normal  outcomes such that $y_{ij}$ is the $j^{th}$ outcome observed for subject $i$, where $i = 1,...,n$ and $j = 1,...J$.
-    
-    \item $\mathbf{X}$: A $n \times P$ matrix containing all multivariate skew-normal regression covariates such that $x_{ip}$ is the $p^{th}$ covariate value for subject $i$, where $i = 1,...,n$ and $p = 1,...P$.
-    
-    \item $\mathbf{B}$: A $P \times J$ matrix containing all multivariate skew-normal regression coefficients such that $\mathbf{B} = \left [ \boldsymbol\beta_1,...,\boldsymbol\beta_J \right ]$, where $\beta_{pj}$ is interpreted as the effect of covariate $p$ on outcome $j$ for $p = 1,...,P$ and $j = 1,...,J$.
-    
-    \item $\mathbf{E}$: A $n \times J$ matrix of error terms in the multivariate skew-normal regression model component. $\mathbf{E}$ is made up of row vectors $\boldsymbol\epsilon_i = (\epsilon_{i1},...,\epsilon_{iJ})$, where $ \boldsymbol\epsilon_i \stackrel{iid}{\sim} N_J(0, \boldsymbol\Sigma)$ for $i = 1,...,n$.
-    
-    \item $\boldsymbol\Sigma$: A $J \times J$ covariance matrix that defines the correlation between the $p$ multivariate normal outcomes. 
-    
-    \item $\boldsymbol\Omega$: A $J \times J$ covariance scale matrix that defines the correlation between the $p$ multivariate skew-normal outcomes. 
-    
-    \item $\boldsymbol\psi$: A $J \times 1$ vector containing the skewness parameter for each outcome.
-    
-    \item $\boldsymbol\alpha$: A $J \times 1$ vector containing the skewness parameter for each outcome.
-    
-    \item $\mathbf{t}$: An $n \times 1$ vector of truncated normal random effects used in the stochastic representation of the multivariate skew-normal distribution. For $i = 1,...,n$, $t_i \stackrel{iid}{\sim}T_{[0,\infty)}(0,1)$
-    
-    \item $\mathbf{X}^*$: A $n \times (P + 1)$ matrix constructed by column binding $\mathbf{t}$ to $\mathbf{X}$
-    
-    \item $\mathbf{B}^*$: A $(P+1) \times J$ matrix constructed by row binding $\boldsymbol\psi^T$ to $\mathbf{B}$.
-
-\end{itemize}
-
-\newpage
-\subsection{Derivations of Full Conditional Distributions}
-
-\subsubsection{Multivariate Skew-Normal Regression}
+\subsubsection*{Multivariate Skew-Normal Regression}
 
 Without loss of generality, we derive the full conditional distributions for the multivariate skew-normal regression model component under the assumption that all observations belong to a single cluster. To make the extension to the case where more than one cluster is specified, simply apply these distributional forms to cluster specific parameters and data. Finally, we assume for the moment that we have complete data for all outcomes for each subject. We extend consider the case of missing data in section (INSERT SECTION).
 
@@ -74,11 +45,9 @@ p(\mathbf{B}^*,\boldsymbol\Sigma|\mathbf{X}^*,\mathbf{Y}) & \propto  p(\mathbf{Y
 & \times |\boldsymbol\Sigma|^{(\nu_0 + J + 1)/2} \exp \left \{ -\frac{1}{2} \tr (\mathbf{V}_0 \boldsymbol\Sigma^{-1}) \right \}
 \end{align*}
 
+\subsubsection*{Multinomial Logit Regression}
 
-
-\subsubsection{Multinomial Logit Regression}
-
-\subsubsection{Multivariate Normal Conditional Imputation}
+\subsubsection*{Multivariate Normal Conditional Imputation}
 
 The multivariate normal conditional imputation derivations are given for a single cluster without loss of generality. In practice, the data and parameters in this section would be replaced by cluster specific estimates in the case of clustering. 
 
@@ -105,7 +74,9 @@ The block-wise inversion formula was used to invert $\boldsymbol\Sigma$ accordin
 \boldsymbol\Sigma_{22}^* & = (\boldsymbol\Sigma_{22} - \boldsymbol\Sigma_{21}\boldsymbol\Sigma_{11}^{-1}\boldsymbol\Sigma_{12})^{-1}     
 \end{align*}
 
-\subsection{Tables}
+\newpage
+
+\subsection*{Tables}
 
 \begin{algorithm}
 \caption{Gibbs Sampler}
@@ -153,7 +124,7 @@ The block-wise inversion formula was used to invert $\boldsymbol\Sigma$ accordin
 
 \begin{landscape}\begin{table}[t]
 
-\caption{\label{tab:unnamed-chunk-5}Model results for simulated data with n = 1000, J = 4, p = 2, K = 3, r = 2. 1,000 iterations were run with a burn in of 100. The missingness mechanism was MAR and P(miss) = 0. Model results for the multivariate skew normal (MSN) and multivariate normal (MN) mixtures are presented. Intervals that do not contain the true parameter are denoted with (*).}
+\caption{\label{tab:unnamed-chunk-5}Model results for simulated data with n = 1,000, J = 4, p = 2, K = 3, r = 2. 1,000 iterations were run with a burn in of 100. Missingness mechanism was MAR and P(miss) = 0. Model results for the multivariate skew normal (MSN) and multivariate normal (MN) mixtures are presented.}
 \centering
 \fontsize{6}{8}\selectfont
 \begin{tabular}{lllllllllll}
@@ -164,54 +135,96 @@ Component & Param. & True & MSN Est. (95\% CrI) & MN Est. (95\% CrI)  & True & M
 \midrule
 \addlinespace[0.3em]
 \multicolumn{11}{l}{\textbf{ }}\\
-\hspace{1em}MSN & $\beta_{11}$ & -3.07 & -2.7 (-3.27, -2.34) & -3.44 (-3.76, -3.11)* & 0.42 & 0.9 (-0.06, 1.7) & 0.82 (0.45, 1.19)* & 2.46 & 2.23 (1.75, 2.56) & 1.3 (1.06, 1.54)*\\
-\hspace{1em}Regression & $\beta_{21}$ & -2.04 & -1.99 (-2.17, -1.82) & -1.96 (-2.13, -1.8) & -0.31 & -0.26 (-0.44, -0.02) & -0.27 (-0.43, -0.08) & 3.26 & 3.27 (3.16, 3.38) & 3.28 (3.16, 3.4)\\
-\hspace{1em} & $\beta_{31}$ & -3.03 & -3.14 (-3.55, -2.77) & -3.41 (-3.74, -3.08)* & 0.34 & 0.49 (-0.41, 1.35) & 0.62 (0.23, 0.94) & 2.93 & 2.77 (2.05, 3.09) & 1.82 (1.61, 2.07)*\\
-\hspace{1em} & $\beta_{41}$ & -3.26 & -3.24 (-3.4, -3.07) & -3.25 (-3.42, -3.09) & -0.63 & -0.59 (-0.77, -0.38) & -0.6 (-0.76, -0.42) & 2.53 & 2.54 (2.43, 2.65) & 2.55 (2.45, 2.67)\\
-\hspace{1em} & $\beta_{12}$ & -3.12 & -3.48 (-3.88, -2.82) & -3.44 (-3.71, -3.18)* & 0.09 & 0.51 (-0.32, 1.27) & 0.4 (0.04, 0.72) & 2.67 & 2.22 (1.29, 2.58) & 1.54 (1.31, 1.77)*\\
-\hspace{1em} & $\beta_{22}$ & -2.61 & -2.62 (-2.77, -2.48) & -2.62 (-2.76, -2.5) & -0.37 & -0.35 (-0.52, -0.15) & -0.34 (-0.51, -0.18) & 2.1 & 2.07 (1.96, 2.18) & 2.08 (1.96, 2.18)\\
-\hspace{1em} & $\beta_{32}$ & -2.84 & -2.8 (-3.4, -2.36) & -3.29 (-3.59, -2.97)* & -0.06 & 0.24 (-0.71, 1.12) & 0.26 (-0.1, 0.62)* & 1.89 & 1.57 (1.07, 1.87)* & 0.72 (0.51, 0.94)*\\
-\hspace{1em} & $\beta_{42}$ & -2.8 & -2.62 (-2.79, -2.48)* & -2.65 (-2.8, -2.49) & 0.09 & 0.14 (-0.06, 0.34) & 0.16 (-0.01, 0.32) & 3.38 & 3.35 (3.24, 3.45) & 3.35 (3.24, 3.46)\\
+\hspace{1em}MVSN & $\beta_{11}$ & 11 & 11.07 (10.74, 11.39) & 9.42 (8.91, 9.77) & -5 & -4.95 (-5.2, -4.68) & -4.11 (-4.33, -3.86) & -10 & -10.3 (-10.56, -10.01) & -8.37 (-8.86, -0.65)\\
+\hspace{1em}Regression & $\beta_{21}$ & 12 & 12.02 (11.87, 12.17) & 11.98 (11.77, 12.18) & -4 & -4 (-4.1, -3.89) & -3.98 (-4.09, -3.87) & -11 & -11 (-11.19, -10.82) & -10.85 (-11.1, 0.61)\\
+\hspace{1em} & $\beta_{31}$ & 13 & 13.06 (12.75, 13.36) & 11.39 (10.7, 11.78) & -3 & -2.97 (-3.25, -2.68) & -3.74 (-3.99, -3.5) & -12 & -11.9 (-12.22, -11.56) & -10.29 (-10.78, -0.14)\\
+\hspace{1em} & $\beta_{41}$ & 14 & 14.06 (13.91, 14.22) & 14.02 (13.78, 14.22) & -2 & -1.96 (-2.07, -1.86) & -1.97 (-2.08, -1.84) & -13 & -13.04 (-13.25, -12.87) & -12.89 (-13.13, 0.59)\\
+\hspace{1em} & $\beta_{12}$ & 2 & 2.11 (1.82, 2.35) & 0.42 (0.03, 0.83) & 5 & 5.16 (4.88, 5.47) & 5.83 (5.59, 6.07) & -2 & -1.86 (-2.21, -1.52) & -0.35 (-0.77, 0.16)\\
+\hspace{1em} & $\beta_{22}$ & 2 & 2.03 (1.88, 2.17) & 2.02 (1.86, 2.22) & 5 & 4.96 (4.86, 5.06) & 4.96 (4.84, 5.07) & -2 & -1.97 (-2.18, -1.79) & -1.89 (-2.11, 0.02)\\
+\hspace{1em} & $\beta_{32}$ & 2 & 2.13 (1.8, 2.43) & 0.49 (0.14, 0.86) & 5 & 5.22 (4.96, 5.49) & 4.23 (3.96, 4.5) & -2 & -1.82 (-2.14, -1.5) & -0.37 (-0.77, 0.16)\\
+\hspace{1em} & $\beta_{42}$ & 2 & 2.08 (1.93, 2.23) & 2.08 (1.92, 2.28) & 5 & 4.97 (4.86, 5.08) & 4.96 (4.83, 5.08) & -2 & -1.93 (-2.13, -1.77) & -1.84 (-2.04, 0.04)\\
 \addlinespace[0.3em]
 \multicolumn{11}{l}{\textbf{ }}\\
-\hspace{1em} & $\Omega_{11}$ & 1.44 & 2 (1.41, 2.77) & 1.48 (1.21, 1.83) & 1.11 & 1.46 (1.03, 4.89) & 1.25 (0.95, 1.68) & 2.78 & 2.68 (2.03, 3.55) & 1.74 (1.53, 1.99)*\\
-\hspace{1em} & $\Omega_{12}$ & 0.94 & 1.1 (0.72, 1.65) & 0.9 (0.69, 1.22) & 0.61 & 0.8 (0.42, 3.8) & 0.61 (0.4, 0.95) & 2.28 & 2.23 (1.57, 3.01) & 1.28 (1.08, 1.5)*\\
-\hspace{1em} & $\Omega_{13}$ & 0.69 & 0.49 (0.12, 0.96) & 0.48 (0.3, 0.71) & 0.36 & 0.49 (0.11, 2.99) & 0.3 (0.1, 0.56) & 2.03 & 1.62 (1.02, 2.36) & 0.93 (0.75, 1.15)*\\
-\hspace{1em} & $\Omega_{14}$ & 0.57 & 0.81 (0.36, 1.41) & 0.46 (0.28, 0.69) & 0.24 & 0.28 (-0.13, 3.07) & 0.1 (-0.1, 0.34) & 1.9 & 1.58 (1.03, 2.28) & 0.78 (0.61, 0.97)*\\
-\hspace{1em} & $\Omega_{22}$ & 1.44 & 1.5 (1.15, 1.98) & 1.42 (1.16, 1.74) & 1.11 & 1.28 (0.91, 4.02) & 1.08 (0.81, 1.42) & 2.78 & 2.66 (1.96, 3.5) & 1.71 (1.47, 1.95)*\\
-\hspace{1em} & $\Omega_{23}$ & 0.94 & 0.75 (0.51, 1.12) & 0.77 (0.57, 1.01) & 0.61 & 0.77 (0.45, 3.15) & 0.66 (0.44, 0.94) & 2.28 & 1.89 (1.28, 2.58) & 1.18 (0.98, 1.38)*\\
-\hspace{1em} & $\Omega_{24}$ & 0.69 & 0.78 (0.49, 1.23) & 0.63 (0.44, 0.88) & 0.36 & 0.41 (0.07, 2.85) & 0.27 (0.06, 0.5) & 2.03 & 1.77 (1.19, 2.41) & 0.94 (0.76, 1.16)*\\
-\hspace{1em} & $\Omega_{33}$ & 1.44 & 1.12 (0.86, 1.6) & 1.12 (0.91, 1.37)* & 1.11 & 1.16 (0.8, 3.28) & 0.97 (0.75, 1.3) & 2.78 & 2.19 (1.66, 3.03) & 1.67 (1.47, 1.9)*\\
-\hspace{1em} & $\Omega_{34}$ & 0.94 & 0.7 (0.43, 1.16) & 0.71 (0.54, 0.95) & 0.61 & 0.62 (0.28, 2.67) & 0.51 (0.33, 0.77) & 2.28 & 1.78 (1.22, 2.4) & 1.17 (1, 1.38)*\\
-\hspace{1em} & $\Omega_{44}$ & 1.44 & 1.56 (1.15, 2.27) & 1.28 (1.07, 1.56) & 1.11 & 1.21 (0.8, 3.49) & 1.05 (0.81, 1.4) & 2.78 & 2.36 (1.77, 3.05) & 1.65 (1.44, 1.89)*\\
+\hspace{1em} & $\Omega_{11}$ & 5 & 4.99 (3.84, 6.52) & 3.08 (2.69, 4.16) & 2 & 1.95 (1.52, 2.52) & 1.38 (1.2, 1.59) & 5 & 6.27 (4.84, 7.88) & 3.49 (2.89, 186.69)\\
+\hspace{1em} & $\Omega_{12}$ & 4.5 & 4.55 (3.49, 5.88) & 2.76 (2.39, 3.55) & -0.5 & -0.51 (-0.83, -0.22) & 0.2 (0.05, 0.36) & 4.5 & 4.95 (3.78, 6.43) & 3.02 (2.48, 215.36)\\
+\hspace{1em} & $\Omega_{13}$ & 4.25 & 4.53 (3.48, 5.85) & 1.9 (1.58, 2.46) & 1.25 & 1.08 (0.74, 1.53) & 0.38 (0.24, 0.54) & 4.25 & 4.7 (3.56, 6.04) & 1.86 (1.42, 8.74)\\
+\hspace{1em} & $\Omega_{14}$ & 4.12 & 4.33 (3.31, 5.57) & 1.78 (1.46, 2.24) & -0.88 & -1.08 (-1.5, -0.75) & -0.41 (-0.58, -0.26) & 4.12 & 4.51 (3.43, 5.69) & 1.72 (1.29, 12.25)\\
+\hspace{1em} & $\Omega_{22}$ & 5 & 5.09 (3.98, 6.55) & 3.43 (3.01, 4.23) & 2 & 1.99 (1.53, 2.51) & 1.43 (1.22, 1.67) & 5 & 4.87 (3.75, 6.33) & 3.71 (3.09, 253.61)\\
+\hspace{1em} & $\Omega_{23}$ & 4.5 & 4.77 (3.69, 6) & 2.13 (1.78, 2.7) & -0.5 & -0.46 (-0.75, -0.18) & 0.05 (-0.1, 0.2) & 4.5 & 4.29 (3.23, 5.61) & 2.02 (1.55, 13.33)\\
+\hspace{1em} & $\Omega_{24}$ & 4.25 & 4.38 (3.39, 5.68) & 1.86 (1.53, 2.39) & 1.25 & 1.45 (1.04, 1.89) & 0.64 (0.48, 0.83) & 4.25 & 4.01 (3.04, 5.19) & 1.78 (1.35, 16.8)\\
+\hspace{1em} & $\Omega_{33}$ & 5 & 5.47 (4.3, 6.67) & 2.55 (2.23, 3.2) & 2 & 1.73 (1.36, 2.3) & 1.41 (1.22, 1.64) & 5 & 4.79 (3.6, 6.24) & 2.44 (1.99, 5.81)\\
+\hspace{1em} & $\Omega_{34}$ & 4.5 & 4.8 (3.7, 6.06) & 1.99 (1.69, 2.68) & -0.5 & -0.68 (-1.07, -0.37) & 0.14 (-0.01, 0.3) & 4.5 & 4.25 (3.2, 5.45) & 1.94 (1.55, 5.3)\\
+\hspace{1em} & $\Omega_{44}$ & 5 & 5.17 (3.96, 6.69) & 2.45 (2.14, 3.79) & 2 & 2.34 (1.8, 2.97) & 1.57 (1.37, 1.83) & 5 & 4.64 (3.54, 5.92) & 2.37 (1.93, 5.68)\\
 \addlinespace[0.3em]
 \multicolumn{11}{l}{\textbf{ }}\\
-\hspace{1em} & $\alpha_{1}$ & -0.39 & -1.12 (-1.99, -0.01) & 0 (0, 0) & 0.21 & -0.37 (-1.63, 1.28) & 0 (0, 0) & -0.69 & -0.58 (-1.32, 0.03) & 0 (0, 0)\\
-\hspace{1em} & $\alpha_{2}$ & -0.19 & 0.16 (-0.85, 0.98) & 0 (0, 0) & 0.11 & 0.52 (-0.99, 2.7) & 0 (0, 0) & -0.35 & -0.65 (-1.58, 0.55) & 0 (0, 0)\\
-\hspace{1em} & $\alpha_{3}$ & -0.19 & 0.88 (-1.11, 1.66) & 0 (0, 0) & 0.11 & -0.62 (-1.77, 1.04) & 0 (0, 0) & -0.35 & 0.53 (-0.9, 1.29) & 0 (0, 0)\\
-\hspace{1em} & $\alpha_{4}$ & -0.39 & -0.99 (-2.24, 0.42) & 0 (0, 0) & 0.21 & 0.06 (-1.46, 1.77) & 0 (0, 0) & -0.69 & -0.79 (-1.59, 0.03) & 0 (0, 0)\\
+\hspace{1em} & $\alpha_{1}$ & -0.99 & -0.81 (-2.12, 0.05) & / & 0.85 & 1.05 (0.37, 1.91) & / & 0.99 & 2.82 (1.21, 4.3) & /\\
+\hspace{1em} & $\alpha_{2}$ & -0.5 & -0.22 (-1.3, 0.75) & / & -1.28 & -1.29 (-2.22, -0.5) & / & 0.5 & -0.07 (-1.14, 1.13) & /\\
+\hspace{1em} & $\alpha_{3}$ & -0.5 & -0.96 (-2.14, 0.01) & / & 1.28 & 1.16 (0.47, 2.06) & / & 0.5 & 0.08 (-0.99, 1.46) & /\\
+\hspace{1em} & $\alpha_{4}$ & -0.99 & -1.18 (-2.44, -0.06) & / & -0.85 & -0.91 (-1.76, -0.16) & / & 0.99 & 1.1 (0.07, 2.33) & /\\
 \addlinespace[0.3em]
 \multicolumn{11}{l}{\textbf{ }}\\
-\hspace{1em}Multinom. & $\delta_{11}$ & -0.5 & -0.29 (-0.54, -0.05) & 0.45 (0.22, 0.68)* & -0.5 & -0.29 (-0.54, -0.05) & 0.45 (0.22, 0.68)* & -0.5 & -0.29 (-0.54, -0.05) & 0.45 (0.22, 0.68)*\\
-\hspace{1em} & $\delta_{12}$ & 0.33 & 0.12 (-0.24, 0.48) & 0.4 (0.04, 0.73) & 0.33 & 0.12 (-0.24, 0.48) & 0.4 (0.04, 0.73) & 0.33 & 0.12 (-0.24, 0.48) & 0.4 (0.04, 0.73)\\
-\hspace{1em} & $\delta_{21}$ & 0.36 & 0.33 (0.12, 0.53) & 0.6 (0.38, 0.83)* & 0.36 & 0.33 (0.12, 0.53) & 0.6 (0.38, 0.83)* & 0.36 & 0.33 (0.12, 0.53) & 0.6 (0.38, 0.83)*\\
-\hspace{1em} & $\delta_{22}$ & 0.96 & 0.98 (0.69, 1.28) & 0.42 (0.12, 0.77)* & 0.96 & 0.98 (0.69, 1.28) & 0.42 (0.12, 0.77)* & 0.96 & 0.98 (0.69, 1.28) & 0.42 (0.12, 0.77)*\\
+\hspace{1em}Multinom. & $\delta_{11}$ & -0.08 & -0.07 (-0.27, 0.12) & -0.54 (-0.77, -0.32) & -0.08 & -0.07 (-0.27, 0.12) & -0.54 (-0.77, -0.32) & -0.08 & -0.07 (-0.27, 0.12) & -0.54 (-0.77, -0.32)\\
+\hspace{1em} & $\delta_{12}$ & 0.51 & 0.25 (-0.04, 0.53) & -0.26 (-0.6, 0.05) & 0.51 & 0.25 (-0.04, 0.53) & -0.26 (-0.6, 0.05) & 0.51 & 0.25 (-0.04, 0.53) & -0.26 (-0.6, 0.05)\\
+\hspace{1em} & $\delta_{21}$ & -0.97 & -0.91 (-1.15, -0.68) & -0.07 (-0.28, 0.14) & -0.97 & -0.91 (-1.15, -0.68) & -0.07 (-0.28, 0.14) & -0.97 & -0.91 (-1.15, -0.68) & -0.07 (-0.28, 0.14)\\
+\hspace{1em} & $\delta_{22}$ & 0.84 & 0.39 (0.09, 0.71) & 0.24 (-0.04, 0.5) & 0.84 & 0.39 (0.09, 0.71) & 0.24 (-0.04, 0.5) & 0.84 & 0.39 (0.09, 0.71) & 0.24 (-0.04, 0.5)\\
 \addlinespace[0.3em]
 \multicolumn{11}{l}{\textbf{ }}\\
-\hspace{1em}Clustering & $\pi_l$ & 0.25 & 0.25 (0.22, 0.27) & 0.26 (0.23, 0.29) & 0.19 & 0.18 (0.15, 0.21) & 0.18 (0.15, 0.21) & 0.56 & 0.57 (0.55, 0.59) & 0.56 (0.53, 0.6)\\
+\hspace{1em}Clustering & $\pi_l$ & 0.38 & 0.38 (0.38, 0.38) & 0.38 (0.13, 0.41) & 0.4 & 0.39 (0.39, 0.4) & 0.39 (0.36, 0.43) & 0.23 & 0.23 (0.22, 0.23) & 0.23 (0.2, 0.44)\\
 \bottomrule
 \end{tabular}
 \end{table}
 \end{landscape}
 
-\subsection{Figures}
+\newpage
+\subsection*{Figures}
 
-\vspace{1mm}
 \begin{figure}[h]
 	\label{fig:skew_resids}
 	\caption{The distribution of residuals in repeated measures regression model of Bayley composite scores adjusted for race and sex.}
 	\centering
-	\includegraphics[scale = 0.14]{bayley_resids_plot}
+	\includegraphics[width = 1\textwidth]{bayley_resids_plot}
+\end{figure}
+
+\begin{figure}[h]
+	\label{fig:sim1_dens}
+	\caption{Marginal densities of simulated outcomes in each cluster at each measurement occasion.}
+	\centering
+	\includegraphics[width = 1\textwidth]{y_densities.pdf}
+\end{figure}	
+
+\begin{figure}[h]
+	\label{fig:sim1_means}
+	\caption{Mean plots of simulated outcomes in each cluster at each measurement occasion.}
+	\centering
+	\includegraphics[width = 1\textwidth]{y_means.pdf}
+\end{figure}
+
+\begin{figure}
+	\label{fig:sim1_beta_trace}
+	\caption{Trace plots of draws from posterior distribution of $\beta$ parameters}
+	\centering
+	\includegraphics[width = 1\textwidth]{beta_trace.pdf}
+\end{figure}	
+
+\begin{figure}
+	\label{fig:sim1_psi_trace}
+	\caption{Trace plots of draws from posterior distribution of $\psi$ parameters}
+	\centering
+	\includegraphics[width = 1\textwidth]{psi_trace.pdf}
+\end{figure}	
+
+\begin{figure}
+	\label{fig:sim1_sig2_trace}
+	\caption{Trace plots of draws from posterior distribution of $\Sigma$ parameters}
+	\centering
+	\includegraphics[width = 1\textwidth]{sigma_trace.pdf}
+\end{figure}	
+
+\begin{figure}
+	\label{fig:sim1_pi_trace}
+	\caption{Trace plots of proportion within each class at each MCMC iteration}
+	\centering
+	\includegraphics[width = 1\textwidth]{pi_trace.pdf}
 \end{figure}
 
 \end{document}

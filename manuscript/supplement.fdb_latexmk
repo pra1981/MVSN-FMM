@@ -1,5 +1,5 @@
 # Fdb version 3
-["pdflatex"] 1562178369 "supplement.tex" "supplement.pdf" "supplement" 1562178370
+["pdflatex"] 1562681883 "supplement.tex" "supplement.pdf" "supplement" 1562681884
   "/usr/local/texlive/2016/texmf-dist/fonts/map/fontname/texfonts.map" 1272929888 3287 e6b82fe08f5336d4d5ebc73fb1152e87 ""
   "/usr/local/texlive/2016/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmbsy5.tfm" 1246382020 1120 1e8878807317373affa7f7bba4cf2f6a ""
   "/usr/local/texlive/2016/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmbsy6.tfm" 1246382020 1124 14ccf5552bc7f77ca02a8a402bea8bfb ""
@@ -88,7 +88,6 @@
   "/usr/local/texlive/2016/texmf-dist/tex/latex/amsmath/amstext.sty" 1456875012 2431 fe3078ec12fc30287f568596f8e0b948 ""
   "/usr/local/texlive/2016/texmf-dist/tex/latex/base/article.cls" 1459635588 19821 310da678527a7dfe2a02c88af38079b7 ""
   "/usr/local/texlive/2016/texmf-dist/tex/latex/base/ifthen.sty" 1454284088 5159 a08c9bbd48fc492f15b22e458bef961f ""
-  "/usr/local/texlive/2016/texmf-dist/tex/latex/base/omscmr.fd" 1454284088 2256 80ce1168fb4ce6a85583a9cf8972c013 ""
   "/usr/local/texlive/2016/texmf-dist/tex/latex/base/size10.clo" 1459635588 8292 e897c12e1e886ce77fe26afc5d470886 ""
   "/usr/local/texlive/2016/texmf-dist/tex/latex/blindtext/blindtext.sty" 1325892463 47295 de48b7f8ebf4b54709a2f6b2c7106dd5 ""
   "/usr/local/texlive/2016/texmf-dist/tex/latex/booktabs/booktabs.sty" 1462233275 5869 94335281ffcab47f341cf07ea8220e30 ""
@@ -121,9 +120,15 @@
   "/usr/local/texlive/2016/texmf-var/web2c/pdftex/pdflatex.fmt" 1463979169 3873397 413fbfbbedb8e719ddc392043a7add02 ""
   "/usr/local/texlive/2016/texmf.cnf" 1463979140 577 2938757e76f31531e65cc647e3507693 ""
   "bayley_resids_plot.jpg" 1561962073 164722 6ff322fab30ce8b6b7417759e11681b3 ""
-  "supplement.aux" 1562178370 1493 d960eec0a898625150efdae615048966 ""
-  "supplement.tex" 1562178367 17904 46d5e5b7844b93788192e4a578174709 ""
+  "beta_trace.pdf" 1562675145 114337 7372f1c60f1f063fecb0cd6d04d9b82b ""
+  "pi_trace.pdf" 1562675148 15671 5bc5e717778ce868270efd66e9d92614 ""
+  "psi_trace.pdf" 1562675147 66999 13e6a11da16bfb59ad78a90fd33b4a3d ""
+  "sigma_trace.pdf" 1562675147 239458 68d85c3f489b8a26a8326ae8eccabdf3 ""
+  "supplement.aux" 1562681884 1877 ddde54c3b1e972f27053908171e8fc96 ""
+  "supplement.tex" 1562681882 16839 ef748d395b7ef344469a648212ea42cb ""
+  "y_densities.pdf" 1562675151 32238 0a4de92c8c7cfa9f43ae4011ebf9bfe6 ""
+  "y_means.pdf" 1562675151 4624 31847dd7cc080c0acc8067cc85e9e778 ""
   (generated)
-  "supplement.log"
   "supplement.aux"
   "supplement.pdf"
+  "supplement.log"

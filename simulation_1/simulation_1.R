@@ -8,11 +8,8 @@
 library(sn) # for rsn
 library(truncnorm) # for rtruncnorm
 library(mvtnorm) # for rmvtnorm
-library(ggplot2)
-library(patchwork)
 library(mvnmle)
 library(Hmisc) # For rMultinom function (easy sampling of class indicators C)
-library(bayesplot)
 library(coda)
 library(MCMCpack)
 library(matrixsampling)
@@ -27,9 +24,9 @@ options(scipen=999)
 options(warn=2)
 # Generate data
 k <- 4 # number of outcomes
-p <- 1 # number of predictors 
+p <- 2 # number of predictors 
 h <- 3 # number of clusters
-n <- 500 # number of observations (takes alot of data to estimate this many parameters)
+n <- 1000 # number of observations (takes alot of data to estimate this many parameters)
 print(paste("Generating data with",n,"observations of dimension",k,
             "with",p,"covariates and",h,"clusters"))
 
@@ -41,31 +38,9 @@ X <- matrix(rnorm(n*p),nrow = n,ncol = p) # random predictors
 X[,1] <- 1
 t <- rtruncnorm(n,0,Inf,0,1) # trunc norm random effects
 Xstar <- cbind(X,t) # Combine X and t
-# # Generate X manually
-# xi <- matrix(c(1, 0, 0, 0,
-#                1, 1, 0, 0,
-#                1, 0, 1, 0,
-#                1, 0, 0, 1),
-#              nrow = 4,
-#              ncol = 4,
-#              byrow = TRUE)
-# t <- rtruncnorm(n,0,Inf,0,1) # trunc norm random effects
-# X <- NULL 
-# capT <- NULL
-# for(i in 1:n)
-# {
-#     X <- rbind(X,xi)
-#     capT <- rbind(capT,diag(t[i],nrow = 4,ncol = 4))
-# }
-# 
-# Xstar <- cbind(X,capT) # Combine X and t
 
-# Covariates corresponding to multinomial regression
-#w1 <- rnorm(n) # continuous predictor
-#w2 <- rnorm(n) # continuous predictor
-w3 <- rbinom(n,1,0.5) # binary predictor
-w4 <- rbinom(n,1,0.5) # binary predictor
-W <- cbind(1,w3) # design matrix
+w1 <- rbinom(n,1,0.5) # binary predictor
+W <- cbind(1,w1) # design matrix
 v <- ncol(W) # number of multinomial predictors
 delta.true <- matrix(rtruncnorm(n = v*(h-1),
                                 a = -1, 
@@ -105,6 +80,25 @@ B0.list <- list(0)
 Y <- NULL
 
 sig2.true.ar1 <- 1 * 0.5^(abs(outer(1:k,1:k,"-")))
+beta.true.list <- list(
+    matrix(c(11,12,13,14,
+             2,2,2,2),
+           nrow = p,
+           ncol = k),
+    matrix(c(-5,-4,-3,-2,
+             5,5,5,5),
+           nrow = p,
+           ncol = k),
+    matrix(c(-10,-11,-12,-13,
+             -2,-2,-2,-2),
+           nrow = p,
+           ncol = k)
+    )
+psi.true.list <- list(
+    c(-2,-2,-2,-2),
+    c(1,-1,1,-1),
+    c(2,2,2,2)
+)
 for(l in 1:h)
 {
     X.l <- as.matrix(X[c == l,])
@@ -112,17 +106,10 @@ for(l in 1:h)
     n.l <- sum(c == l) # number of observations truly assigned to cluster l
     
     # Cluster specific betas and psis
-    beta.true.l <- matrix(rnorm(p*k,mean = seq(-h,h,length.out = h)[l],sd = 0.5),nrow = p,ncol = k) # true beta matrix
-    psi.true.l <- rep((((-1)^l)*l*2 - 1)/h,k) # control skewness of each outcome in cluster l
+    beta.true.l <- beta.true.list[[l]]
+    psi.true.l <- psi.true.list[[l]]
     betastar.true.l <- rbind(beta.true.l,psi.true.l)
-    betastar.true.list[[l]] <- betastar.true.l
-    beta.true.list[[l]] <- beta.true.l
-    psi.true.list[[l]] <- psi.true.l # can also accomodate different skewness across clusters 
     
-    # Cluster specific sigmas
-    # A.l <- matrix(runif(k^2)*k-1,ncol = k) # make a symmetric matrix
-    # sig2.true.l <- t(A.l) %*% A.l
-    # sig2.true.l <- cov2cor(sig2.true.l) # true covariance matrix
     sig2.true.list[[l]] <- sig2.true.l <- sig2.true.ar1 # Add to list of true class-specific sig2 matrices
 
     # Cluster specific Ys
@@ -139,30 +126,28 @@ for(l in 1:h)
     sig2.mle.list[[l]] <- sig2.mle.l
     sig2.init.list[[l]] <- sig2.true.ar1 # convinient to set the inits to sig2.mle.l here
 
-    # Cluster specific inits
-    psi.init.l <- betastar.mle.l[p+1,]
+    # Cluster specific inits/priors
+    # psi.init.l <- betastar.mle.l[p+1,]
+    psi.init.l <- psi.true.l
     psi.init.list[[l]] <- psi.init.l
-    beta.init.l <- beta.mle.l
+    beta.init.l <- beta.true.l
     beta.init.list[[l]] <- beta.init.l
-    B0.list[[l]] <- matrix(rep(0,(p+1)*k),nrow = p+1,ncol = k) # prior mean of beta
-    V0.list[[l]] <- sig2.mle.l # kxk hyperparam for Sigma
+    # B0.list[[l]] <- matrix(rep(0,(p+1)*k),nrow = p+1,ncol = k) # prior mean of beta
+    B0.list[[l]] <- betastar.true.l
+    # V0.list[[l]] <- sig2.mle.l # kxk hyperparam for Sigma
+    V0.list[[l]] <- sig2.true.l
     L0.list[[l]] <- diag(rep(1,p+1))  # appears in Kronecker of beta0.vec prior
 }
 
 # Define prior structure
 print("Defining prior structure")
-a <- rep(2,h) # prior parameter vector for pi1,...,pih
-nu0 <- rep(4,h)  # scalar df hyperparam for Sigma (same across classes)
-V0 <- sig2.true.ar1 # kxk hyperparam for Sigma (same across classes)
-# B0 <- rbind(beta.init.list[[1]],rep(0,k)) # zero matrix
-B0 <- betastar.true.list
-L0 <- diag(rep(1,p+1)) # appears in Kronecker of beta0.vec prior
+nu0 <- rep(6,h)  # scalar df hyperparam for Sigma (same across classes)
 delta0 <- rep(0,v) # prior mean for delta coefficients (multinomial regression)
 S0 <- diag(1,v) # prior covariance for delta coefficients (multinomial regression)
 
 # Sample storage
-nsim <- 750 # number of iterations
-burn <- 250 # number of iterations to save
+nsim <- 1000 # number of iterations
+burn <- 0 # number of iterations to save
 n.iter <- nsim - burn # number of saved iterations
 Z <- matrix(0,nrow = n.iter,ncol = n) # large matrix where each row is the value of z at a specific iteration
 PI <- matrix(0,nrow = n.iter,ncol = h) # matrix w/ each row as pi vector at each iteration
@@ -174,11 +159,10 @@ OMEGA.list <- vector("list",h) # storage for omega matrix (vectorized by row)
 ALPHA.list <- vector("list",h)
 
 # Initialized values
-# pi <- rep(1/h,h) # mixing probabilities
 pi <- table(c)/n
 print(pi)
-z <- sample(1:h,n,replace = TRUE,prob = pi) # just generate some random class labels to start with
-# z <- c
+# z <- sample(1:h,n,replace = TRUE,prob = pi) # just generate some random class labels to start with
+z <- c
 Bn.list <- B0.list
 Ln.list <- L0.list
 nun <- nu0
@@ -190,60 +174,19 @@ psi.list <- psi.init.list
 alpha.list <- psi.init.list
 delta <- matrix(0,nrow = v, ncol = h-1)
 
-# Artificial data amputation phase
-mech.miss <- "MCAR" # missingness mechanism
-prop.miss <- 0 # proportion of missing
-Y.true <- Y
-Y <- mice::ampute(Y,prop = prop.miss,mech = mech.miss)$amp # amputed data
-Y <- as.matrix(Y)
-na.mat <- is.na(Y)
-
 # MCMC
 start.time<-proc.time()
 print(paste("Started MCMC of",nsim,"iterations with a burn in of",burn))
 pb <- txtProgressBar(min = 0, max = nsim, style = 3)
 for(i in 1:nsim)
 {
-    # Step 0:
-    # perform conditional mv-normal imputation
-    for(j in 1:n)
-    {
-        # perform conditional normal imputation
-        na.ind <- na.mat[j,]
-        y.j <- Y[j,] # outcome for observation j
-        if(any(na.ind))
-        {
-            a.j <- y.j[!na.ind] # observed components of y.j
-            xstar.j <- Xstar[j,] # covariates for observation j
-            z.j <- z[j] # current cluster id of y.j
-            A.j <- sig2.list[[z.j]] # covmatrix of y.j
-            betastar.j <- rbind(beta.list[[z.j]],psi.list[[z.j]]) # betstar for y.j
-            mu.j <- xstar.j %*% betastar.j # mean of observation j if it belonged to each class
-            
-            mu.1 <- mu.j[na.ind]
-            mu.2 <- mu.j[!na.ind]
-            
-            sig.11 <- A.j[na.ind,na.ind]
-            sig.12 <- A.j[na.ind,!na.ind]
-            sig.21 <- A.j[!na.ind,na.ind]
-            sig.22 <- A.j[!na.ind,!na.ind]
-            
-            mu.cond <- mu.1 + sig.12 %*% solve(sig.22) %*% (a.j - mu.2)
-            sig.cond <- sig.11 - sig.12 %*% solve(sig.22) %*% sig.21
-            
-            y.imp <- rmvnorm(1,mu.cond,sig.cond)
-            y.j[na.ind] <- y.imp
-            Y[j,] <- y.j
-        }
-    }
     Y <- as.matrix(Y)
     # End step 0
     
     # Step 3:
     # Update pi1,...,piK 
-    # pi <- rdirichlet(1,a + n.z)
-    eta<-cbind(rep(0,n),W%*%delta)
-    pi<-exp(eta)/(1+apply(as.matrix(exp(eta[,-1])),1,sum))
+    eta <- cbind(rep(0,n),W%*%delta)
+    pi <- exp(eta)/(1+apply(as.matrix(exp(eta[,-1])),1,sum))
     # End Step 3
     
     # Step 1A:
@@ -254,7 +197,6 @@ for(i in 1:nsim)
     {
         y.j <- Y[j,] # outcome for observation j
         xstar.j <- Xstar[j,] # covariates for observation j
-        # mu.j <- matrix(rep(0,k*h),nrow = h,ncol = k) # empty storage for class specific X %*% betas
         p.j <- rep(0,h)
         for(l in 1:h)
         {
@@ -346,7 +288,6 @@ for(i in 1:nsim)
         sig2.list[[l]] <- sig2.l
         omega.l <- sig2.l + outer(psi.l,psi.l)
         omega.list[[l]] <- omega.l
-        # sig2.list <- sig2.true.list # used for testing purposes
         
         # Update beta
         # Same as matrix normal regression update with added psi
@@ -354,15 +295,12 @@ for(i in 1:nsim)
         Bn.list[[l]] <- Bn.l
         Ln.l <- t(Xstar.l) %*% Xstar.l + L0.l
         Ln.list[[l]] <- Ln.l
-        betastar.l <- rmatrixnormal(1,Bn.l,solve(Ln.l),sig2.l, checkSymmetry = FALSE)
+        betastar.l <- rmatrixnormal(1,Bn.l,solve(Ln.l), sig2.l, checkSymmetry = FALSE)
         betastar.l <- matrix(betastar.l,nrow = p+1, ncol = k)
         beta.l <- betastar.l[1:p,]
         psi.l <- betastar.l[p+1,]
         beta.list[[l]] <- beta.l
         psi.list[[l]] <- psi.l
-        # alpha.list[[l]] <- (diag(sqrt(diag(omega.l))) %*% solve(omega.l) %*% psi.l)/c(sqrt(1 - t(psi.l) %*% solve(omega.l) %*% psi.l))
-        # beta.list <- beta.true.list # used for testing purposes
-        # psi.list <- psi.true.list # used for testing purposes
     }
     # End step 2
     
@@ -399,20 +337,16 @@ if(!dir.exists(store))
 meta_file <- paste(store,"/META.txt",sep = "")
 file.create(meta_file)
 write(paste("MCMC Run Date:",Sys.time()),file = meta_file, append = TRUE)
-# write(paste("Seed:",seed),file = meta_file, append = TRUE)
 write(paste("Number of subjects (n):",n),file = meta_file, append = TRUE)
 write(paste("Number of outcomes (k):",k),file = meta_file, append = TRUE)
 write(paste("Number of predictors (p):",p),file = meta_file, append = TRUE)
 write(paste("Number of multinomial predictors (v):",v),file = meta_file, append = TRUE)
 write(paste("Number of clusters (h):",h),file = meta_file, append = TRUE)
 write(paste("Number of observations (N):",N),file = meta_file, append = TRUE)
-write(paste("Missing Mechanism:",mech.miss),file = meta_file, append = TRUE)
-write(paste("Missing Proportion:",prop.miss),file = meta_file, append = TRUE)
 write(paste("Number of simulations (nsim):",nsim),file = meta_file, append = TRUE)
 write(paste("Number of burn-in simulations (burn):",burn),file = meta_file, append = TRUE)
 
 save(Y,file = paste(store,"/Y",sep = ""))
-save(Y.true,file = paste(store,"/Y_true",sep = ""))
 save(X,file = paste(store,"/X",sep = ""))
 save(Z,file = paste(store,"/Z",sep = ""))
 save(PI,file = paste(store,"/PI",sep = ""))
