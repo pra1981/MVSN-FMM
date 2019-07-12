@@ -1,5 +1,6 @@
 library(sn)
 
+setwd("~/Documents/School/Summer_2019/Research/MVSN-FMM/mcmc_draws_2019-07-09_SIM1/mcmc_draws_2019-07-09/")
 load("Y")
 load("X")
 load("X_star")
@@ -9,6 +10,8 @@ load("SIGMA")
 load("PSI")
 load("BETA")
 load("DELTA")
+
+
 
 n <- nrow(Y)
 K <- length(BETA.list)
@@ -38,7 +41,7 @@ for(i in 1:n)
         beta_ks <- matrix(beta_k_s,
                           nrow = p,
                           ncol = J,
-                          byrow = TRUE)
+                          byrow = FALSE)
         
         sigma_k <- SIGMA.list[[k]]
         sigma_k_s <- sigma_k[s,]

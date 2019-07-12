@@ -1,8 +1,9 @@
 library(sn)
 
+setwd("~/Documents/School/Summer_2019/Research/MVSN-FMM/mcmc_draws_2019-07-09_SIM1")
 load("Y")
 load("X")
-load("X_star")
+load("Xstar")
 load("W")
 load("Z")
 load("SIGMA")
@@ -36,7 +37,7 @@ for(i in 1:n)
         beta_ks <- matrix(beta_k_s,
                           nrow = p,
                           ncol = J,
-                          byrow = TRUE)
+                          byrow = FALSE)
         
         sigma_k <- SIGMA.list[[k]]
         sigma_k_s <- sigma_k[s,]
@@ -57,7 +58,7 @@ for(i in 1:n)
     setTxtProgressBar(pb, i)
     
     print(lppd <- lppd + log(mean(p_yi, na.rm = TRUE)))
-    print(pwaic <- pwaic + var(log(p_yi)[is.finite(log(p_yi))], na.rm = TRUE))
+    print(pwaic <- pwaic + var(log(p_yi), na.rm = TRUE))
 }
 WAIC <- -2*(lppd - pwaic)
 

@@ -1,11 +1,15 @@
 library(sn)
+setwd("~/Documents/School/Summer_2019/Research/MVSN-FMM/mcmc_draws_2019-07-10")
 
-setwd("~/Documents/School/Summer_2019/Research/MVSN-FMM/mcmc_draws_2019-07-09_SIM1/mcmc_draws_NOSKEW_2019-07-09")
 load("Y")
 load("X")
+load("Xstar")
+load("W")
 load("Z")
 load("SIGMA")
+load("PSI")
 load("BETA")
+load("DELTA")
 
 n <- nrow(Y)
 K <- length(BETA.list)
@@ -23,6 +27,7 @@ for(i in 1:n)
     y_i <- Y[i,]
     x_i <- X[i,]
     z_i <- Z[,i]
+    t_i <- Xstar[i,p+1]
     p_yi <- rep(0,S)
     for(s in 1:S)
     {
@@ -42,8 +47,14 @@ for(i in 1:n)
                            ncol = J,
                            byrow = TRUE)
         
+        psi_k <- PSI.list[[k]]
+        psi_ks <- psi_k[s,]
+        
         zeta_iks <- x_i %*% beta_ks
-        p_yi[s] <- dmvnorm(y_i,zeta_iks,sigma_ks)
+        
+        mu_iks <- zeta_iks + t_i %*% psi_ks
+        
+        p_yi[s] <- dmvnorm(y_i,mu_iks,sigma_ks)
     }
     setTxtProgressBar(pb, i)
     
@@ -51,5 +62,6 @@ for(i in 1:n)
     print(pwaic <- pwaic + var(log(p_yi), na.rm = TRUE))
 }
 WAIC <- -2*(lppd - pwaic)
+save(WAIC,file = "WAIC")
 
 close(pb)

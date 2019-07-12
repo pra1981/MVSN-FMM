@@ -79,25 +79,28 @@ L0.list <- list(0)
 B0.list <- list(0)
 Y <- NULL
 
-sig2.true.ar1 <- 1 * 0.5^(abs(outer(1:k,1:k,"-")))
+sig2.true.ar1 <- 5 * 0.5^(abs(outer(1:k,1:k,"-")))
 beta.true.list <- list(
-    matrix(c(11,12,13,14,
-             2,2,2,2),
+    matrix(c(100,105,110,115,
+             -1,-1.5,-2,-2.5),
            nrow = p,
-           ncol = k),
-    matrix(c(-5,-4,-3,-2,
-             5,5,5,5),
+           ncol = k,
+           byrow = TRUE),
+    matrix(c(90,85,80,75,
+             1,1.5,2,2.5),
            nrow = p,
-           ncol = k),
-    matrix(c(-10,-11,-12,-13,
-             -2,-2,-2,-2),
+           ncol = k,
+           byrow = TRUE),
+    matrix(c(100,100,100,100,
+             1,1,1,1),
            nrow = p,
-           ncol = k)
+           ncol = k,
+           byrow = TRUE)
     )
 psi.true.list <- list(
-    c(0,0,0,0),
-    c(0,0,0,0),
-    c(0,0,0,0)
+    c(1,2,3,4),
+    c(-1,-2,-3,-4),
+    c(0,1,0,1)
 )
 for(l in 1:h)
 {
@@ -109,6 +112,7 @@ for(l in 1:h)
     beta.true.l <- beta.true.list[[l]]
     psi.true.l <- psi.true.list[[l]]
     betastar.true.l <- rbind(beta.true.l,psi.true.l)
+    betastar.true.list[[l]] <- betastar.true.l
     
     sig2.true.list[[l]] <- sig2.true.l <- sig2.true.ar1 # Add to list of true class-specific sig2 matrices
 
@@ -298,7 +302,8 @@ for(i in 1:nsim)
         betastar.l <- rmatrixnormal(1,Bn.l,solve(Ln.l), sig2.l, checkSymmetry = FALSE)
         betastar.l <- matrix(betastar.l,nrow = p+1, ncol = k)
         beta.l <- betastar.l[1:p,]
-        psi.l <- betastar.l[p+1,]
+        # psi.l <- betastar.l[p+1,]
+        psi.l <- rep(0,k)
         beta.list[[l]] <- beta.l
         psi.list[[l]] <- psi.l
     }
@@ -329,7 +334,7 @@ run.time<-proc.time()-start.time
 print(paste("Finished MCMC after",run.time[1],"seconds"))
 
 run_date <- Sys.Date()
-store <- paste("mcmc_draws_",run_date,sep = "")
+store <- paste("mcmc_draws_NOSKEW_",run_date,sep = "")
 if(!dir.exists(store))
 {
     dir.create(store)

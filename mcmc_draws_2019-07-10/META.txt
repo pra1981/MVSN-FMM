@@ -1,0 +1,9 @@
+MCMC Run Date: 2019-07-10 21:27:04
+Number of subjects (n): 1000
+Number of outcomes (k): 4
+Number of predictors (p): 2
+Number of multinomial predictors (v): 2
+Number of clusters (h): 3
+Number of observations (N): 4000
+Number of simulations (nsim): 1000
+Number of burn-in simulations (burn): 0

@@ -7,7 +7,7 @@ library(vapoRwave)
 vaporwave <- vapoRwave:::jazzCup_palette
 
 setwd("~/Documents/School/Summer_2019/Research/MVSN-FMM")
-load_dir <- "mcmc_draws_2019-07-09"
+load_dir <- "mcmc_draws_2019-07-11"
 load(paste(load_dir,"/BETA",sep = ""))
 load(paste(load_dir,"/beta_true",sep = ""))
 load(paste(load_dir,"/DELTA",sep = ""))
