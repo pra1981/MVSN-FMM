@@ -79,27 +79,27 @@ L0.list <- list(0)
 B0.list <- list(0)
 Y <- NULL
 
-sig2.true.ar1 <- 5 * 0.5^(abs(outer(1:k,1:k,"-")))
+sig2.true.ar1 <- 0.5^(abs(outer(1:k,1:k,"-")))
 beta.true.list <- list(
-    matrix(c(100,105,110,115,
-             -1,-1.5,-2,-2.5),
-           nrow = p,
-           ncol = k,
-           byrow = TRUE),
-    matrix(c(90,85,80,75,
+    matrix(c(110,115,120,125,
              1,1.5,2,2.5),
            nrow = p,
            ncol = k,
            byrow = TRUE),
+    matrix(c(90,85,80,75,
+             -1,-1.5,-2,-2.5),
+           nrow = p,
+           ncol = k,
+           byrow = TRUE),
     matrix(c(100,100,100,100,
-             1,1,1,1),
+             -1,1,-1,1),
            nrow = p,
            ncol = k,
            byrow = TRUE)
     )
 psi.true.list <- list(
-    c(1,2,3,4),
-    c(-1,-2,-3,-4),
+    c(2,3,4,5),
+    c(-2,-3,-4,-5),
     c(0,1,0,1)
 )
 for(l in 1:h)

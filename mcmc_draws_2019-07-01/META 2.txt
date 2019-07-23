@@ -1,0 +1,11 @@
+MCMC Run Date: 2019-07-01 05:03:20
+Number of subjects (n): 1500
+Number of outcomes (k): 4
+Number of predictors (p): 2
+Number of multinomial predictors (v): 2
+Number of clusters (h): 3
+Number of observations (N): 6000
+Missing Mechanism: MCAR
+Missing Proportion: 0
+Number of simulations (nsim): 5000
+Number of burn-in simulations (burn): 1000

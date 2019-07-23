@@ -1,0 +1,161 @@
+---
+title: "Simulation Tables"
+author: "Carter Allen"
+date: 
+output: 
+  pdf_document: 
+    keep_tex: yes
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+library(tidyverse)
+library(knitr)
+library(kableExtra)
+```
+
+```{r}
+setwd("~/Documents/School/Summer_2019/Research/MVSN-FMM/mcmc_draws_2019-07-11/mcmc_draws_NOSKEW_2019-07-11/")
+load("BETA")
+load("beta_true")
+load("DELTA")
+load("delta_true")
+load("PI")
+load("PSI")
+load("psi_true")
+load("SIGMA")
+load("sig2_true")
+load("pi_true")
+load("Z")
+```
+
+```{r}
+col_summarize <- function(MAT,dig = 2)
+{
+    k <- ncol(MAT)
+    ret_vec <- rep(0,k)
+    for(i in 1:k)
+    {
+        dat <- MAT[,i]
+        est <- round(median(dat),dig)
+        cri <- round(unname(quantile(dat,probs = c(0.025,0.975))),dig)
+        res <- paste(est," (",cri[1],", ",cri[2],")",sep = "")
+        ret_vec[i] <- res
+    }
+    return(ret_vec)
+}
+```
+
+```{r}
+L <- length(BETA.list)
+n_sim <- nrow(BETA.list[[1]])
+OMEGA.list <- SIGMA.list
+ALPHA.list <- PSI.list
+omega.true.list <- sig2.true.list
+alpha.true.list <- psi.true.list
+for(l in 1:L)
+{
+  SIGMA.l <- SIGMA.list[[l]]
+  PSI.l <- PSI.list[[l]]
+  OMEGA.l <- OMEGA.list[[l]]
+  ALPHA.l <- ALPHA.list[[l]]
+  for(i in 1:n_sim)
+  {
+    sig2.l.i <- matrix(SIGMA.l[i,],nrow = 4,ncol = 4,byrow = TRUE)
+    psi.l.i <- PSI.l[i,]
+    omega.l.i <- sig2.l.i + outer(psi.l.i,psi.l.i)
+    alpha.l.i <- c(1/sqrt(1-t(psi.l.i) %*% solve(omega.l.i) %*% psi.l.i)) * (diag(sqrt(diag(omega.l.i))) %*% solve(omega.l.i) %*% psi.l.i)
+    
+    OMEGA.l[i,] <- c(omega.l.i)
+    ALPHA.l[i,] <- c(alpha.l.i)
+  }
+  OMEGA.list[[l]] <- OMEGA.l
+  ALPHA.list[[l]] <- ALPHA.l
+  
+  sig2_true.l <- sig2.true.list[[l]]
+  psi_true.l <- psi.true.list[[l]]
+  omega_true.l <- sig2_true.l + outer(psi_true.l,psi_true.l)
+  alpha_true.l <- c(1/sqrt(1-t(psi_true.l) %*% solve(omega_true.l) %*% psi_true.l)) * (diag(sqrt(diag(omega_true.l))) %*% solve(omega_true.l) %*% psi_true.l)
+  omega.true.list[[l]] <- omega_true.l
+  alpha.true.list[[l]] <- alpha_true.l
+}
+```
+
+```{r}
+beta_true_c1 <- c(beta.true.list[[1]]) %>% round(.,2)
+beta_true_c2 <- c(beta.true.list[[2]]) %>% round(.,2)
+beta_true_c3 <- c(beta.true.list[[3]]) %>% round(.,2)
+beta_est_c1 <- col_summarize(BETA.list[[1]]) 
+beta_est_c2 <- col_summarize(BETA.list[[2]]) 
+beta_est_c3 <- col_summarize(BETA.list[[3]]) 
+
+omega_true_c1 <- c(omega.true.list[[1]])[c(lower.tri(omega.true.list[[1]],diag = TRUE))] %>% round(.,2)
+omega_true_c2 <- c(omega.true.list[[2]])[c(lower.tri(omega.true.list[[2]],diag = TRUE))] %>% round(.,2)
+omega_true_c3 <- c(omega.true.list[[3]])[c(lower.tri(omega.true.list[[3]],diag = TRUE))] %>% round(.,2)
+omega_est_c1 <- col_summarize(OMEGA.list[[1]])[c(lower.tri(omega.true.list[[1]],diag = TRUE))]
+omega_est_c2 <- col_summarize(OMEGA.list[[2]])[c(lower.tri(omega.true.list[[2]],diag = TRUE))]
+omega_est_c3 <- col_summarize(OMEGA.list[[3]])[c(lower.tri(omega.true.list[[3]],diag = TRUE))] 
+
+alpha_true_c1 <- alpha.true.list[[1]] %>% round(.,2)
+alpha_true_c2 <- alpha.true.list[[2]] %>% round(.,2)
+alpha_true_c3 <- alpha.true.list[[3]] %>% round(.,2)
+alpha_est_c1 <- col_summarize(ALPHA.list[[1]]) 
+alpha_est_c2 <- col_summarize(ALPHA.list[[2]]) 
+alpha_est_c3 <- col_summarize(ALPHA.list[[3]])
+
+delta_true <- c(delta.true) %>% round(.,2)
+delta_est <- col_summarize(DELTA)
+
+pi_est <- col_summarize(PI)
+pi_true <- round(pi.true,2)
+
+model_component <- c("MVSN","Regression","","","","","","","","","","","","","","","","","","","","",
+                     "Multinom.","","","",
+                     "Clustering")
+params <- c("$\\beta_{11}$","$\\beta_{21}$","$\\beta_{31}$","$\\beta_{41}$",
+            "$\\beta_{12}$","$\\beta_{22}$","$\\beta_{32}$","$\\beta_{42}$",
+            "$\\Omega_{11}$","$\\Omega_{12}$","$\\Omega_{13}$","$\\Omega_{14}$",
+            "$\\Omega_{22}$","$\\Omega_{23}$","$\\Omega_{24}$",
+            "$\\Omega_{33}$","$\\Omega_{34}$",
+            "$\\Omega_{44}$",
+            "$\\alpha_{1}$","$\\alpha_{2}$", "$\\alpha_{3}$","$\\alpha_{4}$",
+            "$\\delta_{11}$","$\\delta_{12}$",
+            "$\\delta_{21}$","$\\delta_{22}$",
+            "$\\pi_l$")
+
+true_c1 <- c(beta_true_c1,omega_true_c1,alpha_true_c1,delta_true,pi_true[1])
+true_c2 <- c(beta_true_c2,omega_true_c2,alpha_true_c2,delta_true,pi_true[2])
+true_c3 <- c(beta_true_c3,omega_true_c3,alpha_true_c3,delta_true,pi_true[3])
+est_c1 <- est_c1_noskew <- c(beta_est_c1,omega_est_c1,alpha_est_c1,delta_est,pi_est[1])
+est_c2 <- est_c2_noskew <- c(beta_est_c2,omega_est_c2,alpha_est_c2,delta_est,pi_est[2])
+est_c3 <- est_c3_noskew <- c(beta_est_c3,omega_est_c3,alpha_est_c3,delta_est,pi_est[3])
+
+save(est_c1_noskew,file = "class_1_est")
+save(est_c2_noskew,file = "class_2_est")
+save(est_c3_noskew,file = "class_3_est")
+
+
+
+t1 <- cbind(model_component,
+            params,
+            true_c1,est_c1,
+            true_c2,est_c2,
+            true_c3,est_c3)
+colnames(t1) <- c("Model Component",
+                  "Parameter",
+                  "True","Est. (95\\% CrI)",
+                  "True","Est. (95\\% CrI)",
+                  "True","Est. (95\\% CrI)")
+```
+
+```{r}
+rownames(t1) <- NULL
+kable(t1, booktabs = T, escape = F,caption = "Model results for simulated data with n = 1000, k = 4, p = 2, h = 3, r = 2. 1000 iterations were run with a burn in of 250. Missingness mechanism was MAR and P(miss) = 0") %>%
+  kable_styling(font_size = 8) %>%
+  add_header_above(c(" " = 2,"Class 1" = 2, "Class 2" = 2, "Class 3" = 2)) %>%
+  group_rows(" ",1,8) %>%
+  group_rows(" ",9,18) %>%
+  group_rows(" ",19,22) %>%
+  group_rows(" ",23,26) %>%
+  group_rows(" ",27,27)
+```

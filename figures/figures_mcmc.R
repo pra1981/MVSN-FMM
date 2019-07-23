@@ -7,7 +7,7 @@ library(vapoRwave)
 vaporwave <- vapoRwave:::jazzCup_palette
 
 setwd("~/Documents/School/Summer_2019/Research/MVSN-FMM")
-load_dir <- "mcmc_draws_2019-07-11"
+load_dir <- "mcmc_draws_2019-07-12"
 load(paste(load_dir,"/BETA",sep = ""))
 load(paste(load_dir,"/beta_true",sep = ""))
 load(paste(load_dir,"/DELTA",sep = ""))
@@ -113,7 +113,7 @@ y_mean_plot <- data.frame(Y,c) %>%
     rename(clust = c) %>%
     gather(variable,value,-clust) %>%
     group_by(variable,clust) %>%
-    summarize(mean_y = mean(value)) %>%
+    dplyr::summarize(mean_y = mean(value)) %>%
     ungroup() %>% 
     mutate(clust = as.factor(clust)) %>%
     ggplot(.,aes(x = variable, 

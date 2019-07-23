@@ -1,0 +1,157 @@
+\documentclass[]{article}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+\else % if luatex or xelatex
+  \ifxetex
+    \usepackage{mathspec}
+  \else
+    \usepackage{fontspec}
+  \fi
+  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+\fi
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+% use microtype if available
+\IfFileExists{microtype.sty}{%
+\usepackage{microtype}
+\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\usepackage[margin=1in]{geometry}
+\usepackage{hyperref}
+\hypersetup{unicode=true,
+            pdftitle={Simulation Tables},
+            pdfauthor={Carter Allen},
+            pdfborder={0 0 0},
+            breaklinks=true}
+\urlstyle{same}  % don't use monospace font for urls
+\usepackage{graphicx,grffile}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+\IfFileExists{parskip.sty}{%
+\usepackage{parskip}
+}{% else
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{0}
+% Redefines (sub)paragraphs to behave more like sections
+\ifx\paragraph\undefined\else
+\let\oldparagraph\paragraph
+\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+\let\oldsubparagraph\subparagraph
+\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+
+%%% Use protect on footnotes to avoid problems with footnotes in titles
+\let\rmarkdownfootnote\footnote%
+\def\footnote{\protect\rmarkdownfootnote}
+
+%%% Change title format to be more compact
+\usepackage{titling}
+
+% Create subtitle command for use in maketitle
+\providecommand{\subtitle}[1]{
+  \posttitle{
+    \begin{center}\large#1\end{center}
+    }
+}
+
+\setlength{\droptitle}{-2em}
+
+  \title{Simulation Tables}
+    \pretitle{\vspace{\droptitle}\centering\huge}
+  \posttitle{\par}
+    \author{Carter Allen}
+    \preauthor{\centering\large\emph}
+  \postauthor{\par}
+    \date{}
+    \predate{}\postdate{}
+  
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{wrapfig}
+\usepackage{float}
+\usepackage{colortbl}
+\usepackage{pdflscape}
+\usepackage{tabu}
+\usepackage{threeparttable}
+\usepackage{threeparttablex}
+\usepackage[normalem]{ulem}
+\usepackage{makecell}
+\usepackage{xcolor}
+
+\begin{document}
+\maketitle
+
+\begin{table}[t]
+
+\caption{\label{tab:unnamed-chunk-5}Model results for simulated data with n = 1000, k = 4, p = 2, h = 3, r = 2. 1000 iterations were run with a burn in of 250. Missingness mechanism was MAR and P(miss) = 0}
+\centering
+\fontsize{8}{10}\selectfont
+\begin{tabular}{llllllll}
+\toprule
+\multicolumn{2}{c}{ } & \multicolumn{2}{c}{Class 1} & \multicolumn{2}{c}{Class 2} & \multicolumn{2}{c}{Class 3} \\
+\cmidrule(l{3pt}r{3pt}){3-4} \cmidrule(l{3pt}r{3pt}){5-6} \cmidrule(l{3pt}r{3pt}){7-8}
+Model Component & Parameter & True & Est. (95\% CrI) & True & Est. (95\% CrI) & True & Est. (95\% CrI)\\
+\midrule
+\addlinespace[0.3em]
+\multicolumn{8}{l}{\textbf{ }}\\
+\hspace{1em}MVSN & $\beta_{11}$ & 100 & 100.8 (100.25, 101.4) & 90 & 89.32 (88.8, 89.86) & 100 & 100.09 (99.69, 100.51)\\
+\hspace{1em}Regression & $\beta_{21}$ & -1 & -0.87 (-1.18, -0.58) & 1 & 0.63 (0.38, 0.88) & 1 & 0.81 (0.6, 1.04)\\
+\hspace{1em} & $\beta_{31}$ & 105 & 106.73 (106.12, 107.35) & 85 & 83.31 (82.73, 83.89) & 100 & 100.7 (100.19, 101.2)\\
+\hspace{1em} & $\beta_{41}$ & -1.5 & -1.56 (-1.88, -1.26) & 1.5 & 1.29 (0.99, 1.58) & 1 & 0.68 (0.43, 0.94)\\
+\hspace{1em} & $\beta_{12}$ & 110 & 112.36 (111.73, 113.05) & 80 & 77.59 (76.94, 78.26) & 100 & 99.98 (99.49, 100.5)\\
+\hspace{1em} & $\beta_{22}$ & -2 & -2.05 (-2.41, -1.7) & 2 & 2.02 (1.66, 2.35) & 1 & 0.65 (0.39, 0.89)\\
+\hspace{1em} & $\beta_{32}$ & 115 & 117.92 (117.09, 118.72) & 75 & 71.91 (71.22, 72.58) & 100 & 100.78 (100.33, 101.27)\\
+\hspace{1em} & $\beta_{42}$ & -2.5 & -2.55 (-2.93, -2.14) & 2.5 & 2.39 (2.03, 2.73) & 1 & 0.71 (0.47, 0.95)\\
+\addlinespace[0.3em]
+\multicolumn{8}{l}{\textbf{ }}\\
+\hspace{1em} & $\Omega_{11}$ & 6 & 5.6 (4.82, 6.59) & 6 & 5.46 (4.79, 6.32) & 5 & 4.05 (3.51, 4.68)\\
+\hspace{1em} & $\Omega_{12}$ & 4.5 & 2.9 (2.2, 3.72) & 4.5 & 3.67 (2.97, 4.51) & 2.5 & 1.95 (1.48, 2.51)\\
+\hspace{1em} & $\Omega_{13}$ & 4.25 & 2.58 (1.79, 3.48) & 4.25 & 2.87 (2.19, 3.62) & 1.25 & 0.72 (0.25, 1.21)\\
+\hspace{1em} & $\Omega_{14}$ & 4.62 & 2.62 (1.68, 3.68) & 4.62 & 2.06 (1.31, 2.89) & 0.62 & 0.13 (-0.31, 0.6)\\
+\hspace{1em} & $\Omega_{22}$ & 9 & 6.52 (5.62, 7.7) & 9 & 6.94 (5.98, 8.05) & 6 & 5.39 (4.66, 6.19)\\
+\hspace{1em} & $\Omega_{23}$ & 8.5 & 4.83 (3.88, 5.96) & 8.5 & 5.5 (4.65, 6.54) & 2.5 & 2.51 (1.97, 3.15)\\
+\hspace{1em} & $\Omega_{24}$ & 9.25 & 4.57 (3.43, 5.85) & 9.25 & 3.96 (3.06, 4.94) & 2.25 & 1.59 (1.08, 2.16)\\
+\hspace{1em} & $\Omega_{33}$ & 14 & 8.21 (7.01, 9.87) & 14 & 8.72 (7.57, 9.95) & 5 & 5.14 (4.41, 5.91)\\
+\hspace{1em} & $\Omega_{34}$ & 14.5 & 7.17 (5.88, 8.81) & 14.5 & 6.25 (5.2, 7.52) & 2.5 & 2.49 (1.93, 3.14)\\
+\hspace{1em} & $\Omega_{44}$ & 21 & 11.22 (9.46, 13.38) & 21 & 9.78 (8.46, 11.47) & 6 & 4.7 (4.08, 5.43)\\
+\addlinespace[0.3em]
+\multicolumn{8}{l}{\textbf{ }}\\
+\hspace{1em} & $\alpha_{1}$ & 0 & 0 (0, 0) & 0 & 0 (0, 0) & -0.24 & 0 (0, 0)\\
+\hspace{1em} & $\alpha_{2}$ & 0.19 & 0 (0, 0) & -0.19 & 0 (0, 0) & 0.65 & 0 (0, 0)\\
+\hspace{1em} & $\alpha_{3}$ & 0.35 & 0 (0, 0) & -0.35 & 0 (0, 0) & -0.47 & 0 (0, 0)\\
+\hspace{1em} & $\alpha_{4}$ & 1.43 & 0 (0, 0) & -1.43 & 0 (0, 0) & 0.52 & 0 (0, 0)\\
+\addlinespace[0.3em]
+\multicolumn{8}{l}{\textbf{ }}\\
+\hspace{1em}Multinom. & $\delta_{11}$ & 0.32 & 0.3 (0.1, 0.5) & 0.32 & 0.3 (0.1, 0.5) & 0.32 & 0.3 (0.1, 0.5)\\
+\hspace{1em} & $\delta_{12}$ & -0.23 & -0.26 (-0.55, 0.03) & -0.23 & -0.26 (-0.55, 0.03) & -0.23 & -0.26 (-0.55, 0.03)\\
+\hspace{1em} & $\delta_{21}$ & 0.47 & 0.2 (-0.02, 0.41) & 0.47 & 0.2 (-0.02, 0.41) & 0.47 & 0.2 (-0.02, 0.41)\\
+\hspace{1em} & $\delta_{22}$ & -0.27 & 0.07 (-0.21, 0.35) & -0.27 & 0.07 (-0.21, 0.35) & -0.27 & 0.07 (-0.21, 0.35)\\
+\addlinespace[0.3em]
+\multicolumn{8}{l}{\textbf{ }}\\
+\hspace{1em}Clustering & $\pi_l$ & 0.29 & 0.29 (0.29, 0.3) & 0.34 & 0.34 (0.34, 0.34) & 0.36 & 0.36 (0.36, 0.36)\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+
+\end{document}
