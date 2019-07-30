@@ -1,7 +1,6 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  9 JUL 2019 15:43
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  30 JUL 2019 14:50
 entering extended mode
  restricted \write18 enabled.
- file:line:error style messages enabled.
  %&-line parsing enabled.
 **manuscript.tex
 (./manuscript.tex
@@ -802,9 +801,6 @@ Overfull \hbox (4.62497pt too wide) has occurred while \output is active
  []
 
 [6]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
 Overfull \hbox (4.62497pt too wide) has occurred while \output is active
 \OT1/cmr/m/n/9 7
  []
@@ -836,11 +832,7 @@ Overfull \hbox (9.24994pt too wide) has occurred while \output is active
  []
 
 [11]
-Overfull \hbox (4.44397pt too wide) in paragraph at lines 362--364
-\OT1/cmr/m/n/12 For ef-fi-cient sam-pling of the ma-trix nor-mal dis-tri-bu-tio
-n, we use the \OT1/cmtt/m/n/12 R \OT1/cmr/m/n/12 pack-age \OT1/cmtt/m/n/12 matr
-ixsampling
- []
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 Overfull \hbox (9.24994pt too wide) has occurred while \output is active
@@ -848,10 +840,20 @@ Overfull \hbox (9.24994pt too wide) has occurred while \output is active
  []
 
 [12]
-Overfull \hbox (35.88774pt too wide) in paragraph at lines 370--373
+Overfull \hbox (4.44397pt too wide) in paragraph at lines 363--365
+\OT1/cmr/m/n/12 For ef-fi-cient sam-pling of the ma-trix nor-mal dis-tri-bu-tio
+n, we use the \OT1/cmtt/m/n/12 R \OT1/cmr/m/n/12 pack-age \OT1/cmtt/m/n/12 matr
+ixsampling
+ []
+
+
+Overfull \hbox (35.88774pt too wide) in paragraph at lines 371--374
 \OT1/cmr/m/n/12 ment-ing the sim-u-la-tions and ap-pli-ca-tions de-scribed be-l
 ow at \OT1/cmtt/m/n/12 carter-allen.github.io/MVSN-FMM/\OT1/cmr/m/n/12 . 
  []
+
+
+Underfull \vbox (badness 3536) has occurred while \output is active []
 
 
 Overfull \hbox (9.24994pt too wide) has occurred while \output is active
@@ -864,7 +866,7 @@ Overfull \hbox (9.24994pt too wide) has occurred while \output is active
  []
 
 [14]
-Underfull \vbox (badness 4366) has occurred while \output is active []
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 Overfull \hbox (9.24994pt too wide) has occurred while \output is active
@@ -875,7 +877,7 @@ Overfull \hbox (9.24994pt too wide) has occurred while \output is active
 \openout4 = `manuscript.ttt'.
 
  (manuscript.ttt)
-Underfull \vbox (badness 3118) has occurred while \output is active []
+Underfull \vbox (badness 2564) has occurred while \output is active []
 
 
 Overfull \hbox (9.24994pt too wide) has occurred while \output is active
@@ -970,10 +972,10 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 11577 strings out of 493014
- 200229 string characters out of 6133351
- 236454 words of memory out of 5000000
- 14952 multiletter control sequences out of 15000+600000
+ 11578 strings out of 493014
+ 200242 string characters out of 6133351
+ 235462 words of memory out of 5000000
+ 14953 multiletter control sequences out of 15000+600000
  22860 words of font info for 87 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  38i,15n,40p,10383b,328s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1007,7 +1009,7 @@ st/fonts/type1/public/amsfonts/cm/cmti9.pfb></usr/local/texlive/2016/texmf-dist
 fonts/type1/public/amsfonts/cm/cmtt9.pfb></usr/local/texlive/2016/texmf-dist/fo
 nts/type1/public/doublestroke/dsrom12.pfb></usr/local/texlive/2016/texmf-dist/f
 onts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on manuscript.pdf (27 pages, 851323 bytes).
+Output written on manuscript.pdf (27 pages, 852484 bytes).
 PDF statistics:
  213 PDF objects out of 1000 (max. 8388607)
  151 compressed objects within 2 object streams

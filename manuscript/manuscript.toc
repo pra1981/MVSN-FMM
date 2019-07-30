@@ -13,8 +13,8 @@
 \contentsline {subsubsection}{\numberline {3.4.2}Posterior Inference}{12}
 \contentsline {paragraph}{\textbf {Step 1}: Conditional MSN Imputation}{12}
 \contentsline {paragraph}{\textbf {Step 2:} Update of MSN Regression Parameters}{12}
-\contentsline {paragraph}{\textbf {Step 3:}P\'olya--Gamma Data Augmentation for $z_i$}{13}
-\contentsline {subsubsection}{\numberline {3.4.3}Assessment of MCMC Convergence, Label Switching, and Model Selection}{13}
+\contentsline {paragraph}{\textbf {Step 3:} P\'olya--Gamma Data Augmentation for $z_i$}{13}
+\contentsline {subsubsection}{\numberline {3.4.3}Assessment of MCMC Convergence, Label Switching, and Model Selection}{14}
 \contentsline {section}{\numberline {4}Simulation Studies}{15}
 \contentsline {subsection}{\numberline {4.1}Simulation to Compare the MSN Model to the MVN Model}{15}
 \contentsline {subsection}{\numberline {4.2}Simulation to Compare Imputation Methods}{17}
