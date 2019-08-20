@@ -469,9 +469,20 @@ In the second simulation study, we compare our online conditional imputation app
 
 To demonstrate the advantages of our proposed imputation method, we first generated $n = 1,000$ observations from a simple three-cluster ($K = 3$) MSN mixture model with $J = 4$ repeated measurements, one main effect for time ($p = 1$), and two multinomial regression predictors ($r = 2$). We then removed observations intermittently across the 4 measurement occasions according to a MAR mechanism, whereby the occurence of missing data depends only on the values of the observed data (Gelman and Hill 2006). The \texttt{ampute} function from the \texttt{mice} package in \texttt{R} was used to generate missing observations. We specified that each of the $4$ repeated measures for a given individual were equally likely to be missing.  To further approximate the Nurture data, we set the frequency of missing data at each measurement occasion to be 30\%. We then fit our proposed MSN finite mixture model to the amputed data using both online conditional imputation and Bayesian multiple imputation as defined by (Zhou and Reiter, 2010). As is described by Zhou and Reiter, Bayesian multiple imputation requires the number of imputations $M$ to be large. Accordingly, we generated $M = 1,000$ imputed data sets using conditional MVN imputation, where the multivariate mean and covariance parameters were estimated from the available case sample sub-sample. The resultant multiply imputed data array occupied over 31 megabytes of disk space, illustrating the computational burden of Bayesian multiple imputation compared to online imputation.
 
-\subsection{Simulation to Assess Sensitivity to Misspecified K}
+\subsection{Simulation to Validate Choice of K}
 
-Our final simulation is concerned with validating the use of WAIC for determining the number of clusters $K$. To this end, we simulate data from the same MSN mixture as in simulation study \#2, that is --- we simulate data from a $K = 3$ cluster model and fit MSN mixtures of $K \in \{2,3,4\}$, comparing the WAIC under each setting of $K$. Additionally, we investigate to what degree fitting the MVN model to data generated from a MSN model affects the choice of $K$, using WAIC to select the optimal $K$. 
+Our final simulation is concerned with validating the use of WAIC for determining the number of clusters, $K$. To this end, we generate data sets from MSN models with $K = \{2,3,4\}$. To each simulated data set, we fit three of our proposed Bayesian MSN models with $K = \{2,3,4\}$ and compute WAIC for each model. As shown in Table 2, we are able to correctly estimate the true value of $K$ using WAIC, as the best fitting model for each simulation setting is the model with lowest WAIC. We note that, for the simulated data with $K = 2$, we were not able to fit a 4-cluster MSN model due to the occurence of vacant clusters during MCMC estimation. 
+
+\begin{table}[]
+\centering
+\begin{tabular}{lllll}
+ &  &  & \textbf{Fitted} &  \\
+ &  & \textit{K = 2} & \textit{K = 3} & \textit{K = 4} \\ \cline{3-5} 
+ & \multicolumn{1}{l|}{\textit{K = 2}} & 11624 \multicolumn{1}{l|}{} & 16988 \multicolumn{1}{l|}{} & * \multicolumn{1}{l|}{} \\ \cline{3-5} 
+\textbf{Truth} & \multicolumn{1}{l|}{\textit{K = 3}} & 25681 \multicolumn{1}{l|}{} & 18062 \multicolumn{1}{l|}{} & 23519 \multicolumn{1}{l|}{} \\ \cline{3-5} 
+ & \multicolumn{1}{l|}{\textit{K = 4}} & 19305\multicolumn{1}{l|}{} & 21415 \multicolumn{1}{l|}{} & 12232 \multicolumn{1}{l|}{} \\ \cline{3-5} 
+\end{tabular}
+\end{table}
 
 \newpage
 

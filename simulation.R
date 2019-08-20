@@ -41,28 +41,6 @@ X <- matrix(rnorm(n*p),nrow = n,ncol = p) # random predictors
 X[,1] <- 1
 t <- rtruncnorm(n,0,Inf,0,1) # trunc norm random effects
 Xstar <- cbind(X,t) # Combine X and t
-# # Generate X manually
-# xi <- matrix(c(1, 0, 0, 0,
-#                1, 1, 0, 0,
-#                1, 0, 1, 0,
-#                1, 0, 0, 1),
-#              nrow = 4,
-#              ncol = 4,
-#              byrow = TRUE)
-# t <- rtruncnorm(n,0,Inf,0,1) # trunc norm random effects
-# X <- NULL 
-# capT <- NULL
-# for(i in 1:n)
-# {
-#     X <- rbind(X,xi)
-#     capT <- rbind(capT,diag(t[i],nrow = 4,ncol = 4))
-# }
-# 
-# Xstar <- cbind(X,capT) # Combine X and t
-
-# Covariates corresponding to multinomial regression
-#w1 <- rnorm(n) # continuous predictor
-#w2 <- rnorm(n) # continuous predictor
 w3 <- rbinom(n,1,0.5) # binary predictor
 w4 <- rbinom(n,1,0.5) # binary predictor
 W <- cbind(1,w3) # design matrix

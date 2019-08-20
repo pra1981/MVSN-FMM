@@ -39,3 +39,15 @@ Component & Param. & True & MSN Est. (95\% CrI) & MN Est. (95\% CrI) \\
 \end{table}
 \efloatseparator
  
+\begin{table}[]
+\centering
+\begin{tabular}{lllll}
+ &  &  & \textbf{Fitted} &  \\
+ &  & \textit{K = 2} & \textit{K = 3} & \textit{K = 4} \\ \cline{3-5}
+ & \multicolumn{1}{l|}{\textit{K = 2}} & 11624 \multicolumn{1}{l|}{} & 16988 \multicolumn{1}{l|}{} & * \multicolumn{1}{l|}{} \\ \cline{3-5}
+\textbf{Truth} & \multicolumn{1}{l|}{\textit{K = 3}} & 25681 \multicolumn{1}{l|}{} & 18062 \multicolumn{1}{l|}{} & 23519 \multicolumn{1}{l|}{} \\ \cline{3-5}
+ & \multicolumn{1}{l|}{\textit{K = 4}} & 19305\multicolumn{1}{l|}{} & 21415 \multicolumn{1}{l|}{} & 12232 \multicolumn{1}{l|}{} \\ \cline{3-5}
+\end{tabular}
+\end{table}
+\efloatseparator
+ 

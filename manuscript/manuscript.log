@@ -1,6 +1,7 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  30 JUL 2019 14:50
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  5 AUG 2019 17:39
 entering extended mode
  restricted \write18 enabled.
+ file:line:error style messages enabled.
  %&-line parsing enabled.
 **manuscript.tex
 (./manuscript.tex
@@ -966,7 +967,89 @@ Overfull \hbox (9.24994pt too wide) has occurred while \output is active
 \OT1/cmr/m/n/9 25
  []
 
-[25]) (./manuscript.aux)
+[25]
+
+LaTeX Warning: No positions in optional float specifier.
+               Default added (so using `tbp') on input line 42.
+
+./manuscript.ttt:47: Misplaced \omit.
+\multispan ->\omit 
+                   \@multispan 
+l.47 ...xtit{K = 2}} & 11624 \multicolumn{1}{l|}{}
+                                                   & 16988 \multicolumn{1}{l...
+I expect to see \omit only after tab marks or the \cr of
+an alignment. Proceed, and I'll ignore this case.
+
+./manuscript.ttt:47: Misplaced \omit.
+\multispan ->\omit 
+                   \@multispan 
+l.47 ...umn{1}{l|}{} & 16988 \multicolumn{1}{l|}{}
+                                                   & * \multicolumn{1}{l|}{}...
+I expect to see \omit only after tab marks or the \cr of
+an alignment. Proceed, and I'll ignore this case.
+
+./manuscript.ttt:47: Misplaced \omit.
+\multispan ->\omit 
+                   \@multispan 
+l.47 ...icolumn{1}{l|}{} & * \multicolumn{1}{l|}{}
+                                                   \\ \cline{3-5}
+I expect to see \omit only after tab marks or the \cr of
+an alignment. Proceed, and I'll ignore this case.
+
+./manuscript.ttt:48: Misplaced \omit.
+\multispan ->\omit 
+                   \@multispan 
+l.48 ...xtit{K = 3}} & 25681 \multicolumn{1}{l|}{}
+                                                   & 18062 \multicolumn{1}{l...
+I expect to see \omit only after tab marks or the \cr of
+an alignment. Proceed, and I'll ignore this case.
+
+./manuscript.ttt:48: Misplaced \omit.
+\multispan ->\omit 
+                   \@multispan 
+l.48 ...umn{1}{l|}{} & 18062 \multicolumn{1}{l|}{}
+                                                   & 23519 \multicolumn{1}{l...
+I expect to see \omit only after tab marks or the \cr of
+an alignment. Proceed, and I'll ignore this case.
+
+./manuscript.ttt:48: Misplaced \omit.
+\multispan ->\omit 
+                   \@multispan 
+l.48 ...umn{1}{l|}{} & 23519 \multicolumn{1}{l|}{}
+                                                   \\ \cline{3-5}
+I expect to see \omit only after tab marks or the \cr of
+an alignment. Proceed, and I'll ignore this case.
+
+./manuscript.ttt:49: Misplaced \omit.
+\multispan ->\omit 
+                   \@multispan 
+l.49 ...extit{K = 4}} & 19305\multicolumn{1}{l|}{}
+                                                   & 21415 \multicolumn{1}{l...
+I expect to see \omit only after tab marks or the \cr of
+an alignment. Proceed, and I'll ignore this case.
+
+./manuscript.ttt:49: Misplaced \omit.
+\multispan ->\omit 
+                   \@multispan 
+l.49 ...umn{1}{l|}{} & 21415 \multicolumn{1}{l|}{}
+                                                   & 12232 \multicolumn{1}{l...
+I expect to see \omit only after tab marks or the \cr of
+an alignment. Proceed, and I'll ignore this case.
+
+./manuscript.ttt:49: Misplaced \omit.
+\multispan ->\omit 
+                   \@multispan 
+l.49 ...umn{1}{l|}{} & 12232 \multicolumn{1}{l|}{}
+                                                   \\ \cline{3-5}
+I expect to see \omit only after tab marks or the \cr of
+an alignment. Proceed, and I'll ignore this case.
+
+
+Overfull \hbox (9.24994pt too wide) has occurred while \output is active
+\OT1/cmr/m/n/9 26
+ []
+
+[26]) (./manuscript.aux)
 
 LaTeX Warning: There were multiply-defined labels.
 
@@ -1009,10 +1092,10 @@ st/fonts/type1/public/amsfonts/cm/cmti9.pfb></usr/local/texlive/2016/texmf-dist
 fonts/type1/public/amsfonts/cm/cmtt9.pfb></usr/local/texlive/2016/texmf-dist/fo
 nts/type1/public/doublestroke/dsrom12.pfb></usr/local/texlive/2016/texmf-dist/f
 onts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on manuscript.pdf (27 pages, 852484 bytes).
+Output written on manuscript.pdf (28 pages, 853940 bytes).
 PDF statistics:
- 213 PDF objects out of 1000 (max. 8388607)
- 151 compressed objects within 2 object streams
+ 216 PDF objects out of 1000 (max. 8388607)
+ 153 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  6 words of extra memory for PDF output out of 10000 (max. 10000000)
 

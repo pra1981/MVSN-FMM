@@ -1,5 +1,5 @@
 # Fdb version 3
-["pdflatex"] 1564511817 "manuscript.tex" "manuscript.pdf" "manuscript" 1564511818
+["pdflatex"] 1565041141 "manuscript.tex" "manuscript.pdf" "manuscript" 1565041142
   "/usr/local/texlive/2016/texmf-dist/fonts/map/fontname/texfonts.map" 1272929888 3287 e6b82fe08f5336d4d5ebc73fb1152e87 ""
   "/usr/local/texlive/2016/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmbsy5.tfm" 1246382020 1120 1e8878807317373affa7f7bba4cf2f6a ""
   "/usr/local/texlive/2016/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmbsy6.tfm" 1246382020 1124 14ccf5552bc7f77ca02a8a402bea8bfb ""
@@ -150,13 +150,13 @@
   "bayley_resids_plot_bytime.jpg" 1562438764 463195 df0fd940dc7f2f01c1ba07db70aa2c12 ""
   "biom.cls" 1557755616 64886 7f92938f68a55af22b193f888017a891 ""
   "endrotfloat.sty" 1557756168 2946 ab291a0c99b9cbaadf6db93583610dec ""
-  "manuscript.aux" 1564511818 3987 29cdd13d2762f3a1d210595eb8531d8c ""
-  "manuscript.tex" 1564511815 61698 8c274b5a1e8afe5ab892b4596c1559ff ""
-  "manuscript.toc" 1564511818 1884 020d49aaa61f88ca49a50199ed8412af ""
+  "manuscript.aux" 1565041142 3971 2a3211bf35c9bc82b4a9e17a0f2d5c62 ""
+  "manuscript.tex" 1565041139 62554 32f2a7dfbb31bf1b2433a25d0f9e5413 ""
+  "manuscript.toc" 1565041142 1868 c58e3515d61ebdf9a0480d67aa14e552 ""
   (generated)
+  "manuscript.fff"
+  "manuscript.pdf"
   "manuscript.log"
+  "manuscript.aux"
   "manuscript.toc"
   "manuscript.ttt"
-  "manuscript.fff"
-  "manuscript.aux"
-  "manuscript.pdf"
